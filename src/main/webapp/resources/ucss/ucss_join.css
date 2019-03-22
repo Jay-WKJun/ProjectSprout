@@ -1,0 +1,54 @@
+.wrapper{
+    padding:0;
+}
+
+/*=========모든 컨텐츠에 사용하는 div==========*/
+.contentItem{
+    padding: 0;
+}
+
+/*==================상단 영역=================*/
+
+.topSpace{
+   display: flex; 
+}
+
+.topSpace_center{
+    flex: initial;
+    text-align:center;
+    padding: 0px;
+}
+
+.topSpace_side{
+    flex: 1;
+}
+
+.webLogo{
+    width:70%;
+    height:70%;
+}
+
+/*==================메인=====================*/
+
+.mainContent{
+    display: flex;
+}
+
+.mainSpace{
+    flex: initial;
+    padding:20px;
+}
+
+.sideSpace{
+    flex: 1;
+}
+
+.contentItem_text{
+    margin-bottom: 5px;
+    margin-top: 15px;
+}
+
+.contentItem_input{
+    width: 350px;
+    min-width:100px;
+}

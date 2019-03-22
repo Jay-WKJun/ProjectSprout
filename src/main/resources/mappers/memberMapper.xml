@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> <!-- 이부분 주의 오류떠도 자바에서 안잡아줌. -->
+<!-- 회원정보 처리 sql -->
+<mapper namespace="com.team.sprout.dao.MemberDAO"> <!-- mapper 인터페이스에 해당하는 부분 [9번 내용]-->
+	<insert id="memberJoin" parameterType="Member">
+		insert into member
+		values (
+			MEMBER_SEQ.nextval
+			, #{member_id}
+			, #{member_password}
+			, #{member_name}
+			, #{member_phone}
+			, #{member_address}
+			, sysdate
+			, #{memberImage_saveAddress}
+		)
+	</insert>
+	
+	<select id="selectOne" parameterType="Map" resultType="Member">
+		select 
+			MEMBER_NUM
+			, MEMBER_ID
+			, MEMBER_PASSWORD
+			, MEMBER_NAME
+			, MEMBER_PHONE
+			, MEMBER_ADDRESS
+			, MEMBER_LOGINDATE
+		from 
+			member
+		where
+			 member_id = #{id} and member_password = #{password}
+	</select>
+	
+	<update id="updateMember" parameterType="Member">
+		update member
+		set
+			member_id = #{member_id}
+			, member_password = #{member_password}
+			, member_name = #{member_name}
+			, member_phone = #{member_phone}
+			, member_address = #{member_address}
+			, member_memo = #{member_memo}
+			, member_logindate = sysdate
+		where
+			member_num = #{member_num}
+	</update>
+</mapper>

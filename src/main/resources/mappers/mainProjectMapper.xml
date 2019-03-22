@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> <!-- 이부분 주의 오류떠도 자바에서 안잡아줌. -->
+<mapper namespace="com.team.sprout.dao.MainProjectDAO"> 
+
+<insert id="mainProjectRegist" parameterType="MainProject">
+	insert into MAINPROJECT (
+		mainproject_projectnum,
+		mainproject_title,
+		mainproject_memo
+	)values(
+		#{mainproject_projectnum}
+		,#{mainproject_title}
+		,#{mainproject_memo}
+	)
+
+</insert>
+
+<select id="projectList" resultType="MainProject" parameterType="int">
+
+select m.MAINPROJECT_TITLE from MAINPROJECT m, PROJECTMEMBER p where m.MAINPROJECT_PROJECTNUM = p.MAINPROJECT_PROJECTNUM and p.MEMBER_NUM =#{member_num}
+
+
+
+
+</select> 
+</mapper>
