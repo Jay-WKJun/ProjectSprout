@@ -34,6 +34,12 @@ public class MemberRepository {
 		
 		return result;
 	}
+
+	public Member searchMember(int member_num) {
+		MemberDAO dao = session.getMapper(MemberDAO.class);
+		Member member=dao.searchMember(member_num);
+		return member;
+	}
 	
 	
 	
