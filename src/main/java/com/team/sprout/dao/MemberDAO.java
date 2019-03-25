@@ -10,4 +10,6 @@ public interface MemberDAO {
 	public Member selectOne(Map<String, String> map);
 
 	public int updateMember(Member member);
+
+	public Member searchMember(int member_num);
 }

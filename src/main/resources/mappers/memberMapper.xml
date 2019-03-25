@@ -35,6 +35,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			member_password = #{password}
 	</select>
 	
+	<select id="searchMember" resultType="Member">
+		select *
+		from
+			member
+		where
+			member_num=#{member_num}
+		
+	</select>
+	
 	<update id="updateMember" parameterType="Member">
 		update member
 		set

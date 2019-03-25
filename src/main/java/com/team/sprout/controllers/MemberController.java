@@ -58,6 +58,10 @@ public class MemberController {
 		profile_picture pro = new profile_picture();
 		pro.picture(profile_pic, member); // ------------------------ 사진 저장하기.
 		
+<<<<<<< HEAD
+=======
+		int result = repo.memberJoin(member);
+>>>>>>> 0621b8d9cbf2508e201959a15e51411b89042f68
 		
 		return "redirect:/";
 	}
@@ -87,7 +91,6 @@ public class MemberController {
 			HttpServletResponse response) {
 		
 		
-		System.out.println(id.toString() + "   " + password.toString());
 		if (idChecked) {
 			//idCheck를 눌럿다면
 			Cookie cookie = new Cookie("idChecked", id);
@@ -109,7 +112,6 @@ public class MemberController {
 		
 		//입력된 정보로 DB가서 그 정보를 가져온다.
 		Member m = repo.selectOne(map);
-		System.out.println(m);
 		
 		//로그인 성공
 		String message = null;
@@ -118,14 +120,10 @@ public class MemberController {
 			message = "아이디 혹은 비밀번호가 맞지 않습니다.";
 			model.addAttribute("message", message);
 			return "member/loginForm";
-		} else {
-				session.setAttribute("loginId", m.getMember_id());
-				session.setAttribute("loginName", m.getMember_name());
-				session.setAttribute("loginNum", m.getMember_num());
-				List<MainProject>projectList= mainrepo.projectList(m.getMember_num());
-				System.out.println("프로젝트 리스트트"+projectList);
-				model.addAttribute("projectList", projectList);
-				
+		}else {
+			session.setAttribute("loginId", m.getMember_id());
+			session.setAttribute("loginName", m.getMember_name());
+			session.setAttribute("loginNum", m.getMember_num());
 		}
 		return "redirect:/";
 	}
