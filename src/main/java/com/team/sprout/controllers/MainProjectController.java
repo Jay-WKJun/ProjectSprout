@@ -30,7 +30,6 @@ public class MainProjectController {
 	@RequestMapping(value="/mainProjectRegist", method=RequestMethod.POST)
 
 	public String mainProjectRegist(MainProject project, ProjectMember prMember,Model model, Member member, HttpSession session) {
-		model.addAttribute("member_num", member.getMember_num());
 
 		String uuid = UUID.randomUUID().toString();
 		project.setMainproject_projectnum(uuid);

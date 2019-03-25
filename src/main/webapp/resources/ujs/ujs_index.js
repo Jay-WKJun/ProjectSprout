@@ -14,5 +14,9 @@ $(function(){
     $('#projectCreateBtn').on('click', function(){
     	$('#mainProjectRegist').submit();
     })
+    
+    $('#project').on('click', function(){
+    	location.href="project";
+    })
 
 });

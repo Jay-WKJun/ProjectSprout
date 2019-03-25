@@ -59,6 +59,7 @@
 					<div class="userInfo_left"></div>
 					<div class="userInfo_right">
 						<c:if test="${sessionScope.loginId == null }">
+							<button class="btn btn-primary" id="project">프로젝트</button>
 							<button class="btn btn-dark" id="loginBtn">
 								<span style="margin-right: 8px">로그인</span><i class="fas fa-sign-in-alt fa-lg"></i>
 							</button>
