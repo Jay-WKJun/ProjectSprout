@@ -1,7 +1,6 @@
 package com.team.sprout.controllers;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.Cookie;
@@ -14,13 +13,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.team.sprout.dao.MainProjectRepository;
 import com.team.sprout.dao.MemberRepository;
 import com.team.sprout.dao.ProjectMemberRepository;
 import com.team.sprout.util.profile_picture;
-import com.team.sprout.vo.MainProject;
 import com.team.sprout.vo.Member;
 
 @Controller
@@ -172,12 +171,26 @@ public class MemberController {
 	@RequestMapping(value="/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
 		
+		System.out.println("logout!!");
 		//모든 session 제거
 		session.invalidate();
 		
 		return "redirect:/";
 	}
 
+	@RequestMapping(value = "/googleSignInCallback", method = RequestMethod.POST)
+    @ResponseBody
+    public String doSessionAssignActionPage(Member member, HttpSession session) throws Exception {
+    	System.out.println(member.toString());
+    	session.setAttribute("google", "1");
+    	session.setAttribute("loginId", member.getMember_id());
+		session.setAttribute("loginName", member.getMember_name());
+		session.setAttribute("loginNum", member.getMember_num());
+		
+		//DB에 연결해주세요
+		
+    	return "success";
+    }
 
 	
 }
