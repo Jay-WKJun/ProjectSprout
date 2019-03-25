@@ -58,11 +58,6 @@ public class MemberController {
 		profile_picture pro = new profile_picture();
 		pro.picture(profile_pic, member); // ------------------------ 사진 저장하기.
 		
-<<<<<<< HEAD
-=======
-		int result = repo.memberJoin(member);
->>>>>>> 0621b8d9cbf2508e201959a15e51411b89042f68
-		
 		return "redirect:/";
 	}
 	
