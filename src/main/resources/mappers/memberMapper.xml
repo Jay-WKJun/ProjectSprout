@@ -30,7 +30,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from 
 			member
 		where
-			 member_id = #{id} and member_password = #{password}
+			member_id = #{id} 
+		and 
+			member_password = #{password}
 	</select>
 	
 	<update id="updateMember" parameterType="Member">
@@ -46,4 +48,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where
 			member_num = #{member_num}
 	</update>
+	
 </mapper>

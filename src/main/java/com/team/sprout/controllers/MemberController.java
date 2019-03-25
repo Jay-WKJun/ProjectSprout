@@ -14,10 +14,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.team.sprout.dao.MainProjectRepository;
 import com.team.sprout.dao.MemberRepository;
 import com.team.sprout.dao.ProjectMemberRepository;
+import com.team.sprout.util.profile_picture;
 import com.team.sprout.vo.MainProject;
 import com.team.sprout.vo.Member;
 
@@ -30,6 +32,8 @@ public class MemberController {
 	MainProjectRepository mainrepo;
 	@Autowired
 	ProjectMemberRepository prrepo;
+
+	
 	
 	/*
 	 * join GET
@@ -42,14 +46,18 @@ public class MemberController {
 	}
 	
 	/*
-	 * join POST
+	 * join POST ---------------------------------------------------------- MultipartFile 추가 |
 	 */
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
-	public String joinP(Member member) {
+	public String joinP(Member member, MultipartFile profile_pic) {
+										
+		System.out.println(member.toString());  //         
+		int result = repo.memberJoin(member);   //=============== error
+		System.out.println(result);  
 		
-		System.out.println(member);
-		int result = repo.memberJoin(member);
-		System.out.println(result);
+		profile_picture pro = new profile_picture();
+		pro.picture(profile_pic, member); // ------------------------ 사진 저장하기.
+		
 		
 		return "redirect:/";
 	}

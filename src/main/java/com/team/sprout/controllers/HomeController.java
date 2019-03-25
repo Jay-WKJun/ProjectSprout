@@ -16,6 +16,7 @@ public class HomeController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model,HttpSession session) {
+		System.out.println(" start the server !! ");
 		
 		return "main/index";
 	}
