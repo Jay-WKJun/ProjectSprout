@@ -20,6 +20,7 @@
 	<resources mapping="/ucss/**" location="/resources/ucss/" />
 	<resources mapping="/ujs/**" location="/resources/ujs/" />
 	<resources mapping="/img/**" location="/resources/img/" />
+	<resources mapping="/font/**" location="/resources/font/" />
 	
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->

@@ -1,4 +1,38 @@
+@font-face{
+    font-family:'bada';
+    src:url('../font/BusanBada.ttf') format('truetype');
+}
+
+@font-face{
+    font-family:'searon';
+    src:url('../font/searon.ttf') format('truetype');
+}
+
+@font-face{
+    font-family:'searon_SB';
+    src:url('../font/searon_SB.ttf') format('truetype');
+}
+
+.fontBold_1{
+	font-family:'searon_SB';
+}
+
+.fontSize60{
+	font-size:160%;
+}
+
+.fontSize40{
+	font-size:140%;
+}
+
+.fontSize20{
+	font-size:120%;
+}
+
 .wrapper{
+	font-family:'searon', 'bada','Serif';
+	font-size:110%;
+    font-weight: 100;
     display: flex;
     padding:0;
 }
