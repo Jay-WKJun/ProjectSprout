@@ -11,6 +11,11 @@ $(function(){
     	location.href="update";
     });
     
+    $('#newProjectBtn').on('click',function(){
+    	$('#webPresentation').attr('style','display:none');
+    	$('#newProject').attr('style','display:block');
+    })
+    
     $('#projectCreateBtn').on('click', function(){
     	$('#mainProjectRegist').submit();
     })
@@ -18,6 +23,7 @@ $(function(){
     $('#project').on('click', function(){
     	location.href="project";
     })
+
 
 });
 
