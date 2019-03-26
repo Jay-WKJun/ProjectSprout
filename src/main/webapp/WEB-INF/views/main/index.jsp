@@ -78,7 +78,7 @@ function clicknew(){
 							</button>
 						</c:if>
 						<c:if test="${sessionScope.loginId != null }">
-							<c:if test="${sessionScope.google != null}">
+							<c:if test="${sessionScope.google == null}">
 								<p>${loginName}님,
 									<button class="btn btn-dark" id="logoutBtn">
 										<span style="margin-right: 8px">로그아웃</span>
@@ -86,7 +86,7 @@ function clicknew(){
 									</button>
 								</p>
 							</c:if>
-							<c:if test="${sessionScope.google == null}">
+							<c:if test="${sessionScope.google != null}">
 								<p>${loginName}님,
 									<button class="btn btn-dark" id="googleLogout" onclick="signOut();">
 										<span style="margin-right: 8px">로그아웃</span>
