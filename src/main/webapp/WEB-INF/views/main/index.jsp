@@ -42,21 +42,9 @@ function clicknew(){
 				</div>
 				<hr style="margin: 10px">
 				<div class="contentItem" style="margin-bottom: 15px">
-					<button class="btn btn-dark w-100" style="height: 50px"
-<<<<<<< HEAD
-
-						id="clickProjectRegist" onclick="clicknew()">
-						<i class="fas fa-folder-plus fa-lg fontSize20"></i>
-						<span class="fontSize20"
-							style="margin-left: 8px">새로 시작하기</span>
-
-
-
-=======
-						id="newProjectBtn">
+					<button class="btn btn-dark w-100" style="height: 50px" id="newProjectBtn">
 						<i class="fas fa-folder-plus fa-lg fontSize20"></i><span
 							class="fontSize20" style="margin-left: 8px">새로 시작하기</span>
->>>>>>> 홍성우
 					</button>
 				</div>
 

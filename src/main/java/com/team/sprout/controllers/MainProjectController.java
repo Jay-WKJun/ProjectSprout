@@ -55,14 +55,4 @@ public class MainProjectController {
 		return "redirect:/";
 	}
 	
-	@RequestMapping(value="/clickProjectRegist", method=RequestMethod.GET)
-	public String clickProjectRegist(HttpSession session){
-		int  Member_num= (int) session.getAttribute("loginNum");
-		System.out.println(Member_num);
-		
-		return "main/home";
-		
-	}
-	
-	
 }
