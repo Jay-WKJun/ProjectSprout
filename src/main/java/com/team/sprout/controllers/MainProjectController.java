@@ -36,6 +36,7 @@ public class MainProjectController {
 		System.out.println(Member_num);
 
 
+
 		String uuid = UUID.randomUUID().toString();
 		project.setMainproject_projectnum(uuid);
 		

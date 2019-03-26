@@ -2,24 +2,20 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> <!-- 이부분 주의 오류떠도 자바에서 안잡아줌. -->
-<mapper namespace="com.team.sprout.dao.ProjectMemberDAO"> 
+<mapper namespace="com.team.sprout.dao.ProjectMemberDAO">
 
-<insert id="ProjectMemberRegist" parameterType="ProjectMember">
-insert into projectMember(
-projectMember_num
-,MainProject_ProjectNum
-,member_num
-,member_rank)
+	<insert id="ProjectMemberRegist" parameterType="ProjectMember">
+		insert into projectMember(
+			projectMember_num
+			,MainProject_ProjectNum
+			,member_num
+			,member_rank)
+		values(
+			projectMember_SEQ.nextval
+			,#{MainProject_ProjectNum}
+			,#{member_num}
+			,#{member_rank}
+		)
 
-
-values(
-projectMember_SEQ.nextval
-,#{MainProject_ProjectNum}
-,#{member_num}
-,#{member_rank}
-
-
-)
-
-</insert>
+	</insert>
 </mapper>

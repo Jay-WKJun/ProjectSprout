@@ -30,9 +30,9 @@
 			</div>
 			<div class="topSpace_side"></div>
 		</div>
-		<div class="mainContent">
-			<div class="sideSpace"></div>
-			<form id="joinForm" action="join" method="POST">
+		<div class="mainContent">							
+			<div class="sideSpace"></div>					<!-- enctype -->
+			<form id="joinForm" action="join" method="POST" enctype="multipart/form-data">
 				<div class="mainSpace">
 					<div class="contentItem_text">
 						<b>아이디</b>
@@ -77,13 +77,13 @@
 							name="member_address">
 					</div>
 					<div class="contentItem_text">
-						<b>프로필 사진</b>
+						<b>프로필 사진</b><!-- ************************************************************* -->
 					</div>
 					<div class="contentItem_input">
 						<div class="form-group">
 							<input type="file" class="form-control-file border" name="file">
 							<input class="text" type="hidden" id="memberImage_saveAddress"
-							name="memberImage_saveAddress">
+								name="memberImage_saveAddress">
 						</div>
 						<div class="contentItem_input" style="margin-top: 50px;">
 							<input type="button" class="btn btn-dark w-100"

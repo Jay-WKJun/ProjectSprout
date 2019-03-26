@@ -36,17 +36,21 @@ function clicknew(){
 				</div>
 				<div class="contentItem">
 					<button class="btn btn-dark w-100" style="height: 50px">
-						<i class="far fa-clipboard fa-lg fontSize20"></i><span class="fontSize20"
-							style="margin-left: 8px">프로젝트 공고</span>
+						<i class="far fa-clipboard fa-lg fontSize20"></i><span
+							class="fontSize20" style="margin-left: 8px">프로젝트 공고</span>
 					</button>
 				</div>
 				<hr style="margin: 10px">
 				<div class="contentItem" style="margin-bottom: 15px">
 					<button class="btn btn-dark w-100" style="height: 50px"
+
 						id="clickProjectRegist" onclick="clicknew()">
 						<i class="fas fa-folder-plus fa-lg fontSize20"></i>
 						<span class="fontSize20"
 							style="margin-left: 8px">새로 시작하기</span>
+
+
+
 					</button>
 				</div>
 
@@ -67,17 +71,29 @@ function clicknew(){
 					<div class="userInfo_left"></div>
 					<div class="userInfo_right">
 						<c:if test="${sessionScope.loginId == null }">
+							<button class="btn btn-primary" id="project">프로젝트</button>
 							<button class="btn btn-dark" id="loginBtn">
-								<span style="margin-right: 8px">로그인</span><i class="fas fa-sign-in-alt fa-lg"></i>
+								<span style="margin-right: 8px">로그인</span><i
+									class="fas fa-sign-in-alt fa-lg"></i>
 							</button>
 						</c:if>
 						<c:if test="${sessionScope.loginId != null }">
-							<p>${loginName}님,
-								<button class="btn btn-dark" id="logoutBtn">
-									<span style="margin-right: 8px">로그아웃</span><i
-										class="fas fa-sign-out-alt"></i>
-								</button>
-							</p>
+							<c:if test="${sessionScope.google != null}">
+								<p>${loginName}님,
+									<button class="btn btn-dark" id="logoutBtn">
+										<span style="margin-right: 8px">로그아웃</span>
+										<i class="fas fa-sign-out-alt"></i>
+									</button>
+								</p>
+							</c:if>
+							<c:if test="${sessionScope.google == null}">
+								<p>${loginName}님,
+									<button class="btn btn-dark" id="googleLogout" onclick="signOut();">
+										<span style="margin-right: 8px">로그아웃</span>
+										<i class="fas fa-sign-out-alt"></i>
+									</button>
+								</p>
+							</c:if>
 							<button class="btn btn-dark" id="updateBtn">
 								<i class="fas fa-user fa-lg"></i>회원정보 수정
 							</button>
