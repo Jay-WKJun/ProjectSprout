@@ -43,6 +43,7 @@ function clicknew(){
 				<hr style="margin: 10px">
 				<div class="contentItem" style="margin-bottom: 15px">
 					<button class="btn btn-dark w-100" style="height: 50px"
+<<<<<<< HEAD
 
 						id="clickProjectRegist" onclick="clicknew()">
 						<i class="fas fa-folder-plus fa-lg fontSize20"></i>
@@ -51,6 +52,11 @@ function clicknew(){
 
 
 
+=======
+						id="newProjectBtn">
+						<i class="fas fa-folder-plus fa-lg fontSize20"></i><span
+							class="fontSize20" style="margin-left: 8px">새로 시작하기</span>
+>>>>>>> 홍성우
 					</button>
 				</div>
 
@@ -81,16 +87,17 @@ function clicknew(){
 							<c:if test="${sessionScope.google == null}">
 								<p>${loginName}님,
 									<button class="btn btn-dark" id="logoutBtn">
-										<span style="margin-right: 8px">로그아웃</span>
-										<i class="fas fa-sign-out-alt"></i>
+										<span style="margin-right: 8px">로그아웃</span> <i
+											class="fas fa-sign-out-alt"></i>
 									</button>
 								</p>
 							</c:if>
 							<c:if test="${sessionScope.google != null}">
 								<p>${loginName}님,
-									<button class="btn btn-dark" id="googleLogout" onclick="signOut();">
-										<span style="margin-right: 8px">로그아웃</span>
-										<i class="fas fa-sign-out-alt"></i>
+									<button class="btn btn-dark" id="googleLogout"
+										onclick="signOut();">
+										<span style="margin-right: 8px">로그아웃</span> <i
+											class="fas fa-sign-out-alt"></i>
 									</button>
 								</p>
 							</c:if>
@@ -104,9 +111,8 @@ function clicknew(){
 			</div>
 
 
-
-			<div class="contentSpace">
-				<c:if test="${loginNum==null }">
+			<div id="webPresentation" style="display: block">
+				<div class="contentSpace">
 					<div class="contentSpace_left"></div>
 					<div class="contentSpace_center">
 						<div class="contentItem">
@@ -114,9 +120,12 @@ function clicknew(){
 						</div>
 					</div>
 					<div class="contentSpace_right"></div>
-				</c:if>
-				
-				<c:if test="${loginNum!=null }">
+
+				</div>
+			</div>
+
+			<div id="newProject" style="display: none">
+				<div class="contentSpace">
 					<div class="contentSpace_left"></div>
 					<div class="contentSpace_center">
 
@@ -161,9 +170,9 @@ function clicknew(){
 							<hr>
 						</div>
 					</div>
-				</c:if>
-			</div>
 
+				</div>
+			</div>
 		</div>
 	</div>
 
