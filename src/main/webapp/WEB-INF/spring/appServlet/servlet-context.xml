@@ -31,6 +31,15 @@
 	
 	<context:component-scan base-package="com.team.sprout" />
 	
+		<!-- Interceptor 클래스를 빈으로 등록 -->
+	<beans:bean id="Interceptor" class="com.team.sprout.interceptor.Interceptor" />
 	
+	<!-- Interceptor를 경유해야하는 요청을 지정함 -->
+	<interceptors>
+		<interceptor>
+			<mapping path="/mainProjectRegist"/>
+			<beans:ref bean="Interceptor" />
+		</interceptor>
+	</interceptors>
 	
 </beans:beans>

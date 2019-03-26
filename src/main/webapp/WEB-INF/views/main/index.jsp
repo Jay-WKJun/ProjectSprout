@@ -17,6 +17,13 @@
 <link rel="stylesheet" href="css/bootstrap.css">
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="ujs/ujs_index.js"></script>
+<script>
+function clicknew(){
+	window.location.href="clickProjectRegist";	
+	    
+}
+
+</script>
 </head>
 
 <body>
@@ -36,8 +43,9 @@
 				<hr style="margin: 10px">
 				<div class="contentItem" style="margin-bottom: 15px">
 					<button class="btn btn-dark w-100" style="height: 50px"
-						id="projectCreateBtn">
-						<i class="fas fa-folder-plus fa-lg fontSize20"></i><span class="fontSize20"
+						id="clickProjectRegist" onclick="clicknew()">
+						<i class="fas fa-folder-plus fa-lg fontSize20"></i>
+						<span class="fontSize20"
 							style="margin-left: 8px">새로 시작하기</span>
 					</button>
 				</div>
@@ -91,6 +99,7 @@
 					</div>
 					<div class="contentSpace_right"></div>
 				</c:if>
+				
 				<c:if test="${loginNum!=null }">
 					<div class="contentSpace_left"></div>
 					<div class="contentSpace_center">
