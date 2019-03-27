@@ -57,6 +57,7 @@ public class MemberController {
 		profile_picture pro = new profile_picture();
 		pro.picture(profile_pic, member); // ------------------------ 사진 저장하기.
 		
+		
 		return "redirect:/";
 	}
 	
