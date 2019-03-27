@@ -21,13 +21,6 @@
 <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="ujs/ujs_index.js"></script>
-<script>
-function clicknew(){
-	window.location.href="clickProjectRegist";	
-	    
-}
-
-</script>
 </head>
 
 <body>
@@ -70,6 +63,8 @@ function clicknew(){
 					<div class="userInfo_right">
 						<c:if test="${sessionScope.loginId == null }">
 							<button class="btn btn-primary" id="project">프로젝트</button>
+							<button class="btn btn-primary" id="whiteBoardBtn">화이트보드</button>
+							
 							<button class="btn btn-dark" id="loginBtn">
 								<span style="margin-right: 8px">로그인</span><i
 									class="fas fa-sign-in-alt fa-lg"></i>
@@ -85,6 +80,8 @@ function clicknew(){
 								</p>
 							</c:if>
 							<c:if test="${sessionScope.google != null}">
+							<button class="btn btn-primary" id="project">프로젝트</button>
+							<button class="btn btn-primary" id="whiteBoardBtn">화이트보드</button>
 								<p>${loginName}님,
 									<button class="btn btn-dark" id="googleLogout"
 										onclick="signOut();">

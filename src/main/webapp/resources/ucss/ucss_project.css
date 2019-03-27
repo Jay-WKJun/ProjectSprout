@@ -138,3 +138,20 @@
 .contentSpace_right{
     flex: initial;
 }
+
+/* =============화이트보드================= */
+
+.layer {
+    position: absolute;
+    width: 40%;
+    left: 50%;
+    margin-left: -20%; /* half of width */
+    height: 300px;
+    top: 50%;
+    margin-top: -150px; /* half of height */
+    overflow: auto;
+}
+
+.hidden{
+	display:none;
+}
