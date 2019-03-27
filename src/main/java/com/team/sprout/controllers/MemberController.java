@@ -47,7 +47,7 @@ public class MemberController {
 	/*
 	 * join POST ---------------------------------------------------------- MultipartFile 추가 |
 	 */
-	@RequestMapping(value = "/join", method = RequestMethod.POST)
+	@RequestMapping(value = "/joinForm", method = RequestMethod.POST)
 	public String joinP(Member member, MultipartFile profile_pic) {
 										
 		System.out.println(member.toString());  //         

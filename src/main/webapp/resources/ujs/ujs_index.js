@@ -25,7 +25,9 @@ $(function(){
     	location.href="project";
     })
 
-
+    $('#whiteBoardBtn').on('click',function(){
+    	location.href="whiteBoard";
+    })
 });
 
 //구글 로그아웃 기능
