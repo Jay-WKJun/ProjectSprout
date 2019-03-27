@@ -21,8 +21,9 @@ public class HomeController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model,HttpSession session) {
-		System.out.println(" start the server !! ");
-		
+		System.out.println("= = = = = = = = = = = = = = = = = = = = =");
+		System.out.println("           start the server !! ");
+		System.out.println("= = = = = = = = = = = = = = = = = = = = =");
 			//session이 존재하는지 확인
 			if(session.getAttribute("loginNum")!=null){
 				int loginNum=(int) session.getAttribute("loginNum");

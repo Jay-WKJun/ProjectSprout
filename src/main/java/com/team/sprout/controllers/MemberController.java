@@ -66,6 +66,7 @@ public int checkId(String member_id) {
 	 */
 	@RequestMapping(value = "/joinForm", method = RequestMethod.POST)
 	public String joinP(Member member, MultipartFile profile_pic) {
+<<<<<<< HEAD
 		System.out.println(member);		
 		System.out.println(member.toString());  //         
 		profile_picture pro = new profile_picture();
@@ -76,8 +77,65 @@ public int checkId(String member_id) {
 		int result = repo.memberJoin(member);   //=============== error
 		System.out.println(result);  
 		
+=======
+		
+		
+/*
+		if (profile_pic==null) {
+			System.out.println("profile_pic는 null이다.");
+		} else {
+			System.out.println(profile_pic);
+		}
+*/
+		
+		System.out.println(member.toString());         
+		int result = repo.memberJoin(member);  // null값이면 500 error가 난다. 
+		System.out.println(" ** 회원가입 여뷰 : "+ result+" ** ");  
+		
+/*		profile_picture pro = new profile_picture();
+		pro.picture(profile_pic, member); // ------------------------ 사진 저장하기.
+*/		
+		
 		return "redirect:/";
 	}
+	
+	
+	@RequestMapping(value = "/upload", method = RequestMethod.GET)
+	public String join() {
+		return "member/joinForm";
+	}
+	
+	@RequestMapping(value = "/upload", method = RequestMethod.POST)
+	public String joinP(MultipartFile profile_pic) {
+		
+		if (profile_pic==null) {
+			System.out.println("profile_pic는 null이다.");
+		} else {
+			System.out.println(profile_pic);
+		}
+
+		Member member = new Member();
+		member.setMember_num(1212);
+
+		profile_picture pro = new profile_picture();
+		pro.picture(profile_pic, member); // ------------------------ 사진 저장하기.
+		
+		
+>>>>>>> 김환2
+		return "redirect:/";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	/*
 	 * login GET

@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +17,6 @@
 <script src="ujs/ujs_join.js"></script>
 
 </head>
-
 <body>
 	<div class="wrapper">
 		<div class="topSpace">
@@ -32,8 +30,8 @@
 			<div class="topSpace_side"></div>
 		</div>
 		<div class="mainContent">							
-			<div class="sideSpace"></div>					<!-- enctype -->
-			<form id="joinForm" action="join" method="POST" enctype="multipart/form-data">
+			<div class="sideSpace"></div>					<!-- enctype="multipart/form-data" -->
+			<form id="joinForm" action="join" method="POST" >
 				<div class="mainSpace">
 					<div class="contentItem_text">
 						<b>아이디</b>
@@ -69,31 +67,43 @@
 					</div>
 					<div class="contentItem_input">
 						<input class="form-control" type="text" id="member_phone"
-							name="member_phone" placeholder="숫자만 입력해주세요.">
+							name="member_phone" placeholder="숫자만 입력해주세요." >
 					</div>
 					<div class="contentItem_text">
 						<b>주소</b>
 					</div>
 					<div class="contentItem_input">
 						<input class="form-control" type="text" id="member_address"
-							name="member_address">
+							name="member_address" >
 					</div>
 					<div class="contentItem_text">
 						<b>프로필 사진</b><!-- ************************************************************* -->
 					</div>
 					<div class="contentItem_input">
 						<div class="form-group">
-							<input type="file" class="form-control-file border" name="file">
-							<input class="text" type="hidden" id="memberImage_saveAddress"
-								name="memberImage_saveAddress">
+		 					<input type="file" class="form-control-file border"  id="file" value="파일첨부"> 
+							<input class="text" type="hidden" id="memberImage_saveAddress" name="memberImage_saveAddress">
 						</div>
 						<div class="contentItem_input" style="margin-top: 50px;">
-							<input type="button" class="btn btn-dark w-100"
-								style="height: 45px" id="joinBtn" value="가입하기">
+							<input type="button" class="btn btn-dark w-100" style="height: 45px" id="joinBtn" value="가입하기">
 						</div>
 					</div>
 				</div>
 			</form>
+			
+			
+			
+			
+			
+			<form action="upload" type="POST" enctype="multipart/form-data">
+				<input type="file" value="파일첨부">
+				<input type="button" value="업로드 프로필 사진"  name="file"/> 
+			</form>
+
+			
+			
+			
+			
 			<div class="sideSpace"></div>
 		</div>
 	</div>
