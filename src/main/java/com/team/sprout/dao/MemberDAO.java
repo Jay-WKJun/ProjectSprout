@@ -12,4 +12,8 @@ public interface MemberDAO {
 	public int updateMember(Member member);
 
 	public Member searchMember(int member_num);
+
+	public Member checkId(String id);
+
+
 }
