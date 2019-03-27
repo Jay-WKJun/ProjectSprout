@@ -76,13 +76,9 @@ public int checkId(String member_id) {
 		int result = repo.memberJoin(member);   //=============== error
 		System.out.println(result);  
 		
-<<<<<<< HEAD
 		profile_picture pro = new profile_picture();
 		pro.picture(profile_pic, member); // ------------------------ 사진 저장하기.
 		
-		
-=======
->>>>>>> ea96f833f9f6e65258cb3fd43aeaf4b9585fdf87
 		return "redirect:/";
 	}
 	
