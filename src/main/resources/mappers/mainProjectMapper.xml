@@ -19,7 +19,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="projectList" resultType="MainProject" parameterType="int">
 		select
-			m.MAINPROJECT_TITLE
+			*
 		from
 			MAINPROJECT m, PROJECTMEMBER p
 		where
@@ -27,4 +27,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		and
 			p.MEMBER_NUM =#{member_num}
 	</select>
+	
+	<!--게시판에 리스트 출력하기 위한, 눌르면 출력하는 게시판형태로   -->
+	<select id="forgoproject" resultType="MainProject" parameterType="String">
+	
+	select * from MAINPROJECT where  mainproject_projectnum = #{mainproject_projectnum}
+	
+	</select>
+	<!-- 참여인원을 넣기 위한 것 -->
+	<select id="formembername" resultType="Member" parameterType="int">
+	
+	select*from member where member_num = #{member_num} 
+	
+	</select>
+	
+	
+	
+	
 </mapper>

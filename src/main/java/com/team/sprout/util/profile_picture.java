@@ -10,14 +10,14 @@ public class profile_picture {
 	
 	final String upload_path = "/memberProfile"; //----------------- EC2 서버에서 프로필이 저장 될 directory 위치.
 	
-	public void picture(MultipartFile file, Member member){
+	public String picture(MultipartFile file, Member member){
 		System.out.println("------------- profile_ficture -------------");
 		System.out.println(file);
 		System.out.println(member);
 		System.out.println("-------------------------------------------");
 		System.out.println();
 		
-		// original file name.
+		// original file name. //눌값 
 		String Original_name = file.getOriginalFilename();
 		// --------------------------------------------------------- 원본 파일의 확장자와 파일명 분리하기 위한 변수 setting
 		int filename; // 확장자를 뺀 파일명
@@ -49,6 +49,8 @@ public class profile_picture {
 		
 		File serverFile = null;
 		serverFile = new File(upload_path + "/" + savedFilename);
+		
+		String inputname = upload_path+"/"+ savedFilename;
 
 		try {
 			file.transferTo(serverFile); // 지정된 이름으로 지정된 위치에 파일 저장
@@ -58,7 +60,7 @@ public class profile_picture {
 			e.printStackTrace();
 		}
 		
-		
+		return inputname;
 	}
 	
 }

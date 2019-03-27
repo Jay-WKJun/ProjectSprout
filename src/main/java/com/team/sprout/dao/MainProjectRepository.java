@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.team.sprout.vo.MainProject;
+import com.team.sprout.vo.Member;
 
 @Repository
 public class MainProjectRepository {
@@ -31,6 +32,24 @@ public class MainProjectRepository {
 		System.out.println("resultttttttttttttt"+result);
 		return result;
 		
+	}
+
+
+	public MainProject forgoproject(String mainproject_projectnum) {
+		// 
+	MainProject result = null;
+		MainProjectDAO dao = session.getMapper(MainProjectDAO.class);
+		result = dao.forgoproject(mainproject_projectnum);
+		return result;
+	}
+
+
+	public Member formembername(int member_num) {
+		Member result = null;
+		MainProjectDAO dao = session.getMapper(MainProjectDAO.class);
+		result = dao.formembername(member_num);
+				
+		return result;
 	}
 
 }

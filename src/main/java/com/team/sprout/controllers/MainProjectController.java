@@ -1,5 +1,8 @@
 package com.team.sprout.controllers;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
@@ -9,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.team.sprout.dao.MainProjectRepository;
 import com.team.sprout.dao.ProjectMemberRepository;
@@ -55,4 +59,26 @@ public class MainProjectController {
 		return "redirect:/";
 	}
 	
+	
+	//프로젝스 시작을 위한 메서드. 프로젝트 넘을 통해 원하는 누른 프로젝트의 정보를 제공 
+	@ResponseBody
+	@RequestMapping(value="/startproject_go", method=RequestMethod.GET)
+	public Map<String,String> startproject_go(String mainproject_projectnum, HttpSession session) {
+		MainProject mainproject =  MainRepo.forgoproject(mainproject_projectnum);
+		
+		
+		int num = (int)session.getAttribute("loginNum");
+		Member member = MainRepo.formembername(num);
+		
+		
+		Map<String, String> map = new HashMap<>();
+		map.put("goproject_title", mainproject.getMainproject_title());
+		map.put("goproject_content",mainproject.getMainproject_memo());
+		map.put("goprojet_membername", member.getMember_name());
+	
+				
+		System.out.println(member.getMember_name());
+		return map;
+		
+	}
 }

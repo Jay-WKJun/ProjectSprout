@@ -58,4 +58,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			member_num = #{member_num}
 	</update>
 	
+	<select id="checkId" parameterType="String" resultType="Member">
+	select * from member where member_id=#{member_id}
+	</select>
+	
+
 </mapper>

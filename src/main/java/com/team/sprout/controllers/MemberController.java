@@ -31,9 +31,26 @@ public class MemberController {
 	MainProjectRepository mainrepo;
 	@Autowired
 	ProjectMemberRepository prrepo;
+	
+	
+	@ResponseBody
+	@RequestMapping(value = "/checkId", method = RequestMethod.POST)
+public int checkId(String member_id) {
+		System.out.println(member_id+"아이디체크를 위한 멤버아이디 에이젝스에서 받기중");
+	Member result = repo.checkId(member_id);
+	
+	if (result == null ) {
+		return 0; //사용가능
+	}
+	
+	
+	return 1;
+	
+	
+}
 
-	
-	
+
+
 	/*
 	 * join GET
 	 */
@@ -49,13 +66,15 @@ public class MemberController {
 	 */
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
 	public String joinP(Member member, MultipartFile profile_pic) {
-										
+		System.out.println(member);		
 		System.out.println(member.toString());  //         
+		profile_picture pro = new profile_picture();
+		pro.picture(profile_pic, member); // ------------------------ 사진 저장하기. null
+		String inputname = profile_pic.getOriginalFilename();
+		
+		member.setMemberImage_saveAddress(inputname);
 		int result = repo.memberJoin(member);   //=============== error
 		System.out.println(result);  
-		
-		profile_picture pro = new profile_picture();
-		pro.picture(profile_pic, member); // ------------------------ 사진 저장하기.
 		
 		return "redirect:/";
 	}
