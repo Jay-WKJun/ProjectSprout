@@ -16,6 +16,7 @@
 <link rel="stylesheet" href="css/bootstrap.css">
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="ujs/ujs_join.js"></script>
+
 </head>
 
 <body>
@@ -41,6 +42,7 @@
 						<input class="form-control" type="text" id="member_id"
 							name="member_id">
 					</div>
+					<span id="idCheckMessage"></span>
 					<div class="contentItem_text">
 						<b>비밀번호</b>
 					</div>

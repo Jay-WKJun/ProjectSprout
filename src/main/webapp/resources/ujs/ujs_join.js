@@ -1,6 +1,29 @@
 $(function(){
 	$('#joinBtn').on('click',validate);
+	
+	$('#member_id').keyup(function(){
+		var member_id =$('#member_id').val();
+		$.ajax({
+		 method : 'post'
+		 ,url : 'checkId'
+		 ,data: "member_id="+member_id
+		,success: function(result){
+			if (result == 1 ) {
+				$('#idCheckMessage').html('이미 존재하는 아이디입니다.');
+				$('.form-control').attr('color',black);
+			}
+			else{
+				
+				$('#idCheckMessage').html('사용가능한 아이디 입니다');
+			}
+		}
+			
+		})
+				
+	});
+	
 })
+
 
 function validate() {	
 	 var member_id  = document.getElementById("member_id");
@@ -48,3 +71,10 @@ function validate() {
 
 	$('#joinForm').submit();
 }
+
+
+
+
+
+
+

@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import com.team.sprout.vo.Member;
 
+
+
 @Repository
 public class MemberRepository {
 
@@ -40,7 +42,12 @@ public class MemberRepository {
 		Member member=dao.searchMember(member_num);
 		return member;
 	}
-	
-	
-	
+
+	public Member checkId(String id) {
+		MemberDAO dao = session.getMapper(MemberDAO.class);
+		Member result = dao.checkId(id);
+		return result; 
+		
+	}
+
 }
