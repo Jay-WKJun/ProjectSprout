@@ -26,11 +26,9 @@ $(function() {
 		location.href = "project";
 	})
 
-
 	$('#whiteBoardBtn').on('click', function() {
 		location.href = "whiteBoard";
 	})
-
 
 	$('body').delegate('.projectSelectBtn', 'click', function() {
 		$('#webPresentation').attr('style', 'display:none');
@@ -61,7 +59,6 @@ function onLoad() {
 		gapi.auth2.init();
 	});
 }
-
 
 // 구글 로그아웃 기능
 function signOut() {
