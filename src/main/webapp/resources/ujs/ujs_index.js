@@ -10,6 +10,11 @@ $(function() {
 	$('#updateBtn').on('click', function() {
 		location.href = "update";
 	});
+	
+	//나중에 삭제
+	$('#timeTable').on('click', function(){
+		location.href = "timetable";
+	})
 
 	$('#newProjectBtn').on('click', function() {
 		$('#webPresentation').attr('style', 'display:none');
