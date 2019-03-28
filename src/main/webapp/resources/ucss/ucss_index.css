@@ -132,3 +132,11 @@
     min-width:150;
     padding:10px;    
 }
+
+.myInfo{
+	position: absolute;
+    width: 15%;
+    height: 8%;
+    top: 5%;
+    left: 83%;
+}

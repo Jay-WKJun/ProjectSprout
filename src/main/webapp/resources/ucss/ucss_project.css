@@ -103,7 +103,11 @@
 }
 
 .myInfo{
-    margin: 30px
+	position: absolute;
+    width: 15%;
+    height: 8%;
+    top: 5%;
+    left: 83%;
 }
 
 .mainSpace_bottom{

@@ -53,6 +53,7 @@ $(function() {
 
 });
 
+//로그아웃 해결법 아직 미완
 function onLoad() {
 	gapi.load('auth2', function() {
 		gapi.auth2.init();
