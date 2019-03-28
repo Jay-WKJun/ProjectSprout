@@ -31,7 +31,7 @@ public class HomeController {
 				List<MainProject> projectList= mainRepo.projectList(loginNum);
 				for (MainProject mainProject : projectList) {
 					
-					System.out.println("프로젝트 리스트 ㅊ풀력"+ mainProject.getMainproject_projectnum());
+		
 				}
 				model.addAttribute("projectList", projectList);
 			}

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,6 +28,8 @@ function clicknew(){
 	    
 }
 
+
+
 </script>
 </head>
 
@@ -49,6 +52,7 @@ function clicknew(){
 					<button class="btn btn-dark w-100" style="height: 50px" id="newProjectBtn">
 						<i class="fas fa-folder-plus fa-lg fontSize20"></i><span
 							class="fontSize20" style="margin-left: 8px">새로 시작하기</span>
+							
 					</button>
 				</div>
 
@@ -123,6 +127,7 @@ function clicknew(){
 
 						<form action="mainProjectRegist" id="mainProjectRegist"
 							method="post">
+							
 
 							<div class="contentItem" style="text-align: center">
 								<div class="card">
