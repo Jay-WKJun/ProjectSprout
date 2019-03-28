@@ -22,8 +22,7 @@
 <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="ujs/ujs_index.js"></script>
-<<<<<<< HEAD
-=======
+
 <script>
 function clicknew(){
 	window.location.href="clickProjectRegist";	
@@ -33,7 +32,7 @@ function clicknew(){
 
 
 </script>
->>>>>>> f0778671d9d792c035a9ea811acf1789902dd3c6
+
 </head>
 
 <body>
