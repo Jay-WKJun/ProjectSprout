@@ -38,7 +38,9 @@
 	<interceptors>
 		<interceptor>
 			<mapping path="/mainProjectRegist"/>
-			<beans:ref bean="Interceptor" />
+			<mapping path="/startproject_go"/>
+			<mapping path="/update"/>
+			<beans:ref bean="Interceptor"/>
 		</interceptor>
 	</interceptors>
 	

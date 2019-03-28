@@ -12,6 +12,7 @@ $(function() {
 	});
 
 	$('#newProjectBtn').on('click', function() {
+
 		$('#webPresentation').attr('style', 'display:none');
 		$('#newProject').attr('style', 'display:block');
 		$('#ProjectStartSpace').attr('style', 'display:none');
@@ -25,9 +26,11 @@ $(function() {
 		location.href = "project";
 	})
 
+
 	$('#whiteBoardBtn').on('click', function() {
 		location.href = "whiteBoard";
 	})
+
 
 	$('body').delegate('.projectSelectBtn', 'click', function() {
 		$('#webPresentation').attr('style', 'display:none');
@@ -40,7 +43,7 @@ $(function() {
 			url : 'startproject_go',
 			data : "mainproject_projectnum=" + mainproject_projectnum,
 			success : function(mainproject) {
-				/* alert(JSON.stringify(mainproject.mainproject_title)); */
+
 				$('#goproject_title').html(mainproject.goproject_title)
 				$('#goproject_content').html(mainproject.goproject_content)
 				$('#goprojet_membername').html(mainproject.goprojet_membername)
@@ -58,6 +61,7 @@ function onLoad() {
 		gapi.auth2.init();
 	});
 }
+
 
 // 구글 로그아웃 기능
 function signOut() {
