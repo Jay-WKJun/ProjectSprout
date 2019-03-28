@@ -12,6 +12,7 @@ $(function() {
 	});
 
 	$('#newProjectBtn').on('click', function() {
+
 		$('#webPresentation').attr('style', 'display:none');
 		$('#newProject').attr('style', 'display:block');
 		$('#ProjectStartSpace').attr('style', 'display:none');
@@ -40,7 +41,7 @@ $(function() {
 			url : 'startproject_go',
 			data : "mainproject_projectnum=" + mainproject_projectnum,
 			success : function(mainproject) {
-				/* alert(JSON.stringify(mainproject.mainproject_title)); */
+
 				$('#goproject_title').html(mainproject.goproject_title)
 				$('#goproject_content').html(mainproject.goproject_content)
 				$('#goprojet_membername').html(mainproject.goprojet_membername)
@@ -53,6 +54,7 @@ $(function() {
 
 });
 
+//로그아웃 해결법 아직 미완
 function onLoad() {
 	gapi.load('auth2', function() {
 		gapi.auth2.init();
