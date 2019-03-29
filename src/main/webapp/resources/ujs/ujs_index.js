@@ -34,12 +34,21 @@ $(function() {
 	$('#whiteBoardBtn').on('click', function() {
 		location.href = "whiteBoard";
 	})
-
+	//프로젝트 시작하기 버튼을 
+	$('#openproject').on('click', function() {
+	    $('#project_go').submit();
+		
+	})
+	
+	//왼쪽 프로젝트타이틀 리스트 누르면, 컨트롤러 정보 보냄. 
 	$('body').delegate('.projectSelectBtn', 'click', function() {
 		$('#webPresentation').attr('style', 'display:none');
 		$('#newProject').attr('style', 'display:none');
 		$('#ProjectStartSpace').attr('style', 'display:block');
 		var mainproject_projectnum = $(this).attr('data-pno');
+		$('#mainProjectNum').val(mainproject_projectnum);
+		
+		//alert($('#mainProjectNum').val());
 
 		$.ajax({
 			method : 'get',
@@ -50,7 +59,6 @@ $(function() {
 				$('#goproject_title').html(mainproject.goproject_title)
 				$('#goproject_content').html(mainproject.goproject_content)
 				$('#goprojet_membername').html(mainproject.goprojet_membername)
-
 			}
 
 		})

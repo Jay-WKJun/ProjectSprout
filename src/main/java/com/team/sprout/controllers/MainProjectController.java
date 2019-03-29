@@ -43,7 +43,7 @@ public class MainProjectController {
 
 		String uuid = UUID.randomUUID().toString();
 		project.setMainproject_projectnum(uuid);
-		
+		//session.setAttribute("MainProject_ProjectNum", uuid);
 		//mainproject 정보 insert 
 		int result =MainRepo.mainProjectRegist(project);
 		
