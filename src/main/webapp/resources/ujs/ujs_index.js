@@ -10,6 +10,16 @@ $(function() {
 	$('#updateBtn').on('click', function() {
 		location.href = "update";
 	});
+	
+	//구글 로그아웃
+	$('#googleLogout').on('click', function() {
+		location.href = "login";
+	});
+	
+	//나중에 삭제
+	$('#timeTable').on('click', function(){
+		location.href = "timetable";
+	})
 
 	$('#newProjectBtn').on('click', function() {
 
@@ -54,15 +64,12 @@ $(function() {
 
 });
 
-//로그아웃 해결법 아직 미완
-function onLoad() {
+// 구글 로그아웃 기능
+function signOut() {
 	gapi.load('auth2', function() {
 		gapi.auth2.init();
 	});
-}
-
-// 구글 로그아웃 기능
-function signOut() {
+	
 	var auth2 = gapi.auth2.getAuthInstance();
 
 	auth2.signOut().then(function() {
