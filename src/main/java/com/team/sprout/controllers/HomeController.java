@@ -21,9 +21,7 @@ public class HomeController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Model model,HttpSession session) {
-		System.out.println("= = = = = = = = = = = = = = = = = = = = =");
-		System.out.println("           start the server !! ");
-		System.out.println("= = = = = = = = = = = = = = = = = = = = =");
+		System.out.println("= = = = = = start the server = = = = = = = = = = = = = = = = = = = = = = = = = = = =");
 			//session이 존재하는지 확인
 			if(session.getAttribute("loginNum")!=null){
 				int loginNum=(int) session.getAttribute("loginNum");
@@ -32,7 +30,7 @@ public class HomeController {
 				List<MainProject> projectList= mainRepo.projectList(loginNum);
 				for (MainProject mainProject : projectList) {
 					
-					System.out.println("프로젝트 리스트 ㅊ풀력"+ mainProject.getMainproject_projectnum());
+					System.out.println("프로젝트 리스트 출력"+ mainProject.getMainproject_projectnum());
 				}
 				model.addAttribute("projectList", projectList);
 			}
