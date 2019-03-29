@@ -43,13 +43,9 @@ public int checkId(String member_id) {
 		return 0; //사용가능
 	}
 	
-	
 	return 1;
 	
-	
 }
-
-
 
 	/*
 	 * join GET
@@ -199,17 +195,39 @@ public int checkId(String member_id) {
 
 	@RequestMapping(value = "/googleSignInCallback", method = RequestMethod.POST)
     @ResponseBody
-    public String doSessionAssignActionPage(Member member, HttpSession session) throws Exception {
+    public String doSessionAssignActionPage(Member member) throws Exception {
     	System.out.println(member.toString());
-    	session.setAttribute("google", "1");
-    	session.setAttribute("loginId", member.getMember_id());
-		session.setAttribute("loginName", member.getMember_name());
-		session.setAttribute("loginNum", member.getMember_num());
+    	
+		//DB에 연결합니다.
+    	//member id 로 member를 찾아 올 수 있는 메소드가 필요하다
+		//구글 로그인해서 찾아온 정보의 id로 이미 회원가입이 되어 있는 사람을 찾아온다.찾아 온 member 그대로 쏜다.
+		Member memberVali = repo.checkId(member.getMember_id());
+		if (memberVali == null) {
+			//만약 같은 아이디의 회원이 없다면 가입시킨다.
+			member.setMember_address("google");
+			member.setMember_phone(0);
+			member.setMemberImage_saveAddress("none");
+			int result = repo.memberJoin(member);
+			System.out.println("Google 로그인한 사람 회원 등록 완료" + result);
+		}
 		
-		//DB에 연결해주세요
-		
-    	return "success";
+    	return memberVali.getMember_id();
     }
+	
+	@RequestMapping(value = "/googleChecked", method = RequestMethod.GET)
+	public String googleLogin(String memberId, HttpSession session) {
+		System.out.println(memberId.toString());
+		Member member = repo.checkId(memberId);
+		
+		System.out.println("google Login 하러 왔음");
+		System.out.println(member.toString());
+		session.setAttribute("loginNum", member.getMember_num());
+		session.setAttribute("loginId", member.getMember_id());
+		session.setAttribute("loginName", member.getMember_name());
+		//member가 비어있으면 우리한테도 회원가입해달라하고 session날리고 회원가입창으로 날린다.
+		
+		return "redirect:/";
+	}
 
 	
 }
