@@ -6,42 +6,12 @@
         <title>jQuery.Gantt</title>
 		
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1" >
+		<!-- 타임테이블을 꾸며주는 css임으로 반드시 불러줘야합니다. -->
         <link rel="stylesheet" href="gantt/css/style.css" />
-      <!-- 	<link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" />
-        <link rel="stylesheet" href="http://taitems.github.com/UX-Lab/core/css/prettify.css" />   -->
-		<style type="text/css">
-			body {
-				font-family: Helvetica, Arial, sans-serif;
-				font-size: 13px;
-				padding: 0 0 50px 0;
-			}
-			.contain {
-				width: 800px;
-				margin: 0 auto;
-			}
-			h1 {
-				margin: 40px 0 20px 0;
-			}
-			h2 {
-				font-size: 1.5em;
-				padding-bottom: 3px;
-				border-bottom: 1px solid #DDD;
-				margin-top: 50px;
-				margin-bottom: 25px;
-			}
-			table th:first-child {
-				width: 150px;
-			}
-		</style>
     </head>
     <body>
-
-		<div class="contain">
-
-			<h2>
-	    		Example
-	    	</h2>
 				
+			<!-- 아래 script를 통해 이 class이름안에 모든 타임테이블이 그려집니다. -->
 			<div class="gantt"></div>
 			
 			<hr>
@@ -49,11 +19,10 @@
 			<a href=timetableMake>Task regist</a>
 
     </body>
+    <!-- 이 두개는 반드시 불러와야하고 반드시 한곳에 있어야합니다. -->>
 	<script src="gantt/script/jquery-3.3.1.min.js"></script>
 	<script src="gantt/script/jquery.fn.gantt.js"></script>
-	<!-- <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-tooltip.js"></script>
-	<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-popover.js"></script>
-	<script src="http://taitems.github.com/UX-Lab/core/js/prettify.js"></script> -->
+	<!-- script는 반드시 그대로 써주세요 -->
     <script>
     
 		//등록할 form을 먼저 만들고

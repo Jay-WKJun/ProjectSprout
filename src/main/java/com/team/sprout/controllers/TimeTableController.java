@@ -225,4 +225,30 @@ public class TimeTableController {
 		
 		return "redirect:/timetable";
 	}
+	
+	/*
+	 * 자세히보여주는 페이지로 간다.
+	 */
+	@RequestMapping(value = "/timetableDetail", method = RequestMethod.GET)
+	public String tableDetailGo(Model model) {
+		
+		/*model.addAttribute("", attributeValue);
+		model.addAttribute("", attributeValue);
+		model.addAttribute("", attributeValue);
+		model.addAttribute("", attributeValue);*/
+		
+		
+		return "showDetail";
+	}
+	
+	/*
+	 * 디테일을 빠져나왔으면 다시 타임테이블로 돌아간다.
+	 */
+	@RequestMapping(value = "/timetableDetail", method = RequestMethod.POST)
+	public String tableDetail() {
+		
+		return "redirect:/timetable";
+	}
+	
+	
 }
