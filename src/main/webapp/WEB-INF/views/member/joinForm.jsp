@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +17,6 @@
 <script src="ujs/ujs_join.js"></script>
 
 </head>
-
 <body>
 	<div class="wrapper">
 		<div class="topSpace">
@@ -31,65 +29,56 @@
 			</div>
 			<div class="topSpace_side"></div>
 		</div>
-		<div class="mainContent">							
-			<div class="sideSpace"></div>					<!-- enctype -->
+		<div class="mainContent">
+			<div class="sideSpace"></div>
+														<!-- enctype="multipart/form-data" -->
 			<form id="joinForm" action="join" method="POST" enctype="multipart/form-data">
 				<div class="mainSpace">
 					<div class="contentItem_text">
-						<b>아이디</b>
+		<b>아이디</b>
 					</div>
 					<div class="contentItem_input">
-						<input class="form-control" type="text" id="member_id"
-							name="member_id">
+						<input class="form-control" type="text" id="member_id" name="member_id">
 					</div>
 					<span id="idCheckMessage"></span>
 					<div class="contentItem_text">
-						<b>비밀번호</b>
+		<b>비밀번호</b>
 					</div>
 					<div class="contentItem_input">
-						<input class="form-control" type="password" id="member_password"
-							name="member_password">
+						<input class="form-control" type="password" id="member_password" name="member_password">
 					</div>
 					<div class="contentItem_text">
-						<b>비밀번호 확인</b>
+		<b>비밀번호 확인</b>
 					</div>
 					<div class="contentItem_input">
-						<input class="form-control" type="password"
-							id="member_password_re">
+						<input class="form-control" type="password" id="member_password_re">
 					</div>
 					<div class="contentItem_text">
-						<b>이름</b>
+		<b>이름</b>
 					</div>
 					<div class="contentItem_input">
-						<input class="form-control" type="text" id="member_name"
-							name="member_name">
+						<input class="form-control" type="text" id="member_name" name="member_name">
 					</div>
 					<div class="contentItem_text">
-						<b>휴대전화</b>
+		<b>휴대전화</b>
 					</div>
 					<div class="contentItem_input">
-						<input class="form-control" type="text" id="member_phone"
-							name="member_phone" placeholder="숫자만 입력해주세요.">
+						<input class="form-control" type="text" id="member_phone" name="member_phone" placeholder="숫자만 입력해주세요.">
 					</div>
 					<div class="contentItem_text">
-						<b>주소</b>
+		<b>주소</b>
 					</div>
 					<div class="contentItem_input">
-						<input class="form-control" type="text" id="member_address"
-							name="member_address">
+						<input class="form-control" type="text" id="member_address" name="member_address">
 					</div>
 					<div class="contentItem_text">
-						<b>프로필 사진</b><!-- ************************************************************* -->
+		<b>프로필 사진</b>
 					</div>
 					<div class="contentItem_input">
-						<div class="form-group">
-							<input type="file" class="form-control-file border" name="file">
-							<input class="text" type="hidden" id="memberImage_saveAddress"
-								name="memberImage_saveAddress">
-						</div>
+						<input type="file" class="form-control-file border" id="upload" name="upload" value="파일첨부">
+						<input class="text" type="hidden" id="memberImage_saveAddress" name="memberImage_saveAddress">
 						<div class="contentItem_input" style="margin-top: 50px;">
-							<input type="button" class="btn btn-dark w-100"
-								style="height: 45px" id="joinBtn" value="가입하기">
+		<!-- 버튼 -->			<input type="submit" class="btn btn-dark w-100" style="height: 45px" id="joinBtn" value="가입하기" onclick="check();">
 						</div>
 					</div>
 				</div>

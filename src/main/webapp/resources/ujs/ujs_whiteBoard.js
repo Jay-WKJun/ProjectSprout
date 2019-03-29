@@ -1,18 +1,91 @@
 //jquery 최신버전에서는 js/jquery-ui.min.js의 일부 메서드가 작동하지 않는 것을 해결
-//andSelf메서드를 addBack로 변경 후 아래 코드 작성 
+//jquery-ui.min.js의 andSelf메서드를 addBack로 변경 후 아래 코드 작성 
 jQuery.browser = {};
-(function () {
-    jQuery.browser.msie = false;
-    jQuery.browser.version = 0;
-    if (navigator.userAgent.match(/MSIE ([0-9]+)\./)) {
-        jQuery.browser.msie = true;
-        jQuery.browser.version = RegExp.$1;
-    }
+(function() {
+	jQuery.browser.msie = false;
+	jQuery.browser.version = 0;
+	if (navigator.userAgent.match(/MSIE ([0-9]+)\./)) {
+		jQuery.browser.msie = true;
+		jQuery.browser.version = RegExp.$1;
+	}
 })();
 
-//드래그 구현
 $(function() {
-	// 클래스가 draggable인 요소에 드래그 기본 함수를 적용한다.
+	getPostitList();
+	// 포스트잇 추가 버튼
+	$('#addPostit').on('click', addPostit);
+});
+
+// 포스트잇 생성
+function addPostit() {
+	var projectNum = $("#projectNum").val();
+	var postit_color = "#fffa75";
+	var postit_shape = "normal";
+
+	var postit = {
+		"MainProject_ProjectNum" : projectNum,
+		"postit_top" : 65,
+		"postit_left" : 9,
+		"postit_color" : postit_color,
+		"postit_shape" : postit_shape
+	};
+
+	$.ajax({
+		method : 'post',
+		url : 'addPostit',
+		data : postit,
+		success : function(result) {
+			if (result == "fail") {
+				alert('포스트잇 생성 실패');
+			} else {
+				getPostitList();
+			}
+		}
+	})
+}
+
+// 포스트잇 리스트 가져오기
+function getPostitList() {
+	var projectNum = $("#projectNum").val();
+	$.ajax({
+		method : 'post',
+		url : 'getPostitList',
+		data : "MainProject_ProjectNum=" + projectNum,
+		success : postitPrint
+	})
+}
+
+// 포스트잇 출력
+function postitPrint(postitList) {
+	var tag = '';
+	$.each(postitList, function(index, item) {
+		tag += '<div class="postit" data-psq="' + item.postit_num;
+		tag += '" style="top:' + item.postit_top + 'px;left:'+ item.postit_left;
+		tag += 'px;background-color:' + item.postit_color + '">';
+		tag += '<div class="postit_top">';
+		tag += '<a class="close postitClose">';
+		tag += '&times;';
+		tag += '</a>';
+		tag += '</div>';
+		tag += '<div class="postit_bottom">';
+		tag += '<textarea type="text" class="postitInput">';
+		if(item.postit_content!=null){
+			tag += item.postit_content;
+		}
+		tag += '</textarea>';
+		tag += '</div>';
+		tag += '</div>';
+		tag += '</div>';
+	});
+	$('#boardSpace').html(tag);
+	postitDrag();
+	deletePostit();
+	postitContentSave();
+}
+
+// 드래그 메서드
+function postitDrag() {
+
 	$(".postit").draggable({
 		// cursor옵션은 드래그 하는 동안 마우스 포인터의 모양을 변화시킴
 		cursor : "move",
@@ -34,22 +107,76 @@ $(function() {
 		// invert 클래스가 제거되어 원래 배경이미지로 돌아감
 		$(this).removeClass("invert");
 
-		var obj = $("#div1").offset();
+		// #div의 현재 위치에서 특정치(50px)만큼 이동 $("#div1").css("left", obj.left
+		// +50);
+		// #div 좌표 새로 설정 $("#div1").css({ "position": "absolute",
+		// "top":"100px", "left": "200px" });
+		
+		//포스트잇 위치 저장
+		var postitOffset = $(this).offset();
+		var postitSeq = $(this).attr("data-psq");
 
-		// #div의 현재 위치
-		console.log("left: " + obj.left + "px, top: " + obj.top + "px");
+		var postit = {
+			"postit_num" : postitSeq,
+			"postit_top" : postitOffset.top,
+			"postit_left" : postitOffset.left
+		}
 
-		/*
-		 * // #div의 현재 위치에서 특정치(50px)만큼 이동 $("#div1").css("left", obj.left +
-		 * 50);
-		 *  // #div 좌표 새로 설정 $("#div1").css({ "position": "absolute", "top":
-		 * "100px", "left": "200px" });
-		 */
+		$.ajax({
+			method : 'post',
+			url : 'postitMove',
+			data : postit,
+			success : function(result) {
+				if (result == 'fail') {
+					console.log('포스트잇 삭제 에러');
+				}
+			}
+		})
+	
 	});
-	
-	//포스트잇 추가 버튼
-	$('#addPostit').on('click',function(){
-		$('#boardSpace').append('<div class="postit" style="position: absolute;"></div>');
+
+}
+
+//포스트잇 삭제
+function deletePostit(){
+	$(".postitClose").on('click',function(){
+		
+		var postitSeq = $(this).parent().parent().attr("data-psq");
+		$(this).parent().parent().remove();
+		
+		$.ajax({
+			method : 'post',
+			url : 'deletePostit',
+			data : 'postit_num='+postitSeq,
+			success : function(result) {
+				if (result == 'fail') {
+					console.log('포스트잇 이동 에러');
+				}
+			}
+		})
 	})
-	
-});
+}
+
+//포스트잇 내용 저장
+function postitContentSave(){
+	$('.postitInput').blur(function(){
+		var postitSeq = $(this).parent().parent().attr("data-psq");
+		var postit_content=$(this).val();
+		
+		var postit={
+				"postit_num":postitSeq,
+				"postit_content":postit_content
+		}
+		
+		$.ajax({
+			method : 'post',
+			url : 'postitContentSave',
+			data : postit,
+			success : function(result) {
+				if (result == 'fail') {
+					console.log('포스트잇 내용 에러');
+				}
+			}
+		})
+	})
+}

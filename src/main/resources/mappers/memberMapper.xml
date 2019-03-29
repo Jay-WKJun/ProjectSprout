@@ -6,6 +6,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.team.sprout.dao.MemberDAO"> <!-- mapper 인터페이스에 해당하는 부분 [9번 내용]-->
 	<insert id="memberJoin" parameterType="Member">
 		insert into member
+		<!-- (	member_num,
+			member_id,
+			member_password,
+			member_name,
+			member_phone,
+			member_address,
+			member_logindate,
+			memberImage_saveAddress
+		) -->
 		values (
 			MEMBER_SEQ.nextval
 			, #{member_id}
