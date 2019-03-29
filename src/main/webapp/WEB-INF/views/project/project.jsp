@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,8 +33,16 @@
 					<li class="nav-item"><a class="nav-link" data-toggle="tab"
 						href="#menu2">공지사항</a></li>
 				</ul>
+				<!-- 같은 프로젝트일때 참여인원  출력 -->
 				<div
 					class="communicationBar rounded-bottom border border-top-0 w-100">
+					<div class="list-group" style="margin: 5px;">
+					<c:forEach var ="list" items="${projectMembersList}">
+						 <a href="#" class="projectSelectBtn list-group-item list-group-item-action" data-pno="${list.member_num}">
+						 	${list.member_name}
+						</a>
+					</c:forEach>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -81,26 +90,27 @@
 							<i class="fas fa-chevron-left fa-lg"></i>
 						</button>
 
-						<div class="modal" id="whiteBoardModal">
-							<div class="modal-dialog">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h4 class="modal-title">Modal Heading</h4>
-										<button type="button" class="close" data-dismiss="modal">&times;</button>
-									</div>
-									<div class="modal-body">
-										<div id="headersInner">
-											<div id="headers"></div>
-										</div>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-danger"
-											data-dismiss="modal">Close</button>
-									</div>
+						<div class="modal w-100 h-100" id="whiteBoardModal">
+							<div class="mainSpace">
+								<div class="mainSpace_top">
+								
+								<div class="modal-header rounded postitWindow">
+									<button class="btn btn-dark" id="addPostit" style="width: 80px">
+										<span class="fa-stack fa-lg"> 
+											<i class="far fa-sticky-note fa-stack-2x"></i>
+											<i class="fas fa-plus fa-stack-1x"></i>
+										</span>
+									</button>
+									<button type="button" class="btn btn-danger"
+										data-dismiss="modal">Close</button>
 								</div>
+									<input type="hidden" id="postitNumFromProjectNum" value="2848">
+									<div id="headers"></div>
+
+								</div>
+								<div class="mainSpace_bottom"></div>
 							</div>
 						</div>
-
 					</div>
 				</div>
 			</div>
