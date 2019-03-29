@@ -72,6 +72,33 @@
 			<version>${org.springframework-version}</version>
 		</dependency>
 
+<!-- Websocket -->
+		<dependency>
+           <groupId>org.springframework</groupId>
+           <artifactId>spring-websocket</artifactId>
+           <version>${org.springframework-version}</version>
+		</dependency>
+		
+		<!-- STOMP 사용시 필요함 -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-messaging</artifactId>
+		    <version>${org.springframework-version}</version>
+		</dependency>
+		  
+		        <!-- 파일 업/다운을 위한 dependency 추가 -->            
+      <dependency>            
+         <groupId>commons-io</groupId>         
+         <artifactId>commons-io</artifactId>         
+         <version>2.5</version>         
+      </dependency>            
+      <dependency>            
+         <groupId>commons-fileupload</groupId>         
+         <artifactId>commons-fileupload</artifactId>         
+         <version>1.3.2</version>         
+      </dependency>   
+		
+
 		<!-- AspectJ -->
 		<dependency>
 			<groupId>org.aspectj</groupId>

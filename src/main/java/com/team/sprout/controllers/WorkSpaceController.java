@@ -19,7 +19,7 @@ public class WorkSpaceController {
 	ProjectMemberRepository prrepo;
 	
 	//프로젝트 시작하기를 누르면, 같은 프로젝트의 참여인원 리스트를 뿌린다.
-	@RequestMapping(value = "/project_go", method = RequestMethod.POST)
+	@RequestMapping(value = "/project", method = RequestMethod.POST)
 	public String project(String mainproject_projectnum,Model model) {
 
 	List<Member> projectMembers = prrepo.projectmemberSelectAll(mainproject_projectnum);

@@ -122,7 +122,7 @@ public int checkId(String member_id) {
 		
 		map.put("id", id);
 		map.put("password", password);
-		
+		session.setAttribute("map", map);
 		//입력된 정보로 DB가서 그 정보를 가져온다.
 		Member m = repo.selectOne(map);
 		
