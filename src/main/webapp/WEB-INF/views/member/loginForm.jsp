@@ -82,6 +82,7 @@
 							</form>
 							<!-- 얘가 구글 버튼 -->
 							<div id="my-signin2"></div>
+							<!-- <a href="#" onclick="signOut();">Sign out</a> -->
 						</div>
 						<div class="loginBox_inner_right"></div>
 					</div>
@@ -146,8 +147,10 @@
 		      data: send,
 		      success: function(result) {
 		       	alert("success")
+		       	alert(result);
 		       	//얘를 로그인을 눌럿을때 가는 컨트롤러로 이어준다.
-		       	window.location.href = 'http://localhost:2848/sprout/';
+		       	signOut();
+		       	window.location.href = 'http://localhost:2848/sprout/googleChecked?memberId='+result;
 		      },
 		      error : function(result) {
 		    	  alert("fail")
