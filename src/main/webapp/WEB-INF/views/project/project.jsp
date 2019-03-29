@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,8 +33,16 @@
 					<li class="nav-item"><a class="nav-link" data-toggle="tab"
 						href="#menu2">공지사항</a></li>
 				</ul>
+				<!-- 같은 프로젝트일때 참여인원  출력 -->
 				<div
 					class="communicationBar rounded-bottom border border-top-0 w-100">
+					<div class="list-group" style="margin: 5px;">
+					<c:forEach var ="list" items="${projectMembersList}">
+						 <a href="#" class="projectSelectBtn list-group-item list-group-item-action" data-pno="${list.member_num}">
+						 	${list.member_name}
+						</a>
+					</c:forEach>
+					</div>
 				</div>
 			</div>
 		</div>

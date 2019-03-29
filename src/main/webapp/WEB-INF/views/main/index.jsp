@@ -102,6 +102,8 @@ function clicknew(){
 						</c:if>
 						<c:if test="${sessionScope.loginId != null }">
 							<c:if test="${sessionScope.google == null}">
+							<button class="btn btn-primary" id="project">프로젝트</button>
+							<button class="btn btn-primary" id="whiteBoardBtn">화이트보드</button>
 							
 								<div class="myInfo">
 									<div class="dropdown dropleft float-right h-100">
@@ -241,8 +243,10 @@ function clicknew(){
 								<div class="contentItem"
 									style="margin-top: 30px; text-align: right">
 									<button class="btn btn-dark w-50" style="height: 50px"
-										id="projectCreateBtn">시작하기</button>
+										id="openproject">시작하기</button>
+									<input type="hidden" name="mainproject_projectnum" id="mainProjectNum">
 								</div>
+							
 							</div>
 						</form>
 					</div>

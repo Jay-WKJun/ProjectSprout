@@ -35,13 +35,13 @@
 	<beans:bean id="Interceptor" class="com.team.sprout.interceptor.Interceptor" />
 	
 	<!-- Interceptor를 경유해야하는 요청을 지정함 -->
-	<interceptors>
+<!-- 	<interceptors>
 		<interceptor>
 			<mapping path="/mainProjectRegist"/>
 			<mapping path="/startproject_go"/>
 			<mapping path="/update"/>
 			<beans:ref bean="Interceptor"/>
 		</interceptor>
-	</interceptors>
+	</interceptors> -->
 	
 </beans:beans>
