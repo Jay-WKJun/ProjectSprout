@@ -24,6 +24,7 @@ public class WorkSpaceController {
 
 	List<Member> projectMembers = prrepo.projectmemberSelectAll(mainproject_projectnum);
 	
+	model.addAttribute("mainproject_projectnum",mainproject_projectnum);
 	model.addAttribute("projectMembersList", projectMembers);
 
 		
