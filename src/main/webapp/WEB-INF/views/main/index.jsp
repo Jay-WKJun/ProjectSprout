@@ -24,17 +24,6 @@
 	async defer></script>
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="ujs/ujs_index.js"></script>
-
-<script>
-function clicknew(){
-	window.location.href="clickProjectRegist";	
-	    
-}
-
-
-
-</script>
-
 </head>
 
 <body>
@@ -92,7 +81,7 @@ function clicknew(){
 										<div class="dropdown-menu">
 											<h5 class="dropdown-header">로그인해주세요.</h5>
 											<div style="margin-top: 20px">
-												<a href="#" id="loginBtn"
+												<a id="loginBtn"
 													class="list-group-item list-group-item-action border-left-0 border-right-0">로그인</a>
 											</div>
 										</div>
@@ -113,10 +102,8 @@ function clicknew(){
 										<div class="dropdown-menu">
 											<h5 class="dropdown-header">${loginName}</h5>
 											<div style="margin-top: 20px">
-												<a href="#"
-													class="list-group-item list-group-item-action border-left-0 border-right-0">회원정보</a>
-												<a href="#" id="logoutBtn"
-													class="list-group-item list-group-item-action border-left-0 border-right-0">로그아웃</a>
+												<a class="list-group-item list-group-item-action border-left-0 border-right-0">회원정보</a>
+												<a id="logoutBtn" class="list-group-item list-group-item-action border-left-0 border-right-0">로그아웃</a>
 											</div>
 										</div>
 									</div>
@@ -138,10 +125,8 @@ function clicknew(){
 										<div class="dropdown-menu">
 											<h5 class="dropdown-header">${loginName}</h5>
 											<div style="margin-top: 20px">
-												<a href="#"
-													class="list-group-item list-group-item-action border-left-0 border-right-0">회원정보</a>
-												<a href="#" id="googleLogout"
-													class="list-group-item list-group-item-action border-left-0 border-right-0">로그아웃</a>
+												<a class="list-group-item list-group-item-action border-left-0 border-right-0">회원정보</a>
+												<a id="googleLogout" class="list-group-item list-group-item-action border-left-0 border-right-0">로그아웃</a>
 											</div>
 										</div>
 									</div>
