@@ -104,7 +104,7 @@
 									<button type="button" class="btn btn-danger"
 										data-dismiss="modal">Close</button>
 								</div>
-									<input type="hidden" id="postitNumFromProjectNum" value="2848">
+									<input type="hidden" id="postitNumFromProjectNum" value="${mainproject_projectnum }">
 									<div id="headers"></div>
 
 								</div>
