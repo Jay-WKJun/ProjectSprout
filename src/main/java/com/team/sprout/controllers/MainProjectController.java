@@ -34,7 +34,7 @@ public class MainProjectController {
 	@RequestMapping(value="/mainProjectRegist", method=RequestMethod.POST)
 
 	public String mainProjectRegist(MainProject project, ProjectMember prMember,Model model, Member member, HttpSession session) {
-
+		
 		int  Member_num= (int) session.getAttribute("loginNum");
 		model.addAttribute("member_num", Member_num);
 		System.out.println(Member_num);

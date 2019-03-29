@@ -31,6 +31,7 @@ public class HomeController {
 				for (MainProject mainProject : projectList) {
 					
 					System.out.println("프로젝트 리스트 출력"+ mainProject.getMainproject_projectnum());
+
 				}
 				model.addAttribute("projectList", projectList);
 			}

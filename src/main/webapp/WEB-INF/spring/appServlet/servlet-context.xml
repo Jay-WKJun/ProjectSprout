@@ -25,6 +25,8 @@
 	<resources mapping="/ujs/**" location="/resources/ujs/" />
 	<resources mapping="/img/**" location="/resources/img/" />
 	<resources mapping="/font/**" location="/resources/font/" />
+	<resources mapping="/gantt/**" location="/resources/gantt/" />
+
 
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
@@ -55,8 +57,15 @@
 	<!-- Interceptor를 경유해야하는 요청을 지정함 -->
 	<interceptors>
 		<interceptor>
+<<<<<<< HEAD
 			<mapping path="/mainProjectRegist" />
 			<beans:ref bean="Interceptor" />
+=======
+			<mapping path="/mainProjectRegist"/>
+			<mapping path="/startproject_go"/>
+			<mapping path="/update"/>
+			<beans:ref bean="Interceptor"/>
+>>>>>>> 4dc862edc82750fddd24950689b0725259863b71
 		</interceptor>
 	</interceptors>
 

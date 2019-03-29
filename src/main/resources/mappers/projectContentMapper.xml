@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> <!-- 이부분 주의 오류떠도 자바에서 안잡아줌. -->
+<mapper namespace="com.team.sprout.dao.ProjectContentDAO">
+
+	<insert id="ProjectContentRegist" parameterType="ProjectContent">
+		insert into projectContent(
+			PROJECTCONTENT_NUM
+			, PROJECTCONTENT_TITLE
+			, PROJECTCONTENT_CONTENT
+			, PROJECTCONTENT_STATUS
+			, PROJECTCONTENT_STARTDATE
+			, PROJECTCONTENT_ENDDATE
+			, PROJECTCONTENT_COLOR
+			, MAINPROJECT_PROJECTNUM
+			, MEMBER_NUM
+			)
+		values
+		(
+			projectContent_SEQ.nextval
+			,#{projectContent_title}
+			,#{projectContent_content}
+			,#{projectContent_status}
+			,#{projectContent_startDate}
+			,#{projectContent_endDate}
+			,#{projectContent_color}
+			,#{mainproject_projectNum}
+			,#{member_num}
+		)
+
+	</insert>
+	
+	<select id="projectContentSelectAll" resultType="ProjectContent">
+		select 
+			*
+		from
+			projectContent
+		where MAINPROJECT_PROJECTNUM = #{mainProjectNum}
+	</select>
+</mapper>

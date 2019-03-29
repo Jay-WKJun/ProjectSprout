@@ -4,16 +4,21 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
   
 <configuration>
+
 	<typeAliases>
 		<typeAlias type="com.team.sprout.vo.Member" alias="Member" />
 		<typeAlias type="com.team.sprout.vo.MainProject" alias="MainProject" />
 		<typeAlias type="com.team.sprout.vo.ProjectMember" alias="ProjectMember" />
-		
+		<typeAlias type="com.team.sprout.vo.Postit" alias="Postit" />
+		<typeAlias type="com.team.sprout.vo.ProjectContent" alias="ProjectContent" />
 	</typeAliases>
+	
 	<mappers>
 		<mapper resource="mappers/memberMapper.xml" />
 		<mapper resource="mappers/mainProjectMapper.xml" />
 		<mapper resource="mappers/projectMemberMapper.xml" />
+		<mapper resource="mappers/workSpaceMapper.xml" />
+		<mapper resource="mappers/projectContentMapper.xml" />
 
 	</mappers>
 </configuration>

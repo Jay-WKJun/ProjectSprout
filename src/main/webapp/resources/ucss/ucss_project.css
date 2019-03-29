@@ -1,21 +1,15 @@
-/*===================폰트====================*/
+@font-face{
+    font-family:'binggrae';
+    src:url('../font/Binggrae2.ttf') format('truetype');
+}
+
 @font-face{
     font-family:'bada';
     src:url('../font/BusanBada.ttf') format('truetype');
 }
 
-@font-face{
-    font-family:'searon';
-    src:url('../font/searon.ttf') format('truetype');
-}
-
-@font-face{
-    font-family:'searon_SB';
-    src:url('../font/searon_SB.ttf') format('truetype');
-}
-
 .fontBold_1{
-	font-family:'searon_SB';
+	 font-weight: 500;
 }
 
 .fontSize60{
@@ -31,7 +25,7 @@
 }
 
 .wrapper{
-	font-family:'searon', 'bada','Serif';
+	font-family:'binggrae', 'bada','Serif';
 	font-size:110%;
     font-weight: 100;
     display: flex;
@@ -103,7 +97,11 @@
 }
 
 .myInfo{
-    margin: 30px
+	position: absolute;
+    width: 15%;
+    height: 8%;
+    top: 5%;
+    left: 83%;
 }
 
 .mainSpace_bottom{
@@ -150,6 +148,12 @@
     top: 50%;
     margin-top: -150px; /* half of height */
     overflow: auto;
+}
+
+.postitWindow{
+	background-color:#f2f2f2;
+	text-align:center;
+	width:100%
 }
 
 .hidden{

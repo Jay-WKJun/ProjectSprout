@@ -15,11 +15,11 @@ $(function() {
 
 	$('#modalBtn').on('click',function(){
 		$('#whiteBoardModal').modal('show');
-		$('#headers').load('whiteBoard');
+		var postitNumFromProjectNum=$('#postitNumFromProjectNum').val();
+		$('#headers').load('whiteBoard?postitNumFromProjectNum='+postitNumFromProjectNum);
 	})
 	
 	$('#modalCloseBtn').on('click', function() {
-		$('#headers').html('');
 		$('#whiteBoardModal').modal('hide');
 	})
 	
