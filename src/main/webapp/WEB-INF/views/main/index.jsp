@@ -24,17 +24,6 @@
 	async defer></script>
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="ujs/ujs_index.js"></script>
-
-<script>
-function clicknew(){
-	window.location.href="clickProjectRegist";	
-	    
-}
-
-
-
-</script>
-
 </head>
 
 <body>
@@ -79,8 +68,7 @@ function clicknew(){
 					<div class="userInfo_left"></div>
 					<div class="userInfo_right">
 						<c:if test="${sessionScope.loginId == null }">
-							<button class="btn btn-primary" id="project">프로젝트</button>
-							<button class="btn btn-primary" id="whiteBoardBtn">화이트보드</button>
+							<button class="btn btn-primary" id="timeTable">타임테이블</button>
 							
 							<div class="myInfo">
 									<div class="dropdown dropleft float-right h-100">
@@ -92,7 +80,7 @@ function clicknew(){
 										<div class="dropdown-menu">
 											<h5 class="dropdown-header">로그인해주세요.</h5>
 											<div style="margin-top: 20px">
-												<a href="#" id="loginBtn"
+												<a id="loginBtn"
 													class="list-group-item list-group-item-action border-left-0 border-right-0">로그인</a>
 											</div>
 										</div>
@@ -101,10 +89,7 @@ function clicknew(){
 								
 						</c:if>
 						<c:if test="${sessionScope.loginId != null }">
-							<c:if test="${sessionScope.google == null}">
-							<button class="btn btn-primary" id="project">프로젝트</button>
-							<button class="btn btn-primary" id="whiteBoardBtn">화이트보드</button>
-							
+								<button class="btn btn-primary" id="timeTable">타임테이블</button>
 								<div class="myInfo">
 									<div class="dropdown dropleft float-right h-100">
 										<div data-toggle="dropdown">
@@ -115,43 +100,14 @@ function clicknew(){
 										<div class="dropdown-menu">
 											<h5 class="dropdown-header">${loginName}</h5>
 											<div style="margin-top: 20px">
-												<a href="#"
-													class="list-group-item list-group-item-action border-left-0 border-right-0">회원정보</a>
-												<a href="#" id="logoutBtn"
-													class="list-group-item list-group-item-action border-left-0 border-right-0">로그아웃</a>
+												<a class="list-group-item list-group-item-action border-left-0 border-right-0">회원정보</a>
+												<a id="logoutBtn" class="list-group-item list-group-item-action border-left-0 border-right-0">로그아웃</a>
 											</div>
 										</div>
 									</div>
 								</div>
 								
 							</c:if>
-							<c:if test="${sessionScope.google != null}">
-							
-								<button class="btn btn-primary" id="project">프로젝트</button>
-								<button class="btn btn-primary" id="whiteBoardBtn">화이트보드</button>
-								
-								<div class="myInfo">
-									<div class="dropdown dropleft float-right h-100">
-										<div data-toggle="dropdown">
-											<img class="rounded-circle border"
-												style="width: 50px; height: 50px"
-												src="img/empty_profile.png" id="userProfileIcon">
-										</div>
-										<div class="dropdown-menu">
-											<h5 class="dropdown-header">${loginName}</h5>
-											<div style="margin-top: 20px">
-												<a href="#"
-													class="list-group-item list-group-item-action border-left-0 border-right-0">회원정보</a>
-												<a href="#" id="googleLogout"
-													class="list-group-item list-group-item-action border-left-0 border-right-0">로그아웃</a>
-											</div>
-										</div>
-									</div>
-								</div>
-								
-							</c:if>
-						</c:if>
-					</div>
 				</div>
 				<div class="topBar_bottom"></div>
 			</div>

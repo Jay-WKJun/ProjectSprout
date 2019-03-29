@@ -9,7 +9,9 @@ public interface ProjectMemberDAO {
 	
 	public int ProjectMemberRegist(ProjectMember prMember);
 
+
 	public List<Member> projectmemberSelectAll(String mainProjectNum);
 	
+
 
 }

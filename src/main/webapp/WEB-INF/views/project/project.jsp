@@ -90,26 +90,27 @@
 							<i class="fas fa-chevron-left fa-lg"></i>
 						</button>
 
-						<div class="modal" id="whiteBoardModal">
-							<div class="modal-dialog">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h4 class="modal-title">Modal Heading</h4>
-										<button type="button" class="close" data-dismiss="modal">&times;</button>
-									</div>
-									<div class="modal-body">
-										<div id="headersInner">
-											<div id="headers"></div>
-										</div>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-danger"
-											data-dismiss="modal">Close</button>
-									</div>
+						<div class="modal w-100 h-100" id="whiteBoardModal">
+							<div class="mainSpace">
+								<div class="mainSpace_top">
+								
+								<div class="modal-header rounded postitWindow">
+									<button class="btn btn-dark" id="addPostit" style="width: 80px">
+										<span class="fa-stack fa-lg"> 
+											<i class="far fa-sticky-note fa-stack-2x"></i>
+											<i class="fas fa-plus fa-stack-1x"></i>
+										</span>
+									</button>
+									<button type="button" class="btn btn-danger"
+										data-dismiss="modal">Close</button>
 								</div>
+									<input type="hidden" id="postitNumFromProjectNum" value="2848">
+									<div id="headers"></div>
+
+								</div>
+								<div class="mainSpace_bottom"></div>
 							</div>
 						</div>
-
 					</div>
 				</div>
 			</div>
