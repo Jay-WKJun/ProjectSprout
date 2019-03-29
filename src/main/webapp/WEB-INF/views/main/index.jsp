@@ -79,6 +79,7 @@ function clicknew(){
 					<div class="userInfo_left"></div>
 					<div class="userInfo_right">
 						<c:if test="${sessionScope.loginId == null }">
+							<button class="btn btn-primary" id="timeTable">타임테이블</button>
 							<button class="btn btn-primary" id="project">프로젝트</button>
 							<button class="btn btn-primary" id="whiteBoardBtn">화이트보드</button>
 							
@@ -124,7 +125,7 @@ function clicknew(){
 								
 							</c:if>
 							<c:if test="${sessionScope.google != null}">
-							
+								<button class="btn btn-primary" id="timeTable">타임테이블</button>
 								<button class="btn btn-primary" id="project">프로젝트</button>
 								<button class="btn btn-primary" id="whiteBoardBtn">화이트보드</button>
 								
@@ -146,7 +147,6 @@ function clicknew(){
 										</div>
 									</div>
 								</div>
-								
 							</c:if>
 						</c:if>
 					</div>
