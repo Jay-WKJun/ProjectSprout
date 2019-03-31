@@ -30,10 +30,7 @@
 	<div class="wrapper">
 		<div class="leftBar">
 			<div class="card h-100">
-				<div class="webNameSpace">
-					<a href="/sprout"><img class="webLogo"
-						src="img/sprout_logo.png"></a>
-				</div>
+				<div class="contentItem" style="padding: 80px"></div>
 				<div class="contentItem">
 					<button class="btn btn-dark w-100" style="height: 50px">
 						<i class="far fa-clipboard fa-lg fontSize20"></i><span
@@ -46,7 +43,6 @@
 						id="newProjectBtn">
 						<i class="fas fa-folder-plus fa-lg fontSize20"></i><span
 							class="fontSize20" style="margin-left: 8px">새로 시작하기</span>
-							
 					</button>
 				</div>
 
@@ -62,59 +58,57 @@
 			</div>
 		</div>
 		<div class="mainSpace">
-			<div class="topBar">
-				<div class="topBar_top"></div>
-				<div class="userInfo">
-					<div class="userInfo_left"></div>
-					<div class="userInfo_right">
-						<c:if test="${sessionScope.loginId == null }">
-							<button class="btn btn-primary" id="timeTable">타임테이블</button>
-							
-							<div class="myInfo">
-									<div class="dropdown dropleft float-right h-100">
-										<div data-toggle="dropdown">
-											<img class="rounded-circle border"
-												style="width: 50px; height: 50px"
-												src="img/empty_profile.png" id="userProfileIcon">
-										</div>
-										<div class="dropdown-menu">
-											<h5 class="dropdown-header">로그인해주세요.</h5>
-											<div style="margin-top: 20px">
-												<a id="loginBtn"
-													class="list-group-item list-group-item-action border-left-0 border-right-0">로그인</a>
-											</div>
-										</div>
-									</div>
-								</div>
-								
-						</c:if>
-						<c:if test="${sessionScope.loginId != null }">
-								<button class="btn btn-primary" id="timeTable">타임테이블</button>
-								<div class="myInfo">
-									<div class="dropdown dropleft float-right h-100">
-										<div data-toggle="dropdown">
-											<img class="rounded-circle border"
-												style="width: 50px; height: 50px"
-												src="img/empty_profile.png" id="userProfileIcon">
-										</div>
-										<div class="dropdown-menu">
-											<h5 class="dropdown-header">${loginName}</h5>
-											<div style="margin-top: 20px">
-												<a class="list-group-item list-group-item-action border-left-0 border-right-0">회원정보</a>
-												<a id="logoutBtn" class="list-group-item list-group-item-action border-left-0 border-right-0">로그아웃</a>
-											</div>
-										</div>
-									</div>
-								</div>
-								
-							</c:if>
+			<c:if test="${sessionScope.loginId == null }">
+				<div class="myInfo">
+					<div class="dropdown dropleft float-right h-100">
+						<div data-toggle="dropdown">
+							<img class="rounded-circle border"
+								style="width: 50px; height: 50px" src="img/empty_profile.png"
+								id="userProfileIcon">
+						</div>
+						<div class="dropdown-menu">
+							<h5 class="dropdown-header">로그인해주세요.</h5>
+							<div style="margin-top: 20px">
+								<a id="loginBtn"
+									class="list-group-item list-group-item-action border-left-0 border-right-0">로그인</a>
+							</div>
+						</div>
+					</div>
 				</div>
-				<div class="topBar_bottom"></div>
+			</c:if>
+			<c:if test="${sessionScope.loginId != null }">
+				<div class="myInfo">
+					<div class="dropdown dropleft float-right h-100">
+						<div data-toggle="dropdown">
+							<img class="rounded-circle border"
+								style="width: 50px; height: 50px" src="img/empty_profile.png"
+								id="userProfileIcon">
+						</div>
+						<div class="dropdown-menu">
+							<h5 class="dropdown-header">${loginName}</h5>
+							<div style="margin-top: 20px">
+								<a id="memberInfoBtn"
+									class="list-group-item list-group-item-action border-left-0 border-right-0">회원정보</a>
+								<a id="logoutBtn"
+									class="list-group-item list-group-item-action border-left-0 border-right-0">로그아웃</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</c:if>
+			<div class="contentSpace">
+				<div class="contentSpace_left"></div>
+				<div class="contentSpace_center">
+					<div class="webNameSpace">
+						<a href="/sprout"><img class="webLogo"
+							src="img/sprout_logo.png"></a>
+					</div>
+				</div>
+				<div class="contentSpace_right"></div>
 			</div>
-
-
 			<div id="webPresentation" style="display: block">
-				<div class="contentSpace">
+				<div class="contentSpace contentSpace_topMargin">
 					<div class="contentSpace_left"></div>
 					<div class="contentSpace_center">
 						<div class="contentItem">
@@ -122,20 +116,18 @@
 						</div>
 					</div>
 					<div class="contentSpace_right"></div>
-
 				</div>
 			</div>
-
 			<div id="newProject" style="display: none">
-				<div class="contentSpace">
+				<div class="contentSpace contentSpace_topMargin">
 					<div class="contentSpace_left"></div>
 					<div class="contentSpace_center">
 
 						<form action="mainProjectRegist" id="mainProjectRegist"
 							method="post">
-							
 
-							<div class="contentItem" style="text-align: center">
+
+							<div class="contentItem" style="text-align: center;">
 								<div class="card">
 									<div class="card-body">
 										<h4 class="card-title">프로젝트 이름</h4>
@@ -171,13 +163,13 @@
 				</div>
 			</div>
 			<div id="ProjectStartSpace" style="display: none">
-				<div class="contentSpace">
-					<div class="contentSpace_left"></div>
-					<div class="contentSpace_center">
+				<form action="project_go" id="project_go" method="post">
+					<div class="contentSpace contentSpace_topMargin">
+						<div class="contentSpace_left"></div>
+						<div class="contentSpace_center">
 
-						<form action="project_go" id="project_go" method="post">
 
-							<div class="contentItem" style="text-align: center">
+							<div class="contentItem" style="text-align: center; width: 300px">
 								<div class="card">
 									<div class="card-body">
 										<h4 class="card-title">프로젝트 이름</h4>
@@ -196,29 +188,34 @@
 										</div>
 									</div>
 								</div>
-								<div class="contentItem"
-									style="margin-top: 30px; text-align: right">
-									<button class="btn btn-dark w-50" style="height: 50px"
-										id="openproject">시작하기</button>
-									<input type="hidden" name="mainproject_projectnum" id="mainProjectNum">
-								</div>
-							
+
 							</div>
-						</form>
-					</div>
-					<div class="contentSpace_right">
-						<div class="memberList rounded border">
-							<h4 class="card-title">참여 멤버</h4>
-							<hr>
-							<span id="goprojet_membername"></span>
+						</div>
+						<div class="contentSpace_right">
+							<div class="memberList rounded border">
+								<h4 class="card-title">참여 멤버</h4>
+								<hr>
+								<span id="goprojet_membername"></span>
+							</div>
 						</div>
 					</div>
-				</div>
 
+					<div class="contentSpace_left"></div>
+					<div class="contentSpace_center">
+						<div class="contentItem contentSpace_topMargin" style="width: 100%; text-align: center;">
+								<button class="btn btn-dark w-25" style="height: 50px;margin-right:20px"
+									id="openproject">시작</button>
+								<button class="btn btn-danger" style="height: 50px; width: 100px"
+									id="openproject">탈퇴</button>
+							<input type="hidden" name="mainproject_projectnum"
+								id="mainProjectNum">
+						</div>
+					</div>
+					<div class="contentSpace_right"></div>
+				</form>
 			</div>
 		</div>
 	</div>
-
 	<script src="js/bootstrap.bundle.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 </body>

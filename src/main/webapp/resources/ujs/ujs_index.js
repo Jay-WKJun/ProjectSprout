@@ -20,12 +20,22 @@ $(function() {
 	$('#timeTable').on('click', function(){
 		location.href = "timetable";
 	})
-
+	
+	//새로 만들기 인터셉터
 	$('#newProjectBtn').on('click', function() {
-
-		$('#webPresentation').attr('style', 'display:none');
-		$('#newProject').attr('style', 'display:block');
-		$('#ProjectStartSpace').attr('style', 'display:none');
+		$.ajax({
+			method : 'get',
+			url : 'signinCheck',
+			success : function(result){
+				if(result=="success"){
+					$('#webPresentation').attr('style', 'display:none');
+					$('#newProject').attr('style', 'display:block');
+					$('#ProjectStartSpace').attr('style', 'display:none');
+				}else{
+					location.href="login";
+				}
+			}
+		})
 	})
 
 	$('#projectCreateBtn').on('click', function() {
@@ -68,6 +78,25 @@ $(function() {
 
 		})
 
+	})
+	
+	//로그인 버튼 이펙트
+	$('#userProfileIcon').on('mouseover', function() {
+		$('#userProfileIcon').attr('class', 'rounded-circle');
+	})
+	$('#userProfileIcon').on('click', function() {
+		$('#userProfileIcon').attr('class', 'rounded-circle');
+	})
+	$('#userProfileIcon').on('mouseup', function() {
+		$('#userProfileIcon').attr('class', 'rounded-circle border');
+	})
+	$('#userProfileIcon').on('mouseout', function() {
+		$('#userProfileIcon').attr('class', 'rounded-circle border');
+	})
+	
+	//회원정보로 이동
+	$('#memberInfoBtn').on('click',function(){
+		location.href="memberInfo";
 	})
 
 });

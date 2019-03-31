@@ -2,6 +2,7 @@ package com.team.sprout.controllers;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -80,5 +81,16 @@ public class MainProjectController {
 		System.out.println(member.getMember_name());
 		return map;
 		
+	}
+	
+	@RequestMapping(value = "/signinCheck", method = RequestMethod.GET)
+	public @ResponseBody String signinCheck(HttpSession session) {
+		String loginNum=(String)session.getAttribute("loginId");
+		String result="success";
+		if(loginNum==null) {
+			result="fail";
+		}
+			
+		return result;
 	}
 }

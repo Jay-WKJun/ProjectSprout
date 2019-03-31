@@ -52,7 +52,6 @@ public class MemberController {
 	 */
 	@RequestMapping(value = "/join", method = RequestMethod.GET)
 	public String join(Member member) {
-//		return "member/sampleForm";
 		return "member/joinForm";
 	}
 
@@ -218,7 +217,11 @@ public class MemberController {
 		
 		return "redirect:/";
 	}
-
-
+	
+	//회원정보 페이지로 이동
+	@RequestMapping(value = "/memberInfo", method = RequestMethod.GET)
+	public String memberInfo() {
+		return "member/memberInfo";
+	}
 
 }

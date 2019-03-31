@@ -24,20 +24,15 @@
 	font-size:120%;
 }
 
-.fontDefault{
-	font-family:'Serif';
-}
-
-.wrapper {
+.wrapper{
 	font-family:'binggrae', 'bada','Serif';
 	font-size:110%;
     font-weight: 100;
-    display: flex;
-    flex-direction: column;
+    padding:0;
 }
 
 /*=========모든 컨텐츠에 사용하는 div==========*/
-.contentItem {
+.contentItem{
     padding: 0;
 }
 
@@ -50,7 +45,7 @@
 .topSpace_center{
     flex: initial;
     text-align:center;
-    padding: 10px;
+    padding: 0px;
 }
 
 .topSpace_side{
@@ -62,57 +57,30 @@
     height:70%;
 }
 
-/*===============메인 컨텐트 영역==============*/
+/*==================메인=====================*/
 
-.content_space {
-    flex: initial;
+.mainContent{
     display: flex;
 }
 
-.content_space_left {
-    flex: 1;
-}
-
-.content_space_center {
+.mainSpace{
     flex: initial;
+    padding:20px;
 }
 
-.content_space_right {
+.sideSpace{
     flex: 1;
 }
 
-/*==============로그인=================*/
-.loginBox {
-    display: :flex;
-    flex-direction: column;
-    border: 1px solid gray;
-    padding: 20px;
+.tableSpace{
 }
 
-.loginBox_inner_top {
-    flex: 1;
+table,tr,td{
+	padding:30px;
 }
 
-.loginBox_inner_center {
-    flex: initial;
-    padding:35px;
-}
-
-.loginBox_inner_right {
-    flex: 1;
-}
-
-.checkBox_space{
-	display:flex;
-	text-align-last: left;
-	margin-bottom:15px;
-}
-
-.checkBox_space_main{
-	flex:initial;
-	padding:5px;
-}
-
-.checkBox_space_side{
-	flex:1;
+.profileImg{
+	width:120px;
+	height:120px;
+	
 }
