@@ -12,7 +12,7 @@
 <!-- 구글 로그인 접속 정보  -->
 <meta name="google-signin-client_id"
 	content="302280011098-j31rpdam1nmlron2808kv4g4gb6p21a4.apps.googleusercontent.com">
-<title>index</title>
+<title>Sprout</title>
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
 	integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
@@ -248,6 +248,18 @@
 	</div>
 	<script src="js/bootstrap.bundle.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
+	
+	
+	<!-- ----------------------------------------------------------------------- -->
+	<hr>
+	<p>프로필 이미지 test<P><br>
+	<c:if test="${not empty sessionScope.mime}"> 
+		<img src="download?loginId=${loginId}" style="width:50px;height:50px">
+	</c:if>
+	<!-- ----------------------------------------------------------------------- -->
+	
+	
+	
 </body>
 
 </html>
