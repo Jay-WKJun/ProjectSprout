@@ -72,6 +72,10 @@ function validate() {
 	$('#joinForm').submit();
 }
 
+function check(){
+	alert('hello');
+}
+
 
 
 

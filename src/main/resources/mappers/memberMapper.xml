@@ -29,13 +29,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="selectOne" parameterType="Map" resultType="Member">
 		select 
-			MEMBER_NUM
-			, MEMBER_ID
-			, MEMBER_PASSWORD
-			, MEMBER_NAME
-			, MEMBER_PHONE
-			, MEMBER_ADDRESS
-			, MEMBER_LOGINDATE
+			*
 		from 
 			member
 		where

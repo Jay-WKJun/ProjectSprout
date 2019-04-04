@@ -6,8 +6,8 @@
 <configuration>
 
 	<typeAliases>
-		<typeAlias type="com.team.sprout.vo.Member" alias="Member" />
 		<typeAlias type="com.team.sprout.vo.MainProject" alias="MainProject" />
+		<typeAlias type="com.team.sprout.vo.Member" alias="Member" />
 		<typeAlias type="com.team.sprout.vo.ProjectMember" alias="ProjectMember" />
 		<typeAlias type="com.team.sprout.vo.Postit" alias="Postit" />
 		<typeAlias type="com.team.sprout.vo.ProjectContent" alias="ProjectContent" />
