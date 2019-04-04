@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,13 +35,43 @@
 				</ul>
 				<!-- 같은 프로젝트일때 참여인원  출력 -->
 				<div
-					class="communicationBar rounded-bottom border border-top-0 w-100">
-					<div class="list-group" style="margin: 5px;">
-					<c:forEach var ="list" items="${projectMembersList}">
-						 <a href="#" class="projectSelectBtn list-group-item list-group-item-action" data-pno="${list.member_num}">
-						 	${list.member_name}
-						</a>
-					</c:forEach>
+					class="communicationBar rounded-bottom border border-top-0 w-100"
+					style="padding: 5px">
+					<div class="list-group">
+					
+					<form action="addProjectMember" id="addProjectMember" method="GET"> 
+					<button class="btn btn-dark w-100" id="addmem">멤버 추가</button>
+					<%-- <input hidden="hidden" id="add_num" value="${add_num}" name="add_num"> --%>
+					<input type="text" class="w-100" id="addMember" name="addMember" placeholder="추가하실 아이디를 입력하세요">
+					<input type="text" class="w-100"  placeholder="멤버 검색">
+					<span id = "addmemberMessage"></span>
+				</form> 
+				
+						<c:forEach var="list" items="${projectMembersList}">
+							<div
+								class="dropdown dropright float-right list-group-item list-group-item-action">
+								<div data-toggle="dropdown">${list.member_name}</div>
+								<div class="dropdown-menu">
+									<h5 class="dropdown-header">${list.member_name}</h5>
+									<div style="margin-top: 20px" data-pno="${list.member_num}">
+										<a href="#"
+											class="list-group-item list-group-item-action border-left-0 border-right-0">플래너</a>
+										<a href="#"
+											class="list-group-item list-group-item-action border-left-0 border-right-0">메세지
+											보내기</a>
+										<c:if test="${member_rank == 5}"> 
+											 <a href="#"
+											class="list-group-item list-group-item-action border-left-0 border-right-0">강퇴</a>
+										</c:if> 
+									</div>
+								</div>
+							</div>
+						</c:forEach>
+
+
+					</div>
+					<div id="noticeSpace">
+						afdsgsadfgasfdg
 					</div>
 				</div>
 			</div>
@@ -51,27 +81,44 @@
 				<div class="mainSpace_top_side"></div>
 				<div class="mainSpace_top_center">
 					<div class="projectName border-bottom">
-						<h1 id="projectHome">[ 프로젝트 이름 ]</h1>
+						<h1 id="projectHome">${MainProject_title}</h1>
 					</div>
 				</div>
 				<div class="mainSpace_top_side" style="text-align: right">
 					<div class="myInfo">
-						<div class="dropdown dropleft float-right h-100">
+						<div class="dropdown dropright float-right h-100">
 							<div data-toggle="dropdown">
 								<img class="rounded-circle border"
 									style="width: 50px; height: 50px" src="img/empty_profile.png"
 									id="userProfileIcon">
 							</div>
 							<div class="dropdown-menu">
-								<h5 class="dropdown-header">[ USER ]</h5>
+								<h5 class="dropdown-header">${loginName}</h5>
 								<div style="margin-top: 20px">
 									<a href="#"
 										class="list-group-item list-group-item-action border-left-0 border-right-0">회원정보</a>
-									<a href="#"
+									<a href="logout"
 										class="list-group-item list-group-item-action border-left-0 border-right-0">로그아웃</a>
+										
 								</div>
 							</div>
 						</div>
+					</div>
+				</div>
+			</div>
+			<div class="mainSpace_top">
+				<div class="mainSpace_top_side"></div>
+				<div class="mainSpace_top_center"></div>
+				<div class="mainSpace_top_side" style="text-align: right">
+					<div class="contentItem" style="margin-right: 20px">
+					<span id="noticeBtnSpace">
+					</span>
+						<button class="btn btn-dark" id="noticeBtn" data-toggle="1">
+							<i class="fas fa-bullhorn fa-lg"></i>
+						</button>
+						<button class="btn btn-dark">
+							<i class="far fa-calendar-check fa-lg"></i>
+						</button>
 					</div>
 				</div>
 			</div>
@@ -93,18 +140,20 @@
 						<div class="modal w-100 h-100" id="whiteBoardModal">
 							<div class="mainSpace">
 								<div class="mainSpace_top">
-								
-								<div class="modal-header rounded postitWindow">
-									<button class="btn btn-dark" id="addPostit" style="width: 80px">
-										<span class="fa-stack fa-lg"> 
-											<i class="far fa-sticky-note fa-stack-2x"></i>
-											<i class="fas fa-plus fa-stack-1x"></i>
-										</span>
-									</button>
-									<button type="button" class="btn btn-danger"
-										data-dismiss="modal">Close</button>
-								</div>
-									<input type="hidden" id="postitNumFromProjectNum" value="${mainproject_projectnum }">
+
+									<div class="modal-header rounded postitWindow">
+										<button class="btn btn-dark" id="addPostit"
+											style="width: 80px">
+											<span class="fa-stack fa-lg"> <i
+												class="far fa-sticky-note fa-stack-2x"></i> <i
+												class="fas fa-plus fa-stack-1x"></i>
+											</span>
+										</button>
+										<button type="button" class="btn btn-danger"
+											data-dismiss="modal">Close</button>
+									</div>
+									<input type="hidden" id="postitNumFromProjectNum"
+										value="${mainproject_projectnum }">
 									<div id="headers"></div>
 
 								</div>

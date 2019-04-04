@@ -30,10 +30,7 @@
 	<div class="wrapper">
 		<div class="leftBar">
 			<div class="card h-100">
-				<div class="webNameSpace">
-					<a href="/sprout"><img class="webLogo"
-						src="img/sprout_logo.png"></a>
-				</div>
+				<div class="contentItem" style="padding: 80px"></div>
 				<div class="contentItem">
 					<button class="btn btn-dark w-100" style="height: 50px">
 						<i class="far fa-clipboard fa-lg fontSize20"></i><span
@@ -46,7 +43,6 @@
 						id="newProjectBtn">
 						<i class="fas fa-folder-plus fa-lg fontSize20"></i><span
 							class="fontSize20" style="margin-left: 8px">새로 시작하기</span>
-							
 					</button>
 				</div>
 
@@ -110,13 +106,18 @@
 								</div>
 								
 							</c:if>
+			<div class="contentSpace">
+				<div class="contentSpace_left"></div>
+				<div class="contentSpace_center">
+					<div class="webNameSpace">
+						<a href="/sprout"><img class="webLogo"
+							src="img/sprout_logo.png"></a>
+					</div>
 				</div>
-				<div class="topBar_bottom"></div>
+				<div class="contentSpace_right"></div>
 			</div>
-
-
 			<div id="webPresentation" style="display: block">
-				<div class="contentSpace">
+				<div class="contentSpace contentSpace_topMargin">
 					<div class="contentSpace_left"></div>
 					<div class="contentSpace_center">
 						<div class="contentItem">
@@ -124,20 +125,18 @@
 						</div>
 					</div>
 					<div class="contentSpace_right"></div>
-
 				</div>
 			</div>
-
 			<div id="newProject" style="display: none">
-				<div class="contentSpace">
+				<div class="contentSpace contentSpace_topMargin">
 					<div class="contentSpace_left"></div>
 					<div class="contentSpace_center">
 
 						<form action="mainProjectRegist" id="mainProjectRegist"
 							method="post">
-							
 
-							<div class="contentItem" style="text-align: center">
+
+							<div class="contentItem" style="text-align: center;">
 								<div class="card">
 									<div class="card-body">
 										<h4 class="card-title">프로젝트 이름</h4>
@@ -173,13 +172,13 @@
 				</div>
 			</div>
 			<div id="ProjectStartSpace" style="display: none">
-				<div class="contentSpace">
-					<div class="contentSpace_left"></div>
-					<div class="contentSpace_center">
+				<form action="project_go" id="project_go" method="POST">
+					<div class="contentSpace contentSpace_topMargin">
+						<div class="contentSpace_left"></div>
+						<div class="contentSpace_center">
 
-						<form action="project_go" id="project_go" method="post">
 
-							<div class="contentItem" style="text-align: center">
+							<div class="contentItem" style="text-align: center; width: 300px">
 								<div class="card">
 									<div class="card-body">
 										<h4 class="card-title">프로젝트 이름</h4>
@@ -198,29 +197,55 @@
 										</div>
 									</div>
 								</div>
-								<div class="contentItem"
-									style="margin-top: 30px; text-align: right">
-									<button class="btn btn-dark w-50" style="height: 50px"
-										id="openproject">시작하기</button>
-									<input type="hidden" name="mainproject_projectnum" id="mainProjectNum">
-								</div>
-							
+
 							</div>
-						</form>
-					</div>
-					<div class="contentSpace_right">
-						<div class="memberList rounded border">
-							<h4 class="card-title">참여 멤버</h4>
-							<hr>
-							<span id="goprojet_membername"></span>
+						</div>
+						<div class="contentSpace_right">
+							<div class="memberList rounded border">
+								<h4 class="card-title">참여 멤버</h4>
+								<hr>
+								<span id="goprojet_membername"></span>
+							</div>
 						</div>
 					</div>
-				</div>
 
+					<div class="contentSpace_left"></div>
+					<div class="contentSpace_center">
+						<div class="contentItem contentSpace_topMargin"
+							style="width: 100%; text-align: center;">
+							<button class="btn btn-dark w-25"
+								style="height: 50px; margin-right: 20px" id="openproject">시작</button>
+
+							<button type="button" class="btn btn-danger" style="height: 50px; width: 100px"
+								data-target="#whiteBoardModal" id="outOfProject">탈퇴</button>
+
+							<div class="modal w-100 h-100" id="whiteBoardModal">
+								<div class="mainSpace">
+									<div class="mainSpace_top">
+
+										<div class="modal-header rounded postitWindow">
+											<button type="button" class="btn btn-danger"
+												data-dismiss="modal">Close</button>
+										</div>
+										<input type="hidden" id="postitNumFromProjectNum"
+											value="${mainproject_projectnum }">
+										<div id="headers"></div>
+
+									</div>
+									<div class="mainSpace_bottom"></div>
+								</div>
+							</div>
+
+							<input type="hidden" name="mainproject_projectnum"
+								id="mainProjectNum">
+						</div>
+					</div>
+					<div class="contentSpace_right"></div>
+				</form>
+												
 			</div>
 		</div>
 	</div>
-
 	<script src="js/bootstrap.bundle.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 </body>

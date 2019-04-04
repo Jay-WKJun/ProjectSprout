@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.team.sprout.vo.MainProject;
 import com.team.sprout.vo.Member;
 import com.team.sprout.vo.ProjectMember;
 @Repository
@@ -36,6 +37,45 @@ public class ProjectMemberRepository {
 	  
 	  return projectMembers;
 	 }
+
+	//프로젝트의 리더를 찾기 위한 메서드 
+	public List<ProjectMember> findManager(String mainproject_projectnum ) {
+		  ProjectMemberDAO dao = session.getMapper(ProjectMemberDAO.class);
+
+		  List<ProjectMember> projectMembers = dao.findManager(mainproject_projectnum);
+
+		  
+		  return projectMembers;
+	}
+
+
+	public List<MainProject> findProjectName(String mainproject_projectnum) {
+		 ProjectMemberDAO dao = session.getMapper(ProjectMemberDAO.class);
+		 List<MainProject> result = dao.findProjectName(mainproject_projectnum);
+		 return result;
+		
+	}
+
+	//이미 프로젝트에 있는 사람 
+	public ProjectMember findAlreadynum(int member_num) {
+		ProjectMemberDAO dao = session.getMapper(ProjectMemberDAO.class);
+		ProjectMember result = dao.findAlreadynum(member_num);
+		
+		
+		return result;
+		
+		
+	}
+
+
+	public List<ProjectMember> findInProjectNum(String mainproject_projectnum) {
+		 ProjectMemberDAO dao = session.getMapper(ProjectMemberDAO.class);
+		 List<ProjectMember> result = dao.findInProjectNum(mainproject_projectnum);
+		 return result;
+	}
+
+
+
 	
 
 }

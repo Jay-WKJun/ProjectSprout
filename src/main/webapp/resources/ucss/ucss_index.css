@@ -52,11 +52,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 150px;
 }
 
 .webLogo{
-    width:100%;
+	flex:initial;
+    width:400px;
     height:100%;
 }
 
@@ -65,6 +65,10 @@
     flex:1;
     display: flex;
     flex-direction: column;
+}
+
+.contentSpace_topMargin{
+	margin-top:40px;
 }
 
 .contentSpace{
@@ -76,7 +80,7 @@
 	padding:20px;
 	width:45%;
 	min-width:250px;
-	height:90%;
+	height:100%;
 }
 
 
@@ -86,47 +90,17 @@
 
 .contentSpace_center{
     flex: initial;
+    display:flex;
     padding: 5px;
 }
 
 .contentSpace_right{
     flex: 2;
     display: flex;
-    padding:30px;
-    text-align:center;
-    min-width:300px;
+    padding: 5px;
 }
 
 /*=================상단====================*/
-.topBar{
-    flex: initial;
-    display: flex;
-    flex-direction: column;
-    min-height:100px;
-}
-
-.topBar_top{
-    padding: 0;
-}
-
-.topBar_bottom{
-    flex:1;
-}
-
-.userInfo{
-    display: flex;
-    text-align-last: right;
-}
-
-.userInfo_left{
-    flex:1;
-}
-
-.userInfo_right{
-    flex:initial;
-    min-width:150;
-    padding:10px;    
-}
 
 .myInfo{
 	position: absolute;

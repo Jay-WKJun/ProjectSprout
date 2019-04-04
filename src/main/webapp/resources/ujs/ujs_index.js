@@ -14,18 +14,30 @@ $(function() {
 	//나중에 삭제
 	$('#timeTable').on('click', function(){
 		location.href = "timetable";
+
 	});
 	
 	//나중에 삭제
 	$('#wantedBoard').on('click', function(){
 		location.href = "wantedBoard";
 	});
+	
+	
 
 	$('#newProjectBtn').on('click', function() {
-
-		$('#webPresentation').attr('style', 'display:none');
-		$('#newProject').attr('style', 'display:block');
-		$('#ProjectStartSpace').attr('style', 'display:none');
+		$.ajax({
+			method : 'get',
+			url : 'signinCheck',
+			success : function(result){
+				if(result=="success"){
+					$('#webPresentation').attr('style', 'display:none');
+					$('#newProject').attr('style', 'display:block');
+					$('#ProjectStartSpace').attr('style', 'display:none');
+				}else{
+					location.href="login";
+				}
+			}
+		})
 	})
 
 	$('#projectCreateBtn').on('click', function() {
@@ -61,13 +73,48 @@ $(function() {
 			data : "mainproject_projectnum=" + mainproject_projectnum,
 			success : function(mainproject) {
 
+			
 				$('#goproject_title').html(mainproject.goproject_title)
 				$('#goproject_content').html(mainproject.goproject_content)
-				$('#goprojet_membername').html(mainproject.goprojet_membername)
+				var output = '';
+				$.each(mainproject.memberList,function(index, item){
+					output += item.member_name+'<br>';
+				})
+				$('#goprojet_membername').html(output)
+				
 			}
 
 		})
 
 	})
+	
+	//로그인 버튼 이펙트
+	$('#userProfileIcon').on('mouseover', function() {
+		$('#userProfileIcon').attr('class', 'rounded-circle');
+	})
+	$('#userProfileIcon').on('click', function() {
+		$('#userProfileIcon').attr('class', 'rounded-circle');
+	})
+	$('#userProfileIcon').on('mouseup', function() {
+		$('#userProfileIcon').attr('class', 'rounded-circle border');
+	})
+	$('#userProfileIcon').on('mouseout', function() {
+		$('#userProfileIcon').attr('class', 'rounded-circle border');
+	})
+	
+	//회원정보로 이동
+	$('#memberInfoBtn').on('click',function(){
+		location.href="memberInfo";
+	})
+	
+	//프로젝트 제거
+	$('#outOfProject').on('click',function(){
+		$('#whiteBoardModal').modal('show');
+	})
+	
+	$('#modalCloseBtn').on('click', function() {
+		$('#whiteBoardModal').modal('hide');
+	})
+	
 
 });

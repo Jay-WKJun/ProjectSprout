@@ -122,14 +122,16 @@
 .timeTable{
     flex: 1;
     height: 300px;
-    margin: 20px;
+    margin:10px;
+    padding:20px;
     width:60%;
 }
 
 .fileManager{
     flex: 1;
     height: 300px;
-    margin: 20px;
+    margin:10px;
+    padding:20px;
     width:60%;
 }
 

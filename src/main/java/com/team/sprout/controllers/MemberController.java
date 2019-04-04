@@ -38,7 +38,7 @@ public class MemberController {
 	@ResponseBody
 	@RequestMapping(value = "/checkId", method = RequestMethod.POST)
 	public int checkId(String member_id) {
-		System.out.println(member_id + "아이디체크를 위한 멤버아이디 에이젝스에서 받기중");
+
 		Member result = repo.checkId(member_id);
 		if (result == null) {
 			return 0; // 사용가능
@@ -52,7 +52,6 @@ public class MemberController {
 	 */
 	@RequestMapping(value = "/join", method = RequestMethod.GET)
 	public String join(Member member) {
-//		return "member/sampleForm";
 		return "member/joinForm";
 	}
 
@@ -218,7 +217,11 @@ public class MemberController {
 		
 		return "redirect:/";
 	}
-
-
+	
+	//회원정보 페이지로 이동
+	@RequestMapping(value = "/memberInfo", method = RequestMethod.GET)
+	public String memberInfo() {
+		return "member/memberInfo";
+	}
 
 }

@@ -29,6 +29,29 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  in (select pr1.member_num from projectMember pr1 where pr1.MainProject_ProjectNum = #{mainProjectNum}) order by member_name
  
 	</select>
+	<!-- 프로젝트 리더를 찾기 위한 메서드  -->
+	<select id="findManager" resultType="ProjectMember" parameterType="String">
+	select member_rank from projectmember where MainProject_ProjectNum =#{MainProject_ProjectNum} and member_rank = 5
 	
+	</select>
+	
+	<!-- 프로젝트 이름을 찾기 위한 메서드 -->
+
+	<select id="findProjectName" resultType="MainProject" parameterType="String">
+  	select MainProject_title from MainProject where MainProject_ProjectNum = #{MainProject_ProjectNum}
+
+	</select>
+	
+<!--이미 프로젝트에 가입되어 있는 사람 확인 메서드   -->
+		<select id="findAlreadynum" resultType="ProjectMember" parameterType="int">
+  	select *from projectMember where member_num = #{member_num}
+
+	</select>
+	
+	
+	<select id ="findInProjectNum" resultType="ProjectMember" parameterType="String" >
+	select* from projectMember  where mainproject_projectnum = #{mainproject_projectnum}
+	</select>
+
 
 </mapper>
