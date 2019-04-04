@@ -71,7 +71,7 @@
 
 					</div>
 					<div id="noticeSpace">
-						afdsgsadfgasfdg
+						
 					</div>
 				</div>
 			</div>

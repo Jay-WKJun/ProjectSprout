@@ -32,6 +32,7 @@ $(function() {
 	
 })
 
+//공지사항 
 function createNotice(){
 	var dataToggle=$(this).attr('data-toggle');
 	if(dataToggle==1){
