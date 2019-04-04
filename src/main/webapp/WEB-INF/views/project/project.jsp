@@ -38,6 +38,15 @@
 					class="communicationBar rounded-bottom border border-top-0 w-100"
 					style="padding: 5px">
 					<div class="list-group">
+					
+					<form action="addProjectMember" id="addProjectMember" method="GET"> 
+					<button class="btn btn-dark w-100" id="addmem">멤버 추가</button>
+					<%-- <input hidden="hidden" id="add_num" value="${add_num}" name="add_num"> --%>
+					<input type="text" class="w-100" id="addMember" name="addMember" placeholder="추가하실 아이디를 입력하세요">
+					<input type="text" class="w-100"  placeholder="멤버 검색">
+					<span id = "addmemberMessage"></span>
+				</form> 
+				
 						<c:forEach var="list" items="${projectMembersList}">
 							<div
 								class="dropdown dropright float-right list-group-item list-group-item-action">
@@ -49,14 +58,20 @@
 											class="list-group-item list-group-item-action border-left-0 border-right-0">플래너</a>
 										<a href="#"
 											class="list-group-item list-group-item-action border-left-0 border-right-0">메세지
-											보내기</a> <a href="#"
+											보내기</a>
+										<c:if test="${member_rank == 5}"> 
+											 <a href="#"
 											class="list-group-item list-group-item-action border-left-0 border-right-0">강퇴</a>
+										</c:if> 
 									</div>
 								</div>
 							</div>
 						</c:forEach>
 
 
+					</div>
+					<div id="noticeSpace">
+						afdsgsadfgasfdg
 					</div>
 				</div>
 			</div>
@@ -66,7 +81,7 @@
 				<div class="mainSpace_top_side"></div>
 				<div class="mainSpace_top_center">
 					<div class="projectName border-bottom">
-						<h1 id="projectHome">[ 프로젝트 이름 ]</h1>
+						<h1 id="projectHome">${MainProject_title}</h1>
 					</div>
 				</div>
 				<div class="mainSpace_top_side" style="text-align: right">
@@ -78,12 +93,13 @@
 									id="userProfileIcon">
 							</div>
 							<div class="dropdown-menu">
-								<h5 class="dropdown-header">[ USER ]</h5>
+								<h5 class="dropdown-header">${loginName}</h5>
 								<div style="margin-top: 20px">
 									<a href="#"
 										class="list-group-item list-group-item-action border-left-0 border-right-0">회원정보</a>
-									<a href="#"
+									<a href="logout"
 										class="list-group-item list-group-item-action border-left-0 border-right-0">로그아웃</a>
+										
 								</div>
 							</div>
 						</div>
@@ -95,7 +111,9 @@
 				<div class="mainSpace_top_center"></div>
 				<div class="mainSpace_top_side" style="text-align: right">
 					<div class="contentItem" style="margin-right: 20px">
-						<button class="btn btn-dark">
+					<span id="noticeBtnSpace">
+					</span>
+						<button class="btn btn-dark" id="noticeBtn" data-toggle="1">
 							<i class="fas fa-bullhorn fa-lg"></i>
 						</button>
 						<button class="btn btn-dark">

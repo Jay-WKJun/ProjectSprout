@@ -52,4 +52,14 @@ public class MainProjectRepository {
 		return result;
 	}
 
+
+	public List<MainProject> findInMember(String mainproject_projectnum) {
+
+		List<MainProject> result = null;
+		MainProjectDAO dao = session.getMapper(MainProjectDAO.class);
+		result = dao.findInMember(mainproject_projectnum);
+				
+		return result;
+	}
+
 }

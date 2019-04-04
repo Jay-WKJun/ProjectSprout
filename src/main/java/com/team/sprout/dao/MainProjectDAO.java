@@ -17,4 +17,6 @@ public interface MainProjectDAO {
 	public MainProject forgoproject(String mainproject_projectnum);
 
 	public Member formembername(int member_num);
+
+	public List<MainProject> findInMember(String mainproject_projectnum);
 }

@@ -16,4 +16,5 @@ public interface MemberDAO {
 	public Member checkId(String id);
 
 
+
 }

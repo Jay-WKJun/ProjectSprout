@@ -29,8 +29,6 @@ public class HomeController {
 				//멤버가 참여중인 프로젝트 가져옴
 				List<MainProject> projectList= mainRepo.projectList(loginNum);
 				for (MainProject mainProject : projectList) {
-					
-					System.out.println("프로젝트 리스트 출력"+ mainProject.getMainproject_projectnum());
 
 				}
 				model.addAttribute("projectList", projectList);

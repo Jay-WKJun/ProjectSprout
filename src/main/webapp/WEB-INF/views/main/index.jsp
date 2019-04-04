@@ -163,7 +163,7 @@
 				</div>
 			</div>
 			<div id="ProjectStartSpace" style="display: none">
-				<form action="project_go" id="project_go" method="post">
+				<form action="project_go" id="project_go" method="POST">
 					<div class="contentSpace contentSpace_topMargin">
 						<div class="contentSpace_left"></div>
 						<div class="contentSpace_center">
@@ -202,17 +202,38 @@
 
 					<div class="contentSpace_left"></div>
 					<div class="contentSpace_center">
-						<div class="contentItem contentSpace_topMargin" style="width: 100%; text-align: center;">
-								<button class="btn btn-dark w-25" style="height: 50px;margin-right:20px"
-									id="openproject">시작</button>
-								<button class="btn btn-danger" style="height: 50px; width: 100px"
-									id="openproject">탈퇴</button>
+						<div class="contentItem contentSpace_topMargin"
+							style="width: 100%; text-align: center;">
+							<button class="btn btn-dark w-25"
+								style="height: 50px; margin-right: 20px" id="openproject">시작</button>
+
+							<button type="button" class="btn btn-danger" style="height: 50px; width: 100px"
+								data-target="#whiteBoardModal" id="outOfProject">탈퇴</button>
+
+							<div class="modal w-100 h-100" id="whiteBoardModal">
+								<div class="mainSpace">
+									<div class="mainSpace_top">
+
+										<div class="modal-header rounded postitWindow">
+											<button type="button" class="btn btn-danger"
+												data-dismiss="modal">Close</button>
+										</div>
+										<input type="hidden" id="postitNumFromProjectNum"
+											value="${mainproject_projectnum }">
+										<div id="headers"></div>
+
+									</div>
+									<div class="mainSpace_bottom"></div>
+								</div>
+							</div>
+
 							<input type="hidden" name="mainproject_projectnum"
 								id="mainProjectNum">
 						</div>
 					</div>
 					<div class="contentSpace_right"></div>
 				</form>
+												
 			</div>
 		</div>
 	</div>

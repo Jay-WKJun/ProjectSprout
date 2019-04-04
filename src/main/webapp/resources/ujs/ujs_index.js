@@ -71,9 +71,15 @@ $(function() {
 			data : "mainproject_projectnum=" + mainproject_projectnum,
 			success : function(mainproject) {
 
+			
 				$('#goproject_title').html(mainproject.goproject_title)
 				$('#goproject_content').html(mainproject.goproject_content)
-				$('#goprojet_membername').html(mainproject.goprojet_membername)
+				var output = '';
+				$.each(mainproject.memberList,function(index, item){
+					output += item.member_name+'<br>';
+				})
+				$('#goprojet_membername').html(output)
+				
 			}
 
 		})
@@ -98,6 +104,16 @@ $(function() {
 	$('#memberInfoBtn').on('click',function(){
 		location.href="memberInfo";
 	})
+	
+	//프로젝트 제거
+	$('#outOfProject').on('click',function(){
+		$('#whiteBoardModal').modal('show');
+	})
+	
+	$('#modalCloseBtn').on('click', function() {
+		$('#whiteBoardModal').modal('hide');
+	})
+	
 
 });
 

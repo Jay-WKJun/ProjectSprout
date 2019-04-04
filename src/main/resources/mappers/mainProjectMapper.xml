@@ -43,6 +43,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 특정 메인프로젝트에 속해있는 사람들을 찾아옵니다. -->
 
+
+	<select id="findInMember" resultType="MainProject" parameterType="String">
+	select * from MAINPROJECT where  mainproject_projectnum = #{mainproject_projectnum}
+	 </select>
 	
 	
 </mapper>
