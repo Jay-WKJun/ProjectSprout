@@ -34,4 +34,29 @@ public class ProjectContentRepository {
 		
 		return listAll;
 	}
+	
+	/*
+	 * pc를 하나 골라온다
+	 */
+	public ProjectContent projectContentSelectOne(int projectContentNum) {
+		ProjectContentDAO dao = session.getMapper(ProjectContentDAO.class);
+		ProjectContent pc = dao.projectContentSelectOne(projectContentNum);
+		
+		return pc;
+	}
+
+	/*
+	 * 업데이트 메소드
+	 */
+	public int projectContentUpdate(ProjectContent pc) {
+		ProjectContentDAO dao = session.getMapper(ProjectContentDAO.class);
+		int result = dao.projectContentUpdate(pc);
+		return result;
+	}
+
+	public int projectContentDelete(int projectContent_num) {
+		ProjectContentDAO dao = session.getMapper(ProjectContentDAO.class);
+		int result = dao.projectContentDelete(projectContent_num);
+		return result;
+	}
 }

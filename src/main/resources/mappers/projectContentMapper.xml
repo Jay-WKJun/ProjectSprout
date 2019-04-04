@@ -38,4 +38,29 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			projectContent
 		where MAINPROJECT_PROJECTNUM = #{mainProjectNum}
 	</select>
+	
+	<select id="projectContentSelectOne" resultType="ProjectContent">
+		select
+			*
+		from
+			projectContent
+		where
+			PROJECTCONTENT_NUM = #{projectContentNum}
+	</select>
+	
+	<update id="projectContentUpdate" parameterType="ProjectContent">
+		update PROJECTCONTENT
+		set
+			PROJECTCONTENT_TITLE = #{projectContent_title}
+			, PROJECTCONTENT_CONTENT = #{projectContent_content}
+			, PROJECTCONTENT_STARTDATE = #{projectContent_startDate}
+			, PROJECTCONTENT_ENDDATE = #{projectContent_endDate}
+			, PROJECTCONTENT_COLOR = #{projectContent_color}
+		where
+			projectContent_num = #{projectContent_num}
+	</update>
+	
+	<delete id="projectContentDelete" parameterType="int">
+		delete from PROJECTCONTENT where PROJECTCONTENT_NUM = #{projectContent_num}
+	</delete>
 </mapper>

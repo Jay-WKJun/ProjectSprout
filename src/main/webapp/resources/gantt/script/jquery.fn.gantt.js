@@ -983,13 +983,17 @@ jQuery.browser = {};
             createProgressBar: function (days, cls, desc, label, dataObj) {
                 var cellWidth = tools.getCellSize();
                 var barMarg = tools.getProgressBarMargin() || 0;
-                var bar = $('<div class="bar"><div class="fn-label">' + label + '</div></div>')
+                var bar = $('<div class="bar" id="'+cls+'"><div class="fn-label" id="'+cls+'">' + label + '</div></div>')
                         .addClass(cls)
                         .css({
                             width: ((cellWidth * days) - barMarg) + 5
                         })
                         .data("dataObj", dataObj);
-
+               /* alert(days);
+                alert(cls); //얘가 customclass
+                alert(desc);
+                alert(label);
+                alert(dataObj);*/
                 if (desc) {
                     bar
                       .mouseover(function (e) {
@@ -1009,7 +1013,8 @@ jQuery.browser = {};
                 }
                 bar.click(function (e) {
                     e.stopPropagation();
-                    settings.onItemClick($(this).data("dataObj"));
+                    alert($(this).attr("id"));
+                    settings.onItemClick($(this).attr("id"));
                 });
                 return bar;
             },
@@ -1071,14 +1076,15 @@ jQuery.browser = {};
                                     var cFrom = from.attr("offset");
                                     var cTo = to.attr("offset");
                                     var dl = Math.floor((cTo - cFrom) / tools.getCellSize()) + 1;
-
+                                    
+                                    //여기 변경합니다
                                     _bar = core.createProgressBar(
-                                                dl,
-                                                day.customClass ? day.customClass : "",
-                                                day.desc ? day.desc : "",
-                                                day.label ? day.label : "",
-                                                day.dataObj ? day.dataObj : null
-                                            );
+                                    		dl,
+                                            day.customClass ? day.customClass : "",
+                                            day.desc ? day.desc : "",
+                                            day.label ? day.label : "",
+                                            day.dataObj ? day.dataObj : null
+                                           );
 
                                     // find row
                                     var topEl = $(element).find("#rowheader" + i);
@@ -1116,10 +1122,10 @@ jQuery.browser = {};
                                     var dl = Math.round((cTo - cFrom) / tools.getCellSize()) + 1;
 
                                     _bar = core.createProgressBar(
-                                             dl,
-                                             day.customClass ? day.customClass : "",
-                                             day.desc ? day.desc : "",
-                                             day.label ? day.label : "",
+                                    		dl,
+                                            day.customClass ? day.customClass : "",
+                                            day.desc ? day.desc : "",
+                                            day.label ? day.label : "",
                                             day.dataObj ? day.dataObj : null
                                         );
 
@@ -1156,11 +1162,11 @@ jQuery.browser = {};
                                     var dl = Math.round((cTo - cFrom) / tools.getCellSize()) + 1;
 
                                     _bar = core.createProgressBar(
-                                        dl,
-                                        day.customClass ? day.customClass : "",
-                                        day.desc ? day.desc : "",
-                                        day.label ? day.label : "",
-                                        day.dataObj ? day.dataObj : null
+                                    		dl,
+                                            day.customClass ? day.customClass : "",
+                                            day.desc ? day.desc : "",
+                                            day.label ? day.label : "",
+                                            day.dataObj ? day.dataObj : null
                                     );
 
                                     // find row
@@ -1182,11 +1188,11 @@ jQuery.browser = {};
 
                                     var dl = Math.floor(((dTo / 1000) - (dFrom / 1000)) / 86400) + 1;
                                     _bar = core.createProgressBar(
-                                                dl,
-                                                day.customClass ? day.customClass : "",
-                                                day.desc ? day.desc : "",
-                                                day.label ? day.label : "",
-                                                day.dataObj ? day.dataObj : null
+                                    		dl,
+                                            day.customClass ? day.customClass : "",
+                                            day.desc ? day.desc : "",
+                                            day.label ? day.label : "",
+                                            day.dataObj ? day.dataObj : null
                                         );
 
                                     // find row

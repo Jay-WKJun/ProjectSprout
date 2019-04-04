@@ -4,14 +4,17 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -23,7 +26,6 @@ import com.team.sprout.util.TempJson;
 import com.team.sprout.vo.MainProject;
 import com.team.sprout.vo.Member;
 import com.team.sprout.vo.ProjectContent;
-import com.team.sprout.vo.ProjectMember;
 
 @Controller
 public class TimeTableController {
@@ -71,6 +73,9 @@ public class TimeTableController {
 			if (pc.getMember_num() == memberNumSave) {
 				//이곳은 같은 줄에 일만 추가해주는 곳
 				System.out.println("value추가하는 곳 옴");
+				
+				object = new JsonObject();
+				
 				//여기서 부터 넣어줄 value객체 생성
 				Date start = null;
 				Date end = null;
@@ -89,9 +94,13 @@ public class TimeTableController {
 				
 				object.addProperty("from", "/Date("+starttimeCh+")/");
 				object.addProperty("to", "/Date("+endtimeCh+")/");
+				object.addProperty("desc", pc.getProjectContent_content());
 				object.addProperty("label", pc.getProjectContent_title());
-				object.addProperty("customClass", pc.getProjectContent_color());
+				object.addProperty("customClass", pc.getProjectContent_num());
+				object.addProperty("dataObj", pc.getProjectContent_content());
 				//여기까지 생성 완료
+				
+				System.out.println(object.toString());
 				
 				values.add(object);
 				//만든 value객체 values 리스트에 추가
@@ -103,6 +112,7 @@ public class TimeTableController {
 				System.out.println("새로운거 만드는 곳 옴...");
 				//만약 새로 시작한 것이 아니라면(비어있지 않다면) 최종 리스트에 넣고 시작해야한다.
 				if(count != 0) {
+					//이거 아직 테스트 안 끝남.
 					System.out.println("중복되는 데이터를 모두 넣고 끝낸다.");
 					tj.setValues(values);
 					
@@ -122,6 +132,8 @@ public class TimeTableController {
 				//임시 JSON객체 초기화
 				values = new ArrayList<JsonObject>();
 				//value 리스트 초기화
+				object = new JsonObject();
+				//json초기화
 				
 				tj.setName(member.getMember_name()); //수행하는 사람 이름이 들어간다.
 				tj.setDesc("...");//안쓰는 데이터
@@ -143,13 +155,13 @@ public class TimeTableController {
 				
 				object.addProperty("from", "/Date("+starttimeCh+")/");
 				object.addProperty("to", "/Date("+endtimeCh+")/");
+				object.addProperty("desc", pc.getProjectContent_content());
 				object.addProperty("label", pc.getProjectContent_title());
-				object.addProperty("customClass", pc.getProjectContent_color());
+				object.addProperty("customClass", pc.getProjectContent_num());
+				object.addProperty("dataObj", pc.getProjectContent_content());
 				
 				System.out.println(object.toString());
 				values.add(object);
-				
-				tj.setValues(values);
 				
 				memberNumSave = pc.getMember_num();
 				count++;
@@ -158,6 +170,9 @@ public class TimeTableController {
 		}//foreach
 		System.out.println("마지막 들어갑니다.");
 		//여기서 마지막으로 만들어진 객체까지 넣고 끝낸다.
+		for (JsonObject value : values) {
+			System.out.println(value.toString());
+		}
 		tj.setValues(values);
 		
 		String result = gson.toJson(tj);
@@ -175,15 +190,17 @@ public class TimeTableController {
 	 * task 만드는 jsp로 가는 메소드
 	 */
 	@RequestMapping(value = "/timetableMake", method = RequestMethod.GET)
-	public String tableMakeGo(ProjectContent pc, Model model) {
+	@ResponseBody
+	public Map<String, Object> tableMakeGo(Model model) {
 	
+		Map<String, Object> results = new HashMap<>();
 		//여기서 메인프로젝트랑 프로젝트에 소속되있는 member 넘겨주기
 		String mainProjectNum = "6da5455f-abe5-4390-81c6-e05e3f7e1ddc";
 		//프로젝트 상세정보에 들어올때 session으로 해당 프로젝트 num을 등록하고 꺼내서 쓴다.
 		
 		MainProject mp = mainrepo.forgoproject(mainProjectNum);
 		
-		model.addAttribute("modelTest", mp.getMainproject_title());
+		results.put("mainproject_title", mp.getMainproject_title());
 		
 		//미현상이 구현중... memberselectAll
 		//List<ProjectMember> projectMembers = prrepo.projectmemberSelectAll(mainProjectNum);
@@ -193,7 +210,7 @@ public class TimeTableController {
 		model.addAttribute("projectNumTest", mainProjectNum);
 		//member객체를 가져와서 그것의 번호를 사용한다.
 		model.addAttribute("memberNumTest", 4);
-		
+		results.put("memberNum", 4);
 		
 		/*나중에 멤버가 많아질대 이걸로 쓴다.
 		 * int i = 0;
@@ -204,7 +221,7 @@ public class TimeTableController {
 			i++;
 		}*/
 		
-		return "timetable/createTask";
+		return results;
 	}
 	
 	
@@ -215,7 +232,10 @@ public class TimeTableController {
 	@RequestMapping(value = "/timetableMake", method = RequestMethod.POST)
 	public String tableMake(ProjectContent pc, Model model) {
 		
+		String mainProjectNum = "6da5455f-abe5-4390-81c6-e05e3f7e1ddc";
 		System.out.println("타임테이블 만들기 컨트롤러 시작");
+		pc.setMainproject_projectNum(mainProjectNum);
+		pc.setMember_num(4);
 		System.out.println(pc.toString());
 		pc.setProjectContent_color("앞으로 이거는 줄위에 간단하게 표현되는 글자로 사용합니다(타이틀 대신)");
 		//그냥 바로 DB에 쓰고 redirect로 timetable로딩하는 컨트롤러 실행시켜서 전체불러오기 다시하자.
@@ -230,13 +250,7 @@ public class TimeTableController {
 	 * 자세히보여주는 페이지로 간다.
 	 */
 	@RequestMapping(value = "/timetableDetail", method = RequestMethod.GET)
-	public String tableDetailGo(Model model) {
-		
-		/*model.addAttribute("", attributeValue);
-		model.addAttribute("", attributeValue);
-		model.addAttribute("", attributeValue);
-		model.addAttribute("", attributeValue);*/
-		
+	public String tableDetailGo() {
 		
 		return "showDetail";
 	}
@@ -250,5 +264,43 @@ public class TimeTableController {
 		return "redirect:/timetable";
 	}
 	
+	/*
+	 * projectContentNum으로 projectContent를 하나 찾아온다.
+	 * 시간표 바가 가지고 있는 projectContentNum을 받아서 projectContent를 찾아 ajax로 보내준다.
+	 */
+	@RequestMapping(value = "/checkPC", method = RequestMethod.GET)
+	@ResponseBody
+	public ProjectContent checkPC(int pcNum) {
+		System.out.println(pcNum + "  pc체크를 위한 멤버아이디 에이젝스에서 받기중");
+		ProjectContent pc = pcRepo.projectContentSelectOne(pcNum);
+		
+		return pc;
+	}
+	
+	/*
+	 * 완료버튼으로 이곳에 옴.
+	 * 업데이트 후에 리다이렉트
+	 */
+	@RequestMapping(value = "/updateContent", method = RequestMethod.POST)
+	public String updateContent(ProjectContent pc) {
+		int result = pcRepo.projectContentUpdate(pc);
+		System.out.println("update 성공 " + result);
+		
+		
+		return "redirect:/timetable";
+	}
+	
+	
+	/*
+	 * 삭제버튼후 이곳으로 온다.
+	 */
+	@RequestMapping(value = "/deleteContent", method = RequestMethod.GET)
+	public String deleteContent(int projectContent_num) {
+		int result = pcRepo.projectContentDelete(projectContent_num);
+		System.out.println("delete 성공 " + result);
+		
+		
+		return "redirect:/timetable";
+	}
 	
 }

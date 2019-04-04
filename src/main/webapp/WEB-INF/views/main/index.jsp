@@ -69,6 +69,7 @@
 					<div class="userInfo_right">
 						<c:if test="${sessionScope.loginId == null }">
 							<button class="btn btn-primary" id="timeTable">타임테이블</button>
+							<button class="btn btn-primary" id="wantedBoard">WantedBoard</button>
 							
 							<div class="myInfo">
 									<div class="dropdown dropleft float-right h-100">
@@ -90,6 +91,7 @@
 						</c:if>
 						<c:if test="${sessionScope.loginId != null }">
 								<button class="btn btn-primary" id="timeTable">타임테이블</button>
+								<button class="btn btn-primary" id="wantedBoard">WantedBoard</button>
 								<div class="myInfo">
 									<div class="dropdown dropleft float-right h-100">
 										<div data-toggle="dropdown">

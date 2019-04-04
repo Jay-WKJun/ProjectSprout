@@ -11,15 +11,15 @@ $(function() {
 		location.href = "update";
 	});
 	
-	//구글 로그아웃
-	$('#googleLogout').on('click', function() {
-		location.href = "login";
-	});
-	
 	//나중에 삭제
 	$('#timeTable').on('click', function(){
 		location.href = "timetable";
-	})
+	});
+	
+	//나중에 삭제
+	$('#wantedBoard').on('click', function(){
+		location.href = "wantedBoard";
+	});
 
 	$('#newProjectBtn').on('click', function() {
 
@@ -71,17 +71,3 @@ $(function() {
 	})
 
 });
-
-// 구글 로그아웃 기능
-function signOut() {
-	gapi.load('auth2', function() {
-		gapi.auth2.init();
-	});
-	
-	var auth2 = gapi.auth2.getAuthInstance();
-
-	auth2.signOut().then(function() {
-		console.log('User signed out.');
-		window.location.href = 'logout';
-	});
-}
