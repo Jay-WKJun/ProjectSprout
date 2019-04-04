@@ -98,7 +98,7 @@
 										<div class="dropdown-menu">
 											<h5 class="dropdown-header">${loginName}</h5>
 											<div style="margin-top: 20px">
-												<a class="list-group-item list-group-item-action border-left-0 border-right-0">회원정보</a>
+												<a id="memberInfoBtn" class="list-group-item list-group-item-action border-left-0 border-right-0">회원정보</a>
 												<a id="logoutBtn" class="list-group-item list-group-item-action border-left-0 border-right-0">로그아웃</a>
 											</div>
 										</div>
@@ -244,7 +244,10 @@
 				</form>
 												
 			</div>
+			</div>
 		</div>
+		</div>
+	</div>
 	</div>
 	<script src="js/bootstrap.bundle.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
