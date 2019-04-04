@@ -11,6 +11,11 @@
 		<typeAlias type="com.team.sprout.vo.ProjectMember" alias="ProjectMember" />
 		<typeAlias type="com.team.sprout.vo.Postit" alias="Postit" />
 		<typeAlias type="com.team.sprout.vo.ProjectContent" alias="ProjectContent" />
+		<typeAlias type="com.team.sprout.vo.Message" alias="Message" />
+		<typeAlias type="com.team.sprout.vo.ChatRoom" alias="ChatRoom" />
+		<typeAlias type="com.team.sprout.vo.Text" alias="Text" />
+		<typeAlias type="com.team.sprout.vo.UpDown" alias="UpDown" />
+	
 	</typeAliases>
 	
 	<mappers>
@@ -19,6 +24,8 @@
 		<mapper resource="mappers/projectMemberMapper.xml" />
 		<mapper resource="mappers/workSpaceMapper.xml" />
 		<mapper resource="mappers/projectContentMapper.xml" />
+		<mapper resource="mappers/updownMapper.xml" />
+		<mapper resource="mappers/textMapper.xml" />
 
 	</mappers>
 </configuration>

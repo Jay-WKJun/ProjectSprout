@@ -22,7 +22,9 @@ import com.team.sprout.dao.MainProjectRepository;
 import com.team.sprout.dao.MemberRepository;
 import com.team.sprout.dao.ProjectMemberRepository;
 import com.team.sprout.util.profile_picture;
+import com.team.sprout.vo.ChatRoom;
 import com.team.sprout.vo.Member;
+
 
 @Controller
 public class MemberController {
@@ -86,13 +88,13 @@ public class MemberController {
 	 * login POST
 	 */
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String loginP(String id, String password, boolean idChecked,
+	public String loginP(Member member, boolean idChecked,
 			@CookieValue(value = "idChecked", defaultValue = "") String uid, Model model, HttpSession session,
 			HttpServletResponse response) {
 
 		if (idChecked) {
 			// idCheck를 눌럿다면
-			Cookie cookie = new Cookie("idChecked", id);
+			Cookie cookie = new Cookie("idChecked", member.getMember_id());
 			// ()안에는 초단위 int, 24시간동안 cookie를 유지하라는 얘기
 			cookie.setMaxAge(24 * 60 * 60);
 			// HDD에 쿠키에 저장하라는 명령이다.
@@ -104,25 +106,27 @@ public class MemberController {
 			response.addCookie(cookie);
 		}
 
-		Map<String, String> map = new HashMap<>();
+		/*Map<String, String> map = new HashMap<>();
 
 		map.put("id", id);
 		map.put("password", password);
 
 		// 입력된 정보로 DB가서 그 정보를 가져온다.
-		Member m = repo.selectOne(map);
-
+		Member m = repo.selectOne(map);*/
+		Member getMember = repo.selectOne(member.getMember_id());
+		
 		// 로그인 성공
 		String message = null;
-		if (m == null || !(m.getMember_id().equals(id) && m.getMember_id().equals(id))) {
+		if (getMember == null || !(getMember.getMember_id().equals(member.getMember_id()) && getMember.getMember_password().equals(member.getMember_password()))) {
 			message = "아이디 혹은 비밀번호가 맞지 않습니다.";
 			model.addAttribute("message", message);
 			return "member/loginForm";
 		} else {
 			System.out.println("로그인 성공 **********************");
-			session.setAttribute("loginId", m.getMember_id());
-			session.setAttribute("loginName", m.getMember_name());
-			session.setAttribute("loginNum", m.getMember_num());
+			session.setAttribute("loginId", getMember.getMember_id());
+			session.setAttribute("loginName", getMember.getMember_name());
+			session.setAttribute("member_num", getMember.getMember_num());
+			System.out.println(getMember.getMember_num());
 		}
 		return "redirect:/";
 	}
@@ -131,25 +135,24 @@ public class MemberController {
 	 * update GET
 	 */
 	@RequestMapping(value = "/update", method = RequestMethod.GET)
-	public String update(HttpSession session, Model model) {
-
+	public String update(Member member, HttpSession session, Model model) {
+/*
 		String id = (String) session.getAttribute("loginId");
 		String password = (String) session.getAttribute("loginPassword");
-
+*//*
 		Map<String, String> map = new HashMap<>();
 
 		map.put("id", id);
-		map.put("password", password);
+		map.put("password", password);*/
 
-		Member member = repo.selectOne(map);
-		System.out.println(member.toString());
+		Member getMember = repo.selectOne(member.getMember_id());
 
-		model.addAttribute("num", member.getMember_num());
-		model.addAttribute("id", member.getMember_id());
-		model.addAttribute("password", member.getMember_password());
-		model.addAttribute("name", member.getMember_name());
-		model.addAttribute("phone", member.getMember_phone());
-		model.addAttribute("address", member.getMember_address());
+		model.addAttribute("num", getMember.getMember_num());
+		model.addAttribute("id", getMember.getMember_id());
+		model.addAttribute("password", getMember.getMember_password());
+		model.addAttribute("name", getMember.getMember_name());
+		model.addAttribute("phone", getMember.getMember_phone());
+		model.addAttribute("address", getMember.getMember_address());
 
 		return "member/updateForm";
 	}
@@ -222,6 +225,25 @@ public class MemberController {
 	@RequestMapping(value = "/memberInfo", method = RequestMethod.GET)
 	public String memberInfo() {
 		return "member/memberInfo";
+	}
+	
+	
+	@RequestMapping(value = "/basicChatRoom", method = RequestMethod.GET)
+	public String basicChatRoom() {
+		return "websocket/basicChatRoom";
+	}
+	
+	@RequestMapping(value = "/multiChatRoom", method = RequestMethod.GET)
+	public String multiChatRoom(int chatRoom_num, String chatRoom_name, Model model) {
+			ChatRoom cr = new ChatRoom();
+			cr.setChatRoom_name("임시방이름");
+			cr.setChatRoom_num(chatRoom_num);
+				System.out.println(chatRoom_num);
+				int result =repo.insertRoomnum(cr);
+		model.addAttribute("chatRoom_num",chatRoom_num);
+		
+
+		return "websocket/multiChatRoom";
 	}
 
 }

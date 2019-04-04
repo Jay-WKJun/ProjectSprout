@@ -27,22 +27,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		)
 	</insert>
 	
-	<select id="selectOne" parameterType="Map" resultType="Member">
-		select 
-			MEMBER_NUM
-			, MEMBER_ID
-			, MEMBER_PASSWORD
-			, MEMBER_NAME
-			, MEMBER_PHONE
-			, MEMBER_ADDRESS
-			, MEMBER_LOGINDATE
-		from 
-			member
-		where
-			member_id = #{id} 
-		and 
-			member_password = #{password}
-	</select>
+	<select parameterType="String" id="selectOne"
+	resultType="Member">
+	select
+	member_num,
+	member_id,
+	member_password,
+	member_name
+	from
+	member
+	where
+	member_id = #{userId}
+	
+
+</select>
+	
 	
 	<select id="searchMember" resultType="Member">
 		select *
@@ -71,5 +70,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	select * from member where member_id=#{member_id}
 	</select>
 	
+	<!--채팅방 번호 매기기  -->
+	<insert id="insertcr" parameterType="ChatRoom">
+	insert into chatRoom
+	(
+	chatRoom_num
+	, chatRoom_name
+	)
+	values
+	(
+	#{chatRoom_num}
+	, #{chatRoom_name}
+	)
+</insert>
 
 </mapper>

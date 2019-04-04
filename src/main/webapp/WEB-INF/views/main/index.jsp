@@ -118,6 +118,10 @@
 					<div class="contentSpace_right"></div>
 				</div>
 			</div>
+			<!--채팅   -->
+			<a href="basicChatRoom">일반 채팅 방</a>
+			<a href="multiChatRoom?chatRoom_num=1">1번방</a>
+			<a href="multiChatRoom?chatRoom_num=2">2번방</a>
 			<div id="newProject" style="display: none">
 				<div class="contentSpace contentSpace_topMargin">
 					<div class="contentSpace_left"></div>

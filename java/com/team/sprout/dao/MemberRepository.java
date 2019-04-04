@@ -6,8 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.team.sprout.vo.ChatRoom;
 import com.team.sprout.vo.Member;
-
 
 
 @Repository
@@ -23,12 +23,15 @@ public class MemberRepository {
 		return result;
 	}
 
-	public Member selectOne(Map<String, String> map) {
+	public Member selectOne(String userId) {
 		MemberDAO dao = session.getMapper(MemberDAO.class);
-		Member m = dao.selectOne(map);
+		Member member = null;
 		
-		return m;
+		member = dao.selectOne(userId);
+		
+		return member;
 	}
+
 
 	public int updateMember(Member member) {
 		MemberDAO dao = session.getMapper(MemberDAO.class);
@@ -48,6 +51,14 @@ public class MemberRepository {
 		Member result = dao.checkId(id);
 		return result; 
 		
+	}
+
+	
+	
+	public int insertRoomnum(ChatRoom cr) {
+		MemberDAO dao = session.getMapper(MemberDAO.class);
+		int result = dao.insertcr(cr);
+		return result;
 	}
 
 }
