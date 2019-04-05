@@ -11,6 +11,7 @@
 		<typeAlias type="com.team.sprout.vo.ProjectMember" alias="ProjectMember" />
 		<typeAlias type="com.team.sprout.vo.Postit" alias="Postit" />
 		<typeAlias type="com.team.sprout.vo.ProjectContent" alias="ProjectContent" />
+		<typeAlias type="com.team.sprout.vo.WantedBoard" alias="WantedBoard" />
 	</typeAliases>
 	
 	<mappers>
@@ -19,6 +20,6 @@
 		<mapper resource="mappers/projectMemberMapper.xml" />
 		<mapper resource="mappers/workSpaceMapper.xml" />
 		<mapper resource="mappers/projectContentMapper.xml" />
-
+		<mapper resource="mappers/wantedBoardMapper.xml" />
 	</mappers>
 </configuration>

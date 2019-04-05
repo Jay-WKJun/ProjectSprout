@@ -34,8 +34,8 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 40%;
-  height: 50%;
+  width: 35%;
+  height: 55%;
   background-color: #fff;
   border: 5px solid #3571B5;
   z-index: 10;
@@ -139,9 +139,9 @@
 		//새로 쓰고 db에 쓰면서 redirect요청으로 새로고침을 한다.
 		$(function() {
 			
-			$('#regist').click(function(){
-				layer_popup('#layer1');
-			});
+			/* $('#regist').click(function(){
+				layer_popup('#layer2');
+			}); */
 			
 			
 			//밑에 source에 들어가는 데이터 형은 array name, desc, value(from, to label, customClass)
