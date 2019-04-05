@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.team.sprout.dao.TextMapper">
+	<insert id="TextInsert" parameterType="Text">
+		insert into chat
+		(
+		chat_num,
+		chat_date,
+		chat_content,
+		chatRoom_num,
+		member_num
+		)
+		values
+		(
+		chat_SEQ.nextval,
+		sysdate,
+		#{chat_content},
+		#{chatRoom_num},
+		#{member_num}
+		)
+	</insert>
+
+	<select id="printMessage" resultType="Text">
+		select * from chat where chatRoom_num = #{chatRoom_num}
+	</select>
+</mapper>
