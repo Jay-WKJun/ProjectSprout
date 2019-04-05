@@ -61,13 +61,17 @@
 		text-align:right;
 	}
 </style>
+<script type="js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+
+
+
+</script>
 </head>
 <body>
 
 <h1>I've come!!</h1>
-<c:forEach var="item" items="${sendTexts}">
-	${item }<br>
-</c:forEach>
+
 
 <div id="wrapper">
 
@@ -98,19 +102,22 @@
 	</tr>
 	
 	<!-- 게시글 출력 반복 -->
-	<c:forEach var="board" items="${boardList}" varStatus="stat">	
+	<%-- <c:forEach var="board" items="${boardList}" varStatus="stat"> --%>	
 		<tr>
 			<td>${stat.count + navi.startRecord}</td>
 			<td>
 				<a href="boardDetail?currentPage=${page}&searchItem=${searchItem}&searchWord=${searchWord}&boardnum=${board.boardnum}">${board.title}</a>
-				<c:if test="${board.originalfile != null}">
+				<%-- <c:if test="${board.originalfile != null}">
 					<img src="images/attachment.png" />
-				</c:if>
+				</c:if> --%>
+				<c:forEach var="item" items="${sendTexts}">
+					${item }<br>
+				</c:forEach>
 			</td>
 			<td>${board.regdate}</td>
 			<td>${board.userid }</td>
 		</tr>
-	</c:forEach>
+	<%-- </c:forEach> --%>
 </table>
 <!--주목!!!! '!= null' = 'not empty' -->
 
