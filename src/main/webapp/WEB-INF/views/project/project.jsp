@@ -30,7 +30,7 @@
 						data-toggle="tab" href="#home">멤버</a></li>
 					<li class="nav-item"><a class="nav-link" data-toggle="tab"
 						href="#menu1">메세지</a></li>
-					<li class="nav-item"><a class="nav-link" data-toggle="tab"
+					<li class="nav-item" id="noticeCheckBtn"><a class="nav-link" data-toggle="tab"
 						href="#menu2">공지사항</a></li>
 				</ul>
 				<!-- 같은 프로젝트일때 참여인원  출력 -->
@@ -53,7 +53,7 @@
 								<div data-toggle="dropdown">${list.member_name}</div>
 								<div class="dropdown-menu">
 									<h5 class="dropdown-header">${list.member_name}</h5>
-									<div style="margin-top: 20px" data-pno="${list.member_num}">
+									<div style="margin-top: 20px" data-pno="${list.member_num}" id="forkick">
 										<a href="#"
 											class="list-group-item list-group-item-action border-left-0 border-right-0">플래너</a>
 										<a href="#"
@@ -61,7 +61,7 @@
 											보내기</a>
 										<c:if test="${member_rank == 5}"> 
 											 <a href="#"
-											class="list-group-item list-group-item-action border-left-0 border-right-0">강퇴</a>
+											class="kickMember list-group-item list-group-item-action border-left-0 border-right-0">내보내기</a>
 										</c:if> 
 									</div>
 								</div>
@@ -71,8 +71,9 @@
 
 					</div>
 					<div id="noticeSpace">
-						
 					</div>
+
+					
 				</div>
 			</div>
 		</div>
@@ -112,6 +113,8 @@
 				<div class="mainSpace_top_side" style="text-align: right">
 					<div class="contentItem" style="margin-right: 20px">
 					<span id="noticeBtnSpace">
+						
+				
 					</span>
 						<button class="btn btn-dark" id="noticeBtn" data-toggle="1">
 							<i class="fas fa-bullhorn fa-lg"></i>

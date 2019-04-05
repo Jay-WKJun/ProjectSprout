@@ -11,6 +11,7 @@
 		<typeAlias type="com.team.sprout.vo.ProjectMember" alias="ProjectMember" />
 		<typeAlias type="com.team.sprout.vo.Postit" alias="Postit" />
 		<typeAlias type="com.team.sprout.vo.ProjectContent" alias="ProjectContent" />
+		<typeAlias type="com.team.sprout.vo.Notice" alias="Notice" />
 	</typeAliases>
 	
 	<mappers>

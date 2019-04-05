@@ -216,8 +216,7 @@
 							<button class="btn btn-dark w-25"
 								style="height: 50px; margin-right: 20px" id="openproject">시작</button>
 
-							<button type="button" class="btn btn-danger" style="height: 50px; width: 100px"
-								data-target="#whiteBoardModal" id="outOfProject">탈퇴</button>
+							
 
 							<div class="modal w-100 h-100" id="whiteBoardModal">
 								<div class="mainSpace">
