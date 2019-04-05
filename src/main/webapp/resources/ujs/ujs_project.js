@@ -33,6 +33,11 @@ $(function() {
 	//강퇴버튼 
 	$('.kickMember').on('click',kickMember)
 	
+	//나중에 삭제
+	$('#timeTable').on('click', function(){
+		location.href = "timetable";
+	});
+	
 })
 
 

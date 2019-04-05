@@ -237,6 +237,11 @@
 					url : 'timetableMake',
 					success : function(results){
 						alert('success when load the createForm!' + JSON.stringify(results));
+						var options = '';
+						$.each(results, function(key, value){
+	        				options += '<option value="'+value.member_num+'">'+value.member_name+'</option>';
+	        				
+	        			});
 						
 						$('.ctxt').html('<form method="POST" action="timetableMake" id="createForm" name="createForm" accept-charset="utf-8">'
 			        			+'<input type="text" id="projectContent_title" name="projectContent_title" placeholder="title"><br>'
@@ -244,6 +249,10 @@
 			        			+'<input type="date" id="projectContent_startDate" name="projectContent_startDate"><br>'
 			        			+'<input type="date" id="projectContent_endDate" name="projectContent_endDate"><br>'
 			        			+'<input type="text" id="projectContent_color" name="projectContent_color"><br>'
+			        			+'<input type="hidden" id="mainproject_projectNum" name="mainproject_projectNum"><br>'
+			        			+'<select id="member_num" name="member_num">'
+			        			+ options
+			        			+'</select>' 
 			        			+'</form>'
 			        	);
 						
@@ -339,21 +348,14 @@
 	    	$('#createForm').submit();
 	    }
 	    
-	    
+	    //날짜변환 메소드
 	    function getFormatDate(date){
-
 	    	var year = date.getFullYear();                                 //yyyy
-
 	    	var month = (1 + date.getMonth());                     //M
-
 	    	month = month >= 10 ? month : '0' + month;     // month 두자리로 저장
-
 	    	var day = date.getDate();                                        //d
-
 	    	day = day >= 10 ? day : '0' + day;                            //day 두자리로 저장
-
 	    	return  year + '-' + month + '-' + day;
-
 	    }
 
 	    
