@@ -22,8 +22,10 @@ $(function() {
 	$('#modalCloseBtn').on('click', function() {
 		$('#whiteBoardModal').modal('hide');
 	})
+	//아이디 추가하기
 	$('#addmem').on('click',function(){
 		$('#addProjectMember').submit();
+		$('#addmem').attr('disabled','disabled');
 	})
 	
 	//공지사항 추가 버튼
@@ -33,10 +35,19 @@ $(function() {
 	//강퇴버튼 
 	$('.kickMember').on('click',kickMember)
 	
+	$('#projectDetail').on('click',function(){
+
+		detail();
+	})
+	
 })
 
 
 
+function detail(){
+	location.href ="detailPage";
+	
+}
 function init(){
 	
 	location.href ="project_go";
@@ -139,6 +150,7 @@ $(function(){
 				if (result.resp == 1 ) {
 					$('#addmemberMessage').html('추가가능한 아이디입니다. 추가하기를 누르세요');
 					$('#addmemberMessage').attr('style','color:#f23a3a');
+					$('#addmem').removeAttr('disabled');
 					
 				}
 				else if (result.resp ==2) {
