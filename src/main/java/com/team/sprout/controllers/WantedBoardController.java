@@ -1,50 +1,141 @@
 package com.team.sprout.controllers;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.team.sprout.dao.WantedBoardRepository;
+import com.team.sprout.util.PageNavigator;
+import com.team.sprout.vo.WantedBoard;
 
 @Controller
 public class WantedBoardController {
 
-	//WebDriver
-    private WebDriver driver;
-    
-    //Properties
-    public static final String WEB_DRIVER_ID = "webdriver.chrome.driver";
-    public static final String WEB_DRIVER_PATH = "C:/Users/Administrator/Dropbox/Utilities/selenium chrome driver/chromedriver.exe";
-    
-    //크롤링 할 URL
-    private String base_url;
-    
-    @RequestMapping(value = "/wantedBoard", method = RequestMethod.GET)
+	@Autowired
+	WantedBoardRepository wbRepo;
+
+	// WebDriver
+	private WebDriver driver;
+
+	// Properties
+	public static final String WEB_DRIVER_ID = "webdriver.chrome.driver";
+	public static final String WEB_DRIVER_PATH = "C:/Users/Administrator/Dropbox/Utilities/selenium chrome driver/chromedriver.exe";
+
+	// 크롤링 할 URL
+	private String base_url;
+
+	@RequestMapping(value = "/wantedBoard", method = RequestMethod.GET)
 	public String wantedBoard(Model model
-			/*,@RequestParam(value = "searchItem", defaultValue = "title") String searchItem, // 만약 변수가 없다면default값으로채워진다.
-			@RequestParam(value = "searchWord", defaultValue = "") String searchWord,
-			@RequestParam(value = "currentPage", defaultValue = "1") int currentPage // "1"이 int변수면 알아서 파싱됨.) 
-*/	){
+			,@RequestParam(value = "searchItem", defaultValue = "title") String searchItem // 만약 변수가 없다면default값으로채워진다.
+			,@RequestParam(value = "searchWord", defaultValue = "") String searchWord
+			,@RequestParam(value = "currentPage", defaultValue = "1") int currentPage // "1"이 int변수면 알아서 파싱됨.) 
+	){
     	//System Property SetUp
         System.setProperty(WEB_DRIVER_ID, WEB_DRIVER_PATH);
         
         //Driver SetUp
         driver = new ChromeDriver();
-        base_url = "https://www.naver.com";
+        base_url = "http://www.nipa.kr/main.it";
+        //!!이 로딩은 처음에만 해준다. static으로 true를 false로 바꿔줘서 해준다.
+        //크롤링 긁어오는 거는 새로운 클래스에 메소드를 하나씩 추가해서 사용한다.(검증작업까지 시켜준다.)
         
         try {
             //get page (= 브라우저에서 url을 주소창에 넣은 후 request 한 것과 같다)
             driver.get(base_url);
-            System.out.println(driver.getPageSource());
+            
+            WebElement we = driver.findElement(By.className("not02_color"));
+            we.click();
+            
+            List<WebElement> titles = driver.findElements(By.className("title"));
+            //제목을 뽑아내기
+            List<WebElement> dates = driver.findElements(By.className("date"));
+            //날짜 뽑아내기
+            
+            //가져온것을 wb객체에 넣고 list정렬
+            List<WantedBoard> wbListTemp = new ArrayList<>();
+            for (int i = 0; i < titles.size(); i++) {
+            	WantedBoard wb = new WantedBoard();
+				wb.setWantedBoard_title(titles.get(i).getText());
+				wb.setWantedBoard_date(dates.get(i).getText());
+				wbListTemp.add(wb);
+			}
+            
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            //오늘 날짜
+            Calendar c1 = Calendar.getInstance();
+            Long todayLong = c1.getTimeInMillis();
+            Long threeMonths = 7776000000L;
+           
+            for (WantedBoard wantedBoard : wbListTemp) {
+				if ((todayLong - sdf.parse(wantedBoard.getWantedBoard_date()).getTime()) >= threeMonths) {
+					//이 경우엔 아무것도 안하거나 있으면 지운다.
+					System.out.println(wantedBoard.getWantedBoard_title() + "   3개월 이상입니다...");
+					if (wbRepo.selectOneBoard(wantedBoard.getWantedBoard_title()) != null) {
+						//지운다.
+						System.out.println("3개월 이상이므로 지웁니다.");
+						
+					}
+				} else {
+					//3개월 이내의 데이터라면...
+					if (wbRepo.selectOneBoard(wantedBoard.getWantedBoard_title()) == null) {
+						//title로 select했는데 없다면 추가한다.
+						
+					}
+				}
+			}//여기까지 검증완료
+            
+            /*String startDate = "2019-01-05";
+            String endDate = "2019-04-05";
+            Long start = (sdf.parse(startDate).getTime());
+            Long end = (sdf.parse(endDate).getTime());
+            
+            System.out.println(start);
+            System.out.println(end);
+            System.out.println("3개월 long을 계산한 차이   :    " + (end - start));
+            //7776000000가 결과입니다.*/
+            
+            /*int listNumber = 0;
+            //List는 이어져있는 html을 기준으로 찾아서 하나씩 담긴다.
+            //List는 /로 끊긴 html을 기준으로 한개씩 담긴다.
+            System.out.println("여기서부턴 titles의 내용입니다.");
+            for (WebElement webElement : titles) {
+            	titlesTexts.add(webElement.getText());
+            	System.out.println(webElement.getText() +"    " + listNumber);
+            	listNumber++;
+			}
+            
+            System.out.println("여기서부턴 dates의 내용입니다.");
+            listNumber = 0;
+            for (WebElement webElement : dates) {
+            	System.out.println(webElement.getText() +"    " + listNumber);
+            	listNumber++;
+			}*/
+            
+           // System.out.println(driver.getPageSource());
+            
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            driver.close();
+            //driver.close();
         }
-        //크롤링
         
-      /*  int totalBoardCount = repo.totalBoardCount(searchItem, searchWord); // 총 게시글 수 가져오기
+        List<WantedBoard> wbList = wbRepo.selectAll();
+        //검증이 끝났으면 새로 모든 데이터를 불러온다.
+        
+        /*//이건 db에서 뿌려줄때 쓴다.
+       int totalBoardCount = wbRepo.totalBoardCount(searchItem, searchWord); // 총 게시글 수 가져오기
 		PageNavigator navi = new PageNavigator(currentPage, totalBoardCount);
 		// board 전체 게시글 가져오기
 		List<Board> boardList = repo.boardList(searchItem, searchWord, navi.getStartRecord(), navi.getCountPerPage());
@@ -61,8 +152,5 @@ public class WantedBoardController {
        
         return "wantedBoard/wantedBoard";
     }
-    
-    
-	
-	
+
 }

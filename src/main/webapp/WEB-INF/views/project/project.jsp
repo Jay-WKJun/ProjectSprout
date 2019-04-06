@@ -22,6 +22,7 @@
 	<div class="wrapper">
 		<div class="sideSpace">
 			<div class="sideSpace_top">
+				<button class="btn btn-primary" id="timeTable">타임테이블</button>
 				<a href="/sprout"><img class="webLogo" src="img/sprout_logo.png"></a>
 			</div>
 			<div class="sideSpace_bottom">

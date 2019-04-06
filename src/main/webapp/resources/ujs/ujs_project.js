@@ -33,12 +33,19 @@ $(function() {
 	//공지사항 버튼 
 	$('#noticeCheckBtn').on('click',nolist);
 	//강퇴버튼 
-	$('.kickMember').on('click',kickMember)
+	$('.kickMember').on('click',kickMember);
 	
+	//detail로 넘어가는 버튼
 	$('#projectDetail').on('click',function(){
 
 		detail();
-	})
+	});
+
+	//나중에 삭제
+	$('#timeTable').on('click', function(){
+		location.href = "timetable";
+	});
+
 	
 })
 

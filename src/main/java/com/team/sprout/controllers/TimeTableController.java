@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -43,14 +45,18 @@ public class TimeTableController {
 	 * 접속한 프로젝트의 일을 모두 불러오고 타임테이블까지 만드는 메소드
 	 */
 	@RequestMapping(value = "/timetable", method = RequestMethod.GET)
-	public String table(Locale locale, Model model) {
+	public String table(Locale locale, Model model, HttpSession session) {
 		System.out.println("타임테이블 컨트롤러 시작");
 		
-		String mainProjectNum = "6da5455f-abe5-4390-81c6-e05e3f7e1ddc";
+		//TODO:열자마자 schdule이 하나도 없는지 확인합니다. 없으면 table대신에 다른 것을 띄워줍니다. 추가해야함!!!!
+		
+		String mainProjectNum = (String)session.getAttribute("mainproject_projectnum");
 		//프로젝트 상세정보에 들어올때 session으로 해당 프로젝트 num을 등록하고 꺼내서 쓴다.
+		//project.jsp에 hidden으로 숨겨둔 곳에서 가져다가 사용할 수도 있다.
+				
+				//"6da5455f-abe5-4390-81c6-e05e3f7e1ddc";
 		
 		List<ProjectContent> pcList = pcRepo.projectContentSelectAll(mainProjectNum); 
-		//pc가 여러개 있는 arrayList를 가져와서 foreach로 전부 하나씩 꺼내서 만들어 넣어준다.
 		
 		Gson gson = new Gson();
 		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -87,7 +93,7 @@ public class TimeTableController {
 					System.out.println("데이트 변환 중 에러입니다.......");
 					e.printStackTrace();
 				}
-				//시간이 겹치지 않도록 유효성 검사 필요
+				//!!!!시간이 겹치지 않도록 유효성 검사 필요
 				
 				String starttimeCh = Long.toString(start.getTime());
 				String endtimeCh = Long.toString(end.getTime());
@@ -112,7 +118,7 @@ public class TimeTableController {
 				System.out.println("새로운거 만드는 곳 옴...");
 				//만약 새로 시작한 것이 아니라면(비어있지 않다면) 최종 리스트에 넣고 시작해야한다.
 				if(count != 0) {
-					//이거 아직 테스트 안 끝남.
+					//!이거 아직 테스트 안 끝남.
 					System.out.println("중복되는 데이터를 모두 넣고 끝낸다.");
 					tj.setValues(values);
 					
@@ -187,30 +193,35 @@ public class TimeTableController {
 	}
 	
 	/*
-	 * task 만드는 jsp로 가는 메소드
+	 * task 만드는 popup의 ajax pc데이터를 받아 클릭한 해당 task의 정보를 가져온다.
 	 */
 	@RequestMapping(value = "/timetableMake", method = RequestMethod.GET)
 	@ResponseBody
-	public Map<String, Object> tableMakeGo(Model model) {
+	public List<Member> tableMakeGo(Model model, HttpSession session) {
 	
-		Map<String, Object> results = new HashMap<>();
+		//Map<String, Object> results = new HashMap<>();
 		//여기서 메인프로젝트랑 프로젝트에 소속되있는 member 넘겨주기
-		String mainProjectNum = "6da5455f-abe5-4390-81c6-e05e3f7e1ddc";
+		
+		String mainProjectNum = (String)session.getAttribute("mainproject_projectnum");
+		
+		//"6da5455f-abe5-4390-81c6-e05e3f7e1ddc";
 		//프로젝트 상세정보에 들어올때 session으로 해당 프로젝트 num을 등록하고 꺼내서 쓴다.
 		
-		MainProject mp = mainrepo.forgoproject(mainProjectNum);
+		//해당프로젝트의 이름을 찾는다.
+		/*MainProject mp = mainrepo.forgoproject(mainProjectNum);
+		results.put("mainproject_title", mp.getMainproject_title());*/
 		
-		results.put("mainproject_title", mp.getMainproject_title());
+		List<Member> proMemberList = prrepo.projectmemberSelectAll(mainProjectNum);
+		//results.put("proMemberList", proMemberList);
 		
-		//미현상이 구현중... memberselectAll
+		//이걸로 해당프로젝트에 해당하는 인원만 select할 수 있게 제한한다.
 		//List<ProjectMember> projectMembers = prrepo.projectmemberSelectAll(mainProjectNum);
 		
-		//ProjectMember mem = projectMembers.get(0);
-		
 		model.addAttribute("projectNumTest", mainProjectNum);
+		
 		//member객체를 가져와서 그것의 번호를 사용한다.
 		model.addAttribute("memberNumTest", 4);
-		results.put("memberNum", 4);
+		
 		
 		/*나중에 멤버가 많아질대 이걸로 쓴다.
 		 * int i = 0;
@@ -221,7 +232,7 @@ public class TimeTableController {
 			i++;
 		}*/
 		
-		return results;
+		return proMemberList;
 	}
 	
 	
@@ -230,18 +241,16 @@ public class TimeTableController {
 	 * 
 	 */
 	@RequestMapping(value = "/timetableMake", method = RequestMethod.POST)
-	public String tableMake(ProjectContent pc, Model model) {
+	public String tableMake(ProjectContent pc, Model model, HttpSession session) {
 		
-		String mainProjectNum = "6da5455f-abe5-4390-81c6-e05e3f7e1ddc";
+		String mainProjectNum =	(String)session.getAttribute("mainproject_projectnum");
+		//"6da5455f-abe5-4390-81c6-e05e3f7e1ddc";
 		System.out.println("타임테이블 만들기 컨트롤러 시작");
 		pc.setMainproject_projectNum(mainProjectNum);
-		pc.setMember_num(4);
 		System.out.println(pc.toString());
-		pc.setProjectContent_color("앞으로 이거는 줄위에 간단하게 표현되는 글자로 사용합니다(타이틀 대신)");
 		//그냥 바로 DB에 쓰고 redirect로 timetable로딩하는 컨트롤러 실행시켜서 전체불러오기 다시하자.
 		int result = pcRepo.ProjectContentRegist(pc);
-		System.out.println(result);
-		
+		System.out.println("pc등록 = "+result);
 		
 		return "redirect:/timetable";
 	}
