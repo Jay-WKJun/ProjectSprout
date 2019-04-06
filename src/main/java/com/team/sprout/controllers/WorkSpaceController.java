@@ -1,5 +1,6 @@
 package com.team.sprout.controllers;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,6 +23,7 @@ import com.team.sprout.vo.Notice;
 import com.team.sprout.vo.Postit;
 import com.team.sprout.vo.ProjectMember;
 
+
 @Controller
 public class WorkSpaceController {
 	@Autowired
@@ -39,25 +41,23 @@ public class WorkSpaceController {
 
 		projectMembers = prrepo.projectmemberSelectAll(mainproject_projectnum);
 
-		// 프로젝트의 리더를 찾기 위한 메서드
-		List<ProjectMember> prlist = prrepo.findManager(mainproject_projectnum);
-		for (ProjectMember projectMember : prlist) {
+		  // 프로젝트의 리더를 찾기 위한 메서드
+		  List<ProjectMember> prlist = prrepo.findManager(mainproject_projectnum);
+		  for (ProjectMember projectMember : prlist) {
 
-			model.addAttribute("member_rank", projectMember.getMember_rank());
-			System.out.println(projectMember.getMember_rank());
-		}
+		   model.addAttribute("member_rank", projectMember.getMember_rank());
+		   System.out.println(projectMember.getMember_rank());
+		  }
 
-		List<MainProject> mainProjects = prrepo.findProjectName(mainproject_projectnum);
-		for (MainProject mainProject : mainProjects) {
+		  List<MainProject> mainProjects = prrepo.findProjectName(mainproject_projectnum);
+		  for (MainProject mainProject : mainProjects) {
 
-			model.addAttribute("MainProject_title", mainProject.getMainproject_title());
-		}
+		   model.addAttribute("MainProject_title", mainProject.getMainproject_title());
+		  }
 
-		model.addAttribute("mainproject_projectnum", mainproject_projectnum);
-		session.setAttribute("mainproject_projectnum", mainproject_projectnum);
-		model.addAttribute("projectMembersList", projectMembers);
-		
-
+		  model.addAttribute("mainproject_projectnum", mainproject_projectnum);
+		  session.setAttribute("mainproject_projectnum", mainproject_projectnum);
+		  model.addAttribute("projectMembersList", projectMembers);
 		
 		return "project/project";
 	}
