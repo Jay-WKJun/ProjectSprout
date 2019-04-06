@@ -31,6 +31,8 @@ import com.team.sprout.vo.ProjectContent;
 
 @Controller
 public class TimeTableController {
+	
+	//TODO:날짜가 겹치지 않게 validate해주는 것 필요
 
 	@Autowired
 	MemberRepository repo;
