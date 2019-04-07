@@ -59,9 +59,9 @@ public class MemberController {
 	/*
 	 * join POST
 	 */
-	@RequestMapping(value = "/join", method = RequestMethod.POST) // ------------------------------------ 하는 중.
+	@RequestMapping(value = "/join", method = RequestMethod.POST) 
 	public String joinP(Member member, MultipartFile upload) {
-
+		
 		profileFile pro = new profileFile();// 프로필 사진을 달기 위한 선언자
 
 		if (upload.isEmpty() != true) {
@@ -85,7 +85,6 @@ public class MemberController {
 	 */
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login() {
-
 		return "member/loginForm";
 	}
 
@@ -127,7 +126,7 @@ public class MemberController {
 			session.setAttribute("loginId", m.getMember_id());
 			session.setAttribute("loginName", m.getMember_name());
 			session.setAttribute("loginNum", m.getMember_num());
-			// ------------------------------------------------ login 후 이미지(파일) 불러오기
+			// ----------------------------------------------------- login 후 이미지(파일) 불러오기
 			String mime = null; // mime은 사진 형식인지 확인하기 위한것..... (image/jpeg)
 			String fullPath = m.getMemberImage_saveAddress(); // profile_img가 저장된 위치.
 
@@ -138,17 +137,16 @@ public class MemberController {
 					mime = Files.probeContentType(Paths.get(fullPath));
 					mime.contains("image"); // 해당 문자열 안에 내가 원하는 문자가 포함되어 있는가
 					session.setAttribute("mime", mime); // .jsp에 가져갈 이미지 파일을 담았다.
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+				} catch (IOException e) { e.printStackTrace(); }
 			} // if & else
-				// ----------------------------------------------------- 환.
+			// ----------------------------------------------------- 환.
 		}
 		return "redirect:/";
 	}
 
+	
 	/*
-	 * ID로 img파일 불러오기.
+	 * ID로 img파일 불러오기. (메인화면에 img 띄우기.)
 	 */
 	@RequestMapping(value = "/download", method = RequestMethod.GET) // anchor tag
 	public void download(String loginId, HttpServletResponse response) {
@@ -157,63 +155,19 @@ public class MemberController {
 
 		FileInputStream filein = null;
 		ServletOutputStream fileout = null;
-
-		try {
-			filein = new FileInputStream(fullPath);// must to checked by try & catch
-			fileout = response.getOutputStream();
-			FileCopyUtils.copy(filein, fileout);
-
-			filein.close();
-			fileout.close();
-		} catch (IOException e) {
-			e.printStackTrace();
+		if(fullPath != null) {
+			try {
+				filein = new FileInputStream(fullPath);// must to checked by try & catch
+				fileout = response.getOutputStream();
+				FileCopyUtils.copy(filein, fileout);
+				
+				filein.close();
+				fileout.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}// 이거 지우면 프로필 사진 못불러옴 (by 환.)
-
-	/*
-	 * update GET
-	 */
-	@RequestMapping(value = "/update", method = RequestMethod.GET)
-	public String update(HttpSession session, Model model) {
-		System.out.println("update_get");
-		System.out.println();
-		String id = (String) session.getAttribute("loginId");
-		String password = (String) session.getAttribute("loginPassword");
-
-		Map<String, String> map = new HashMap<>();
-
-		map.put("id", id);
-		map.put("password", password);
-
-		Member member = repo.selectOne(map);
-		System.out.println(member.toString());
-
-		model.addAttribute("num", member.getMember_num());
-		model.addAttribute("id", member.getMember_id());
-		model.addAttribute("password", member.getMember_password());
-		model.addAttribute("name", member.getMember_name());
-		model.addAttribute("phone", member.getMember_phone());
-		model.addAttribute("address", member.getMember_address());
-
-		return "member/updateForm";
-	}
-
-	/*
-	 * update POST 실제 작동부분
-	 */
-	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public String updateP(Member member, HttpSession session, MultipartFile newPicture) {
-		System.out.println("update_get");
-		System.out.println();
-		System.out.println("new"+member.toString());
-		/*int result = repo.updateMember(member);
-		// 확인용
-		System.out.println(result);
-
-		session.invalidate();// 세션 삭제.
-*/
-		return "redirect:/";
-	}
 
 	/*
 	 * logout GET
@@ -274,8 +228,11 @@ public class MemberController {
 	@RequestMapping(value = "/memberInfo", method = RequestMethod.GET) // ------------------------ ㅠㅠ(아직 진행중.)
 	public String memberInfo(Member meber, HttpSession session, Model model) {
 		String loginId = (String) session.getAttribute("loginId"); // session에 저장된 id 불러오기.
-		System.out.println("---------- 회원가입 page ----------");
+		
+		System.out.println("--- 회원정보 page (/memberInfo.GET)---");
 		System.out.println("session에 저장된 id : " + loginId);
+		System.out.println();
+		
 		Member member = repo.checkId(loginId);
 
 		String mime = null; // mime은 사진 형식인지 확인하기 위한것..... (image/jpeg)
@@ -288,26 +245,132 @@ public class MemberController {
 				mime = Files.probeContentType(Paths.get(fullPath));
 				if (mime.contains("image")) { // 해당 문자열 안에 내가 원하는 문자가 포함되어 있는가
 					session.setAttribute("mime", mime); // .jsp에 가져갈 이미지 파일을 담았다.
+				}else {
+					System.out.println("hhhh");
 				}
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		} // if & else
-
-		model.addAttribute("member", member);
+		session.setAttribute("member", member);
 
 		return "member/memberInfo";
 	}
 
 	/*
 	 * 회원정보 수정 POST
+	 * process - 세션(ID)을 통해 회원정보 불러오기(파일을 삭제하기 위해) - 기존파일 삭제 - 새파일 입력 - 회왼정보 update 
 	 */
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
-	public String modify(Member member, MultipartFile newPicture) {
-		System.out.println("수정된 정보 : "+member.toString());
+	public String modify(Member member, HttpSession session, MultipartFile newPicture) {
+		// ------------------------------------------------------------ 세션에 ID로 회원정보 불러오기
+		profileFile pro = new profileFile();// 프로필 사진을 달기 위한 선언자
+
+		String id = (String) session.getAttribute("loginId");
+		Member session_info = repo.checkId(id); // 기본 session에 저장된 ID로 뽑아온 정보
 		
+		System.out.println("---------- information of modify ----------");
+		System.out.println("session_info >> "+ session_info);	// old info in session     (id)
+		System.out.println("new member   >> "+ member);			// new info as MEMBER type (name, pw, phone, add, old file info)
+		System.out.println("oldPicture   >> "+ session_info.getMemberImage_saveAddress());
+		System.out.println("newPicture   >> "+ newPicture);
+		System.out.println("===========================================");
+		
+		
+		
+		
+		
+		
+// 0. 기존의 프로필 사진 O  --> 삭제 X (ajax로 따로) 후에는 2번이나 3번으로 시작한다.
+		
+		if (newPicture.isEmpty() != true) { 						// 입력받은 프로필 사진이 있다.
+			if(session_info.getMemberImage_saveAddress() != null){	// 기존의 프로필 사진이 있다. 
+// 1. 기존의 프로필 사진 O  --> 새로운 프로필 사진 O
+				System.out.println(">> 기존의 프로필 사진 O  --> 새로운 프로필 사진 O");
+				// ------------------------------------------------------------ 내가 필요한 getMemberImage_saveAddress 찾기
+				String oldPath = session_info.getMemberImage_saveAddress();
+				System.out.println("삭제하려고 하는 파일의 fullPath : "+ oldPath);
+				// ------------------------------------------------------------ getMemberImage_saveAddress으로 파일 삭제
+				pro.deletefile(oldPath); //실제적으로 삭제하는 부분.
+				// ------------------------------------------------------------ 서버에 새로운 파일 저장하기.
+				String newPAth = pro.uploadfile(newPicture, session_info);// 이름은 같지만 확장자가 바뀔 상황이 있어서 같이 잡아줘야 한다.
+				// ------------------------------------------------------------ DB에 회원정보 입력
+				member.setMemberImage_saveAddress(newPAth);
+				repo.updateMember(member);
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				String mime = null;
+				String fullPath = member.getMemberImage_saveAddress();
+				try {
+					mime = Files.probeContentType(Paths.get(fullPath));
+				} catch (IOException e) { e.printStackTrace(); }
+				mime.contains("image"); // 해당 문자열 안에 내가 원하는 문자가 포함되어 있는가
+				session.setAttribute("mime", mime);
+				
+				
+				
+				
+				
+			} else {												// 기존의 프로필 사진이 없다.
+// 2. 기존의 프로필 사진 X  --> 새로운 프로필 사진 O
+				System.out.println(">> 기존의 프로필 사진 X  --> 새로운 프로필 사진 O");
+
+				String newPath = pro.uploadfile(newPicture, session_info);
+				System.out.println("--- to check ---");
+				System.out.println("newPath : "+ newPath);
+				
+				member.setMemberImage_saveAddress(newPath);
+				
+				System.out.println("member : "+member.toString());
+				repo.updateMember(member);
+				
+				String mime = null; // mime은 사진 형식인지 확인하기 위한것..... (image/jpeg)
+				String fullPath = member.getMemberImage_saveAddress(); // profile_img가 저장된 위치.
+				try {
+					mime = Files.probeContentType(Paths.get(fullPath));
+				} catch (IOException e) { e.printStackTrace(); }
+				mime.contains("image"); // 해당 문자열 안에 내가 원하는 문자가 포함되어 있는가
+				session.setAttribute("mime", mime);
+			}
+		}else {
+// 3. 기존의 프로필 사진 X  --> 새로운 프로필 사진 X
+			System.out.println(">> 기존의 프로필 사진 X  --> 새로운 프로필 사진 X");
+			member.setMemberImage_saveAddress(null);
+			System.out.println(member.toString());
+			repo.updateMember(member);
+		}
+// 4. 아무것도 안건드리고 수정 버튼을 누름. 이런 기능 없음ㅋㅋ 같은 값을 입력해도 무조건 입력 해야함.
 		
 		return "redirect:/";
-	}
+	} 
 
+	/*
+	 * del profile picture with ajax  (by.whan
+	 */
+	@RequestMapping(value = "/del_pro", method = RequestMethod.GET)
+	public @ResponseBody String del_pro(HttpSession session) {
+		profileFile pro = new profileFile(); 
+		
+		String id = (String) session.getAttribute("loginId");
+		Member session_info = repo.checkId(id); 					// 기본 session에 저장된 ID로 뽑아온 정보
+		
+		if(session_info.getMemberImage_saveAddress() != null) {
+			pro.deletefile(session_info.getMemberImage_saveAddress()); 	// C에서 프로필 사진 지우기
+			repo.setNull_profile(id); 									// DB에서 삭제하기(null 설정하기)
+			String mime = null;
+			session.setAttribute("mime", mime); //?
+			return "success";					//?
+		} else {
+			System.out.println("사진이 원래 없음 (/del_pro)");
+			return null;
+		}
+	}
 }
