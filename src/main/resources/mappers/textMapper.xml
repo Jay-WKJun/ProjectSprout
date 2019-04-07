@@ -11,7 +11,8 @@
 		chat_date,
 		chat_content,
 		chatRoom_num,
-		member_num
+		member_num,
+		member_name
 		)
 		values
 		(
@@ -19,7 +20,8 @@
 		sysdate,
 		#{chat_content},
 		#{chatRoom_num},
-		#{member_num}
+		#{member_num},
+		#{member_name}
 		)
 	</insert>
 

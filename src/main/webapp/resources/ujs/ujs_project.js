@@ -30,7 +30,105 @@ $(function() {
 	//공지사항 버튼
 	$('#noticeBtn').on('click', createNotice);
 	
+	//메세지 공간 이동 버튼
+	$('#messageChechBtn').on('click', function(){
+		var sendmember_num = $(this).attr("data-pno");
+		var my_num = $(this).attr("data-mynum");
+		$('#messageSpace').attr('style','display:block');
+		$('#memberSpace_display').attr('style','display:none');
+		printMessageSpace(sendmember_num, my_num);
+	})
+	//메시지초대보내기
+	$('#messagesend').on('click', function(){
+		var sendmember_num = $(this).attr("data-pno");
+		var my_num = $(this).attr("data-mynum");
+		
+		$('#messageSpace').attr('style','display:block');
+		$('#memberSpace_display').attr('style','display:none');
+		printMessageSpace(sendmember_num, my_num);
+	})
+	
+	//맴버로돌아가기
+	$('#memberChangeBtn').on('click', function(){
+		$('#messageSpace').attr('style','display:none');
+		$('#memberSpace_display').attr('style','display:block');
+	})
+	
+	//대화상대 초대 클릭
+	$('#invitation').on('click', function(){
+		invitation();
+	});
+	
 })
+
+//대화상대 초대 누르면 대화상대 정보 가져오기.
+function invitation(){
+	
+	var member_name = $("#invitation1").val();
+	 $.ajax({
+		 url: 'invitation', 
+         data: {
+        	 "member_name" : member_name
+        	 },
+         type: 'POST',
+         success: function(member){
+        
+        	 member_name_insert(member);
+         }
+ });
+};
+//대화상대를 가져와서 채팅방 만들기
+function member_name_insert(member){
+	var member_num = member.member_num;
+	var loginNum = $("#loginNum").val();
+	alert(loginNum);
+	
+	/*printMessageSpace(you_member_name, my_member_name);
+	*/
+	 $.ajax({
+		 url: 'ChatRoomStart', 
+         data: {
+        	 "member_num" : member_num,
+        	 "loginNum" : loginNum
+        	 },
+         type: 'POST',
+         success: function(member){
+        
+        	 member_name_insert(member);
+         }
+	 });
+};
+//메시지 초대 초대보내서 방생성하기
+function invitation(sendmember_num, my_num) {
+	alert(sendmember_num);
+	alert(my_num);
+	
+}
+
+//메세지 공간이 보임
+function printMessageSpace(you_member_name, my_member_name){
+			
+/*	 $.ajax({
+		 url: 'multiChatRoom', 
+         data: {
+        	 "member_name" : member_name
+        	 },
+         type: 'GET',
+         success: function(member){
+        
+         }
+	 });
+*/	/* ?chatRoom_num='+1+'*/
+	var sas= "";
+	for (var i = 1; i < 10; i++) {
+		
+		sas += '<a href="multiChatRoom?chatRoom_num='+i+'">'+i+'번방</a></br>';
+	}
+	
+	$('#messageSpace').html(sas);
+}
+
+
 
 //공지사항 
 function createNotice(){

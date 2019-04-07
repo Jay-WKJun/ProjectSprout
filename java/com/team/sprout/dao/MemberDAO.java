@@ -1,5 +1,6 @@
 package com.team.sprout.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import com.team.sprout.vo.ChatRoom;
@@ -17,6 +18,8 @@ public interface MemberDAO {
 	public Member checkId(String id);
 
 	public int insertcr(ChatRoom cr);
+
+
 
 
 }

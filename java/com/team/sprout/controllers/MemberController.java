@@ -2,6 +2,7 @@ package com.team.sprout.controllers;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.Cookie;
@@ -24,6 +25,7 @@ import com.team.sprout.dao.ProjectMemberRepository;
 import com.team.sprout.util.profile_picture;
 import com.team.sprout.vo.ChatRoom;
 import com.team.sprout.vo.Member;
+import com.team.sprout.vo.Text;
 
 
 @Controller
@@ -128,7 +130,6 @@ public class MemberController {
 			session.setAttribute("loginName", getMember.getMember_name());
 			session.setAttribute("loginNum", getMember.getMember_num());
 			session.setAttribute("member_num", getMember.getMember_num());
-			System.out.println(getMember.getMember_num());
 		}
 		return "redirect:/";
 	}
@@ -247,5 +248,5 @@ public class MemberController {
 
 		return "websocket/multiChatRoom";
 	}
-
+	
 }

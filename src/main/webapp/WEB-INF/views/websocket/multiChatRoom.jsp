@@ -55,9 +55,11 @@
 		})
 	
 		//시작하자마자 채팅방에 있는 내용 전부 가져오기
+		
 		function startT() {
 			var chatRoom_num=${chatRoom_num};
-			 var content;
+			
+			 var content="";
 			$.ajax({
 				type : 'post',
 				url : 'printMessage',
@@ -66,9 +68,15 @@
 				} ,
 				success : function(text) {
 					$.each(text, function(index, item){
-						  content += '<p>'+item.chat_content+'</p>';
+						if (content == undefined) {
+							
+						}else {
+						  content += '<p>'+item.member_name+' : '+item.chat_content+'</p>';
+						}
 					});
 					$('#chatRoom').html(content);
+					
+				scroll();
 				}
 			});
 		}
@@ -116,7 +124,7 @@
 						}, 100);
 					
 					var data = JSON.parse(message.body);
-					$("#chatRoom").append(data.username+" 님 -> "+data.message+"<br />");
+					$("#chatRoom").append(data.username+" : "+data.message+"<br /><br/>");
 				});	
 				
 			});
@@ -149,7 +157,6 @@
 			str = str.replace(/(?:\r\n|\r|\n)/g, '<br />');
 			
 			var upl = $("#FILE_TAG").val();
-			/* '<a href="download?boardnum='+${UpDown.updown_num }+'">'+${UpDown.originalfile}+'</a>' */
 			  var content ='<a href="download?updown_num='+updowns.updown_num+'">'+updowns.originalfile+'</a>';
 			 if (updowns != "") {
 				stompClient.send("/chat/${chatRoom_num}", {}, JSON.stringify({
@@ -200,11 +207,11 @@
 <title>일반 채팅 방</title>
 </head>
 <body>
+	<div id="chatRoom">
+	</div>
 	<input type="text" id="chatbox" onkeydown="enterkey();">
 	<input type="button" id="send" value="전송"><br>
 	<br>
-	<div id="chatRoom">
-	</div>
 	
 	<form id="FILE_FORM"  method="post" enctype="multipart/form-data">
 		<table>

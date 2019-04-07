@@ -26,22 +26,21 @@
 			</div>
 			<div class="sideSpace_bottom">
 				<ul class="nav nav-tabs">
-					<li class="nav-item"><a class="nav-link active"
+					<li class="nav-item"><a class="nav-link active" id="memberChangeBtn"
 						data-toggle="tab" href="#home">멤버</a></li>
-					<li class="nav-item"><a class="nav-link" data-toggle="tab"
+					<li class="nav-item"><a class="nav-link" data-toggle="tab" id="messageChechBtn"
 						href="#menu1">메세지</a></li>
 					<li class="nav-item"><a class="nav-link" data-toggle="tab"
 						href="#menu2">공지사항</a></li>
 				</ul>
 				<!-- 같은 프로젝트일때 참여인원  출력 -->
-				<div
-					class="communicationBar rounded-bottom border border-top-0 w-100"
+				<div class="communicationBar rounded-bottom border border-top-0 w-100"
 					style="padding: 5px">
+					<div id="memberSpace_display" style="display:block">
 					<div class="list-group">
 					
 					<form action="addProjectMember" id="addProjectMember" method="GET"> 
 					<button class="btn btn-dark w-100" id="addmem">멤버 추가</button>
-					<%-- <input hidden="hidden" id="add_num" value="${add_num}" name="add_num"> --%>
 					<input type="text" class="w-100" id="addMember" name="addMember" placeholder="추가하실 아이디를 입력하세요">
 					<input type="text" class="w-100"  placeholder="멤버 검색">
 					<span id = "addmemberMessage"></span>
@@ -57,7 +56,9 @@
 										<a href="#"
 											class="list-group-item list-group-item-action border-left-0 border-right-0">플래너</a>
 										<a href="#"
-											class="list-group-item list-group-item-action border-left-0 border-right-0">메세지
+											class="list-group-item list-group-item-action border-left-0 border-right-0"
+											id="messagesend" data-pno="${list.member_num}"
+											data-mynum="${sessionScope.member_num}">메세지
 											보내기</a>
 										<c:if test="${member_rank == 5}"> 
 											 <a href="#"
@@ -68,10 +69,14 @@
 							</div>
 						</c:forEach>
 
-
+						</div>
 					</div>
 					<div id="noticeSpace">
-						
+					<button class="btn btn-dark w-100" id="invitation">대화상대 추가</button>
+					<input type="text" class="w-100" id="invitation1" name="invitation3" placeholder="추가하실 아이디를 입력하세요">
+					<input type="hidden" id="loginNum" value="${sessionScope.loginNum}">
+					</div>
+					<div id="messageSpace" style="display:none">
 					</div>
 				</div>
 			</div>

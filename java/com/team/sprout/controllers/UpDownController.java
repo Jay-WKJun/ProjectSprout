@@ -48,7 +48,6 @@ public class UpDownController {
 		if (!upload.isEmpty()) {         
           updown.setOriginalfile(upload.getOriginalFilename()); 
           updown.setSavedfile(s);      
-          System.out.println(s);
           dao.updownRegist(updown);
           int result = dao.selectUpdownNum();
           updown.setUpdown_num(result);

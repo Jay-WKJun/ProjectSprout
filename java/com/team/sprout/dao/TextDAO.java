@@ -21,6 +21,7 @@ public class TextDAO {
 		// TODO Auto-generated method stub
 		TextMapper mapper = sqlsession.getMapper(TextMapper.class);
 		int result = mapper.TextInsert(text);
+		System.out.println("text 내용 : " +text.toString());
 		return result;
 	}
 

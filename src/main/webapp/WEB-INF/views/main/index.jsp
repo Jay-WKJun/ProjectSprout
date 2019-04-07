@@ -124,9 +124,9 @@
 							<h1>[ 웹 소개 내용 ]</h1>
 						</div>
 					</div>
-					<a href="basicChatRoom">일반 채팅 방</a>
+					<!-- <a href="basicChatRoom">일반 채팅 방</a>
 			<a href="multiChatRoom?chatRoom_num=1">1번방</a>
-			<a href="multiChatRoom?chatRoom_num=2">2번방</a>
+			<a href="multiChatRoom?chatRoom_num=2">2번방</a> -->
 		
 					<div class="contentSpace_right"></div>
 				</div>
