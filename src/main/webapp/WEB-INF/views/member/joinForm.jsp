@@ -78,7 +78,7 @@
 						<input type="file" class="form-control-file border" id="upload" name="upload" value="파일첨부">
 						<input class="text" type="hidden" id="memberImage_saveAddress" name="memberImage_saveAddress">
 						<div class="contentItem_input" style="margin-top: 50px;">
-		<!-- 버튼 -->			<input type="submit" class="btn btn-dark w-100" style="height: 45px" id="joinBtn" value="가입하기" onclick="check();">
+		<!-- 버튼 -->			<input type="button" class="btn btn-dark w-100" style="height: 45px" id="joinBtn" value="가입하기">
 						</div>
 					</div>
 				</div>
