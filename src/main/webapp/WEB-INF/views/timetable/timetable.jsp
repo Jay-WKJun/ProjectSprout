@@ -1,6 +1,7 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!doctype html>
+<!DOCTYPE html>
+<html>
 <head>
 <meta charset="UTF-8">
 <title>jQuery.Gantt</title>
@@ -34,8 +35,8 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 40%;
-  height: 50%;
+  width: 35%;
+  height: 55%;
   background-color: #fff;
   border: 5px solid #3571B5;
   z-index: 10;
@@ -88,6 +89,7 @@
   background-color: #1f326a;
   color: #fff;
 }
+
 </style>
 </head>
 <body>
@@ -125,7 +127,7 @@
 
 
 
-</body>
+
 <!-- 이 두개는 반드시 불러와야하고 반드시 한곳에 있어야합니다. -->
 
 <script src="gantt/script/jquery-3.3.1.min.js"></script>
@@ -139,9 +141,9 @@
 		//새로 쓰고 db에 쓰면서 redirect요청으로 새로고침을 한다.
 		$(function() {
 			
-			$('#regist').click(function(){
-				layer_popup('#layer1');
-			});
+			/* $('#regist').click(function(){
+				layer_popup('#layer2');
+			}); */
 			
 			
 			//밑에 source에 들어가는 데이터 형은 array name, desc, value(from, to label, customClass)
@@ -237,6 +239,11 @@
 					url : 'timetableMake',
 					success : function(results){
 						alert('success when load the createForm!' + JSON.stringify(results));
+						var options = '';
+						$.each(results, function(key, value){
+	        				options += '<option value="'+value.member_num+'">'+value.member_name+'</option>';
+	        				
+	        			});
 						
 						$('.ctxt').html('<form method="POST" action="timetableMake" id="createForm" name="createForm" accept-charset="utf-8">'
 			        			+'<input type="text" id="projectContent_title" name="projectContent_title" placeholder="title"><br>'
@@ -244,6 +251,10 @@
 			        			+'<input type="date" id="projectContent_startDate" name="projectContent_startDate"><br>'
 			        			+'<input type="date" id="projectContent_endDate" name="projectContent_endDate"><br>'
 			        			+'<input type="text" id="projectContent_color" name="projectContent_color"><br>'
+			        			+'<input type="hidden" id="mainproject_projectNum" name="mainproject_projectNum"><br>'
+			        			+'<select id="member_num" name="member_num">'
+			        			+ options
+			        			+'</select>' 
 			        			+'</form>'
 			        	);
 						
@@ -339,23 +350,17 @@
 	    	$('#createForm').submit();
 	    }
 	    
-	    
+	    //날짜변환 메소드
 	    function getFormatDate(date){
-
 	    	var year = date.getFullYear();                                 //yyyy
-
 	    	var month = (1 + date.getMonth());                     //M
-
 	    	month = month >= 10 ? month : '0' + month;     // month 두자리로 저장
-
 	    	var day = date.getDate();                                        //d
-
 	    	day = day >= 10 ? day : '0' + day;                            //day 두자리로 저장
-
 	    	return  year + '-' + month + '-' + day;
-
 	    }
 
 	    
     </script>
+    </body>
 </html>
