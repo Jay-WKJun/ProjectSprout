@@ -1,6 +1,9 @@
 package com.team.sprout.controllers;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,11 +18,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.team.sprout.dao.MainProjectRepository;
 import com.team.sprout.dao.MemberRepository;
+import com.team.sprout.dao.ProjectContentRepository;
 import com.team.sprout.dao.ProjectMemberRepository;
+import com.team.sprout.util.TempJson;
 import com.team.sprout.vo.MainProject;
 import com.team.sprout.vo.Member;
+import com.team.sprout.vo.ProjectContent;
 import com.team.sprout.vo.ProjectMember;
 
 
@@ -32,7 +40,6 @@ public class MainProjectController {
 	ProjectMemberRepository prRepo;
 	@Autowired
 	MemberRepository mem;
-	
 
 	
 	@RequestMapping(value="/mainProjectRegist", method=RequestMethod.POST)
@@ -51,9 +58,6 @@ public class MainProjectController {
 		prMember.setMainProject_ProjectNum(uuid);
 		prMember.setMember_num(Member_num);
 		prMember.setMember_rank(5);
-		
-
-		
 
 		int result_prMember= prRepo.ProjectMemberRegist(prMember);
 		
@@ -77,11 +81,7 @@ public class MainProjectController {
 		
 		map.put("goproject_title", mainproject.getMainproject_title());
 		map.put("goproject_content",mainproject.getMainproject_memo());
-	
 		
-	
-	
-
 		return map;
 		
 	}

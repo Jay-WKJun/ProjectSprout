@@ -49,7 +49,7 @@ $(function() {
 	});*/
 	
 	//타임 테이블
-	$('#timeTable').load('timetable');
+	//$('#timeTable').load('timetable');
 	
 })
 
@@ -179,3 +179,6 @@ $(function(){
 	})
 	
 })
+
+
+//===========이하로 타임 테이블===============
