@@ -49,6 +49,13 @@ public class MemberRepository {
 		return result; 
 		
 	}
+	
+	// DB에서 프로필 사진 삭제하기.    <환>
+	public int setNull_profile(String id) {
+		MemberDAO dao = session.getMapper(MemberDAO.class);
+		int result = dao.setNull_profile(id);
+		return result;
+	} // <환>
 
 
 }

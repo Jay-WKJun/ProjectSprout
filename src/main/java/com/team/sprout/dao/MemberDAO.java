@@ -14,7 +14,6 @@ public interface MemberDAO {
 	public Member searchMember(int member_num);
 
 	public Member checkId(String id);
-
-
-
+	
+	public int setNull_profile(String id); 
 }

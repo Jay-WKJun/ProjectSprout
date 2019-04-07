@@ -3,86 +3,107 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> <!-- 이부분 주의 오류떠도 자바에서 안잡아줌. -->
 <!-- 회원정보 처리 sql -->
-<mapper namespace="com.team.sprout.dao.MemberDAO"> <!-- mapper 인터페이스에 해당하는 부분 [9번 내용]-->
+<mapper namespace="com.team.sprout.dao.MemberDAO"> <!-- mapper 인터페이스에 해당하는 부분 [9번 내용] -->
 	<insert id="memberJoin" parameterType="Member">
 		insert into member
-		<!-- (	member_num,
-			member_id,
-			member_password,
-			member_name,
-			member_phone,
-			member_address,
-			member_logindate,
-			memberImage_saveAddress
-		) -->
 		values (
-			MEMBER_SEQ.nextval
-			, #{member_id}
-			, #{member_password}
-			, #{member_name}
+		MEMBER_SEQ.nextval
+		, #{member_id}
+		,
+		#{member_password}
+		, #{member_name}
+		<if test='member_phone != null'>
 			, #{member_phone}
+		</if>
+		<if test='member_phone == null'>
+			, null
+		</if>
+		<if test='member_address != null'>
 			, #{member_address}
-			, sysdate
+		</if>
+		<if test='member_address == null'>
+			, null
+		</if>
+		, sysdate
+		<if test='memberImage_saveAddress != null'>
 			, #{memberImage_saveAddress}
+		</if>
+		<if test='memberImage_saveAddress == null'>
+			, null
+		</if>
+
 		)
 	</insert>
-	
-	<select parameterType="String" id="selectOne"
-	resultType="Member">
-	select
-	member_num,
-	member_id,
-	member_password,
-	member_name
-	from
-	member
-	where
-	member_id = #{userId}
-	
 
-</select>
-	
-	
-	<select id="searchMember" resultType="Member">
-		select *
+	<select parameterType="String" id="selectOne"
+		resultType="Member">
+		select
+		member_num,
+		member_id,
+		member_password,
+		member_name
 		from
-			member
+		member
 		where
-			member_num=#{member_num}
-		
+		member_id = #{userId}
+
+
 	</select>
-	
+
+
+	<select id="searchMember" resultType="Member">
+		select * from member
+		where
+		member_num=#{member_num}
+
+	</select>
+
 	<update id="updateMember" parameterType="Member">
 		update member
 		set
-			member_id = #{member_id}
-			, member_password = #{member_password}
-			, member_name = #{member_name}
-			, member_phone = #{member_phone}
-			, member_address = #{member_address}
-			, member_memo = #{member_memo}
-			, member_logindate = sysdate
+		member_password = #{member_password}
+		, member_name =
+		#{member_name}
+		, member_phone = #{member_phone}
+		, member_address =
+		#{member_address}
+		, member_logindate = sysdate
+		<if test='memberImage_saveAddress != null'>
+			, memberImage_saveAddress = #{memberImage_saveAddress}
+		</if>
+		<if test='memberImage_saveAddress == null'>
+			, MEMBERIMAGE_SAVEADDRESS = null
+		</if>
 		where
-			member_num = #{member_num}
+		member_id = #{member_id}
 	</update>
-	
+
 	<select id="checkId" parameterType="String" resultType="Member">
-	select * from member where member_id=#{member_id}
+		select *
+		from member
+		where
+		member_id=#{member_id}
 	</select>
-	
-	<!--채팅방 번호 매기기  -->
+
+	<!--채팅방 번호 매기기 -->
 	<insert id="insertcr" parameterType="ChatRoom">
-	insert into chatRoom
-	(
-	chatRoom_num
-	, chatRoom_name
-	)
-	values
-	(
-	#{chatRoom_num}
-	, #{chatRoom_name}
-	)
-</insert>
+		insert into chatRoom
+		(
+		chatRoom_num
+		, chatRoom_name
+		)
+		values
+		(
+		#{chatRoom_num}
+		, #{chatRoom_name}
+		)
+	</insert>
 
-
+	<update id='setNull_profile' parameterType="String">
+		update member
+		set
+		MEMBERIMAGE_SAVEADDRESS = NULL
+		where
+		member_id = #{member_id}
+	</update>
 </mapper>

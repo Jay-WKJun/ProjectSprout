@@ -61,13 +61,17 @@
 		text-align:right;
 	}
 </style>
+<script type="js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+
+
+
+</script>
 </head>
 <body>
 
 <h1>I've come!!</h1>
-<c:forEach var="item" items="${sendTexts}">
-	${item }<br>
-</c:forEach>
+
 
 <div id="wrapper">
 
@@ -80,9 +84,9 @@
 	<!-- 특정 글 검색 -->
 	<form id="search" action ="boardList" method="GET" >
 	<select name="searchItem"> 
-		<option value="title" ${searchItem == 'title' ? 'selected' : ''}>제목</option>
-		<option value="userid" ${searchItem == 'userid' ? 'selected' : ''}>작성자</option>
-		<option value="content" ${searchItem == 'content' ? 'selected' : ''}>내용</option>
+		<option value="WANTEDBOARD_TITLE" ${searchItem == 'WANTEDBOARD_TITLE' ? 'selected' : ''}>제목</option>
+		<option value="WANTEDBOARD_DATE" ${searchItem == 'WANTEDBOARD_DATE' ? 'selected' : ''}>날짜</option>
+		<option value="WANTEDBOARD_CONTENT" ${searchItem == 'WANTEDBOARD_CONTENT' ? 'selected' : ''}>내용</option>
 	</select>
 	<input type="text" name="searchWord" value="${searchWord}" /> 
 	<input class="btn" type="submit" value="검색" />
@@ -98,17 +102,17 @@
 	</tr>
 	
 	<!-- 게시글 출력 반복 -->
-	<c:forEach var="board" items="${boardList}" varStatus="stat">	
+	<c:forEach var="board" items="${boardList}" varStatus="stat">
 		<tr>
 			<td>${stat.count + navi.startRecord}</td>
 			<td>
-				<a href="boardDetail?currentPage=${page}&searchItem=${searchItem}&searchWord=${searchWord}&boardnum=${board.boardnum}">${board.title}</a>
-				<c:if test="${board.originalfile != null}">
+				<a href="wantedBoardLink?link=${board.wantedBoard_title}">${board.wantedBoard_title}</a>
+				<%-- <c:if test="${board.originalfile != null}">
 					<img src="images/attachment.png" />
-				</c:if>
+				</c:if> --%>
 			</td>
-			<td>${board.regdate}</td>
-			<td>${board.userid }</td>
+			<td>${board.wantedBoard_from}</td>
+			<td>${board.wantedBoard_date }</td>
 		</tr>
 	</c:forEach>
 </table>
