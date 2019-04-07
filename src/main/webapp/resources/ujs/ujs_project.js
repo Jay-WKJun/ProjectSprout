@@ -36,7 +36,17 @@ $(function() {
 	//공지사항 추가 버튼
 	$('#noticeBtn').on('click', createNotice);
 	//공지사항 버튼 
-	$('#noticeCheckBtn').on('click',nolist);
+	$('#noticeCheckBtn').on('click',function(){
+		$('#noticeSpace').attr('style','display:block');
+		$('#memberSpace_display').attr('style','display:none');
+		nolist();
+	})
+	
+	//멤버리스트로 돌아가는 버튼
+	$('#memberChangeBtn').on('click',function(){
+		$('#noticeSpace').attr('style','display:none');
+		$('#memberSpace_display').attr('style','display:block');
+	})
 	//강퇴버튼 
 	$('.kickMember').on('click',kickMember);
 	
@@ -101,7 +111,6 @@ function nolist(){
 		
 			 var output ='';
 			 $.each(result,function(index, item){
-		
 				 
 				 output += item.notice_content+'<br>';
 				
@@ -110,8 +119,6 @@ function nolist(){
 			 
 		 }
 	})
-
-	
 	
 }
 
@@ -132,6 +139,7 @@ function createNotice(){
 				 ,data: "notice_content="+notice_content
 				 ,success: function(result){
 					 if(result=="success"){
+						 $('#noticeContent').val('');
 						 nolist();
 					 }else{
 						 console.log("공지사항 추가 실패");

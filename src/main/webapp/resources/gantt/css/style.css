@@ -319,6 +319,7 @@
     height: 20px;
     font-size: 0px;
     background: #595959 url(../img/icon_sprite.png) !important;
+    /* background-repeat: no-repeat; */
     border: 1px solid #454546;
     cursor: pointer;
     vertical-align: top;
