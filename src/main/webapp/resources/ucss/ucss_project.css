@@ -129,10 +129,8 @@
 
 .fileManager{
     flex: 1;
-    height: 300px;
     margin:10px;
     padding:20px;
-    width:60%;
 }
 
 .contentSpace_right{
@@ -160,4 +158,12 @@
 
 .hidden{
 	display:none;
+}
+
+/* ================파일 메니저================== */
+
+.fileManager {
+	flex: 1;
+	margin: 10px;
+	padding:10px;
 }

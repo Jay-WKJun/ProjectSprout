@@ -1,5 +1,5 @@
 $(function() {
-
+	
 	$('#userProfileIcon').on('mouseover', function() {
 		$('#userProfileIcon').attr('class', 'rounded-circle');
 	})
@@ -13,6 +13,9 @@ $(function() {
 		$('#userProfileIcon').attr('class', 'rounded-circle border');
 	})
 
+	var postitNumFromProjectNum=$('#postitNumFromProjectNum').val();
+	$('#fileManager').load('fileManager?postitNumFromProjectNum='+postitNumFromProjectNum);
+	
 	$('#modalBtn').on('click',function(){
 		$('#whiteBoardModal').modal('show');
 		var postitNumFromProjectNum=$('#postitNumFromProjectNum').val();
@@ -161,9 +164,3 @@ $(function(){
 	})
 	
 })
-
-
-
-
-
-

@@ -130,7 +130,11 @@
 				<div class="contentSpace_side"></div>
 				<div class="contentSpace">
 					<div class="timeTable rounded border"></div>
-					<div class="fileManager rounded border"></div>
+
+					<div class="fileManager rounded border" id="fileManager">
+						<!-- <div id="fileManagerHeaders"></div> -->
+					</div>
+					
 				</div>
 				<div class="contentSpace_side"></div>
 				<div class="contentSpace_right">
@@ -171,7 +175,6 @@
 	</div>
 
 	<script src="js/bootstrap.bundle.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
 </body>
 
 </html>
