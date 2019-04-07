@@ -22,7 +22,6 @@
 	<div class="wrapper">
 		<div class="sideSpace">
 			<div class="sideSpace_top">
-				<button class="btn btn-primary" id="timeTable">타임테이블</button>
 				<a href="/sprout"><img class="webLogo" src="img/sprout_logo.png"></a>
 			</div>
 			<div class="sideSpace_bottom">
@@ -41,10 +40,30 @@
 					<div class="list-group">
 					
 					<form action="addProjectMember" id="addProjectMember" method="GET"> 
-					<button class="btn btn-dark w-100" id="addmem" disabled="disabled">멤버 추가</button>
-					<input type="text" class="w-100" id="addMember" name="addMember" placeholder="추가하실 아이디를 입력하세요">
-					<input type="text" class="w-100"  placeholder="멤버 검색">
-					<span id = "addmemberMessage"></span>
+					
+					<button type="button" class="btn btn-dark w-100" data-toggle="modal" data-target="#myModal">
+						멤버 초대하기
+					</button>
+					
+					<!-- The Modal -->
+					<div class="modal" id="myModal">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<!-- Modal body -->
+								<div class="modal-body">
+									<div class="input-group mb-3">
+									<input type="text" class="form-control" id="addMember" name="addMember" placeholder="추가하실 아이디를 입력하세요.">
+										<div class="input-group-append">
+											<button class="btn btn-dark w-100" id="addmem" disabled="disabled">멤버 추가</button> 
+										</div>
+									</div>
+									<span id = "addmemberMessage"></span>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					
 				</form> 
 				
 						<c:forEach var="list" items="${projectMembersList}">
@@ -127,7 +146,7 @@
 			<div class="mainSpace_bottom">
 				<div class="contentSpace_side"></div>
 				<div class="contentSpace">
-					<div class="timeTable rounded border"></div>
+					<div class="timeTable rounded border" id="timeTable"></div>
 
 					<div class="fileManager rounded border" id="fileManager">
 						<!-- <div id="fileManagerHeaders"></div> -->

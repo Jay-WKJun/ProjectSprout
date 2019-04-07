@@ -13,9 +13,11 @@ $(function() {
 		$('#userProfileIcon').attr('class', 'rounded-circle border');
 	})
 
+	//파일 매니저
 	var postitNumFromProjectNum=$('#postitNumFromProjectNum').val();
 	$('#fileManager').load('fileManager?postitNumFromProjectNum='+postitNumFromProjectNum);
 	
+	//화이트 보드
 	$('#modalBtn').on('click',function(){
 		$('#whiteBoardModal').modal('show');
 		var postitNumFromProjectNum=$('#postitNumFromProjectNum').val();
@@ -39,16 +41,15 @@ $(function() {
 	$('.kickMember').on('click',kickMember);
 	
 	//detail로 넘어가는 버튼
-	$('#projectDetail').on('click',function(){
-
-		detail();
-	});
+	$('#projectDetail').on('click',detail);
 
 	//나중에 삭제
-	$('#timeTable').on('click', function(){
+	/*$('#timeTable').on('click', function(){
 		location.href = "timetable";
-	});
-
+	});*/
+	
+	//타임 테이블
+	$('#timeTable').load('timetable');
 	
 })
 

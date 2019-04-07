@@ -254,7 +254,7 @@ public class TimeTableController {
 		int result = pcRepo.ProjectContentRegist(pc);
 		System.out.println("pc등록 = "+result);
 		
-		return "redirect:/timetable";
+		return "redirect:/project_go";
 	}
 	
 	/*
@@ -272,7 +272,7 @@ public class TimeTableController {
 	@RequestMapping(value = "/timetableDetail", method = RequestMethod.POST)
 	public String tableDetail() {
 		
-		return "redirect:/timetable";
+		return "redirect:/project_go";
 	}
 	
 	/*
@@ -298,7 +298,7 @@ public class TimeTableController {
 		System.out.println("update 성공 " + result);
 		
 		
-		return "redirect:/timetable";
+		return "redirect:/project_go";
 	}
 	
 	
@@ -311,7 +311,7 @@ public class TimeTableController {
 		System.out.println("delete 성공 " + result);
 		
 		
-		return "redirect:/timetable";
+		return "redirect:/project_go";
 	}
 	
 }

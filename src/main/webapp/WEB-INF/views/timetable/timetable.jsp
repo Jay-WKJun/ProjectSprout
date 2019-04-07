@@ -1,6 +1,7 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!doctype html>
+<!DOCTYPE html>
+<html>
 <head>
 <meta charset="UTF-8">
 <title>jQuery.Gantt</title>
@@ -125,7 +126,7 @@
 
 
 
-</body>
+
 <!-- 이 두개는 반드시 불러와야하고 반드시 한곳에 있어야합니다. -->
 
 <script src="gantt/script/jquery-3.3.1.min.js"></script>
@@ -360,4 +361,5 @@
 
 	    
     </script>
+    </body>
 </html>
