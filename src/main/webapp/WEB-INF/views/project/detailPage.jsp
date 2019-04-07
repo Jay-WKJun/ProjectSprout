@@ -22,52 +22,15 @@
 	<div class="wrapper">
 		<div class="sideSpace">
 			<div class="sideSpace_top">
-				<button class="btn btn-primary" id="timeTable">타임테이블</button>
 				<a href="/sprout"><img class="webLogo" src="img/sprout_logo.png"></a>
 			</div>
 			<div class="sideSpace_bottom">
-				<ul class="nav nav-tabs">
-					<li class="nav-item"><a class="nav-link active"
-						data-toggle="tab" href="#home">멤버</a></li>
-					<li class="nav-item"><a class="nav-link" data-toggle="tab"
-						href="#menu1">메세지</a></li>
-					<li class="nav-item" id="noticeCheckBtn"><a class="nav-link" data-toggle="tab"
-						href="#menu2">공지사항</a></li>
-				</ul>
-				<!-- 같은 프로젝트일때 참여인원  출력 -->
+				
 				<div
 					class="communicationBar rounded-bottom border border-top-0 w-100"
 					style="padding: 5px">
 					<div class="list-group">
-					
-					<form action="addProjectMember" id="addProjectMember" method="GET"> 
-					<button class="btn btn-dark w-100" id="addmem" disabled="disabled">멤버 추가</button>
-					<input type="text" class="w-100" id="addMember" name="addMember" placeholder="추가하실 아이디를 입력하세요">
-					<input type="text" class="w-100"  placeholder="멤버 검색">
-					<span id = "addmemberMessage"></span>
-				</form> 
-				
-						<c:forEach var="list" items="${projectMembersList}">
-							<div
-								class="dropdown dropright float-right list-group-item list-group-item-action">
-								<div data-toggle="dropdown">${list.member_name}</div>
-								<div class="dropdown-menu">
-									<h5 class="dropdown-header">${list.member_name}</h5>
-									<div style="margin-top: 20px" data-pno="${list.member_num}" id="forkick">
-										<a href="#"
-											class="list-group-item list-group-item-action border-left-0 border-right-0">플래너</a>
-										<a href="#"
-											class="list-group-item list-group-item-action border-left-0 border-right-0">메세지
-											보내기</a>
-										<c:if test="${member_rank == 5}"> 
-											 <a href="#"
-											class="kickMember list-group-item list-group-item-action border-left-0 border-right-0">내보내기</a>
-										</c:if> 
-									</div>
-								</div>
-							</div>
-						</c:forEach>
-
+					<button class="btn btn-dark w-100" disabled="disabled">게시판 추가</button>
 					</div>
 					<div id="noticeSpace">
 					</div>
@@ -106,34 +69,10 @@
 					</div>
 				</div>
 			</div>
-			<div class="mainSpace_top">
-				<div class="mainSpace_top_side"></div>
-				<div class="mainSpace_top_center"></div>
-				<div class="mainSpace_top_side" style="text-align: right">
-					<div class="contentItem" style="margin-right: 20px">
-					<span id="noticeBtnSpace">
-						
-				
-					</span>
-						<button class="btn btn-dark" id="noticeBtn" data-toggle="1">
-							<i class="fas fa-bullhorn fa-lg"></i>
-						</button>
-						<button class="btn btn-dark" id="projectDetail">
-							<i class="far fa-calendar-check fa-lg"></i>
-						</button>
-					</div>
-				</div>
-			</div>
+
 			<div class="mainSpace_bottom">
 				<div class="contentSpace_side"></div>
-				<div class="contentSpace">
-					<div class="timeTable rounded border"></div>
-
-					<div class="fileManager rounded border" id="fileManager">
-						<!-- <div id="fileManagerHeaders"></div> -->
-					</div>
-					
-				</div>
+	
 				<div class="contentSpace_side"></div>
 				<div class="contentSpace_right">
 					<div class="contentItem" style="margin: 20px; height: 100%;">
@@ -173,6 +112,7 @@
 	</div>
 
 	<script src="js/bootstrap.bundle.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
 </body>
 
 </html>
