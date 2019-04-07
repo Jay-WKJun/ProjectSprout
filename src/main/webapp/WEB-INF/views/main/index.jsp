@@ -257,7 +257,7 @@
 	<hr>
 	<p>프로필 이미지 test<P><br>
 	<c:if test="${not empty sessionScope.mime}"> 
-		<img src="download?loginId=${loginId}" style="width:50px;height:50px">
+		<img src="download?loginId=${loginId}" style="width:100px;height:100px">
 	</c:if>
 	<!-- ----------------------------------------------------------------------- -->
 	
