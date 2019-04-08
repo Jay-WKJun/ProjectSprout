@@ -40,7 +40,8 @@ public class MainProjectController {
 	ProjectMemberRepository prRepo;
 	@Autowired
 	MemberRepository mem;
-
+	
+	//자아아아아아 버전을 바꿔봅시다
 	
 	@RequestMapping(value="/mainProjectRegist", method=RequestMethod.POST)
 

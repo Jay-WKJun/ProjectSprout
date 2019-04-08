@@ -27,7 +27,7 @@
 			</div>
 			<div class="sideSpace_bottom">
 				<ul class="nav nav-tabs">
-					<li class="nav-item"><a class="nav-link active"
+					<li class="nav-item"><a class="nav-link active" id="memberChangeBtn"
 						data-toggle="tab" href="#home">멤버</a></li>
 					<li class="nav-item"><a class="nav-link" data-toggle="tab"
 						href="#menu1">메세지</a></li>
@@ -38,6 +38,7 @@
 				<div
 					class="communicationBar rounded-bottom border border-top-0 w-100"
 					style="padding: 5px">
+					<div id="memberSpace_display" style="display:block">
 					<div class="list-group">
 					
 					<form action="addProjectMember" id="addProjectMember" method="GET"> 
@@ -64,7 +65,6 @@
 						</div>
 					</div>
 					
-					
 				</form> 
 				
 						<c:forEach var="list" items="${projectMembersList}">
@@ -89,9 +89,10 @@
 						</c:forEach>
 
 					</div>
-					<div id="noticeSpace">
 					</div>
-
+					
+					<div id="noticeSpace" style="display: none">
+					</div>
 					
 				</div>
 			</div>
@@ -132,7 +133,6 @@
 				<div class="mainSpace_top_side" style="text-align: right">
 					<div class="contentItem" style="margin-right: 20px">
 					<span id="noticeBtnSpace">
-						
 				
 					</span>
 						<button class="btn btn-dark" id="noticeBtn" data-toggle="1">

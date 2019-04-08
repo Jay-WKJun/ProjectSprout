@@ -58,11 +58,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	insert into notice(
 	notice_num,notice_content,notice_date,MainProject_ProjectNum,memberRank_num)
 	values(notice_seq.nextval,#{notice_content},sysdate,#{MainProject_ProjectNum},#{memberRank_num})
-		</insert>
+	</insert>
 		
 	<select id="noticeList" resultType="Notice" parameterType="String">
-	
 	select * from notice where MainProject_ProjectNum = #{MainProject_ProjectNum}
+	order by notice_num
 	</select>	
 <!-- 강퇴하는 메서드 -->
 <delete id="kickMember" parameterType="ProjectMember">
