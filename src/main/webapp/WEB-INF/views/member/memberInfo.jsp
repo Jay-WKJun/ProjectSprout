@@ -31,61 +31,52 @@
 		</div>
 		<div class="mainContent">
 			<div class="sideSpace"></div>
-			<form id="updateForm" action="modify" method="post" enctype="multipart/form-data">			<!-- Form  -->
+			<form action="modify" method="post" enctype="multipart/form-data">			<!-- Form -->
 				<div class="mainSpace">
 					<div class="tableSpace border">
 						<table>
 							<tr>
-								<td>
-									
-									
-									
+		<!-- 프로필 사진 -->			<td class="border-right">프로필 사진</td>
+								<td class="border-right" style="text-align: center">
 									<c:if test="${not empty sessionScope.mime}">
-		<!-- 프로필 사진 -->					<img src="download?loginId=${loginId}" id="picture" style="width: 50px; height: 50px" /> <br>
+										<img src="download?loginId=${loginId}" style="width: 50px; height: 50px" /> <br>
 									</c:if> 
 									<c:if test="${empty sessionScope.mime}">
-										<img class="rounded-circle border profileImg" id="picture" src="img/empty_profile.png" /> <br>
+										<img class="rounded-circle border profileImg" src="img/empty_profile.png" /> <br>
 									</c:if> 
-									
-									
-									
-								</td>
-								<td class="border-right" style="text-align: center">
 									<label class="btn btn-light btn-file border" style="margin-top: 10px"> 
-										이미지 변경 <input type="file" name="newPicture">
-		<!-- 프로필 사진 삭제 -->		 		<input type="button" class="btn btn-dark" id="profileDelete" value="삭제"/>
+										이미지 변경 <input type="file" style="display: none;">
 									</label>
 									</td>
 		<!-- 아이디 -->			<td class="border-right">아이디</td>
 								<td>
-									${member.member_id}
-									<input type="hidden" value="${sessionScope.member.member_id}" name="member_id">
+									<input type="text" value="${member.member_id}" name="member_id">
 								</td>
 							</tr>
 							<tr>
 		<!-- 이름 -->				<td class="border-right">이름</td>
 								<td>
-									<input type="text" id="member_name" value="${sessionScope.member.member_name}" name="member_name">
+									<input type="text" value="${member.member_name}" name="member_name">
 								</td>
 		<!-- 비밀번호 -->			<td class="border-right">비밀번호</td>
 								<td>
-									<input type="text" id="member_password" value="${sessionScope.member.member_password}" name="member_password">
+									<input type="text" value="${member.member_password}" name="member_password">
 								</td>
 							</tr>
 							<tr>
 		<!-- 휴대전화 -->			<td class="border-right">휴대전화</td>
 								<td>
-									<input type="text" id="member_phone" value="${sessionScope.member.member_phone}" name="member_phone">
+									<input type="text" value="${member.member_phone}" name="member_phone">
 								</td>
 		<!-- 주소 -->				<td class="border-right">주소</td>
 								<td>
-									<input type="text" id="member_address" value="${sessionScope.member.member_address}" name="member_address">
+									<input type="text" value="${member.member_address}" name="member_address">
 								</td>
 							</tr>
 						</table>
 					</div>
 					<div class="contentItem w-100" style="text-align: right; margin-top: 10px">
-		<!-- 수정-->	<input type="submit" id="update_with_old_info" class="btn btn-dark" style="width: 100px; height: 50px" value="수정">
+		<!-- 수정-->	<input type="submit" class="btn btn-dark" style="width: 100px; height: 50px" value="수정">
 		<!-- 탈퇴 -->	<button class="btn btn-danger" style="width: 100px; height: 50px">탈퇴</button>
 					</div>
 				</div>
@@ -94,5 +85,6 @@
 		</div>
 	</div>
 	<script src="js/bootstrap.bundle.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
 </body>
 </html>

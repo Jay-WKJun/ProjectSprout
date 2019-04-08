@@ -124,6 +124,10 @@
 							<h1>[ 웹 소개 내용 ]</h1>
 						</div>
 					</div>
+					<!-- <a href="basicChatRoom">일반 채팅 방</a>
+			<a href="multiChatRoom?chatRoom_num=1">1번방</a>
+			<a href="multiChatRoom?chatRoom_num=2">2번방</a> -->
+		
 					<div class="contentSpace_right"></div>
 				</div>
 			</div>
@@ -216,7 +220,8 @@
 							<button class="btn btn-dark w-25"
 								style="height: 50px; margin-right: 20px" id="openproject">시작</button>
 
-							
+							<button type="button" class="btn btn-danger" style="height: 50px; width: 100px"
+								data-target="#whiteBoardModal" id="outOfProject">탈퇴</button>
 
 							<div class="modal w-100 h-100" id="whiteBoardModal">
 								<div class="mainSpace">
@@ -249,13 +254,14 @@
 	</div>
 	</div>
 	<script src="js/bootstrap.bundle.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
 	
 	
 	<!-- ----------------------------------------------------------------------- -->
 	<hr>
 	<p>프로필 이미지 test<P><br>
 	<c:if test="${not empty sessionScope.mime}"> 
-		<img src="download?loginId=${loginId}" style="width:100px;height:100px">
+		<img src="download?loginId=${loginId}" style="width:50px;height:50px">
 	</c:if>
 	<!-- ----------------------------------------------------------------------- -->
 	
