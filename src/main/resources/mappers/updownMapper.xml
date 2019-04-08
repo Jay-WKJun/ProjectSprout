@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.team.sprout.dao.UpDownMapper">
+	
+
+<insert id="updownRegist" parameterType="UpDown">
+INSERT INTO updowns
+(	
+	updown_num
+	 ,originalfile
+	, savedfile
+)
+VALUES
+(
+	updown_num_seq.nextval
+	, #{originalfile}
+	, #{savedfile}
+)
+</insert>
+<select id="selectUpdownNum" resultType="int">
+SELECT max(updown_num) 
+FROM updowns
+</select>
+<select id="selectOne" parameterType="int" resultType="UpDown">
+SELECT 
+*
+FROM updowns
+WHERE 
+	updown_num = #{updown_num}
+</select>
+
+</mapper>

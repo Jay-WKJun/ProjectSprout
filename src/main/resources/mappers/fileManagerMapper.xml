@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> <!-- 이부분 주의 오류떠도 자바에서 안잡아줌. -->
+<mapper namespace="com.team.sprout.dao.FileManagerDAO">
+
+<insert id="projectFileUpLoad" parameterType="ProjectFile">
+	insert into ProjectFile
+	values(
+		projectfile_seq.nextval,
+		#{projectFile_originalname},
+		sysdate,
+		#{projectFile_location},
+		#{MainProject_ProjectNum},
+		#{projectFile_type},
+		#{projectFile_extension},
+		#{projectFile_member}
+	)
+</insert>
+
+<select id="getFileList" parameterType="String" resultType="ProjectFile">
+	select 
+		* 
+	from 
+		ProjectFile 
+	where  
+		projectFile_location=#{projectFile_location} 
+	order by 
+		projectFile_type, projectFile_originalname
+</select>
+
+<select id="getFileNum" resultType="Int">
+	select max(projectFile_num)
+	from projectfile
+</select>
+
+<select id="searchFile" parameterType="Int" resultType="ProjectFile">
+	select * from ProjectFile where projectFile_num=#{projectFile_num}
+</select>
+
+<delete id="fileDelete" parameterType="Int">
+	delete from ProjectFile where projectFile_num=#{projectFile_num}
+</delete>
+	
+</mapper>
