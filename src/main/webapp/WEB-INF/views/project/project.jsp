@@ -166,27 +166,26 @@
 							data-target="#whiteBoardModal" id="modalBtn">
 							<i class="fas fa-chevron-left fa-lg"></i>
 						</button> -->
-						
+						<!-- 부트스트랩 modal-backdrop 클래스 지움 -->
 						<input type="hidden" id="postitNumFromProjectNum" value="${mainproject_projectnum }">
 						<div class="modal w-100 h-100" id="whiteBoardModal">
-							<div class="mainSpace">
-								<div class="mainSpace_top">
-
-									<div class="modal-header rounded postitWindow">
-										<button class="btn btn-dark" id="addPostit"
-											style="width: 80px">
-											<span class="fa-stack fa-lg"> <i
-												class="far fa-sticky-note fa-stack-2x"></i> <i
-												class="fas fa-plus fa-stack-1x"></i>
-											</span>
-										</button>
-										<button type="button" class="btn btn-danger" id="modalCloseBtn"
-											data-dismiss="modal">Close</button>
-									</div>
-									<div id="headers"></div>
-
-								</div>
-								<div class="mainSpace_bottom"></div>
+							<div class="mainSpace" id="whiteBoardMainSpace">
+										<div class="modal-header rounded postitWindow">
+											<button class="btn btn-dark" id="addPostit"
+												style="width: 80px">
+												<span class="fa-stack fa-lg"> <i
+													class="far fa-sticky-note fa-stack-2x"></i> <i
+													class="fas fa-plus fa-stack-1x"></i>
+												</span>
+											</button>
+											<button type="button" class="btn btn-danger modalCloseBtn" 
+												data-dismiss="modal">Close</button>
+										</div>
+										<div id="headers">
+											<div id="whiteBoardLoad"></div>
+										</div>
+										<div class="w-100 modalCloseBtn" style="height:700px;"
+												data-dismiss="modal"></div>
 							</div>
 						</div>
 						

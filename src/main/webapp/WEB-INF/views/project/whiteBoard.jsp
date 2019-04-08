@@ -19,10 +19,8 @@
 <body>
 	<div class="wrapper">
 	<input type="hidden" id="projectNum" value="${projectNum }">
-		<div>
-			
+		<div id="boardSpace">
 		</div>
-		<div id="boardSpace"></div>
 	</div>
 
 	<script src="js/bootstrap.bundle.min.js"></script>

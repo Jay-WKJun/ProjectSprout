@@ -122,10 +122,9 @@ function postitDrag() {
 
 		var postit = {
 			"postit_num" : postitSeq,
-			"postit_top" : postitOffset.top,
-			"postit_left" : postitOffset.left
+			"postit_top" : Math.floor(postitOffset.top),
+			"postit_left" : Math.floor(postitOffset.left)
 		}
-		
 		console.log(postit.postit_top+" "+postitOffset.left);
 
 		$.ajax({

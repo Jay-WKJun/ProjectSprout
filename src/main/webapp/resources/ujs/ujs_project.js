@@ -19,8 +19,8 @@ $(function() {
 	
 	//화이트 보드
 	$('#modalBtn').on('click',openWhiteBoard);
-	$('#modalCloseBtn').on('click', closeWhiteBoard);
-	$('#whiteBoardModal').on('click', closeWhiteBoard);
+	$('.modalCloseBtn').on('click', closeWhiteBoard);
+	//$('#whiteBoardMainSpace').on('click', closeWhiteBoard);
 	
 	//아이디 추가하기
 	$('#addmem').on('click',function(){
@@ -62,9 +62,11 @@ $(function() {
 
 //화이트보드 띄우기
 function openWhiteBoard(){
+	
 	var postitNumFromProjectNum=$('#postitNumFromProjectNum').val();
+	
 	var tag='';
-	tag+='<div class="mainSpace">';
+/*	tag+='<div class="mainSpace">';
 	tag+='<div class="mainSpace_top">';
 	tag+='<div class="modal-header rounded postitWindow">';
 	tag+='<button class="btn btn-dark" id="addPostit" style="width: 80px">';
@@ -80,14 +82,17 @@ function openWhiteBoard(){
 	tag+='</div>';
 	tag+='<div class="mainSpace_bottom"></div>';
 	tag+='</div>';
+	*/
+	tag+='<div id="whiteBoardLoad"></div>';
 	
-	$('#whiteBoardModal').html(tag);
-	$('#headers').load('whiteBoard?postitNumFromProjectNum='+postitNumFromProjectNum);
+	$('#headers').html(tag);
+	
+	$('#whiteBoardLoad').load('whiteBoard?postitNumFromProjectNum='+postitNumFromProjectNum);
 }
 
 //화이트보드 종료
 function closeWhiteBoard(){
-	$('#whiteBoardModal').empty();
+	/*$('#whiteBoardModal').empty();*/
 	$('#headers').empty();
 }
 
@@ -96,10 +101,7 @@ function detail(){
 	
 }
 function init(){
-	
 	location.href ="project_go";
-	
-	
 }
 
 function kickMember(){
@@ -179,40 +181,3 @@ function createNotice(){
 		$(this).attr('data-toggle',1);
 	}
 }
-
-// 추가가능한 아이디인지 아닌지 확인하는 것
-$(function(){
-	
-	$('#addMember').keyup(function(){
-		var addMember =$('#addMember').val();
-		
-		
-		$.ajax({
-			 method : 'post'
-			 ,url : 'checkForAddMember'
-			 ,data: "addMember="+addMember
-			,success: function(result){
-				if (result.resp == 1 ) {
-					$('#addmemberMessage').html('추가가능한 아이디입니다. 추가하기를 누르세요');
-					$('#addmemberMessage').attr('style','color:#f23a3a');
-					$('#addmem').removeAttr('disabled');
-					
-				}
-				else if (result.resp ==2) {
-					$('#addmemberMessage').html('이미 추가한 아이디 입니다');
-					$('#addmemberMessage').attr('style','color:#f23a3a');
-					
-				} else {
-
-					$('#addmemberMessage').html('존재하지 않는 아이디 입니다. 다시 입력하세요');
-					$('#addmemberMessage').attr('style','color:#304dd1');
-				}
-			}
-				
-			})
-	})
-	
-})
-
-
-//===========이하로 타임 테이블===============
