@@ -28,6 +28,7 @@ function fileUpLoad() {
 		contentType : false,
 		success : function(result) {
 			if (result == "success") {
+				$('#upLoadFile').val('');
 				getFileList();
 			} else {
 				console.log("파일 업로드 실패");

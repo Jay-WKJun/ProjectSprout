@@ -46,7 +46,7 @@ public class FileManagerController {
 			MultipartFile upLoadFile) {
 		String resp = "success";
 		String loginId = (String) session.getAttribute("loginId");
-
+		
 		ProjectFile saveProjectFile = FileManager.fileSetting(upLoadPath, projectFile, upLoadFile);
 		saveProjectFile.setProjectFile_member(loginId);
 		int result = fileRepo.projectFileUpLoad(saveProjectFile);
