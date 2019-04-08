@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> <!-- 이부분 주의 오류떠도 자바에서 안잡아줌. -->
+<mapper namespace="com.team.sprout.dao.WantedBoardDAO">
+
+	<select id="selectAll" resultType="WantedBoard" parameterType="Map">
+		select 
+			*
+		from 
+			wantedBoard
+		where
+			<choose>
+				<when test="searchItem == 'WANTEDBOARD_TITLE'">WANTEDBOARD_TITLE</when>
+				<when test="searchItem == 'WANTEDBOARD_DATE'">WANTEDBOARD_DATE</when>
+				<when test="searchItem == 'WANTEDBOARD_CONTENT'">WANTEDBOARD_CONTENT</when>
+			</choose>	
+		 like
+			'%' || #{searchWord} || '%'
+		order by 
+			WANTEDBOARD_NUM
+	</select>
+	
+	<select id="selectOneBoard" resultType="WantedBoard">
+		select *
+		from wantedBoard
+		where WANTEDBOARD_TITLE = #{string}
+	</select>
+	
+	<insert id="insertBoard" parameterType="WantedBoard">
+		insert into wantedBoard
+		(
+			WANTEDBOARD_NUM,
+			WANTEDBOARD_FROM,
+			WANTEDBOARD_TITLE,
+			WANTEDBOARD_CONTENT,
+			WANTEDBOARD_DATE,
+			WANTEDBOARD_HITCOUNT
+		)
+		values
+		(
+		WANTEDBOARD_SEQ.nextval,
+		#{wantedBoard_from},
+		#{wantedBoard_title},
+		#{wantedBoard_content},
+		#{wantedBoard_date},
+		#{wantedBoard_hitCount}
+		)
+	</insert>
+	
+	<delete id="deleteBoard" parameterType="String">
+		delete from wantedBoard
+		where WANTEDBOARD_TITLE = #{wantedBoard_title}
+	</delete>
+	
+	<select id="totalBoardCount" resultType="int">
+ 		 select 
+ 		 	count(*) 
+ 		 from 
+ 		 	wantedBoard
+ 		 where
+ 		 	${searchItem}
+ 		 like
+ 		 	 '%' || #{searchWord} || '%'
+ 	</select>
+	
+</mapper>
