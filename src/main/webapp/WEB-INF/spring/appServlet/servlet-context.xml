@@ -18,8 +18,7 @@
 		up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
 	<resources mapping="/css/**" location="/resources/css/" />
-	<resources mapping="/fontAwesome/**"
-		location="/resources/fontAwesome/" />
+	<resources mapping="/fontAwesome/**" location="/resources/fontAwesome/" />
 	<resources mapping="/js/**" location="/resources/js/" />
 	<resources mapping="/ucss/**" location="/resources/ucss/" />
 	<resources mapping="/ujs/**" location="/resources/ujs/" />

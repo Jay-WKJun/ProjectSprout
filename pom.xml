@@ -16,6 +16,34 @@
 	</properties>
 	<dependencies>
 	
+		<!-- Websocket -->
+
+
+
+<dependency>
+
+	<groupId>org.springframework</groupId>
+
+	<artifactId>spring-websocket</artifactId>
+
+	<version>${org.springframework-version}</version>
+
+</dependency>
+
+<!-- STOMP 사용시 필요함 -->
+
+
+
+<dependency>
+
+<groupId>org.springframework</groupId>
+
+<artifactId>spring-messaging</artifactId>
+
+<version>${org.springframework-version}</version>
+
+</dependency>
+	
 		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
 		<dependency>
  		   <groupId>org.seleniumhq.selenium</groupId>
