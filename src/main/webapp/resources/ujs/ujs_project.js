@@ -19,13 +19,12 @@ $(function() {
 	
 	//화이트 보드
 	$('#modalBtn').on('click',function(){
-		$('#whiteBoardModal').modal('show');
 		var postitNumFromProjectNum=$('#postitNumFromProjectNum').val();
 		$('#headers').load('whiteBoard?postitNumFromProjectNum='+postitNumFromProjectNum);
 	})
 	
 	$('#modalCloseBtn').on('click', function() {
-		$('#whiteBoardModal').modal('hide');
+		$('#headers').empty();
 	})
 	//아이디 추가하기
 	$('#addmem').on('click',function(){
@@ -59,7 +58,7 @@ $(function() {
 	});*/
 	
 	//타임 테이블
-	//$('#timeTable').load('timetable');
+	$('#timeTable').load('timetable');
 	
 })
 

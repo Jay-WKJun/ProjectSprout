@@ -130,7 +130,7 @@
 
 <!-- 이 두개는 반드시 불러와야하고 반드시 한곳에 있어야합니다. -->
 
-<script src="gantt/script/jquery-3.3.1.min.js"></script>
+<script src="js/jquery-3.3.1.min.js"></script>
 <script src="gantt/script/jquery.fn.gantt.js"></script>
 <!-- script는 반드시 그대로 써주세요 -->
 <script>

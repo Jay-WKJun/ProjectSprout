@@ -18,16 +18,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import com.team.sprout.dao.MainProjectRepository;
 import com.team.sprout.dao.MemberRepository;
-import com.team.sprout.dao.ProjectContentRepository;
 import com.team.sprout.dao.ProjectMemberRepository;
-import com.team.sprout.util.TempJson;
 import com.team.sprout.vo.MainProject;
 import com.team.sprout.vo.Member;
-import com.team.sprout.vo.ProjectContent;
 import com.team.sprout.vo.ProjectMember;
 
 
