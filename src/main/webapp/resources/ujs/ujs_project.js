@@ -18,14 +18,10 @@ $(function() {
 	$('#fileManager').load('fileManager?postitNumFromProjectNum='+postitNumFromProjectNum);
 	
 	//화이트 보드
-	$('#modalBtn').on('click',function(){
-		var postitNumFromProjectNum=$('#postitNumFromProjectNum').val();
-		$('#headers').load('whiteBoard?postitNumFromProjectNum='+postitNumFromProjectNum);
-	})
+	$('#modalBtn').on('click',openWhiteBoard);
+	$('#modalCloseBtn').on('click', closeWhiteBoard);
+	$('#whiteBoardModal').on('click', closeWhiteBoard);
 	
-	$('#modalCloseBtn').on('click', function() {
-		$('#headers').empty();
-	})
 	//아이디 추가하기
 	$('#addmem').on('click',function(){
 		$('#addProjectMember').submit();
@@ -34,6 +30,7 @@ $(function() {
 	
 	//공지사항 추가 버튼
 	$('#noticeBtn').on('click', createNotice);
+	
 	//공지사항 버튼 
 	$('#noticeCheckBtn').on('click',function(){
 		$('#noticeSpace').attr('style','display:block');
@@ -46,6 +43,7 @@ $(function() {
 		$('#noticeSpace').attr('style','display:none');
 		$('#memberSpace_display').attr('style','display:block');
 	})
+	
 	//강퇴버튼 
 	$('.kickMember').on('click',kickMember);
 	
@@ -62,7 +60,36 @@ $(function() {
 	
 })
 
+//화이트보드 띄우기
+function openWhiteBoard(){
+	var postitNumFromProjectNum=$('#postitNumFromProjectNum').val();
+	var tag='';
+	tag+='<div class="mainSpace">';
+	tag+='<div class="mainSpace_top">';
+	tag+='<div class="modal-header rounded postitWindow">';
+	tag+='<button class="btn btn-dark" id="addPostit" style="width: 80px">';
+	tag+='<span class="fa-stack fa-lg"> ';
+	tag+='<i class="far fa-sticky-note fa-stack-2x"></i> ';
+	tag+='<i class="fas fa-plus fa-stack-1x"></i>';
+	tag+='</span>';
+	tag+='</button>';
+	tag+='<button type="button" class="btn btn-danger" id="modalCloseBtn"';
+	tag+='data-dismiss="modal">Close</button>';
+	tag+='</div>';
+	tag+='<div id="headers"></div>';
+	tag+='</div>';
+	tag+='<div class="mainSpace_bottom"></div>';
+	tag+='</div>';
+	
+	$('#whiteBoardModal').html(tag);
+	$('#headers').load('whiteBoard?postitNumFromProjectNum='+postitNumFromProjectNum);
+}
 
+//화이트보드 종료
+function closeWhiteBoard(){
+	$('#whiteBoardModal').empty();
+	$('#headers').empty();
+}
 
 function detail(){
 	location.href ="detailPage";

@@ -30,7 +30,7 @@
 			<input type="hidden" value="${mainproject_projectnum }" id="MainProject_ProjectNum" name="MainProject_ProjectNum"> 
 			<input type="hidden" value="${mainproject_projectnum }" id="projectFile_location" name="projectFile_location">
 		</form>
-		<input type="button" id="fileUpLoadBtn" value="파일 올리기">
+		<input type="button" class="btn btn-dark" id="fileUpLoadBtn" value="파일 올리기">
 		</div>
 		<div class="row">
 			<div id="createFolderSpace">

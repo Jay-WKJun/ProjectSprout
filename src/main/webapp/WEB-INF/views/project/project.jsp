@@ -158,7 +158,6 @@
 				<div class="contentSpace_right">
 					<div class="contentItem" style="margin: 20px; height: 100%;">
 					
-					<!-- 모달 테스트 -->
 					<button type="button" class="btn btn-dark h-100" data-toggle="modal" data-target="#whiteBoardModal" id="modalBtn">
 						<i class="fas fa-chevron-left fa-lg"></i>
 					</button>
@@ -167,7 +166,8 @@
 							data-target="#whiteBoardModal" id="modalBtn">
 							<i class="fas fa-chevron-left fa-lg"></i>
 						</button> -->
-
+						
+						<input type="hidden" id="postitNumFromProjectNum" value="${mainproject_projectnum }">
 						<div class="modal w-100 h-100" id="whiteBoardModal">
 							<div class="mainSpace">
 								<div class="mainSpace_top">
@@ -180,17 +180,16 @@
 												class="fas fa-plus fa-stack-1x"></i>
 											</span>
 										</button>
-										<button type="button" class="btn btn-danger"
+										<button type="button" class="btn btn-danger" id="modalCloseBtn"
 											data-dismiss="modal">Close</button>
 									</div>
-									<input type="hidden" id="postitNumFromProjectNum"
-										value="${mainproject_projectnum }">
 									<div id="headers"></div>
 
 								</div>
 								<div class="mainSpace_bottom"></div>
 							</div>
 						</div>
+						
 					</div>
 				</div>
 			</div>
