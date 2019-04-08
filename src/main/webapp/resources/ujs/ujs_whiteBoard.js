@@ -11,11 +11,9 @@ jQuery.browser = {};
 })();
 
 $(function() {
-	setTimeout(function() {
-		getPostitList();
-		// 포스트잇 추가 버튼
-		$('#addPostit').on('click', addPostit);
-    }, 500);
+	getPostitList();
+	// 포스트잇 추가 버튼
+	$('#addPostit').on('click', addPostit);
 });
 
 // 포스트잇 생성
@@ -31,26 +29,24 @@ function addPostit() {
 		"postit_color" : postit_color,
 		"postit_shape" : postit_shape
 	};
-	setTimeout(function() {
-		$.ajax({
-			method : 'post',
-			url : 'addPostit',
-			data : postit,
-			success : function(result) {
-				if (result == "fail") {
-					alert('포스트잇 생성 실패');
-				} else {
-					getPostitList();
-				}
+
+	$.ajax({
+		method : 'post',
+		url : 'addPostit',
+		data : postit,
+		success : function(result) {
+			if (result == "fail") {
+				alert('포스트잇 생성 실패');
+			} else {
+				getPostitList();
 			}
-		})
-	}, 500);
+		}
+	})
 }
 
 // 포스트잇 리스트 가져오기
 function getPostitList() {
 	var projectNum = $("#projectNum").val();
-	
 	$.ajax({
 		method : 'post',
 		url : 'getPostitList',
@@ -125,7 +121,10 @@ function postitDrag() {
 			"postit_top" : Math.floor(postitOffset.top),
 			"postit_left" : Math.floor(postitOffset.left)
 		}
+<<<<<<< HEAD
 		console.log(postit.postit_top+" "+postitOffset.left);
+=======
+>>>>>>> 3fc010cfd705ed1b0929dd67a6293c4c4e48a52c
 
 		$.ajax({
 			method : 'post',

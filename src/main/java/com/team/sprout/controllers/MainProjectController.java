@@ -1,9 +1,6 @@
 package com.team.sprout.controllers;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,7 +33,7 @@ public class MainProjectController {
 	@Autowired
 	MemberRepository mem;
 	
-	//자아아아아아 버전을 바꿔봅시다
+
 	
 	@RequestMapping(value="/mainProjectRegist", method=RequestMethod.POST)
 
@@ -54,6 +51,9 @@ public class MainProjectController {
 		prMember.setMainProject_ProjectNum(uuid);
 		prMember.setMember_num(Member_num);
 		prMember.setMember_rank(5);
+		
+
+		
 
 		int result_prMember= prRepo.ProjectMemberRegist(prMember);
 		
@@ -77,7 +77,11 @@ public class MainProjectController {
 		
 		map.put("goproject_title", mainproject.getMainproject_title());
 		map.put("goproject_content",mainproject.getMainproject_memo());
+	
 		
+	
+	
+
 		return map;
 		
 	}

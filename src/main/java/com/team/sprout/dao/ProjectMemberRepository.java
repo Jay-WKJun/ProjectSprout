@@ -1,7 +1,6 @@
 package com.team.sprout.dao;
 
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +8,6 @@ import org.springframework.stereotype.Repository;
 
 import com.team.sprout.vo.MainProject;
 import com.team.sprout.vo.Member;
-import com.team.sprout.vo.Notice;
 import com.team.sprout.vo.ProjectMember;
 @Repository
 public class ProjectMemberRepository {
@@ -74,30 +72,6 @@ public class ProjectMemberRepository {
 		 ProjectMemberDAO dao = session.getMapper(ProjectMemberDAO.class);
 		 List<ProjectMember> result = dao.findInProjectNum(mainproject_projectnum);
 		 return result;
-	}
-
-
-	public int registNotice(Notice notice) {
-
-		ProjectMemberDAO dao = session.getMapper(ProjectMemberDAO.class);
-		int result = dao.registNotice(notice);
-		return result;
-	}
-
-	//노티스 리스트 출력 
-	public List<Notice> noticeList(String mainProject_ProjectNum) {
-		ProjectMemberDAO dao = session.getMapper(ProjectMemberDAO.class);
-		 List<Notice> result = dao.noticeList(mainProject_ProjectNum);
-		
-		return result;
-	}
-
-
-	public int kickMember(ProjectMember member) {
-		ProjectMemberDAO dao = session.getMapper(ProjectMemberDAO.class);
-		int result = dao.kickMember(member);
-		
-		return result;
 	}
 
 

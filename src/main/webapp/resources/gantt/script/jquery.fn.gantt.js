@@ -808,7 +808,7 @@ jQuery.browser = {};
                     ganttNavigate = $('<div class="navigate" />')
                         .append($('<div class="nav-slider" />')
                             .append($('<div class="nav-slider-left" />')
-                                .append($('<span role="button" class="nav-link nav-page-back" />')
+                                .append($('<span role="button" class="nav-link nav-page-back"/>')
                                     .html('&lt;')
                                     .click(function () {
                                         core.navigatePage(element, -1);
