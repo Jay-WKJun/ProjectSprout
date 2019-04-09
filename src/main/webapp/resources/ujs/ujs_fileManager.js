@@ -19,7 +19,9 @@ $(function(){
 function fileUpLoad() {
 	var fileUpLoadForm = $('#fileUpLoadForm')[0];
 	var formData = new FormData(fileUpLoadForm);
-
+	
+	console.log(formData);
+	
 	$.ajax({
 		method : 'post',
 		url : 'projectFileUpLoad',

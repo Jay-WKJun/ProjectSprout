@@ -24,8 +24,7 @@
 			<span id="folderLocation">home</span>
 		</div>
 		<div class="row">
-		<form action="projectFileUpLoad" id="fileUpLoadForm" method="post"
-			enctype="multipart/form-data">
+		<form id="fileUpLoadForm" method="post" enctype="multipart/form-data">
 			<input type="file" value="파일 찾기" id="upLoadFile" name="upLoadFile">
 			<input type="hidden" value="${mainproject_projectnum }" id="MainProject_ProjectNum" name="MainProject_ProjectNum"> 
 			<input type="hidden" value="${mainproject_projectnum }" id="projectFile_location" name="projectFile_location">
