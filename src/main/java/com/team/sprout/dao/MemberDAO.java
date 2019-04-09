@@ -18,6 +18,8 @@ public interface MemberDAO {
 	
 	public int setNull_profile(String id);
 
+	public int deleteMember(String id); 
+	
 	public Member selectOneWebsocket(String userId);
 
 	public int insertcr(ChatRoom cr); 

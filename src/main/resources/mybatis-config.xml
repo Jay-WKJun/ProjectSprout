@@ -4,7 +4,6 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
   
 <configuration>
-
 	<typeAliases>
 		<typeAlias type="com.team.sprout.vo.MainProject" alias="MainProject" />
 		<typeAlias type="com.team.sprout.vo.Member" alias="Member" />
@@ -20,7 +19,6 @@
 		<!--web-->
 		<typeAlias alias="Text" type="com.team.sprout.vo.Text"/>
 		<typeAlias alias="UpDown" type="com.team.sprout.vo.UpDown"/>
-		
 		
 	</typeAliases>
 	

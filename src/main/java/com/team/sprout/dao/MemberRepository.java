@@ -76,5 +76,10 @@ public class MemberRepository {
 		return result;
 	}
 
+	public void deleteMember(String id) {
+		MemberDAO dao = session.getMapper(MemberDAO.class);
+		int result = dao.deleteMember(id);		
+	}
+
 
 }

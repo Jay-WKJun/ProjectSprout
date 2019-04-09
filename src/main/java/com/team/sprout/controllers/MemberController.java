@@ -300,10 +300,6 @@ public class MemberController {
 				mime.contains("image"); // 해당 문자열 안에 내가 원하는 문자가 포함되어 있는가
 				session.setAttribute("mime", mime);
 				
-				
-				
-				
-				
 			} else {												// 기존의 프로필 사진이 없다.
 // 2. 기존의 프로필 사진 X  --> 새로운 프로필 사진 O
 				System.out.println(">> 기존의 프로필 사진 X  --> 새로운 프로필 사진 O");
@@ -359,6 +355,23 @@ public class MemberController {
 		}
 	}
 	
+	@RequestMapping(value = "/delete_info", method = RequestMethod.GET)
+	public String delete_info(HttpSession session) {
+		profileFile pro = new profileFile(); 
+		
+		String id = (String) session.getAttribute("loginId");
+		Member session_info = repo.checkId(id); 					// 기본 session에 저장된 ID로 뽑아온 정보
+		
+		pro.deletefile(session_info.getMemberImage_saveAddress()); 	// C에서 프로필 사진 지우기
+
+		repo.deleteMember(id);
+		
+		String mime = null;
+		session.setAttribute("mime", mime);
+		session.invalidate();
+		return "redirect:/";
+	}
+		
 	@RequestMapping(value = "/basicChatRoom", method = RequestMethod.GET)
 	public String basicChatRoom() {
 		return "websocket/basicChatRoom";
