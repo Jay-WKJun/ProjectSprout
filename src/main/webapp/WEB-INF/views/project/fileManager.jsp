@@ -11,9 +11,6 @@
 	integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
 	crossorigin="anonymous">
 <link rel="stylesheet" href="ucss/ucss_fileManager.css">
-<link rel="stylesheet" href="css/bootstrap.css">
-<script src="js/jquery-3.3.1.min.js"></script>
-<script src="js/jquery-ui.min.js"></script>
 <script src="ujs/ujs_fileManager.js"></script>
 </head>
 <body>
@@ -24,7 +21,10 @@
 			<span id="folderLocation">home</span>
 		</div>
 		<div class="row">
-		<form id="fileUpLoadForm" method="post" enctype="multipart/form-data">
+		
+		
+		<form class="" id="fileUpLoadForm" method="post" enctype="multipart/form-data">
+			 
 			<input type="file" value="파일 찾기" id="upLoadFile" name="upLoadFile">
 			<input type="hidden" value="${mainproject_projectnum }" id="MainProject_ProjectNum" name="MainProject_ProjectNum"> 
 			<input type="hidden" value="${mainproject_projectnum }" id="projectFile_location" name="projectFile_location">
@@ -46,7 +46,4 @@
 		</div>
 		</div>
 	</div>
-
-	<script src="js/bootstrap.bundle.min.js"></script>
-</body>
 </html>

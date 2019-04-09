@@ -15,7 +15,9 @@
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="gantt/css/style.css" />
 <script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
 <script src="ujs/ujs_project.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
 	<div class="wrapper">
@@ -193,7 +195,6 @@
 			</div>
 		</div>
 	</div>
-	<script src="js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
