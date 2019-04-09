@@ -20,8 +20,7 @@
 <link rel="stylesheet" href="ucss/ucss_index.css">
 <link rel="stylesheet" href="css/bootstrap.css">
 <!-- 구글 api -->
-<script src="https://apis.google.com/js/platform.js?onload=renderButton"
-	async defer></script>
+<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="ujs/ujs_index.js"></script>
 </head>
@@ -64,7 +63,6 @@
 					<div class="userInfo_left"></div>
 					<div class="userInfo_right">
 						<c:if test="${sessionScope.loginId == null }">
-							<button class="btn btn-primary" id="timeTable">타임테이블</button>
 							<button class="btn btn-primary" id="wantedBoard">WantedBoard</button>
 							
 							<div class="myInfo">
@@ -86,7 +84,6 @@
 								
 						</c:if>
 						<c:if test="${sessionScope.loginId != null }">
-								<button class="btn btn-primary" id="timeTable">타임테이블</button>
 								<button class="btn btn-primary" id="wantedBoard">WantedBoard</button>
 								<div class="myInfo">
 									<div class="dropdown dropleft float-right h-100">
@@ -179,16 +176,15 @@
 			<div id="ProjectStartSpace" style="display: none">
 				<form action="project_go" id="project_go" method="POST">
 					<div class="contentSpace contentSpace_topMargin">
+						<div class="contentSpace_left">
 						<div class="contentSpace_left"></div>
-						<div class="contentSpace_center">
-
-
+						<div class="contentSpace_right">
 							<div class="contentItem" style="text-align: center; width: 300px">
 								<div class="card">
 									<div class="card-body">
 										<h4 class="card-title">프로젝트 이름</h4>
 										<hr>
-										<div style="text-align-last: left">
+										<div style="text-align-last:left">
 											<span id="goproject_title"> </span>
 										</div>
 									</div>
@@ -197,14 +193,15 @@
 									<div class="card-body">
 										<h4 class="card-title">프로젝트 내용</h4>
 										<hr>
-										<div style="text-align-last: left">
+										<div style="text-align-last:left">
 											<span id="goproject_content"></span>
 										</div>
 									</div>
 								</div>
-
+							</div>
 							</div>
 						</div>
+						<div class="contentSpace_center"></div>
 						<div class="contentSpace_right">
 							<div class="memberList rounded border">
 								<h4 class="card-title">참여 멤버</h4>
@@ -220,25 +217,6 @@
 							style="width: 100%; text-align: center;">
 							<button class="btn btn-dark w-25"
 								style="height: 50px; margin-right: 20px" id="openproject">시작</button>
-
-							
-
-							<div class="modal w-100 h-100" id="whiteBoardModal">
-								<div class="mainSpace">
-									<div class="mainSpace_top">
-
-										<div class="modal-header rounded postitWindow">
-											<button type="button" class="btn btn-danger"
-												data-dismiss="modal">Close</button>
-										</div>
-										<input type="hidden" id="postitNumFromProjectNum"
-											value="${mainproject_projectnum }">
-										<div id="headers"></div>
-
-									</div>
-									<div class="mainSpace_bottom"></div>
-								</div>
-							</div>
 
 							<input type="hidden" name="mainproject_projectnum"
 								id="mainProjectNum">

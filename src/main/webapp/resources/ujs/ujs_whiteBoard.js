@@ -11,11 +11,9 @@ jQuery.browser = {};
 })();
 
 $(function() {
-	setTimeout(function() {
-		getPostitList();
-		// 포스트잇 추가 버튼
-		$('#addPostit').on('click', addPostit);
-    }, 500);
+	getPostitList();
+	// 포스트잇 추가 버튼
+	$('#addPostit').on('click', addPostit);
 });
 
 // 포스트잇 생성
@@ -62,6 +60,16 @@ function getPostitList() {
 // 포스트잇 출력
 function postitPrint(postitList) {
 	var tag = '';
+	tag += '<div class="modal-header rounded postitWindow">';
+	tag += '<button class="btn btn-dark" id="addPostit" style="width: 80px">';
+	tag += '<span class="fa-stack fa-lg">';
+	tag += '<i class="far fa-sticky-note fa-stack-2x"></i>';
+	tag += '<i class="fas fa-plus fa-stack-1x"></i>';
+	tag += '</span>';
+	tag += '</button>';
+	tag += '<button type="button" class="btn btn-danger modalCloseBtn" ';
+	tag += 'data-dismiss="modal">Close</button>';
+	tag += '</div>';
 	$.each(postitList, function(index, item) {
 		tag += '<div class="postit" data-psq="' + item.postit_num;
 		tag += '" style="top:' + item.postit_top + 'px;left:'+ item.postit_left;
@@ -85,6 +93,7 @@ function postitPrint(postitList) {
 	postitDrag();
 	deletePostit();
 	postitContentSave();
+	$('#addPostit').on('click', addPostit);
 }
 
 // 드래그 메서드

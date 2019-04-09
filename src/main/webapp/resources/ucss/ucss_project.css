@@ -148,12 +148,6 @@
     overflow: auto;
 }
 
-.postitWindow{
-	background-color:#f2f2f2;
-	text-align:center;
-	width:100%
-}
-
 .hidden{
 	display:none;
 }
