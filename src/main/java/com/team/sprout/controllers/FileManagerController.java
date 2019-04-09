@@ -39,13 +39,13 @@ public class FileManagerController {
 		}
 		return "project/fileManager";
 	}
-
+	
 	@RequestMapping(value = "/projectFileUpLoad", method = RequestMethod.POST)
 	public @ResponseBody String projectFileUpLoad(HttpSession session, ProjectFile projectFile,
 			MultipartFile upLoadFile) {
 		String resp = "success";
 		String loginId = (String) session.getAttribute("loginId");
-
+		
 		ProjectFile saveProjectFile = FileManager.fileSetting(upLoadPath, projectFile, upLoadFile);
 		saveProjectFile.setProjectFile_member(loginId);
 		int result = fileRepo.projectFileUpLoad(saveProjectFile);
@@ -60,7 +60,7 @@ public class FileManagerController {
 
 		return resp;
 	}
-
+	
 	@RequestMapping(value = "/getFileList", method = RequestMethod.POST)
 	public @ResponseBody List<ProjectFile> getFileList(String projectFile_location) {
 		List<ProjectFile> list = fileRepo.getFileList(projectFile_location);

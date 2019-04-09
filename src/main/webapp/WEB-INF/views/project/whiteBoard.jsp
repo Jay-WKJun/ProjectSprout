@@ -11,9 +11,6 @@
 	integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
 	crossorigin="anonymous">
 <link rel="stylesheet" href="ucss/ucss_whiteBoard.css">
-<link rel="stylesheet" href="css/bootstrap.css">
-<script src="js/jquery-3.3.1.min.js"></script>
-<script src="js/jquery-ui.min.js"></script>
 <script src="ujs/ujs_whiteBoard.js"></script>
 </head>
 <body>
@@ -22,7 +19,5 @@
 		<div id="boardSpace">
 		</div>
 	</div>
-
-	<script src="js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

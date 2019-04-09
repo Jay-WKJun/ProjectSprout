@@ -19,7 +19,9 @@ $(function(){
 function fileUpLoad() {
 	var fileUpLoadForm = $('#fileUpLoadForm')[0];
 	var formData = new FormData(fileUpLoadForm);
-
+	
+	console.log(formData);
+	
 	$.ajax({
 		method : 'post',
 		url : 'projectFileUpLoad',
@@ -28,6 +30,7 @@ function fileUpLoad() {
 		contentType : false,
 		success : function(result) {
 			if (result == "success") {
+				$('#upLoadFile').val('');
 				getFileList();
 			} else {
 				console.log("파일 업로드 실패");

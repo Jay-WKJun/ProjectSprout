@@ -31,7 +31,8 @@ public class WantedBoardController {
 
 	// Properties
 	public static final String WEB_DRIVER_ID = "webdriver.chrome.driver";
-	public static final String WEB_DRIVER_PATH = "C:/Users/Administrator/Dropbox/Utilities/selenium chrome driver/chromedriver.exe";
+	public static final String WEB_DRIVER_PATH = "C:/chromeDriver/chromedriver.exe";
+	public static final String PHANTOM_DRIVER_PATH = "C:/phantomjs/bin/phantomjs.exe";
 
 	// 크롤링 할 URL
 	private String base_url;
@@ -52,6 +53,7 @@ public class WantedBoardController {
 		
     	//System Property SetUp
         System.setProperty(WEB_DRIVER_ID, WEB_DRIVER_PATH);
+		
         
         //Driver SetUp
         driver = new ChromeDriver();
