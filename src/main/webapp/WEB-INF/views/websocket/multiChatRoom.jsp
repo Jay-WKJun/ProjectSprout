@@ -157,7 +157,7 @@
 			str = str.replace(/(?:\r\n|\r|\n)/g, '<br />');
 			
 			var upl = $("#FILE_TAG").val();
-			  var content ='<a href="download?updown_num='+updowns.updown_num+'">'+updowns.originalfile+'</a>';
+			  var content ='<a href="downloads?updown_num='+updowns.updown_num+'">'+updowns.originalfile+'</a>';
 			 if (updowns != "") {
 				stompClient.send("/chat/${chatRoom_num}", {}, JSON.stringify({
 					message : content

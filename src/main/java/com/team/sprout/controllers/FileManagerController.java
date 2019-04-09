@@ -37,7 +37,6 @@ public class FileManagerController {
 		if (postitNumFromProjectNum != null) {
 			model.addAttribute("projectNum", postitNumFromProjectNum);
 		}
-	
 		return "project/fileManager";
 	}
 

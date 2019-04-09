@@ -14,6 +14,14 @@
 		<typeAlias type="com.team.sprout.vo.Notice" alias="Notice" />
 		<typeAlias type="com.team.sprout.vo.WantedBoard" alias="WantedBoard" />
 		<typeAlias type="com.team.sprout.vo.ProjectFile" alias="ProjectFile" />
+		<typeAlias type="com.team.sprout.vo.ChatRoom" alias="ChatRoom" />
+		<typeAlias alias="Message" type="com.team.sprout.vo.Message"/>
+
+		<!--web-->
+		<typeAlias alias="Text" type="com.team.sprout.vo.Text"/>
+		<typeAlias alias="UpDown" type="com.team.sprout.vo.UpDown"/>
+		
+		
 	</typeAliases>
 	
 	<mappers>
@@ -24,5 +32,7 @@
 		<mapper resource="mappers/projectContentMapper.xml" />
 		<mapper resource="mappers/wantedBoardMapper.xml" />
 		<mapper resource="mappers/fileManagerMapper.xml" />
+		<mapper resource="mappers/updownMapper.xml"/>
+		<mapper resource="mappers/textMapper.xml"/>
 	</mappers>
 </configuration>

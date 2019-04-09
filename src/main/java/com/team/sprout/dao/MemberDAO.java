@@ -2,6 +2,7 @@ package com.team.sprout.dao;
 
 import java.util.Map;
 
+import com.team.sprout.vo.ChatRoom;
 import com.team.sprout.vo.Member;
 
 public interface MemberDAO {
@@ -15,5 +16,9 @@ public interface MemberDAO {
 
 	public Member checkId(String id);
 	
-	public int setNull_profile(String id); 
+	public int setNull_profile(String id);
+
+	public Member selectOneWebsocket(String userId);
+
+	public int insertcr(ChatRoom cr); 
 }

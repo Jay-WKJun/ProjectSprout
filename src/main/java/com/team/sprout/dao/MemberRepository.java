@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.team.sprout.vo.ChatRoom;
 import com.team.sprout.vo.Member;
 
 
@@ -26,7 +27,7 @@ public class MemberRepository {
 	public Member selectOne(Map<String, String> map) {
 		MemberDAO dao = session.getMapper(MemberDAO.class);
 		Member m = dao.selectOne(map);
-		
+		System.out.println("member : "+ m.toString());
 		return m;
 	}
 
@@ -56,6 +57,24 @@ public class MemberRepository {
 		int result = dao.setNull_profile(id);
 		return result;
 	} // <환>
+	
+	
+	//websocket에 필요한거
+	public Member selectOneWebsocket(String userId) {
+		MemberDAO dao = session.getMapper(MemberDAO.class);
+		Member member = null;
+		System.out.println("유저아이디"+userId);
+		
+		member = dao.selectOneWebsocket(userId);
+		System.out.println("member : "+ member.toString());
+		return member;
+	}
+
+	public int insertRoomnum(ChatRoom cr) {
+		MemberDAO dao = session.getMapper(MemberDAO.class);
+		int result = dao.insertcr(cr);
+		return result;
+	}
 
 
 }

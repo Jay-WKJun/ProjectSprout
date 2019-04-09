@@ -26,6 +26,7 @@ import com.team.sprout.dao.MainProjectRepository;
 import com.team.sprout.dao.MemberRepository;
 import com.team.sprout.dao.ProjectMemberRepository;
 import com.team.sprout.util.profileFile;
+import com.team.sprout.vo.ChatRoom;
 import com.team.sprout.vo.Member;
 
 @Controller
@@ -88,62 +89,55 @@ public class MemberController {
 		return "member/loginForm";
 	}
 
+	
+	
 	/*
 	 * login POST
 	 */
-	@RequestMapping(value = "/login", method = RequestMethod.POST) // ------------------------------------ 하는 중.
-	public String loginP(String id, String password, boolean idChecked,
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public String loginP(Member member, boolean idChecked,
 			@CookieValue(value = "idChecked", defaultValue = "") String uid, Model model, HttpSession session,
 			HttpServletResponse response) {
 
 		if (idChecked) {
-			Cookie cookie = new Cookie("idChecked", id);// idCheck를 눌럿다면
-			cookie.setMaxAge(24 * 60 * 60); // ()안에는 초단위 int, 24시간동안 cookie를 유지하라는 얘기
-			response.addCookie(cookie); // HDD에 쿠키에 저장하라는 명령이다.
+			// idCheck를 눌럿다면
+			Cookie cookie = new Cookie("idChecked", member.getMember_id());
+			// ()안에는 초단위 int, 24시간동안 cookie를 유지하라는 얘기
+			cookie.setMaxAge(24 * 60 * 60);
+			// HDD에 쿠키에 저장하라는 명령이다.
+			response.addCookie(cookie);
 		} else { // 쿠키 삭제해야함
 			Cookie cookie = new Cookie("idChecked", null);
-			cookie.setMaxAge(0); // expire time = 0 = 즉시 지워라
+			// expire time = 0 = 즉시 지워라
+			cookie.setMaxAge(0);
 			response.addCookie(cookie);
 		}
 
-		Map<String, String> map = new HashMap<>();
+		/*Map<String, String> map = new HashMap<>();
 
 		map.put("id", id);
 		map.put("password", password);
 
 		// 입력된 정보로 DB가서 그 정보를 가져온다.
-		Member m = repo.selectOne(map); // m은 DB에서 가져온 정보가 담김(김환이 가져다 씀.)
-
+		Member m = repo.selectOne(map);*/
+		System.out.println("member아이디"+member.getMember_id());
+		Member getMember = repo.selectOneWebsocket(member.getMember_id());
+		
 		// 로그인 성공
 		String message = null;
-
-		if (m == null || !(m.getMember_id().equals(id) && m.getMember_id().equals(id))) {
+		if (getMember == null || !(getMember.getMember_id().equals(member.getMember_id()) && getMember.getMember_password().equals(member.getMember_password()))) {
 			message = "아이디 혹은 비밀번호가 맞지 않습니다.";
 			model.addAttribute("message", message);
 			return "member/loginForm";
 		} else {
 			System.out.println("로그인 성공 **********************");
-			session.setAttribute("loginId", m.getMember_id());
-			session.setAttribute("loginName", m.getMember_name());
-			session.setAttribute("loginNum", m.getMember_num());
-			// ----------------------------------------------------- login 후 이미지(파일) 불러오기
-			String mime = null; // mime은 사진 형식인지 확인하기 위한것..... (image/jpeg)
-			String fullPath = m.getMemberImage_saveAddress(); // profile_img가 저장된 위치.
-
-			if (m.getMemberImage_saveAddress() == null) { // 회원가입 할 때 프로필 사진을 지정안함
-				System.out.println("회원가입할 때 프로필 사진 지정을 안함");
-			} else {
-				try {
-					mime = Files.probeContentType(Paths.get(fullPath));
-					mime.contains("image"); // 해당 문자열 안에 내가 원하는 문자가 포함되어 있는가
-					session.setAttribute("mime", mime); // .jsp에 가져갈 이미지 파일을 담았다.
-				} catch (IOException e) { e.printStackTrace(); }
-			} // if & else
-			// ----------------------------------------------------- 환.
+			session.setAttribute("loginId", getMember.getMember_id());
+			session.setAttribute("loginName", getMember.getMember_name());
+			session.setAttribute("loginNum", getMember.getMember_num());
+			session.setAttribute("member_num", getMember.getMember_num());
 		}
 		return "redirect:/";
 	}
-
 	
 	/*
 	 * ID로 img파일 불러오기. (메인화면에 img 띄우기.)
@@ -266,7 +260,7 @@ public class MemberController {
 		// ------------------------------------------------------------ 세션에 ID로 회원정보 불러오기
 		profileFile pro = new profileFile();// 프로필 사진을 달기 위한 선언자
 
-		String id = (String) session.getAttribute("loginId");
+	String id = (String) session.getAttribute("loginId");
 		Member session_info = repo.checkId(id); // 기본 session에 저장된 ID로 뽑아온 정보
 		
 		System.out.println("---------- information of modify ----------");
@@ -292,20 +286,11 @@ public class MemberController {
 				System.out.println("삭제하려고 하는 파일의 fullPath : "+ oldPath);
 				// ------------------------------------------------------------ getMemberImage_saveAddress으로 파일 삭제
 				pro.deletefile(oldPath); //실제적으로 삭제하는 부분.
-				// ------------------------------------------------------------ 서버에 새로운 파일 저장하기.
+			// ------------------------------------------------------------ 서버에 새로운 파일 저장하기.
 				String newPAth = pro.uploadfile(newPicture, session_info);// 이름은 같지만 확장자가 바뀔 상황이 있어서 같이 잡아줘야 한다.
 				// ------------------------------------------------------------ DB에 회원정보 입력
 				member.setMemberImage_saveAddress(newPAth);
 				repo.updateMember(member);
-				
-				
-				
-				
-				
-				
-				
-				
-				
 				
 				String mime = null;
 				String fullPath = member.getMemberImage_saveAddress();
@@ -373,4 +358,23 @@ public class MemberController {
 			return null;
 		}
 	}
+	
+	@RequestMapping(value = "/basicChatRoom", method = RequestMethod.GET)
+	public String basicChatRoom() {
+		return "websocket/basicChatRoom";
+	}
+	
+	@RequestMapping(value = "/multiChatRoom", method = RequestMethod.GET)
+	public String multiChatRoom(int chatRoom_num, String chatRoom_name, Model model) {
+			ChatRoom cr = new ChatRoom();
+			cr.setChatRoom_name("임시방이름");
+			cr.setChatRoom_num(chatRoom_num);
+				System.out.println(chatRoom_num);
+				int result =repo.insertRoomnum(cr);
+		model.addAttribute("chatRoom_num",chatRoom_num);
+		
+
+		return "websocket/multiChatRoom";
+	}
+	
 }
