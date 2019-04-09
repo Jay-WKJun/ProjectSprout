@@ -58,7 +58,10 @@ public class TimeTableController {
 				
 				//"6da5455f-abe5-4390-81c6-e05e3f7e1ddc";
 		
-		List<ProjectContent> pcList = pcRepo.projectContentSelectAll(mainProjectNum); 
+		List<ProjectContent> pcList = pcRepo.projectContentSelectAll(mainProjectNum);
+		for (ProjectContent projectContent : pcList) {
+			System.out.println(projectContent.toString());
+		}
 		
 		Gson gson = new Gson();
 		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -132,7 +135,7 @@ public class TimeTableController {
 				}
 				
 				//해당 멤버 한명의 객체를 가져온다.
-				Member member = repo.searchMember(4);//try 아이디 메인키 번호는 4이다.
+				Member member = repo.searchMember(pc.getMember_num());
 				
 				System.out.println(member.toString());
 				
