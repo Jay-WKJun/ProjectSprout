@@ -117,11 +117,16 @@
 				<div class="contentSpace_right"></div>
 			</div>
 			<div id="webPresentation" style="display: block">
+				
+				
 				<div class="contentSpace contentSpace_topMargin">
 					<div class="contentSpace_left"></div>
 					<div class="contentSpace_center">
 						<div class="contentItem">
 							<h1>[ 웹 소개 내용 ]</h1>
+				<!--web소켓 확인////  -->
+							<a href="multiChatRoom?chatRoom_num=1">1번방</a>
+	
 						</div>
 					</div>
 					<div class="contentSpace_right"></div>
@@ -249,7 +254,6 @@
 	</div>
 	</div>
 	<script src="js/bootstrap.bundle.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
 	
 	
 	<!-- ----------------------------------------------------------------------- -->

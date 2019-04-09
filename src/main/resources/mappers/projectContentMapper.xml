@@ -37,6 +37,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from
 			projectContent
 		where MAINPROJECT_PROJECTNUM = #{mainProjectNum}
+		order by MEMBER_NUM
 	</select>
 	
 	<select id="projectContentSelectOne" resultType="ProjectContent">

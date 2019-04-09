@@ -1,6 +1,5 @@
 package com.team.sprout.controllers;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.team.sprout.dao.MainProjectRepository;
 import com.team.sprout.dao.MemberRepository;
+import com.team.sprout.dao.ProjectContentRepository;
 import com.team.sprout.dao.ProjectMemberRepository;
 import com.team.sprout.dao.WorkSpaceRepository;
 import com.team.sprout.vo.MainProject;
@@ -32,6 +33,13 @@ public class WorkSpaceController {
 	WorkSpaceRepository workrepo;
 	@Autowired
 	MemberRepository memRepo;
+	
+	@Autowired
+	MemberRepository repo;
+	@Autowired
+	ProjectContentRepository pcRepo;
+	@Autowired
+	MainProjectRepository mainrepo;
 	
 	List<Member> projectMembers;
 
@@ -58,7 +66,7 @@ public class WorkSpaceController {
 		  model.addAttribute("mainproject_projectnum", mainproject_projectnum);
 		  session.setAttribute("mainproject_projectnum", mainproject_projectnum);
 		  model.addAttribute("projectMembersList", projectMembers);
-		
+		  
 		return "project/project";
 	}
 

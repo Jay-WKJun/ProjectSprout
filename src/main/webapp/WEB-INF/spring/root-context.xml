@@ -38,10 +38,9 @@
 	</bean>
 	
 	<!-- file upload를 위한 bean 설정 : 최대 10메가까지만 가능, 초과되면 불가능. -->
-	<bean name="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		 <property name="maxUploadSize" value="100000000"/>
         <property name="maxInMemorySize" value="100000000"/>
 	</bean>
 	
-		
 </beans>

@@ -1,13 +1,12 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!doctype html>
+<!DOCTYPE html>
+<html>
 <head>
 <meta charset="UTF-8">
 <title>jQuery.Gantt</title>
 
 <meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1">
-<!-- 타임테이블을 꾸며주는 css임으로 반드시 불러줘야합니다. -->
-<link rel="stylesheet" href="gantt/css/style.css" />
 <!-- 아래 스타일은 전부 popup을 위한 style -->
 <style>
 .pop-layer .pop-container {
@@ -88,6 +87,7 @@
   background-color: #1f326a;
   color: #fff;
 }
+
 </style>
 </head>
 <body>
@@ -125,10 +125,9 @@
 
 
 
-</body>
+
 <!-- 이 두개는 반드시 불러와야하고 반드시 한곳에 있어야합니다. -->
 
-<script src="gantt/script/jquery-3.3.1.min.js"></script>
 <script src="gantt/script/jquery.fn.gantt.js"></script>
 <!-- script는 반드시 그대로 써주세요 -->
 <script>
@@ -360,4 +359,5 @@
 
 	    
     </script>
+    </body>
 </html>

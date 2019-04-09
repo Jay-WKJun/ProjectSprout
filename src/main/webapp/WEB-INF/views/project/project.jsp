@@ -3,7 +3,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,20 +13,21 @@
 	crossorigin="anonymous">
 <link rel="stylesheet" href="ucss/ucss_project.css">
 <link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="gantt/css/style.css" />
 <script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
 <script src="ujs/ujs_project.js"></script>
-
+<script src="js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
 	<div class="wrapper">
 		<div class="sideSpace">
 			<div class="sideSpace_top">
-				<button class="btn btn-primary" id="timeTable">타임테이블</button>
 				<a href="/sprout"><img class="webLogo" src="img/sprout_logo.png"></a>
 			</div>
 			<div class="sideSpace_bottom">
 				<ul class="nav nav-tabs">
-					<li class="nav-item"><a class="nav-link active"
+					<li class="nav-item"><a class="nav-link active" id="memberChangeBtn"
 						data-toggle="tab" href="#home">멤버</a></li>
 					<li class="nav-item"><a class="nav-link" data-toggle="tab"
 						href="#menu1">메세지</a></li>
@@ -38,13 +38,33 @@
 				<div
 					class="communicationBar rounded-bottom border border-top-0 w-100"
 					style="padding: 5px">
+					<div id="memberSpace_display" style="display:block">
 					<div class="list-group">
 					
 					<form action="addProjectMember" id="addProjectMember" method="GET"> 
-					<button class="btn btn-dark w-100" id="addmem" disabled="disabled">멤버 추가</button>
-					<input type="text" class="w-100" id="addMember" name="addMember" placeholder="추가하실 아이디를 입력하세요">
-					<input type="text" class="w-100"  placeholder="멤버 검색">
-					<span id = "addmemberMessage"></span>
+					
+					<button type="button" class="btn btn-dark w-100" data-toggle="modal" data-target="#myModal">
+						멤버 초대하기
+					</button>
+					
+					<!-- The Modal -->
+					<div class="modal" id="myModal">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<!-- Modal body -->
+								<div class="modal-body">
+									<div class="input-group mb-3">
+									<input type="text" class="form-control" id="addMember" name="addMember" placeholder="추가하실 아이디를 입력하세요.">
+										<div class="input-group-append">
+											<button class="btn btn-dark w-100" id="addmem" disabled="disabled">멤버 추가</button> 
+										</div>
+									</div>
+									<span id = "addmemberMessage"></span>
+								</div>
+							</div>
+						</div>
+					</div>
+					
 				</form> 
 				
 						<c:forEach var="list" items="${projectMembersList}">
@@ -69,9 +89,10 @@
 						</c:forEach>
 
 					</div>
-					<div id="noticeSpace">
 					</div>
-
+					
+					<div id="noticeSpace" style="display: none">
+					</div>
 					
 				</div>
 			</div>
@@ -112,7 +133,6 @@
 				<div class="mainSpace_top_side" style="text-align: right">
 					<div class="contentItem" style="margin-right: 20px">
 					<span id="noticeBtnSpace">
-						
 				
 					</span>
 						<button class="btn btn-dark" id="noticeBtn" data-toggle="1">
@@ -127,49 +147,54 @@
 			<div class="mainSpace_bottom">
 				<div class="contentSpace_side"></div>
 				<div class="contentSpace">
-					<div class="timeTable rounded border"></div>
-					<div class="fileManager rounded border"></div>
+					<div class="timeTable rounded border" id="timeTable">
+					</div>
+
+					<div class="fileManager rounded border" id="fileManager">
+						<!-- <div id="fileManagerHeaders"></div> -->
+					</div>
+					
 				</div>
 				<div class="contentSpace_side"></div>
 				<div class="contentSpace_right">
 					<div class="contentItem" style="margin: 20px; height: 100%;">
-
-						<button type="button" class="btn btn-dark h-100"
+					
+					<button type="button" class="btn btn-dark h-100" data-toggle="modal" data-target="#whiteBoardModal" id="modalBtn">
+						<i class="fas fa-chevron-left fa-lg"></i>
+					</button>
+					
+						<!-- <button type="button" class="btn btn-dark h-100"
 							data-target="#whiteBoardModal" id="modalBtn">
 							<i class="fas fa-chevron-left fa-lg"></i>
-						</button>
-
+						</button> -->
+						<!-- 부트스트랩 modal-backdrop 클래스 지움 -->
+						<input type="hidden" id="postitNumFromProjectNum" value="${mainproject_projectnum }">
 						<div class="modal w-100 h-100" id="whiteBoardModal">
-							<div class="mainSpace">
-								<div class="mainSpace_top">
-
-									<div class="modal-header rounded postitWindow">
-										<button class="btn btn-dark" id="addPostit"
-											style="width: 80px">
-											<span class="fa-stack fa-lg"> <i
-												class="far fa-sticky-note fa-stack-2x"></i> <i
-												class="fas fa-plus fa-stack-1x"></i>
-											</span>
-										</button>
-										<button type="button" class="btn btn-danger"
-											data-dismiss="modal">Close</button>
-									</div>
-									<input type="hidden" id="postitNumFromProjectNum"
-										value="${mainproject_projectnum }">
-									<div id="headers"></div>
-
-								</div>
-								<div class="mainSpace_bottom"></div>
+							<div class="mainSpace" id="whiteBoardMainSpace">
+										<div class="modal-header rounded postitWindow">
+											<button class="btn btn-dark" id="addPostit"
+												style="width: 80px">
+												<span class="fa-stack fa-lg"> <i
+													class="far fa-sticky-note fa-stack-2x"></i> <i
+													class="fas fa-plus fa-stack-1x"></i>
+												</span>
+											</button>
+											<button type="button" class="btn btn-danger modalCloseBtn" 
+												data-dismiss="modal">Close</button>
+										</div>
+										<div id="headers">
+											<div id="whiteBoardLoad"></div>
+										</div>
+										<div class="w-100 modalCloseBtn" style="height:700px;"
+												data-dismiss="modal"></div>
 							</div>
 						</div>
+						
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
-	<script src="js/bootstrap.bundle.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
 </body>
 
 </html>

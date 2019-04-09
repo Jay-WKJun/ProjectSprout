@@ -52,7 +52,7 @@
 											class="far fa-id-badge fa-lg"></i><span
 											style="margin-left: 8px">아이디</span></span>
 									</div>
-									<input type="text" class="form-control" id="id" name="id"
+									<input type="text" class="form-control" id="id" name="member_id"
 										value="${cookie['idChecked'].value}">
 								</div>
 								<div class="input-group">
@@ -61,7 +61,7 @@
 											class="fas fa-lock fa-lg"></i><span style="margin-left: 8px">비밀번호</span></span>
 									</div>
 									<input type="password" class="form-control  fontDefault" id="password"
-										name="password">
+										name="member_password">
 								</div>
 								<div class="checkBox_space">
 									<div class="checkBox_space_side"></div>
@@ -94,7 +94,6 @@
 		</div>
 	</div>
 	<script src="js/bootstrap.bundle.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
 
 
 	<script

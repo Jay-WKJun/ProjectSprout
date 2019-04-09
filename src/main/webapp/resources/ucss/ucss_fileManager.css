@@ -1,0 +1,29 @@
+.wrapper{
+}
+
+.fileManagerTable {
+	width:100%;
+	max-height: 400px;
+	overflow-y: auto;
+}
+
+.file {
+	
+}
+
+.folder {
+	
+}
+
+#closeFolderMessage{
+	color:#f23a3a;
+}
+
+#fileImageBox{
+	position: absolute;
+}
+
+#fileImage{
+	width: 200px;
+    height: auto;
+}

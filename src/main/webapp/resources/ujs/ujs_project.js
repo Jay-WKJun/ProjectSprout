@@ -1,5 +1,5 @@
 $(function() {
-
+	
 	$('#userProfileIcon').on('mouseover', function() {
 		$('#userProfileIcon').attr('class', 'rounded-circle');
 	})
@@ -13,15 +13,15 @@ $(function() {
 		$('#userProfileIcon').attr('class', 'rounded-circle border');
 	})
 
-	$('#modalBtn').on('click',function(){
-		$('#whiteBoardModal').modal('show');
-		var postitNumFromProjectNum=$('#postitNumFromProjectNum').val();
-		$('#headers').load('whiteBoard?postitNumFromProjectNum='+postitNumFromProjectNum);
-	})
+	//파일 매니저
+	var postitNumFromProjectNum=$('#postitNumFromProjectNum').val();
+	$('#fileManager').load('fileManager?postitNumFromProjectNum='+postitNumFromProjectNum);
 	
-	$('#modalCloseBtn').on('click', function() {
-		$('#whiteBoardModal').modal('hide');
-	})
+	//화이트 보드
+	$('#modalBtn').on('click',openWhiteBoard);
+	$('.modalCloseBtn').on('click', closeWhiteBoard);
+	//$('#whiteBoardMainSpace').on('click', closeWhiteBoard);
+	
 	//아이디 추가하기
 	$('#addmem').on('click',function(){
 		$('#addProjectMember').submit();
@@ -30,36 +30,78 @@ $(function() {
 	
 	//공지사항 추가 버튼
 	$('#noticeBtn').on('click', createNotice);
+	
 	//공지사항 버튼 
-	$('#noticeCheckBtn').on('click',nolist);
+	$('#noticeCheckBtn').on('click',function(){
+		$('#noticeSpace').attr('style','display:block');
+		$('#memberSpace_display').attr('style','display:none');
+		nolist();
+	})
+	
+	//멤버리스트로 돌아가는 버튼
+	$('#memberChangeBtn').on('click',function(){
+		$('#noticeSpace').attr('style','display:none');
+		$('#memberSpace_display').attr('style','display:block');
+	})
+	
 	//강퇴버튼 
 	$('.kickMember').on('click',kickMember);
 	
 	//detail로 넘어가는 버튼
-	$('#projectDetail').on('click',function(){
-
-		detail();
-	});
+	$('#projectDetail').on('click',detail);
 
 	//나중에 삭제
-	$('#timeTable').on('click', function(){
+	/*$('#timeTable').on('click', function(){
 		location.href = "timetable";
-	});
-
+	});*/
+	
+	//타임 테이블
+	$('#timeTable').load('timetable');
 	
 })
 
+//화이트보드 띄우기
+function openWhiteBoard(){
+	
+	var postitNumFromProjectNum=$('#postitNumFromProjectNum').val();
+	
+	var tag='';
+/*	tag+='<div class="mainSpace">';
+	tag+='<div class="mainSpace_top">';
+	tag+='<div class="modal-header rounded postitWindow">';
+	tag+='<button class="btn btn-dark" id="addPostit" style="width: 80px">';
+	tag+='<span class="fa-stack fa-lg"> ';
+	tag+='<i class="far fa-sticky-note fa-stack-2x"></i> ';
+	tag+='<i class="fas fa-plus fa-stack-1x"></i>';
+	tag+='</span>';
+	tag+='</button>';
+	tag+='<button type="button" class="btn btn-danger" id="modalCloseBtn"';
+	tag+='data-dismiss="modal">Close</button>';
+	tag+='</div>';
+	tag+='<div id="headers"></div>';
+	tag+='</div>';
+	tag+='<div class="mainSpace_bottom"></div>';
+	tag+='</div>';
+	*/
+	tag+='<div id="whiteBoardLoad"></div>';
+	
+	$('#headers').html(tag);
+	
+	$('#whiteBoardLoad').load('whiteBoard?postitNumFromProjectNum='+postitNumFromProjectNum);
+}
 
+//화이트보드 종료
+function closeWhiteBoard(){
+	/*$('#whiteBoardModal').empty();*/
+	$('#headers').empty();
+}
 
 function detail(){
 	location.href ="detailPage";
 	
 }
 function init(){
-	
 	location.href ="project_go";
-	
-	
 }
 
 function kickMember(){
@@ -97,7 +139,6 @@ function nolist(){
 		
 			 var output ='';
 			 $.each(result,function(index, item){
-		
 				 
 				 output += item.notice_content+'<br>';
 				
@@ -106,8 +147,6 @@ function nolist(){
 			 
 		 }
 	})
-
-	
 	
 }
 
@@ -128,6 +167,7 @@ function createNotice(){
 				 ,data: "notice_content="+notice_content
 				 ,success: function(result){
 					 if(result=="success"){
+						 $('#noticeContent').val('');
 						 nolist();
 					 }else{
 						 console.log("공지사항 추가 실패");
@@ -141,43 +181,3 @@ function createNotice(){
 		$(this).attr('data-toggle',1);
 	}
 }
-
-// 추가가능한 아이디인지 아닌지 확인하는 것
-$(function(){
-	
-	$('#addMember').keyup(function(){
-		var addMember =$('#addMember').val();
-		
-		
-		$.ajax({
-			 method : 'post'
-			 ,url : 'checkForAddMember'
-			 ,data: "addMember="+addMember
-			,success: function(result){
-				if (result.resp == 1 ) {
-					$('#addmemberMessage').html('추가가능한 아이디입니다. 추가하기를 누르세요');
-					$('#addmemberMessage').attr('style','color:#f23a3a');
-					$('#addmem').removeAttr('disabled');
-					
-				}
-				else if (result.resp ==2) {
-					$('#addmemberMessage').html('이미 추가한 아이디 입니다');
-					$('#addmemberMessage').attr('style','color:#f23a3a');
-					
-				} else {
-
-					$('#addmemberMessage').html('존재하지 않는 아이디 입니다. 다시 입력하세요');
-					$('#addmemberMessage').attr('style','color:#304dd1');
-				}
-			}
-				
-			})
-	})
-	
-})
-
-
-
-
-
-

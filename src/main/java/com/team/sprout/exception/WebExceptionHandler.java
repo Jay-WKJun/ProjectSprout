@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class WebExceptionHandler {
 
-	@ExceptionHandler(Exception.class)
+/*	@ExceptionHandler(Exception.class)
 	public String errorHandler(Exception e, Model model) {
 		String errMsg = e.getMessage();
 		model.addAttribute("errMsg", errMsg);
 		
 		return "exception/error";
-	}
+	}*/
 }
