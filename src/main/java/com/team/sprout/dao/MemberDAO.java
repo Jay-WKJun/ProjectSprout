@@ -15,5 +15,7 @@ public interface MemberDAO {
 
 	public Member checkId(String id);
 	
-	public int setNull_profile(String id); 
+	public int setNull_profile(String id);
+
+	public int deleteMember(String id); 
 }

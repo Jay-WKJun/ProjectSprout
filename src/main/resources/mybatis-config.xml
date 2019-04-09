@@ -4,16 +4,14 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
   
 <configuration>
-
 	<typeAliases>
-		<typeAlias type="com.team.sprout.vo.MainProject" alias="MainProject" />
-		<typeAlias type="com.team.sprout.vo.Member" alias="Member" />
-		<typeAlias type="com.team.sprout.vo.ProjectMember" alias="ProjectMember" />
-		<typeAlias type="com.team.sprout.vo.Postit" alias="Postit" />
-		<typeAlias type="com.team.sprout.vo.ProjectContent" alias="ProjectContent" />
-		<typeAlias type="com.team.sprout.vo.Notice" alias="Notice" />
-		<typeAlias type="com.team.sprout.vo.WantedBoard" alias="WantedBoard" />
-
+		<typeAlias type="com.team.sprout.vo.MainProject"	alias="MainProject" />
+		<typeAlias type="com.team.sprout.vo.Member" 		alias="Member" />
+		<typeAlias type="com.team.sprout.vo.ProjectMember"	alias="ProjectMember" />
+		<typeAlias type="com.team.sprout.vo.Postit" 		alias="Postit" />
+		<typeAlias type="com.team.sprout.vo.ProjectContent"	alias="ProjectContent" />
+		<typeAlias type="com.team.sprout.vo.Notice" 		alias="Notice" />
+		<typeAlias type="com.team.sprout.vo.WantedBoard" 	alias="WantedBoard" />
 	</typeAliases>
 	
 	<mappers>

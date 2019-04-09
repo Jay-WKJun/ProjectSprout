@@ -86,10 +86,12 @@
 					</div>
 					<div class="contentItem w-100" style="text-align: right; margin-top: 10px">
 		<!-- 수정-->	<input type="submit" id="update_with_old_info" class="btn btn-dark" style="width: 100px; height: 50px" value="수정">
-		<!-- 탈퇴 -->	<button class="btn btn-danger" style="width: 100px; height: 50px">탈퇴</button>
 					</div>
 				</div>
 			</form>
+		<!-- 탈퇴 -->	<a href="delete_info" class="btn btn-danger" style="width: 100px; height: 50px">탈퇴</a>
+		<!-- 컨트롤러오 좀 넘겨주세요... 실행ㄴㄴ -->
+		
 			<div class="sideSpace"></div>
 		</div>
 	</div>
