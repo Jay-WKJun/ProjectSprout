@@ -113,13 +113,13 @@ public class MemberController {
 			response.addCookie(cookie);
 		}
 
-		/*Map<String, String> map = new HashMap<>();
+		Map<String, String> map = new HashMap<>();
 
-		map.put("id", id);
-		map.put("password", password);
+		map.put("id", member.getMember_id());
+		map.put("password", member.getMember_password());
 
 		// 입력된 정보로 DB가서 그 정보를 가져온다.
-		Member m = repo.selectOne(map);*/
+		Member m = repo.selectOne(map);
 		System.out.println("member아이디"+member.getMember_id());
 		Member getMember = repo.selectOneWebsocket(member.getMember_id());
 		
@@ -135,6 +135,20 @@ public class MemberController {
 			session.setAttribute("loginName", getMember.getMember_name());
 			session.setAttribute("loginNum", getMember.getMember_num());
 			session.setAttribute("member_num", getMember.getMember_num());
+			// ----------------------------------------------------- login 후 이미지(파일) 불러오기
+			String mime = null; // mime은 사진 형식인지 확인하기 위한것..... (image/jpeg)
+			String fullPath = m.getMemberImage_saveAddress(); // profile_img가 저장된 위치.
+
+			if (m.getMemberImage_saveAddress() == null) { // 회원가입 할 때 프로필 사진을 지정안함
+				System.out.println("회원가입할 때 프로필 사진 지정을 안함");
+			} else {
+				try {
+					mime = Files.probeContentType(Paths.get(fullPath));
+					mime.contains("image"); // 해당 문자열 안에 내가 원하는 문자가 포함되어 있는가
+					session.setAttribute("mime", mime); // .jsp에 가져갈 이미지 파일을 담았다.
+				} catch (IOException e) { e.printStackTrace(); }
+			} // if & else
+			// ----------------------------------------------------- 환.
 		}
 		return "redirect:/";
 	}
@@ -361,9 +375,9 @@ public class MemberController {
 		
 		String id = (String) session.getAttribute("loginId");
 		Member session_info = repo.checkId(id); 					// 기본 session에 저장된 ID로 뽑아온 정보
-		
-		pro.deletefile(session_info.getMemberImage_saveAddress()); 	// C에서 프로필 사진 지우기
-
+		if (session_info.getMemberImage_saveAddress()!=null) {
+			pro.deletefile(session_info.getMemberImage_saveAddress()); 	// C에서 프로필 사진 지우기
+		}
 		repo.deleteMember(id);
 		
 		String mime = null;

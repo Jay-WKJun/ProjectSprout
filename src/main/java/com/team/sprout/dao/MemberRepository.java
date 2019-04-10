@@ -27,7 +27,7 @@ public class MemberRepository {
 	public Member selectOne(Map<String, String> map) {
 		MemberDAO dao = session.getMapper(MemberDAO.class);
 		Member m = dao.selectOne(map);
-		System.out.println("member : "+ m.toString());
+		//System.out.println("member : "+ m.toString());
 		return m;
 	}
 
@@ -61,14 +61,18 @@ public class MemberRepository {
 	
 	//websocket에 필요한거
 	public Member selectOneWebsocket(String userId) {
-		MemberDAO dao = session.getMapper(MemberDAO.class);
-		Member member = null;
-		System.out.println("유저아이디"+userId);
-		
-		member = dao.selectOneWebsocket(userId);
-		System.out.println("member : "+ member.toString());
-		return member;
-	}
+	      Member member = null;
+	      try {
+	         MemberDAO dao = session.getMapper(MemberDAO.class);
+	         System.out.println("유저아이디"+userId);
+	         
+	         member = dao.selectOneWebsocket(userId);
+	         System.out.println("member : "+ member.toString());
+	         return member;
+	      } catch (Exception e) {
+	         return member;
+	      }
+	   }
 
 	public int insertRoomnum(ChatRoom cr) {
 		MemberDAO dao = session.getMapper(MemberDAO.class);

@@ -43,15 +43,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select parameterType="String" id="selectOneWebsocket" resultType="Member">
-	select
-	member_num,
-	member_id,
-	member_password,
-	member_name
-	from
-	member
-	where
-	member_id = #{userId} 
+		select
+			member_num,
+			member_id,
+			member_password,
+			member_name
+		from
+			member
+		where
+			member_id = #{userId} 
 	</select>
 	
 	<select id="searchMember" resultType="Member">
