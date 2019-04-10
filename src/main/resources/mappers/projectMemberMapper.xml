@@ -19,10 +19,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	</insert>
 	
+<!-- <resultMap type="Member" id="Member">
+<result column="member_num" property="member_num"/>
+<result column="member_id" property="member_id"/>
+<result column="member_password" property="member_password"/>
+<result column="member_name" property="member_name"/>
+<result column="member_phone" property="member_phone"/>
+<result column="member_address" property="member_address"/>
+<result column="member_loginDate" property="member_loginDate"/>
+<result column="memberImage_saveAddress" property="memberImage_saveAddress"/>
+</resultMap>
+	
+<resultMap type="ProjectMember" id="ProjectMember">
+<result column="projectMember_num" property="projectMember_num"/>
+<result column="MainProject_ProjectNum" property="MainProject_ProjectNum"/>
+<result column="member_num" property="member_num"/>
+<result column="member_rank" property="member_rank"/>
+<collection property="Member" resultMap="Member"></collection>
+</resultMap> -->
+
+<!--  	pm.PROJECTMEMBER_NUM,pm.MAINPROJECT_PROJECTNUM,pm.MEMBER_NUM,pm.MEMBER_RANK
+ 	,m.MEMBER_NUM,m.MEMBER_NAME,m.MEMBER_ID -->
 
 		<!-- 특정 메인프로젝트에 속해있는 사람들을 찾아옵니다. -->
-		<select id="projectmemberSelectAll" resultType="Member" parameterType="String">
-	
+<select id="projectmemberSelectAll" resultType="Member" parameterType="String">
  select *
  from member 
  where member_num 
