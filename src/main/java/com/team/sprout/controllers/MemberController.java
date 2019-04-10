@@ -135,6 +135,10 @@ public class MemberController {
 			session.setAttribute("loginName", getMember.getMember_name());
 			session.setAttribute("loginNum", getMember.getMember_num());
 			session.setAttribute("member_num", getMember.getMember_num());
+			// ---------------------------------------------------- login할 때마다 DB에 로그인 시간 잡아주기
+			repo.setLoginTime(getMember.getMember_id());
+			
+			
 			// ----------------------------------------------------- login 후 이미지(파일) 불러오기
 			String mime = null; // mime은 사진 형식인지 확인하기 위한것..... (image/jpeg)
 			String fullPath = m.getMemberImage_saveAddress(); // profile_img가 저장된 위치.

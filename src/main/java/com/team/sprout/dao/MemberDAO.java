@@ -22,5 +22,7 @@ public interface MemberDAO {
 	
 	public Member selectOneWebsocket(String userId);
 
-	public int insertcr(ChatRoom cr); 
+	public int insertcr(ChatRoom cr);
+
+	public void setLoginTime(String member_id); //
 }
