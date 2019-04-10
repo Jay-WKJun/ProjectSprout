@@ -15,7 +15,6 @@
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="gantt/css/style.css" />
 <script src="js/jquery-3.3.1.min.js"></script>
-<script src="js/jquery-ui.min.js"></script>
 <script src="ujs/ujs_project.js"></script>
 <script src="js/bootstrap.bundle.min.js"></script>
 </head>
@@ -163,15 +162,11 @@
 						<i class="fas fa-chevron-left fa-lg"></i>
 					</button>
 					
-						<!-- <button type="button" class="btn btn-dark h-100"
-							data-target="#whiteBoardModal" id="modalBtn">
-							<i class="fas fa-chevron-left fa-lg"></i>
-						</button> -->
 						<!-- 부트스트랩 modal-backdrop 클래스 지움 -->
 						<input type="hidden" id="postitNumFromProjectNum" value="${mainproject_projectnum }">
 						<div class="modal w-100 h-100" id="whiteBoardModal">
 							<div class="mainSpace" id="whiteBoardMainSpace">
-										<div class="modal-header rounded postitWindow">
+										<!-- <div class="modal-header rounded postitWindow">
 											<button class="btn btn-dark" id="addPostit"
 												style="width: 80px">
 												<span class="fa-stack fa-lg"> <i
@@ -181,12 +176,11 @@
 											</button>
 											<button type="button" class="btn btn-danger modalCloseBtn" 
 												data-dismiss="modal">Close</button>
-										</div>
-										<div id="headers">
-											<div id="whiteBoardLoad"></div>
-										</div>
-										<div class="w-100 modalCloseBtn" style="height:700px;"
-												data-dismiss="modal"></div>
+										</div> -->
+								<div id="headers">
+									<div id="whiteBoardLoad"></div>
+								</div>
+								<div class="w-100 modalCloseBtn" style="height:700px;" data-dismiss="modal"></div>
 							</div>
 						</div>
 						

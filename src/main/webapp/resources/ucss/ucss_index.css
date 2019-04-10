@@ -86,6 +86,9 @@
 
 .contentSpace_left{
     flex: 1;
+    display: flex;
+    padding: 5px;
+    text-align:right;
 }
 
 .contentSpace_center{
@@ -95,7 +98,7 @@
 }
 
 .contentSpace_right{
-    flex: 2;
+    flex: 1;
     display: flex;
     padding: 5px;
 }

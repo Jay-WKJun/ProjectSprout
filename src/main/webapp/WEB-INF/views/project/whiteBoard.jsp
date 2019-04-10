@@ -12,6 +12,7 @@
 	crossorigin="anonymous">
 <link rel="stylesheet" href="ucss/ucss_whiteBoard.css">
 <script src="ujs/ujs_whiteBoard.js"></script>
+<script src="js/jquery-ui.min.js"></script>
 </head>
 <body>
 	<div class="wrapper">
