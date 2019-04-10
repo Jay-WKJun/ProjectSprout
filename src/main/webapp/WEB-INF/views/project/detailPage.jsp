@@ -33,6 +33,9 @@
 					<button class="btn btn-dark w-100" disabled="disabled">게시판 추가</button>
 					</div>
 					<div id="noticeSpace">
+					<!-- 맨 처음에 프로젝트의 개요를 띄운다. -->
+					<!-- 이미지 띄우고 -->
+					<!-- 활동 통계띄우면 끝. -->
 					</div>
 
 					
