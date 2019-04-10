@@ -85,5 +85,10 @@ public class MemberRepository {
 		int result = dao.deleteMember(id);		
 	}
 
+	public void setLoginTime(String member_id) {
+		MemberDAO dao = session.getMapper(MemberDAO.class);
+		dao.setLoginTime(member_id);
+	}
+
 
 }
