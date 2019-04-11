@@ -26,17 +26,17 @@
 </head>
 
 <body>
-	<div class="wrapper">
-		<div class="leftBar">
-			<div class="card h-100">
+	<div class="wrapper ">
+		<div class="leftBar shadow">
+			<div class="card h-100" style="padding:5px;border:2px solid #6079a0;">
 				<div class="contentItem" style="padding: 80px"></div>
 				<div class="contentItem">
-					<button class="btn btn-dark w-100" style="height: 50px">
+					<button class="btn btn-dark w-100" style="height: 50px" id="wantedBoardBtn">
 						<i class="far fa-clipboard fa-lg fontSize20"></i><span
 							class="fontSize20" style="margin-left: 8px">프로젝트 공고</span>
 					</button>
 				</div>
-				<hr style="margin: 10px">
+				<hr class="sbd1" style="margin: 10px;">
 				<div class="contentItem" style="margin-bottom: 15px">
 					<button class="btn btn-dark w-100" style="height: 50px"
 						id="newProjectBtn">
@@ -48,9 +48,8 @@
 				<div class="list-group" style="margin: 5px;">
 
 					<c:forEach var="MainProject" items="${projectList}">
-						<a class="projectSelectBtn list-group-item list-group-item-action"
+						<a class="projectSelectBtn list-group-item list-group-item-action" style="margin-bottom:2px;border:1px solid #6079a0;"
 							data-pno="${MainProject.mainproject_projectnum}">${MainProject.mainproject_title}</a>
-
 					</c:forEach>
 
 				</div>
@@ -63,7 +62,6 @@
 					<div class="userInfo_left"></div>
 					<div class="userInfo_right">
 						<c:if test="${sessionScope.loginId == null }">
-							<button class="btn btn-primary" id="wantedBoard">WantedBoard</button>
 							
 							<div class="myInfo">
 									<div class="dropdown dropleft float-right h-100">
@@ -72,10 +70,10 @@
 												style="width: 50px; height: 50px"
 												src="img/empty_profile.png" id="userProfileIcon">
 										</div>
-										<div class="dropdown-menu">
+										<div class="dropdown-menu shadow" style="border:1px solid #6079a0;">
 											<h5 class="dropdown-header">로그인해주세요.</h5>
 											<div style="margin-top: 20px">
-												<a id="loginBtn"
+												<a id="loginBtn" style="border:1px solid #6079a0"
 													class="list-group-item list-group-item-action border-left-0 border-right-0">로그인</a>
 											</div>
 										</div>
@@ -84,7 +82,6 @@
 								
 						</c:if>
 						<c:if test="${sessionScope.loginId != null }">
-								<button class="btn btn-primary" id="wantedBoard">WantedBoard</button>
 								<div class="myInfo">
 									<div class="dropdown dropleft float-right h-100">
 										<div data-toggle="dropdown">
@@ -92,11 +89,13 @@
 												style="width: 50px; height: 50px"
 												src="img/empty_profile.png" id="userProfileIcon">
 										</div>
-										<div class="dropdown-menu">
+										<div class="dropdown-menu shadow" style="border:1px solid #6079a0;">
 											<h5 class="dropdown-header">${loginName}</h5>
 											<div style="margin-top: 20px">
-												<a id="memberInfoBtn" class="list-group-item list-group-item-action border-left-0 border-right-0">회원정보</a>
-												<a id="logoutBtn" class="list-group-item list-group-item-action border-left-0 border-right-0">로그아웃</a>
+												<a id="memberInfoBtn" class="list-group-item list-group-item-action border-left-0 border-right-0"
+													 style="border:1px solid #6079a0">회원정보</a>
+												<a id="logoutBtn" class="list-group-item list-group-item-action border-left-0 border-right-0" 
+													 style="border:1px solid #6079a0;">로그아웃</a>
 											</div>
 										</div>
 									</div>
@@ -121,9 +120,6 @@
 					<div class="contentSpace_center">
 						<div class="contentItem">
 							<h1>[ 웹 소개 내용 ]</h1>
-				<!--web소켓 확인////  -->
-							<a href="multiChatRoom?chatRoom_num=1">1번방</a>
-	
 						</div>
 					</div>
 					<div class="contentSpace_right"></div>
@@ -139,28 +135,24 @@
 
 
 							<div class="contentItem" style="text-align: center;">
-								<div class="card">
-									<div class="card-body">
+									<div class="card-body rounded sbd2 shadow">
 										<h4 class="card-title">프로젝트 이름</h4>
-										<hr>
+										<hr class="sbd1">
 										<div style="text-align-last: left">
 											<textarea class="form-control"
-												style="height: 70px; width: 400px" id="mainproject_title"
+												style="height: 70px; width: 400px; border:1px solid #6079a0" id="mainproject_title"
 												name="mainproject_title"></textarea>
 										</div>
 									</div>
-								</div>
-								<div class="card" style="margin-top: 40px">
-									<div class="card-body">
+									<div class="card-body rounded sbd2 shadow" style="margin-top: 40px">
 										<h4 class="card-title">프로젝트 내용</h4>
-										<hr>
+										<hr class="sbd1">
 										<div style="text-align-last: left">
 											<textarea class="form-control"
-												style="height: 300px; width: 400px" id="mainproject_memo"
+												style="height: 300px; width: 400px;border:1px solid #6079a0" id="mainproject_memo"
 												name="mainproject_memo"></textarea>
 										</div>
 									</div>
-								</div>
 								<div class="contentItem"
 									style="margin-top: 30px; text-align: right">
 									<button class="btn btn-dark w-50" style="height: 50px"
@@ -180,32 +172,28 @@
 						<div class="contentSpace_left"></div>
 						<div class="contentSpace_right">
 							<div class="contentItem" style="text-align: center; width: 300px">
-								<div class="card">
-									<div class="card-body">
+									<div class="card-body sbd2 shadow">
 										<h4 class="card-title">프로젝트 이름</h4>
-										<hr>
+										<hr class="sbd1">
 										<div style="text-align-last:left">
 											<span id="goproject_title"> </span>
 										</div>
 									</div>
-								</div>
-								<div class="card" style="margin-top: 40px">
-									<div class="card-body">
+									<div class="card-body sbd2 shadow" style="margin-top: 40px;height:300px;">
 										<h4 class="card-title">프로젝트 내용</h4>
-										<hr>
+										<hr class="sbd1">
 										<div style="text-align-last:left">
 											<span id="goproject_content"></span>
 										</div>
-									</div>
 								</div>
 							</div>
 							</div>
 						</div>
 						<div class="contentSpace_center"></div>
 						<div class="contentSpace_right">
-							<div class="memberList rounded border">
-								<h4 class="card-title">참여 멤버</h4>
-								<hr>
+							<div class="memberList rounded sbd2 shadow">
+								<h4 class="card-title" style="text-align-last:center">참여 멤버</h4>
+								<hr class="sbd1">
 								<span id="goprojet_membername"></span>
 							</div>
 						</div>
@@ -224,8 +212,19 @@
 					</div>
 					<div class="contentSpace_right"></div>
 				</form>
-												
 			</div>
+			
+			<div id="wantedBoardSpace"  style="display: none">
+				<div class="contentSpace">
+					<div class="contentSpace_left"></div>
+					<div class="contentSpace_center">
+						<!-- 공고글 로드 -->
+						<div id="wantedBoardLoad"></div>
+					</div>
+					<div class="contentSpace_right"></div>
+				</div>
+			</div>
+				
 			</div>
 		</div>
 		</div>

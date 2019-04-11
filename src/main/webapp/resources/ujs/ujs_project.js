@@ -12,7 +12,7 @@ $(function() {
 	$('#userProfileIcon').on('mouseout', function() {
 		$('#userProfileIcon').attr('class', 'rounded-circle border');
 	})
-
+	
 	//파일 매니저
 	var postitNumFromProjectNum=$('#postitNumFromProjectNum').val();
 	$('#fileManager').load('fileManager?postitNumFromProjectNum='+postitNumFromProjectNum);

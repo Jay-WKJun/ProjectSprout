@@ -7,66 +7,6 @@
 <meta charset="UTF-8">
 <title>WantedBoard</title>
 <!-- 평소엔 한 화살표만 보여주고 다 보기하면 페이징을 표시해준다. -->
-<style>
-	body {
-		font-family : sans-serif;
-		font-size : 0.9em;
-	}
-	input[type=submit] {
-		border : none;
-	}
-	div#wrapper {
-		width:900px;
-		margin : 0 auto;
-		text-align : center;
-	}
-	table {
-		width : 900px;
-	}
-	.title {
-		width : 450px;
-	}
-	th {
-		background : #efefef;
-	}
-	.write {
-		text-align : right;
-	}
-	.home {
-		text-align : left;
-	}
-		a {
-		display : inline-block;
-	}
-	a, a:link, a:visited, a:active {
-		text-decoration : none;
-	}
-	a:hover {
-		font-weight:bolder;
-		color : #F00;
-	}
-	.btn {
-		text-align : center;
-		border-radius : 0.5em;
-		width : 50px;
-		margin-top : 10px;
-		padding : 5px;
-		background : #eee;
-		
-	}
-	input[type=submit]:hover{
-		font-weight:bold;
-	}
-	#search {
-		text-align:right;
-	}
-</style>
-<script type="js/jquery-3.3.1.min.js"></script>
-<script type="text/javascript">
-
-
-
-</script>
 </head>
 <body>
 

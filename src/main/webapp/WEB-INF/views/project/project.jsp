@@ -35,14 +35,14 @@
 				</ul>
 				<!-- 같은 프로젝트일때 참여인원  출력 -->
 				<div
-					class="communicationBar rounded-bottom border border-top-0 w-100"
+					class="communicationBar rounded-bottom border-top-0 w-100 sbd2"
 					style="padding: 5px">
 					<div id="memberSpace_display" style="display:block">
 					<div class="list-group">
 					
 					<form action="addProjectMember" id="addProjectMember" method="GET"> 
 					
-					<button type="button" class="btn btn-dark w-100" data-toggle="modal" data-target="#myModal">
+					<button type="button" class="btn btn-dark w-100" data-toggle="modal" data-target="#myModal" style="margin-bottom:20px">
 						멤버 초대하기
 					</button>
 					
@@ -67,20 +67,17 @@
 				</form> 
 				
 						<c:forEach var="list" items="${projectMembersList}">
-							<div
-								class="dropdown dropright float-right list-group-item list-group-item-action">
+							<div class="dropdown dropright float-right list-group-item list-group-item-action" style="margin-bottom:2px;border:1px solid #6079a0;">
 								<div data-toggle="dropdown">${list.member_name}</div>
 								<div class="dropdown-menu">
 									<h5 class="dropdown-header">${list.member_name}</h5>
 									<div style="margin-top: 20px" data-pno="${list.member_num}" id="forkick">
 										<a href="#"
-											class="list-group-item list-group-item-action border-left-0 border-right-0">플래너</a>
-										<a href="#"
 											class="list-group-item list-group-item-action border-left-0 border-right-0">메세지
 											보내기</a>
 										<c:if test="${member_rank == 5}"> 
-											 <a href="#"
-											class="kickMember list-group-item list-group-item-action border-left-0 border-right-0">내보내기</a>
+											 <a href="#" 
+											 class="kickMember list-group-item list-group-item-action border-left-0 border-right-0">내보내기</a>
 										</c:if> 
 									</div>
 								</div>
