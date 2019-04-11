@@ -61,6 +61,14 @@
 }
 
 /*================가운데 공간================*/
+.sbd2{
+	border:2px solid #6079a0;
+}
+
+.sbd1{
+	border:1px solid #6079a0;
+}
+
 .mainSpace{
     flex:1;
     display: flex;

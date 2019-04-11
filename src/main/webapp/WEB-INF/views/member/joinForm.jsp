@@ -33,7 +33,7 @@
 			<div class="sideSpace"></div>
 														<!-- enctype="multipart/form-data" -->
 			<form id="joinForm" action="join" method="POST" enctype="multipart/form-data">
-				<div class="mainSpace">
+				<div class="mainSpace sbd2 rounded shadow">
 					<div class="contentItem_text">
 		<b>아이디</b>
 					</div>
