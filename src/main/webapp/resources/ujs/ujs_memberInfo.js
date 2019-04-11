@@ -13,7 +13,6 @@ $(function(){
 			url : 'del_pro', // 프로필 사진을 삭제하기
 			type : 'get',
 			success : function(result){
-				alert('삭제성공 ^3^');
 				$("#picture").attr("src", "img/empty_profile.png");
 				$("#picture").attr("class", "rounded-circle border profileImg");
 			}
@@ -61,9 +60,6 @@ function validate() {
 		member_address.focus();
 		return false;
 	}
-	
-	
-
 	$('#updateForm').submit();
 }
 
