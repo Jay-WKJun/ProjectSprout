@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> <!-- 이부분 주의 오류떠도 자바에서 안잡아줌. -->
+<mapper namespace="com.team.sprout.dao.DocumentFileManagerDAO">
+
+</mapper>

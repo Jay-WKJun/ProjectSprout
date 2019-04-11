@@ -212,6 +212,7 @@ public class MemberController {
 			member.setMemberImage_saveAddress("none");
 			int result = repo.memberJoin(member);
 			System.out.println("Google 로그인한 사람 회원 등록 완료" + result);
+			memberVali = repo.checkId(member.getMember_id());
 		}
 
 		return memberVali.getMember_id();
