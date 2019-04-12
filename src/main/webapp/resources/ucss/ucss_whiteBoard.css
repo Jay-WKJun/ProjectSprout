@@ -1,6 +1,7 @@
 .postitWindow{
 	position: absolute;
-	float: top;
+	top:0;
+	left:0;
 	height: 100px;
 	background-color:#f2f2f2;
 	text-align:center;

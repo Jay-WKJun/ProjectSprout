@@ -5,7 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>jQuery.Gantt</title>
-
 <meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1">
 <!-- 아래 스타일은 전부 popup을 위한 style -->
 <style>
@@ -154,8 +153,6 @@
 				minScale: "days",
 				itemsPerPage: 10,
 				onItemClick: function(pcNum) {
-					alert("Item clicked - show some details");
-					alert(pcNum);
 					findPC(pcNum);
 				},
 				onAddClick: function(dt, rowId) {
@@ -193,12 +190,11 @@
 				url : 'checkPC',
 				data : 'pcNum='+pcNum,
 				success : function(pc){
-					alert('success when findPC!' + JSON.stringify(pc));
 					layer_popup('#layer2', pc);
 					
 				},
 				error : function() {
-					alert('fail when findPC!');
+					console.log('fail when findPC!');
 				}
 			})
 		}
@@ -207,7 +203,6 @@
 	    function layer_popup(el, pc){
 
 	        var $el = $(el);        //레이어의 id를 $el 변수에 저장
-	        alert(JSON.stringify($el));
 	        //var isDim = $el.prev().hasClass('dimBg');   //dimmed 레이어를 감지하기 위한 boolean 변수
 
 	        //isDim ? $('.dim-layer').fadeIn() : $el.fadeIn();
@@ -229,13 +224,10 @@
 	        }
 	        
 	        if (pc == null) {
-	        	alert('pc는 null');
-	        	
 	        	$.ajax({
 					type : 'GET',
 					url : 'timetableMake',
 					success : function(results){
-						alert('success when load the createForm!' + JSON.stringify(results));
 						var options = '';
 						$.each(results, function(key, value){
 	        				options += '<option value="'+value.member_num+'">'+value.member_name+'</option>';
@@ -269,14 +261,13 @@
 						
 					},
 					error : function() {
-						alert('fail when load the createForm!');
+						console.log('fail when load the createForm!');
 					}
 				})
 	        	
 	        	//pc가 없다면 만들기로 불러온 것이다.
 	        	
 			} else{
-				alert('pc는 null 아님');
 				//내용 쓰기 메소드
 		        $('.ctxt').html('projectContent_title : '+pc.projectContent_title+'<br>'
 		        	+'projectContent_content : '+pc.projectContent_content+'<br>'
@@ -289,7 +280,6 @@
 		        
 		        //지우기 메소드
 		        $el.find('a#delete').click(function(){
-		        	alert('delete clicked');
 		        	$('.ctxt').html('<form method="GET" action="deleteContent" id="deleteForm" name="deleteForm" accept-charset="utf-8">'
 		        			+'<input type="hidden" id="projectContent_num" name="projectContent_num" value="'+pc.projectContent_num+'">'
 		        			+'</form>'
@@ -311,9 +301,6 @@
 		        	
 		        	startDateCh = getFormatDate(startDateCh);
 		        	endDateCh = getFormatDate(endDateCh);
-		        	
-		        	alert(startDateCh + typeof(startDateCh));
-		        	alert(endDateCh + typeof(endDateCh));
 		        	
 		        	$('.ctxt').html('<form method="post" action="updateContent" id="updateForm" name="updateForm" accept-charset="utf-8">'
 		        			+'<input type="hidden" id="projectContent_num" name="projectContent_num" value="'+pc.projectContent_num+'">'

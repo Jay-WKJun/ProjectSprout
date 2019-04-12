@@ -29,6 +29,13 @@
 	font-size:110%;
     font-weight: 100;
     display: flex;
+    background-color: #efefef;
+    width:100%;
+    height:100%;
+}
+
+.bgwhite{
+	background-color: white;
 }
 
 .sbd2{
@@ -129,14 +136,9 @@
 
 .timeTable{
     flex: 1;
-    margin:10px;
+    margin-top: 30px;
     padding:20px;
-}
-
-.fileManager{
-    flex: 1;
-    margin:10px;
-    padding:20px;
+    width:100%;
 }
 
 .contentSpace_right{
@@ -144,10 +146,13 @@
 }
 
 .modalBlack{
+	position:absolute;
+	top:0;
+	left:0;
 	background-color:black;
-	opacity: 0.5;
+	opacity: 0.3;
 	width:100%;
-	height:1000px;
+	height:1200px;
 }
 
 /* =============화이트보드================= */
@@ -171,8 +176,7 @@
 
 .fileManager {
 	flex: 1;
-	margin: 10px;
-	padding:10px;
+	margin-top: 30px;
 }
 
 /* =================타임 테이블=================== */

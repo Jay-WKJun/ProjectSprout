@@ -32,8 +32,10 @@
 	font-family:'binggrae', 'bada','Serif';
 	font-size:110%;
     font-weight: 100;
+    height:1000px;
     display: flex;
     flex-direction: column;
+    background-color: #efefef;
 }
 
 .sbd2{
@@ -42,6 +44,10 @@
 
 .sbd1{
 	border:1px solid #6079a0;
+}
+
+.bgwhite{
+	background-color: white;
 }
 
 /*=========모든 컨텐츠에 사용하는 div==========*/
