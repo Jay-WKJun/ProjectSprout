@@ -231,13 +231,14 @@
 	</div>
 	</div>
 	<script src="js/bootstrap.bundle.min.js"></script>
-	
-	
 	<!-- ----------------------------------------------------------------------- -->
 	<hr>
 	<p>프로필 이미지 test<P><br>
 	<c:if test="${not empty sessionScope.mime}"> 
 		<img src="download?loginId=${loginId}" style="width:100px;height:100px">
+	</c:if>
+	<c:if test="${empty sessionScope.mime}"> 
+		<img class="rounded-circle border" style="width: 50px; height: 50px" src="img/empty_profile.png" id="userProfileIcon">
 	</c:if>
 	<!-- ----------------------------------------------------------------------- -->
 	
