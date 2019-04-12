@@ -18,9 +18,8 @@ $(function() {
 	$('#fileManager').load('fileManager?postitNumFromProjectNum='+postitNumFromProjectNum);
 	
 	//화이트 보드
-	$('#modalBtn').on('click',openWhiteBoard);
-	$('.modalCloseBtn').on('click', closeWhiteBoard);
-	//$('#whiteBoardMainSpace').on('click', closeWhiteBoard);
+	$('#whiteBoardModalBtn').on('click',openWhiteBoard);
+	$('#modalCloseBtn').on('click', closeWhiteBoard);
 	
 	//아이디 추가하기
 	$('#addmem').on('click',function(){
@@ -62,27 +61,11 @@ $(function() {
 
 //화이트보드 띄우기
 function openWhiteBoard(){
-	
+	$('#whiteBoardModal').attr('style','display:block');
 	var postitNumFromProjectNum=$('#postitNumFromProjectNum').val();
 	
 	var tag='';
-/*	tag+='<div class="mainSpace">';
-	tag+='<div class="mainSpace_top">';
-	tag+='<div class="modal-header rounded postitWindow">';
-	tag+='<button class="btn btn-dark" id="addPostit" style="width: 80px">';
-	tag+='<span class="fa-stack fa-lg"> ';
-	tag+='<i class="far fa-sticky-note fa-stack-2x"></i> ';
-	tag+='<i class="fas fa-plus fa-stack-1x"></i>';
-	tag+='</span>';
-	tag+='</button>';
-	tag+='<button type="button" class="btn btn-danger" id="modalCloseBtn"';
-	tag+='data-dismiss="modal">Close</button>';
-	tag+='</div>';
-	tag+='<div id="headers"></div>';
-	tag+='</div>';
-	tag+='<div class="mainSpace_bottom"></div>';
-	tag+='</div>';
-	*/
+
 	tag+='<div id="whiteBoardLoad"></div>';
 	
 	$('#headers').html(tag);
@@ -93,6 +76,7 @@ function openWhiteBoard(){
 //화이트보드 종료
 function closeWhiteBoard(){
 	/*$('#whiteBoardModal').empty();*/
+	$('#whiteBoardModal').attr('style','display:none');
 	$('#headers').empty();
 }
 
@@ -155,7 +139,7 @@ function createNotice(){
 	var dataToggle=$(this).attr('data-toggle');
 	if(dataToggle==1){
 		var tag='<input type="text" id="noticeContent" name="notice_content">';
-		tag+='<button class="btn btn-dark" id="createNoticeBtn">확인</button>'
+		tag+='<button class="btn btn-dark" id="createNoticeBtn">확인</button>';
 		$('#noticeBtnSpace').html(tag);
 		$(this).attr('data-toggle',2);
 		$('#createNoticeBtn').on('click',function(){

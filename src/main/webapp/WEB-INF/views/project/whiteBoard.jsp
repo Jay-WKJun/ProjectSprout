@@ -15,10 +15,7 @@
 <script src="js/jquery-ui.min.js"></script>
 </head>
 <body>
-	<div class="wrapper">
-	<input type="hidden" id="projectNum" value="${projectNum }">
-		<div id="boardSpace">
-		</div>
-	</div>
+		<input type="hidden" id="projectNum" value="${projectNum }">
+		<div id="boardSpace"></div>
 </body>
 </html>

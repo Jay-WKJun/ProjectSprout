@@ -26,7 +26,14 @@
 </head>
 
 <body>
-	<div class="wrapper ">
+	<div class="wrapper">
+		<div id="loader">
+			<div class="loader">
+				<img class="loaderImg" src="img/loading_leaf_circle.gif"><br>
+				Loading...
+			</div>
+			<div class="loaderBack"></div>
+		</div>
 		<div class="leftBar shadow">
 			<div class="card h-100" style="padding:5px;border:2px solid #6079a0;">
 				<div class="contentItem" style="padding: 80px"></div>
@@ -135,7 +142,7 @@
 
 
 							<div class="contentItem" style="text-align: center;">
-									<div class="card-body rounded sbd2 shadow">
+									<div class="card-body rounded sbd2 shadow bgwhite">
 										<h4 class="card-title">프로젝트 이름</h4>
 										<hr class="sbd1">
 										<div style="text-align-last: left">
@@ -144,7 +151,7 @@
 												name="mainproject_title"></textarea>
 										</div>
 									</div>
-									<div class="card-body rounded sbd2 shadow" style="margin-top: 40px">
+									<div class="card-body rounded sbd2 shadow bgwhite" style="margin-top: 40px">
 										<h4 class="card-title">프로젝트 내용</h4>
 										<hr class="sbd1">
 										<div style="text-align-last: left">
@@ -172,14 +179,14 @@
 						<div class="contentSpace_left"></div>
 						<div class="contentSpace_right">
 							<div class="contentItem" style="text-align: center; width: 300px">
-									<div class="card-body sbd2 shadow">
+									<div class="card-body sbd2 shadow bgwhite">
 										<h4 class="card-title">프로젝트 이름</h4>
 										<hr class="sbd1">
 										<div style="text-align-last:left">
 											<span id="goproject_title"> </span>
 										</div>
 									</div>
-									<div class="card-body sbd2 shadow" style="margin-top: 40px;height:300px;">
+									<div class="card-body sbd2 shadow bgwhite" style="margin-top: 40px;height:300px;">
 										<h4 class="card-title">프로젝트 내용</h4>
 										<hr class="sbd1">
 										<div style="text-align-last:left">
@@ -191,7 +198,7 @@
 						</div>
 						<div class="contentSpace_center"></div>
 						<div class="contentSpace_right">
-							<div class="memberList rounded sbd2 shadow">
+							<div class="memberList rounded sbd2 shadow bgwhite">
 								<h4 class="card-title" style="text-align-last:center">참여 멤버</h4>
 								<hr class="sbd1">
 								<span id="goprojet_membername"></span>

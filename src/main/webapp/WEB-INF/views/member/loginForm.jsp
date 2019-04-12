@@ -37,7 +37,7 @@
 			<div class="content_space_left"></div>
 			<div class="content_space_center">
 				<div class="contentItem" style="text-align-last: center">
-					<div class="loginBox rounded shadow sbd2">
+					<div class="loginBox rounded shadow sbd2 bgwhite">
 						<div class="loginBox_inner_top">
 							<h4 class="fontSize60 fontBold_1">로그인</h4>
 						</div>
