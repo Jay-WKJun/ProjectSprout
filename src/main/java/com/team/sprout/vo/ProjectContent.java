@@ -10,17 +10,20 @@ public class ProjectContent {
 	private String projectContent_color;
 	private String mainproject_projectNum;
 	private int member_num;
+	private String projectcontent_admitdate;
+	private int projectcontent_finishreport;
+	private int projectcontent_finishchecked;
+	private String 	projectcontent_finishdate;
+	private String proejctcontent_categori;
 	
 	
-	public ProjectContent() {
-		
-	}
-
-
+	
 	public ProjectContent(int projectContent_num, String projectContent_title, String projectContent_content,
 			int projectContent_status, String projectContent_startDate, String projectContent_endDate,
-			String projectContent_color, String mainproject_projectNum, int member_num) {
-		
+			String projectContent_color, String mainproject_projectNum, int member_num, String projectcontent_admitdate,
+			int projectcontent_finishreport, int projectcontent_finishchecked, String projectcontent_finishdate,
+			String proejctcontent_categori) {
+		super();
 		this.projectContent_num = projectContent_num;
 		this.projectContent_title = projectContent_title;
 		this.projectContent_content = projectContent_content;
@@ -30,8 +33,69 @@ public class ProjectContent {
 		this.projectContent_color = projectContent_color;
 		this.mainproject_projectNum = mainproject_projectNum;
 		this.member_num = member_num;
+		this.projectcontent_admitdate = projectcontent_admitdate;
+		this.projectcontent_finishreport = projectcontent_finishreport;
+		this.projectcontent_finishchecked = projectcontent_finishchecked;
+		this.projectcontent_finishdate = projectcontent_finishdate;
+		this.proejctcontent_categori = proejctcontent_categori;
 	}
 
+
+	public String getProjectcontent_admitdate() {
+		return projectcontent_admitdate;
+	}
+
+
+	public void setProjectcontent_admitdate(String projectcontent_admitdate) {
+		this.projectcontent_admitdate = projectcontent_admitdate;
+	}
+
+
+	public int getProjectcontent_finishreport() {
+		return projectcontent_finishreport;
+	}
+
+
+	public void setProjectcontent_finishreport(int projectcontent_finishreport) {
+		this.projectcontent_finishreport = projectcontent_finishreport;
+	}
+
+
+	public int getProjectcontent_finishchecked() {
+		return projectcontent_finishchecked;
+	}
+
+
+	public void setProjectcontent_finishchecked(int projectcontent_finishchecked) {
+		this.projectcontent_finishchecked = projectcontent_finishchecked;
+	}
+
+
+	public String getProjectcontent_finishdate() {
+		return projectcontent_finishdate;
+	}
+
+
+	public void setProjectcontent_finishdate(String projectcontent_finishdate) {
+		this.projectcontent_finishdate = projectcontent_finishdate;
+	}
+
+
+	public String getProejctcontent_categori() {
+		return proejctcontent_categori;
+	}
+
+
+	public void setProejctcontent_categori(String proejctcontent_categori) {
+		this.proejctcontent_categori = proejctcontent_categori;
+	}
+
+
+
+	
+	public ProjectContent() {
+		
+	}
 
 	public int getProjectContent_num() {
 		return projectContent_num;
@@ -130,7 +194,13 @@ public class ProjectContent {
 				+ ", projectContent_status=" + projectContent_status + ", projectContent_startDate="
 				+ projectContent_startDate + ", projectContent_endDate=" + projectContent_endDate
 				+ ", projectContent_color=" + projectContent_color + ", mainproject_projectNum="
-				+ mainproject_projectNum + ", member_num=" + member_num + "]";
+				+ mainproject_projectNum + ", member_num=" + member_num + ", projectcontent_admitdate="
+				+ projectcontent_admitdate + ", projectcontent_finishreport=" + projectcontent_finishreport
+				+ ", projectcontent_finishchecked=" + projectcontent_finishchecked + ", projectcontent_finishdate="
+				+ projectcontent_finishdate + ", proejctcontent_categori=" + proejctcontent_categori + "]";
 	}
+
+
+
 	
 }
