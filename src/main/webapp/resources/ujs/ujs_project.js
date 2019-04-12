@@ -181,3 +181,37 @@ function createNotice(){
 		$(this).attr('data-toggle',1);
 	}
 }
+
+//추가가능한지 아닌지
+$(function(){
+	
+	$('#addMember').keyup(function(){
+		var addMember =$('#addMember').val();
+		
+		
+		$.ajax({
+			 method : 'post'
+			 ,url : 'checkForAddMember'
+			 ,data: "addMember="+addMember
+			,success: function(result){
+				if (result.resp == 1 ) {
+					$('#addmemberMessage').html('추가가능한 아이디입니다. 추가하기를 누르세요');
+					$('#addmemberMessage').attr('style','color:#f23a3a');
+					$('#addmem').removeAttr('disabled');
+					
+				}
+				else if (result.resp ==2) {
+					$('#addmemberMessage').html('이미 추가한 아이디 입니다');
+					$('#addmemberMessage').attr('style','color:#f23a3a');
+					
+				} else {
+
+					$('#addmemberMessage').html('존재하지 않는 아이디 입니다. 다시 입력하세요');
+					$('#addmemberMessage').attr('style','color:#304dd1');
+				}
+			}
+				
+			})
+	})
+	
+})

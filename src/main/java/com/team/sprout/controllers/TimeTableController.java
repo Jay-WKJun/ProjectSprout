@@ -11,6 +11,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.javassist.bytecode.LineNumberAttribute.Pc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -252,7 +253,12 @@ public class TimeTableController {
 		//"6da5455f-abe5-4390-81c6-e05e3f7e1ddc";
 		System.out.println("타임테이블 만들기 컨트롤러 시작");
 		pc.setMainproject_projectNum(mainProjectNum);
+		pc.setProejctcontent_categori("아아아아아아");
+		pc.setProjectcontent_finishchecked(0);
+		pc.setProjectcontent_finishreport(0);
+		pc.setProjectcontent_finishdate("090301");
 		System.out.println(pc.toString());
+
 		//그냥 바로 DB에 쓰고 redirect로 timetable로딩하는 컨트롤러 실행시켜서 전체불러오기 다시하자.
 		int result = pcRepo.ProjectContentRegist(pc);
 		System.out.println("pc등록 = "+result);
