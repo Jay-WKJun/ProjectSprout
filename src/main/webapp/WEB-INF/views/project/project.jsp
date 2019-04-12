@@ -42,7 +42,7 @@
 					
 					<form action="addProjectMember" id="addProjectMember" method="GET"> 
 					
-					<button type="button" class="btn btn-dark w-100" data-toggle="modal" data-target="#myModal">
+					<button type="button" class="btn btn-dark w-100" id="invitebtn" data-toggle="modal" data-target="#myModal">
 						멤버 초대하기
 					</button>
 					

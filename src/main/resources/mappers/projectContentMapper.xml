@@ -7,18 +7,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="ProjectContentRegist" parameterType="ProjectContent">
 		insert into projectContent(
 			PROJECTCONTENT_NUM
-			, PROJECTCONTENT_TITLE
-			, PROJECTCONTENT_CONTENT
-			, PROJECTCONTENT_STATUS
-			, PROJECTCONTENT_STARTDATE
-			, PROJECTCONTENT_ENDDATE
-			, PROJECTCONTENT_COLOR
-			, MAINPROJECT_PROJECTNUM
-			, MEMBER_NUM
+			,PROJECTCONTENT_TITLE
+			,PROJECTCONTENT_CONTENT
+			,PROJECTCONTENT_STATUS
+			,PROJECTCONTENT_STARTDATE
+			,PROJECTCONTENT_ENDDATE
+			,PROJECTCONTENT_COLOR
+			,MAINPROJECT_PROJECTNUM
+			,MEMBER_NUM
+			,projectcontent_admitdate
+			,projectcontent_finishreport
+			,projectcontent_finishchecked
+			,projectcontent_finishdate
+			,proejctcontent_categori
 			)
-		values
-		(
-			projectContent_SEQ.nextval
+		values(
+			 projectContent_SEQ.nextval
 			,#{projectContent_title}
 			,#{projectContent_content}
 			,#{projectContent_status}
@@ -27,7 +31,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			,#{projectContent_color}
 			,#{mainproject_projectNum}
 			,#{member_num}
-		)
+			,#{projectcontent_admitdate}
+			,#{projectcontent_finishreport}
+			,#{projectcontent_finishchecked}
+			,#{projectcontent_finishdate}
+			,#{proejctcontent_categori}
+			)
 
 	</insert>
 	
