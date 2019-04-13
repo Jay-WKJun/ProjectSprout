@@ -13,6 +13,11 @@ $(function() {
 		$('#userProfileIcon').attr('class', 'rounded-circle border');
 	})
 	
+	//개인정보 수정 페이지
+	$('#memberInfoBtn').on('click',function(){
+		location.href="memberInfo";
+	})
+	
 	//파일 매니저
 	var postitNumFromProjectNum=$('#postitNumFromProjectNum').val();
 	$('#fileManager').load('fileManager?postitNumFromProjectNum='+postitNumFromProjectNum);
@@ -21,16 +26,45 @@ $(function() {
 	$('#whiteBoardModalBtn').on('click',openWhiteBoard);
 	$('#modalCloseBtn').on('click', closeWhiteBoard);
 	
+	//멤버 모달 버튼
+	$('#memberPlusModalBtn').on('click',function(){
+		$('#memberPlusSpace').show();
+	})
+	
+	//멤버 모달 닫기
+	$('#cancelmemberPlusBtn').on('click',function(){
+		$('#memberPlusSpace').hide();
+		$('#addMember').val('');
+		$('#addmemberMessage').empty();
+	})
+	
+	//아이디 추가 전에 확인
+	$('#addMember').keyup(addMemberCheck);
+	
 	//아이디 추가하기
 	$('#addmem').on('click',function(){
 		$('#addProjectMember').submit();
 		$('#addmem').attr('disabled','disabled');
 	})
 	
-	//공지사항 추가 버튼
-	$('#noticeBtn').on('click', createNotice);
+	//공지사항 모달 열기
+	$('#noticeModalBtn').on('click', function(){
+		$('#noticeModal').show();
+		createNotice();
+	});
 	
-	//공지사항 버튼 
+	//공지사항 모달 닫기
+	$('#cancelNoticeBtn').on('click', function(){
+		$('#noticeModal').hide();
+		$('#noticeMsg').empty();
+	})
+	
+	//공지사항 디테일 버튼
+	$('#cancelNoticeDetailBtn').on('click',function(){
+		$('#noticeDetailModal').hide();
+	})
+	
+	//공지사항 생성 버튼 
 	$('#noticeCheckBtn').on('click',function(){
 		$('#noticeSpace').attr('style','display:block');
 		$('#memberSpace_display').attr('style','display:none');
@@ -49,11 +83,6 @@ $(function() {
 	//detail로 넘어가는 버튼
 	$('#projectDetail').on('click',detail);
 
-	//나중에 삭제
-	/*$('#timeTable').on('click', function(){
-		location.href = "timetable";
-	});*/
-	
 	//타임 테이블
 	$('#timeTable').load('timetable');
 	
@@ -119,59 +148,63 @@ function nolist(){
 		 ,url : 'gonoList'
 		/* ,data: "notice_content="+notice_content*/
 		 ,success: function(result){
-			 
 		
 			 var output ='';
+			 output +='<div class="list-group">';
 			 $.each(result,function(index, item){
-				 
-				 output += item.notice_content+'<br>';
-				
+				output +='<div class="list-group-item list-group-item-action noticeDetail"';
+				output +='style="margin-bottom: 2px; border: 1px solid #6079a0;"';
+				output +='data-nCon="'+item.notice_content+'">';
+				output +='<div>'+item.notice_Date+'</div>';
+				output +='</div>';
 			 })
-			$('#noticeSpace').html(output)
-			 
+			 output +='</div>';
+			$('#noticeSpace').html(output);
+			$('.noticeDetail').on('click',noticeDetail);
 		 }
 	})
 	
 }
 
-//공지사항 
+//공지사항 읽기
+function noticeDetail(){
+	$('#noticeDetailModal').show();
+	var noticeContent=$(this).attr('data-nCon');
+	$('#noticeDetail').val(noticeContent);
+}
+
+//공지사항 생성
 function createNotice(){
-	var dataToggle=$(this).attr('data-toggle');
-	if(dataToggle==1){
-		var tag='<input type="text" id="noticeContent" name="notice_content">';
-		tag+='<button class="btn btn-dark" id="createNoticeBtn">확인</button>';
-		$('#noticeBtnSpace').html(tag);
-		$(this).attr('data-toggle',2);
 		$('#createNoticeBtn').on('click',function(){
 			/*$('#noticeContent').submit();*/
-		var notice_content = $('#noticeContent').val();
-			$.ajax({
-				 method : 'get'
-				 ,url : 'registNotice'
-				 ,data: "notice_content="+notice_content
-				 ,success: function(result){
-					 if(result=="success"){
-						 $('#noticeContent').val('');
-						 nolist();
-					 }else{
-						 console.log("공지사항 추가 실패");
-					 }
-					
-				 }
-			})
+			var notice_content = $('#noticeContent').val();
+			if(notice_content==''){
+				$('#noticeMsg').html('공지사항을 입력해주세요.');
+			}else{
+				$.ajax({
+					method : 'get'
+						,url : 'registNotice'
+							,data: "notice_content="+notice_content
+							,success: function(result){
+								if(result=="success"){
+									$('#noticeContent').val('');
+									$('#noticeModal').hide();
+									$('#noticeMsg').empty();
+									nolist();
+								}else{
+									console.log("공지사항 추가 실패");
+								}
+								
+							}
+				})
+			}
 		})
-	}else{
-		$('#noticeBtnSpace').html("");
-		$(this).attr('data-toggle',1);
-	}
 }
 
 //추가가능한지 아닌지
-$(function(){
-	
+function addMemberCheck(){
 	$('#addMember').keyup(function(){
 		var addMember =$('#addMember').val();
-		
 		
 		$.ajax({
 			 method : 'post'
@@ -194,8 +227,6 @@ $(function(){
 					$('#addmemberMessage').attr('style','color:#304dd1');
 				}
 			}
-				
-			})
+		})
 	})
-	
-})
+}

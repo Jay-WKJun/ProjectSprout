@@ -82,7 +82,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		
 	<select id="noticeList" resultType="Notice" parameterType="String">
 	select * from notice where MainProject_ProjectNum = #{MainProject_ProjectNum}
-	order by notice_num
+	order by notice_num desc
 	</select>	
 <!-- 강퇴하는 메서드 -->
 <delete id="kickMember" parameterType="ProjectMember">

@@ -100,7 +100,14 @@ function printProjectFile(fileList) {
 		if(item.projectFile_type==1){
 			tag += "<i class='fas fa-folder-open fa-2x'></i>";
 		}else{
-			tag += "<i class='fas fa-file-alt fa-2x'></i>"; 
+			if(item.projectFile_extension=='jpg'||item.projectFile_extension=='JPG'||
+					item.projectFile_extension=='png'||item.projectFile_extension=='PNG'){
+				tag += "<i class='fas fa-images fa-2x'></i>"; 
+			}else if(item.projectFile_extension=='zip'||item.projectFile_extension=='rar'){
+				tag += "<i class='fas fa-file-archive fa-2x'></i>"; 
+			}else{
+				tag += "<i class='fas fa-file-alt fa-2x'></i>"; 
+			}
 		}
 		tag += "</td>";
 		tag += "<td>";
@@ -260,7 +267,7 @@ function createFolder(){
 			projectFile_originalname.indexOf('|')>-1){
 		var msg='폴더 이름에는 다음 기호가 들어갈 수 없습니다.  /, *, :, ", <, >, | ';
 		$('#closeFolderMessage').html(msg);
-		var tag='<button class="btn btn-dark" id="createFolderInputBtn">폴더 생성</button>';
+		var tag='<button class="btn btn-dark" id="createFolderInputBtn"><i class="fas fa-folder-open fa-lg"></i></button>';
 		$('#createFolderSpace').html(tag);
 		$('#createFolderInputBtn').on('click',createFolderNaming);
 		return;
@@ -279,9 +286,10 @@ function createFolder(){
 		success : function(result) {
 			if (result == "success") {
 				getFileList();
-				var tag='<button class="btn btn-dark" id="createFolderInputBtn">폴더 생성</button>';
+				var tag='<button class="btn btn-dark" id="createFolderInputBtn"><i class="fas fa-folder-open fa-lg"></i></button>';
 				$('#createFolderSpace').html(tag);
 				$('#createFolderInputBtn').on('click',createFolderNaming);
+				$('#closeFolderMessage').empty();
 			} else {
 				console.log("폴더 생성 실패");
 			}

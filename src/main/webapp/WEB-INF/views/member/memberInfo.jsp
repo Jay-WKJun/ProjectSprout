@@ -35,9 +35,9 @@
 					<div class="tableSpace border">
 						<table>
 							<tr>
-								<td>
+								<td class="border-right">
 									<c:if test="${not empty sessionScope.mime}">
-		<!-- 프로필 사진 -->					<img src="download?loginId=${loginId}" id="picture" style="width: 50px; height: 50px" /> <br>
+		<!-- 프로필 사진 -->		<img class="rounded-circle border profileImg" src="download?loginId=${loginId}" id="picture" style="width: 50px; height: 50px" /> <br>
 									</c:if> 
 									<c:if test="${empty sessionScope.mime}">
 										<img class="rounded-circle border profileImg" id="picture" src="img/empty_profile.png" /> <br>
@@ -51,13 +51,13 @@
 									</td>
 		<!-- 아이디 -->			<td class="border-right">아이디</td>
 								<td>
-									${member.member_id}
+									<p>${sessionScope.member.member_id}</p>
 									<input type="hidden" value="${sessionScope.member.member_id}" name="member_id">
 								</td>
 							</tr>
 							<tr>
-		<!-- 이름 -->				<td class="border-right">이름</td>
-								<td>
+		<!-- 이름 -->		<td class="border-right">이름</td>
+								<td class="border-right">
 									<input type="text" id="member_name" value="${sessionScope.member.member_name}" name="member_name">
 								</td>
 		<!-- 비밀번호 -->			<td class="border-right">비밀번호</td>
@@ -66,8 +66,8 @@
 								</td>
 							</tr>
 							<tr>
-		<!-- 휴대전화 -->			<td class="border-right">휴대전화</td>
-								<td>
+		<!-- 휴대전화 -->	<td class="border-right">휴대전화</td>
+								<td class="border-right">
 									<input type="text" id="member_phone" value="${sessionScope.member.member_phone}" name="member_phone">
 								</td>
 		<!-- 주소 -->				<td class="border-right">주소</td>
@@ -78,12 +78,12 @@
 						</table>
 					</div>
 					<div class="contentItem w-100" style="text-align: right; margin-top: 10px">
-		<!-- 수정-->	<input type="submit" id="update_with_old_info" class="btn btn-dark" style="width: 100px; height: 50px" value="수정">
-					<br/><a href="/sprout">취소</a>
+		<!-- 수정-->	<input type="submit" id="update_with_old_info" class="btn btn-dark" style="width: 60px; height: 40px" value="수정">
+		<!-- 탈퇴 -->	<input type="button" id="delete_infoBtn" class="btn btn-danger" style="width: 60px; height: 40px" value="탈퇴">
+							<button onclick="href='/sprout'" class="btn btn-danger" style="width: 60px; height: 40px">취소</button>
 					</div>
 				</div>
 			</form>
-		<!-- 탈퇴 -->	<a href="delete_info" class="btn btn-danger" style="width: 100px; height: 50px">탈퇴</a>
 		<!-- 컨트롤러오 좀 넘겨주세요... 실행ㄴㄴ -->
 			
 			<div class="sideSpace"></div>

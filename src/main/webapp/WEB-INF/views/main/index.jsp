@@ -92,9 +92,17 @@
 								<div class="myInfo">
 									<div class="dropdown dropleft float-right h-100">
 										<div data-toggle="dropdown">
-											<img class="rounded-circle border"
-												style="width: 50px; height: 50px"
+										<c:if test="${not empty sessionScope.mime}"> 
+											<img class="rounded-circle border" src="download?loginId=${loginId}" 
+												style="width: 50px; height: 50px" id="userProfileIcon">
+										</c:if>
+										<c:if test="${empty sessionScope.mime}"> 
+											<img class="rounded-circle border" style="width: 50px; height: 50px" 
 												src="img/empty_profile.png" id="userProfileIcon">
+										</c:if>
+											<!-- <img class="rounded-circle border"
+												style="width: 50px; height: 50px"
+												src="img/empty_profile.png" id="userProfileIcon"> -->
 										</div>
 										<div class="dropdown-menu shadow" style="border:1px solid #6079a0;">
 											<h5 class="dropdown-header">${loginName}</h5>
@@ -239,14 +247,14 @@
 	</div>
 	<script src="js/bootstrap.bundle.min.js"></script>
 	<!-- ----------------------------------------------------------------------- -->
-	<hr>
+	<%-- <hr>
 	<p>프로필 이미지 test<P><br>
 	<c:if test="${not empty sessionScope.mime}"> 
-		<img src="download?loginId=${loginId}" style="width:100px;height:100px">
+		<img class="rounded-circle border" src="download?loginId=${loginId}" style="width:100px;height:100px">
 	</c:if>
 	<c:if test="${empty sessionScope.mime}"> 
 		<img class="rounded-circle border" style="width: 50px; height: 50px" src="img/empty_profile.png" id="userProfileIcon">
-	</c:if>
+	</c:if> --%>
 	<!-- ----------------------------------------------------------------------- -->
 	
 </body>

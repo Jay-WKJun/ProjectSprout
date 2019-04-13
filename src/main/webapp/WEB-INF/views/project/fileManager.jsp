@@ -30,11 +30,8 @@
 		</div>
 		<div class="row" style="padding:20px">
 
-
 			<form class="" id="fileUpLoadForm" method="post"
 				enctype="multipart/form-data">
-
-				<!-- <input type="file" value="파일 찾기" id="upLoadFile" name="upLoadFile"> -->
 				
 			<div class="form-group">
 				<div class="bootstrap-filestyle input-group">
@@ -63,12 +60,11 @@
 				<button class="btn btn-dark" id="createFolderInputBtn">
 					<i class="fas fa-folder-open fa-lg"></i>
 				</button>
-				<span id="closeFolderMessage"></span>
 			</div>
-
 		</div>
+		<span id="closeFolderMessage"></span>
 		<div class="row">
-			<div class="fileManagerTable">
+			<div class="fileManagerTable border-bottom-0 border-left-0 border-right-0 sbd2">
 				<table class="table table-light table-hover" id="fileManagerTable">
 					<thead>
 					</thead>
