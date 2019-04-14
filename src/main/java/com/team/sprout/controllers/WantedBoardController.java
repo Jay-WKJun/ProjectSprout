@@ -222,7 +222,8 @@ public class WantedBoardController {
 
 			wbRepo.insertBoard_directly(board);
 
-			return "wantedBoard/wantedBoard_directly"; // 일단은 같은 위치로
+			return "redirect:/wantedBoard"; 
+			
 		
 	}
 
