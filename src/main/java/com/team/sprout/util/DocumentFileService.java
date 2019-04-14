@@ -1,9 +1,10 @@
 package com.team.sprout.util;
 
 import java.io.File;
-import java.util.UUID;
 
 import org.springframework.web.multipart.MultipartFile;
+
+import com.team.sprout.vo.DocumentBoard;
 
 public class DocumentFileService {
 
@@ -13,25 +14,17 @@ public class DocumentFileService {
 	 * @param path 저장할 경로
 	 * @return 저장된 파일명
 	 */
-	public static String saveFile(MultipartFile upload, String uploadPath, String inputedFilename) {
+	public static DocumentBoard saveFileInfo(MultipartFile upload, String uploadPath, String inputedFilename) {
 		//저장 폴더가 없으면 생성
 		File path = new File(uploadPath);
 		if (!path.isDirectory()) {
 			path.mkdirs();
 		}
 		
-		//저장할때 파일명을 받아서 저장한다.
-
+		DocumentBoard documentfile = new DocumentBoard();
+		
 		//원본 파일명 : 파일이 존재하지 않으면 빈문자열 리턴
 		String originalFilename = upload.getOriginalFilename();
-		
-		if(originalFilename.trim().length() == 0 || upload.isEmpty()) 
-			return "";
-		
-		//저장할 파일명 뒤에 오늘 날짜의 년월일로 생성
-		// SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddhhmmss");
-		// 날짜나 랜덤값을 붙여 저장할 파일명을 작성한다. 랜덤 데이터 크기 36
-		//String sdf = UUID.randomUUID().toString();
 		
 		//원본 파일의 확장자와 파일명 분리
 		String filename;		// 확장자를 뺀 파일명
@@ -43,13 +36,21 @@ public class DocumentFileService {
 		//확장자가 없는 경우
 		if (lastIndex == -1) {
 			ext = "";
-			filename= originalFilename;
+			documentfile.setDoucument_file_extension(ext);
+			return documentfile;
 		}
 		
 		//확장자가 있는 경우
 		else {
 			ext = "." + originalFilename.substring(lastIndex + 1);
-			filename= originalFilename.substring(0, lastIndex);
+			//이미지파일의 확장자가 아니라면 ㅂㅂㅇ
+			if (!(ext.equals(".jpg")||ext.equals(".jpeg")||ext.equals(".png")||ext.equals(".bmp"))) {
+				documentfile.setDoucument_file_extension("");
+				return documentfile;
+			} else {
+				documentfile.setDoucument_file_extension(ext);
+			}
+			//filename= originalFilename.substring(0, lastIndex);
 		}
 		
 		System.out.println("확장자 : "+ext);
@@ -57,17 +58,8 @@ public class DocumentFileService {
 		// DB에 저장될 파일명
 		// savedFilename = filename+"_"+sdf.format(new Date()) + ext;
 		
-		/*if (!(ext.equals(".jpg")&&ext.equals(".jpeg")&&ext.equals(".png")&&ext.equals(".bmp"))) {
-			return "확장자";
-		}*/
-		
 		filename = inputedFilename + "_"; // 확장명이 안붙은
 		savedFilename = inputedFilename + "_" + ext; // 확장명이 붙은
-		
-		//저장할 전체 경로를 포함한 File 객체
-		File serverFile = null;	
-		
-		serverFile = new File(uploadPath + "/" + savedFilename);
 		
 		//HDD에 저장할 파일명. 같은 이름의 파일이 있는 경우의 처리
 		/*while (true) {
@@ -77,19 +69,44 @@ public class DocumentFileService {
 			filename = filename + new Date().getTime();
 		}*/
 		
+		//저장할 전체 경로를 포함한 File 객체
+		File serverFile = null;	
+		
+		serverFile = new File(uploadPath + "/" + savedFilename);
+		
 		if (serverFile.isFile()) {
-			return "동일파일";
-		}
-
-		//파일 저장
-		try {
-			upload.transferTo(serverFile);  // 지정된 이름으로 지정된 위치에 파일 저장 
-		} catch (Exception e) {
-			savedFilename = null;
-			e.printStackTrace();
+			documentfile.setDoucument_file_extension("sameFile");
+			return documentfile;
 		}
 		
-		return savedFilename;
+		documentfile.setDocument_file_originalfile(inputedFilename);
+		documentfile.setDocument_file_location(uploadPath);
+		
+		return documentfile;
+	}
+	
+	public static boolean saveFile(MultipartFile upload, String uploadPath, String savedFilename, String ext) {
+		
+		String Filename = savedFilename + "_" + ext;
+		
+		//저장할 전체 경로를 포함한 File 객체
+				File serverFile = null;	
+				
+				serverFile = new File(uploadPath + "/" + Filename);
+				
+				boolean result = false;
+		
+		//파일 저장
+				try {
+					upload.transferTo(serverFile);  // 지정된 이름으로 지정된 위치에 파일 저장 
+					result = true;
+				} catch (Exception e) {
+					savedFilename = null;
+					e.printStackTrace();
+					return result;
+				}
+		
+		return result;
 	}
 	
 	/**
