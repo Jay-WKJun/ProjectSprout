@@ -60,40 +60,30 @@ function getPostitList() {
 // 포스트잇 출력
 function postitPrint(postitList) {
 	var tag = '';
-	tag += '<div class="modal-header rounded postitWindow">';
-	tag += '<button class="btn btn-dark" id="addPostit" style="width: 80px">';
-	tag += '<span class="fa-stack fa-lg">';
-	tag += '<i class="far fa-sticky-note fa-stack-2x"></i>';
-	tag += '<i class="fas fa-plus fa-stack-1x"></i>';
-	tag += '</span>';
-	tag += '</button>';
-	tag += '<button type="button" class="btn btn-danger modalCloseBtn" ';
-	tag += 'data-dismiss="modal">Close</button>';
-	tag += '</div>';
-	$.each(postitList, function(index, item) {
-		tag += '<div class="postit" data-psq="' + item.postit_num;
-		tag += '" style="top:' + item.postit_top + 'px;left:'+ item.postit_left;
-		tag += 'px;background-color:' + item.postit_color + '">';
-		tag += '<div class="postit_top">';
-		tag += '<a class="close postitClose">';
-		tag += '&times;';
-		tag += '</a>';
-		tag += '</div>';
-		tag += '<div class="postit_bottom">';
-		tag += '<textarea type="text" class="postitInput">';
-		if(item.postit_content!=null){
-			tag += item.postit_content;
-		}
-		tag += '</textarea>';
-		tag += '</div>';
-		tag += '</div>';
-		tag += '</div>';
-	});
+	console.log(postitList);
+	 $.each(postitList, function(index, item) {
+	  tag += '<div class="postit" data-psq="' + item.postit_num;
+	  tag += '" style="top:' + item.postit_top + 'px;left:'+ item.postit_left;
+	  tag += 'px;background-color:' + item.postit_color + '">';
+	  tag += '<div class="postit_top">';
+	  tag += '<a class="close postitClose">';
+	  tag += '&times;';
+	  tag += '</a>';
+	  tag += '</div>';
+	  tag += '<div class="postit_bottom">';
+	  tag += '<textarea type="text" class="postitInput">';
+	  if(item.postit_content!=null){
+	   tag += item.postit_content;
+	  }
+	  tag += '</textarea>';
+	  tag += '</div>';
+	  tag += '</div>';
+	 });
 	$('#boardSpace').html(tag);
 	postitDrag();
 	deletePostit();
 	postitContentSave();
-	$('#addPostit').on('click', addPostit);
+	/*$('#addPostit').on('click', addPostit);*/
 }
 
 // 드래그 메서드

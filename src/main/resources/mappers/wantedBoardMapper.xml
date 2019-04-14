@@ -4,64 +4,94 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> <!-- 이부분 주의 오류떠도 자바에서 안잡아줌. -->
 <mapper namespace="com.team.sprout.dao.WantedBoardDAO">
 
-	<select id="selectAll" resultType="WantedBoard" parameterType="Map">
+	
+	<select id="selectAll_crawlling" resultType="WantedBoard" parameterType="Map">
 		select 
 			*
 		from 
 			wantedBoard
 		where
+			WANTEDBOARD_SOURCE = 0
+		and
 			<choose>
 				<when test="searchItem == 'WANTEDBOARD_TITLE'">WANTEDBOARD_TITLE</when>
 				<when test="searchItem == 'WANTEDBOARD_DATE'">WANTEDBOARD_DATE</when>
 				<when test="searchItem == 'WANTEDBOARD_CONTENT'">WANTEDBOARD_CONTENT</when>
-			</choose>	
-		 like
+			</choose>
+		like
 			'%' || #{searchWord} || '%'
-		order by 
+		order by
 			WANTEDBOARD_NUM
 	</select>
 	
-	<select id="selectOneBoard" resultType="WantedBoard">
-		select *
-		from wantedBoard
-		where WANTEDBOARD_TITLE = #{string}
+	
+	<select id="selectAll_DB" resultType="WantedBoard">
+		select		*
+		from		wantedBoard
+		where		WANTEDBOARD_SOURCE = 1
 	</select>
+
+
+	<select id="selectOneBoard" resultType="WantedBoard">
+		select 		*
+		from		wantedBoard
+		where		WANTEDBOARD_TITLE = #{string}
+	</select>
+
 	
 	<insert id="insertBoard" parameterType="WantedBoard">
-		insert into wantedBoard
-		(
+		insert into wantedBoard(
 			WANTEDBOARD_NUM,
 			WANTEDBOARD_FROM,
 			WANTEDBOARD_TITLE,
 			WANTEDBOARD_CONTENT,
 			WANTEDBOARD_DATE,
-			WANTEDBOARD_HITCOUNT
+			WANTEDBOARD_HITCOUNT,
+			wantedboard_source
 		)
-		values
-		(
-		WANTEDBOARD_SEQ.nextval,
-		#{wantedBoard_from},
-		#{wantedBoard_title},
-		#{wantedBoard_content},
-		#{wantedBoard_date},
-		#{wantedBoard_hitCount}
+		values (
+			WANTEDBOARD_SEQ.nextval,
+			#{wantedBoard_from},
+			#{wantedBoard_title},
+			#{wantedBoard_content},
+			#{wantedBoard_date},
+			#{wantedBoard_hitCount},
+			#{wantedboard_source}
 		)
 	</insert>
 	
+	<insert id="insertBoarddirectly" parameterType="WantedBoard">
+		insert into wantedBoard(
+			WANTEDBOARD_NUM,
+			WANTEDBOARD_FROM,
+			WANTEDBOARD_TITLE,
+			WANTEDBOARD_CONTENT,
+			WANTEDBOARD_DATE,
+			WANTEDBOARD_HITCOUNT,
+			wantedboard_source
+		)
+		values (
+			WANTEDBOARD_SEQ.nextval,
+			#{wantedBoard_from},
+			#{wantedBoard_title},
+			#{wantedBoard_content},
+			sysdate,
+			#{wantedBoard_hitCount},
+			#{wantedboard_source}
+		)
+	</insert>
+	
+	
 	<delete id="deleteBoard" parameterType="String">
-		delete from wantedBoard
-		where WANTEDBOARD_TITLE = #{wantedBoard_title}
+		delete from		wantedBoard
+		where			WANTEDBOARD_TITLE = #{wantedBoard_title}
 	</delete>
 	
 	<select id="totalBoardCount" resultType="int">
- 		 select 
- 		 	count(*) 
- 		 from 
- 		 	wantedBoard
- 		 where
- 		 	${searchItem}
- 		 like
- 		 	 '%' || #{searchWord} || '%'
+ 		 select		count(*) 
+ 		 from		wantedBoard
+ 		 where		${searchItem}
+ 		 like		'%' || #{searchWord} || '%'
  	</select>
 	
 </mapper>

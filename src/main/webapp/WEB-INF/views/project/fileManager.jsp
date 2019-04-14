@@ -20,34 +20,60 @@
 <body>
 	<div class="container">
 		<input type="hidden" id="projectNum" value="${projectNum }">
-		
-		<div class="row">
-			<span id="folderLocation">home</span>
+
+		<div class="row sbd2 border-top-0 border-right-0 border-left-0">
+			<div class="col-2" style="background-color: #6079a0; padding: 10px">
+				드라이브 : /</div>
+			<div class="col-8" style="padding: 10px">
+				<span id="folderLocation">home</span>
+			</div>
 		</div>
-		<div class="row">
-		
-		
-		<form class="" id="fileUpLoadForm" method="post" enctype="multipart/form-data">
-			 
-			<input type="file" value="파일 찾기" id="upLoadFile" name="upLoadFile">
-			<input type="hidden" value="${mainproject_projectnum }" id="MainProject_ProjectNum" name="MainProject_ProjectNum"> 
-			<input type="hidden" value="${mainproject_projectnum }" id="projectFile_location" name="projectFile_location">
-		</form>
-		<input type="button" class="btn btn-dark" id="fileUpLoadBtn" value="파일 올리기">
-		</div>
-		<div class="row">
-			<div id="createFolderSpace">
-				<button class="btn btn-dark" id="createFolderInputBtn">폴더 생성</button>
+		<div class="row" style="padding:20px">
+
+
+			<form class="" id="fileUpLoadForm" method="post"
+				enctype="multipart/form-data">
+
+				<!-- <input type="file" value="파일 찾기" id="upLoadFile" name="upLoadFile"> -->
+				
+			<div class="form-group">
+				<div class="bootstrap-filestyle input-group">
+					<span class="group-span-filestyle input-group-btn" tabindex="0">
+						<label for="fileInput" class="btn btn-dark ">
+							<i class="fas fa-file-medical fa-lg"></i>
+						</label>
+					</span>
+					<input id="fileInput" name="upLoadFile"
+						filestyle="" type="file" data-class-button="btn btn-default"
+						data-class-input="form-control" data-button-text=""
+						data-icon-name="fa fa-upload" class="form-control" tabindex="-1"
+						style="position: absolute; clip: rect(0px, 0px, 0px, 0px);">
+						<input type="text" id="upLoadFile" class="form-control" disabled=""> 
+				</div>
+			</div>
+				
+				<input type="hidden" value="${mainproject_projectnum }"
+					id="MainProject_ProjectNum" name="MainProject_ProjectNum">
+				<input type="hidden" value="${mainproject_projectnum }"
+					id="projectFile_location" name="projectFile_location">
+			</form>
+			<button class="btn btn-dark h-100" id="fileUpLoadBtn"><i class="fas fa-upload fa-lg"></i></button>
+			
+			<div id="createFolderSpace" style="margin-left:10px">
+				<button class="btn btn-dark" id="createFolderInputBtn">
+					<i class="fas fa-folder-open fa-lg"></i>
+				</button>
 				<span id="closeFolderMessage"></span>
 			</div>
-			</div>
-			<div class="row">
-		<div class="fileManagerTable">
-			<table class="table table-light table-hover" id="fileManagerTable">
-				<thead>
-				</thead>
-			</table>
+
 		</div>
+		<div class="row">
+			<div class="fileManagerTable">
+				<table class="table table-light table-hover" id="fileManagerTable">
+					<thead>
+					</thead>
+				</table>
+			</div>
 		</div>
 	</div>
 </html>

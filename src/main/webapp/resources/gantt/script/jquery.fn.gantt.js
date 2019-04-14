@@ -1013,7 +1013,6 @@ jQuery.browser = {};
                 }
                 bar.click(function (e) {
                     e.stopPropagation();
-                    alert($(this).attr("id"));
                     settings.onItemClick($(this).attr("id"));
                 });
                 return bar;

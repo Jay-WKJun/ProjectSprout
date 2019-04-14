@@ -18,7 +18,7 @@ public class WantedBoardRepository {
 	@Autowired
 	SqlSession session;
 	
-	public List<WantedBoard> selectAll(String searchItem, String searchWord, int startRecord, int countPerPage) {
+	public List<WantedBoard> selectAll_crawlling(String searchItem, String searchWord, int startRecord, int countPerPage) {
 		WantedBoardDAO dao = session.getMapper(WantedBoardDAO.class);
 		
 		// offset : 얼마만큼 떨어져 있냐? // limit : 몇개?
@@ -28,10 +28,20 @@ public class WantedBoardRepository {
 		map.put("searchItem", searchItem);
 		map.put("searchWord", searchWord);
 
-		List<WantedBoard> result = dao.selectAll(map, rb);
+		List<WantedBoard> result = dao.selectAll_crawlling(map, rb);
 		
 		return result;
 	}
+
+	public List<WantedBoard> selectAll_DB() {
+		WantedBoardDAO dao = session.getMapper(WantedBoardDAO.class);
+		
+		List<WantedBoard> result = dao.selectAll_DB();
+		
+		return result;
+	}
+	
+	
 
 	public WantedBoard selectOneBoard(String string) {
 		WantedBoardDAO dao = session.getMapper(WantedBoardDAO.class);
@@ -59,6 +69,11 @@ public class WantedBoardRepository {
 		int boardCount = dao.totalBoardCount(map);
 		
 		return boardCount;
+	}
+
+	public void insertBoard_directly(WantedBoard board) {
+		WantedBoardDAO dao = session.getMapper(WantedBoardDAO.class);
+		dao.insertBoarddirectly(board);
 	}
 
 }

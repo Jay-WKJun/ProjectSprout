@@ -25,7 +25,13 @@ $(function() {
 				}else{
 					location.href="login";
 				}
-			}
+			}, 
+			beforeSend: function () {
+				$('#loader').attr('style','display:block');
+	       }, 
+	       complete: function () {
+	    	   $('#loader').attr('style','display:none');
+	       }
 		})
 	})
 	
@@ -57,7 +63,9 @@ $(function() {
 	
 	//왼쪽 프로젝트타이틀 리스트 누르면, 컨트롤러 정보 보냄. 
 	$('body').delegate('.projectSelectBtn', 'click', function() {
+		$('#wantedBoardSpace').attr('style', 'display:none');
 		$('#webPresentation').attr('style', 'display:none');
+		$('#wantedBoardSpace').attr('style', 'display:none');
 		$('#newProject').attr('style', 'display:none');
 		$('#ProjectStartSpace').attr('style', 'display:block');
 		var mainproject_projectnum = $(this).attr('data-pno');

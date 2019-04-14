@@ -9,14 +9,16 @@ public class WantedBoard {
 	private String wantedBoard_date;
 	private int wantedBoard_hitCount;
 	private int applyBoard_num;
-	
+	private int wantedboard_source;
+
 	public WantedBoard() {
-		
+
 	}
 
 	public WantedBoard(int wantedBoard_num, String wantedBoard_from, String wantedBoard_title,
-			String wantedBoard_content, String wantedBoard_date, int wantedBoard_hitCount, int applyBoard_num) {
-		
+			String wantedBoard_content, String wantedBoard_date, int wantedBoard_hitCount, int applyBoard_num,
+			int wantedboard_source) {
+		super();
 		this.wantedBoard_num = wantedBoard_num;
 		this.wantedBoard_from = wantedBoard_from;
 		this.wantedBoard_title = wantedBoard_title;
@@ -24,6 +26,7 @@ public class WantedBoard {
 		this.wantedBoard_date = wantedBoard_date;
 		this.wantedBoard_hitCount = wantedBoard_hitCount;
 		this.applyBoard_num = applyBoard_num;
+		this.wantedboard_source = wantedboard_source;
 	}
 
 	public int getWantedBoard_num() {
@@ -82,13 +85,20 @@ public class WantedBoard {
 		this.applyBoard_num = applyBoard_num;
 	}
 
+	public int getWantedboard_source() {
+		return wantedboard_source;
+	}
+
+	public void setWantedboard_source(int wantedboard_source) {
+		this.wantedboard_source = wantedboard_source;
+	}
+
 	@Override
 	public String toString() {
 		return "WantedBoard [wantedBoard_num=" + wantedBoard_num + ", wantedBoard_from=" + wantedBoard_from
 				+ ", wantedBoard_title=" + wantedBoard_title + ", wantedBoard_content=" + wantedBoard_content
 				+ ", wantedBoard_date=" + wantedBoard_date + ", wantedBoard_hitCount=" + wantedBoard_hitCount
-				+ ", applyBoard_num=" + applyBoard_num + "]";
+				+ ", applyBoard_num=" + applyBoard_num + ", wantedboard_source=" + wantedboard_source + "]";
 	}
-	
-	
+
 }

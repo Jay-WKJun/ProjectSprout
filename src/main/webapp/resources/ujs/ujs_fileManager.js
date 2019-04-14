@@ -13,6 +13,18 @@ $(function(){
 	
 	// 폴더 생성 버튼
 	$('#createFolderInputBtn').on('click',createFolderNaming);
+	
+	//파일명
+	$("#fileInput").on('change', function(){  // 값이 변경되면
+		if(window.FileReader){  // modern browser
+			var filename = $(this)[0].files[0].name;
+		} else {  // old IE
+			var filename = $(this).val().split('/').pop().split('\\').pop();  // 파일명만 추출
+		}
+		// 추출한 파일명 삽입
+		$("#upLoadFile").val(filename);
+	});
+
 })
 
 // 파일 업로드

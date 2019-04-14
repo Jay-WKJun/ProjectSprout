@@ -153,7 +153,7 @@ public class WantedBoardController {
 			driver.close();
 		}
 
-		List<WantedBoard> wbList = wbRepo.selectAll(searchItem, searchWord, navi.getStartRecord(),
+		List<WantedBoard> wbList = wbRepo.selectAll_crawlling(searchItem, searchWord, navi.getStartRecord(),
 				navi.getCountPerPage());
 		// 검증이 끝났으면 새로 모든 데이터를 불러온다.
 
