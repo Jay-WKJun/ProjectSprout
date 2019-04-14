@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -189,6 +191,33 @@ public class WantedBoardController {
 
 		return null;
 	}
-	
-	
+
+	/*
+	 * 페이지 이동.
+	 */
+	@RequestMapping(value = "/boardRegist", method = RequestMethod.GET) //--------------------- this place
+	public String boardRegist() {
+		System.out.println("내부 공고 글 작성하기");
+
+		return "wantedBoard/wantedBoard_directly";
+	}
+
+	/*
+	 * 글 작성하기.
+	 */
+	@RequestMapping(value = "/write_wanted", method = RequestMethod.GET)
+	public String boardRegist(WantedBoard board, HttpSession session) {
+		String loginId = (String) session.getAttribute("loginId");
+
+			board.setWantedBoard_from(loginId);
+			board.setWantedboard_source(1);// 직접 작성한 글이라 1이다.( 크롤링은 0 )
+			board.setWantedBoard_hitCount(0);
+
+			wbRepo.insertBoard_directly(board);
+
+			return "redirect:/wantedBoard"; 
+			
+		
+	}
+
 }
