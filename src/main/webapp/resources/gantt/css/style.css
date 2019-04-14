@@ -1,3 +1,11 @@
+.timeTabelWrapper{
+	font-family:'binggrae', 'bada','Serif';
+	font-size:110%;
+    font-weight: 100;
+}
+
+/* ====================================== */
+
 .gantt, .gantt2 {
     width: 100%;
     margin: 20px auto;
@@ -416,3 +424,13 @@
     clear: both;
 }
 
+/* ====================popup==================== */
+.contentItem_text{
+    margin-bottom: 5px;
+    margin-top: 15px;
+}
+
+.contentItem_input{
+    width: 100%;
+    min-width:100px;
+}

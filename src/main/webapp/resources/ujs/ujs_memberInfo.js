@@ -6,6 +6,10 @@ $(function(){
 		validate();
 	})
 	
+	//회원 탈퇴
+	$('#delete_infoBtn').on('click',function(){
+		location.href="delete_info";
+	})
 	
 	$('#profileDelete').on('click',function(){
 		alert('프로필 사진을 삭제합니다 ');

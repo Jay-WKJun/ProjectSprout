@@ -10,7 +10,8 @@
 <style>
 .pop-layer .pop-container {
   padding:20px;
-  height:auto;
+  max-height: 90%;
+  overflow-y: auto;
 }
 
 .pop-layer p.ctxt {
@@ -21,8 +22,7 @@
 
 .pop-layer .btn-r {
   width: 100%;
-  height: 10%;
-  padding-top: 10px;
+  padding: 10px;
   border-top: 1px solid #DDD;
   text-align: right;
 }
@@ -32,10 +32,10 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 35%;
-  height: 55%;
-  background-color: #fff;
-  border: 5px solid #3571B5;
+  height:100%;
+  width:500px;
+  background-color: white;
+  border: 2px solid #6079a0;
   z-index: 10;
 }
 
@@ -92,12 +92,14 @@
 <body>
 
 	<!-- 아래 script를 통해 이 class이름안에 모든 타임테이블이 그려집니다. -->
+	<div class="timeTabelWrapper">
 	<div class="gantt"></div>
-
-	<hr>
-
-	<input type="button" id="regist" value="regist" onclick="layer_popup('#layer2', null)"/>
-
+		<div style="text-align:right">
+			<hr style="background-color:#6079a0">
+			<button class="btn btn-dark" id="regist" value="" onclick="layer_popup('#layer2', null)">
+				<i class="far fa-calendar-check fa-lg"></i>
+			</button>
+		</div>
 	<!-- 여기서부터  popup설정 -->
 	<a href="#layer2" class="btn-example"></a>
 	<div class="dim-layer">
@@ -106,23 +108,19 @@
 			<div class="pop-container">
 				<div class="pop-conts">
 					<!--content //-->
-					<p class="ctxt mb20">
+					<div class="ctxt mb20">
 						이곳에 디테일 들어옵니다.
-					</p>
-
-					<div class="btn-r">
-						<a href="#" class="btn-layerClose" id="update">수정</a>
-						<a href="#" class="btn-layerClose" id="delete">삭제</a>
-						<a href="#" class="btn-layerClose" id="close">닫기</a>
+					</div>
 					</div>
 					<!--// content-->
 				</div>
+					<div class="btn-r">
 			</div>
 		</div>
 	</div>
 	<!-- 여기까지 popup설정 -->
 
-
+	</div>
 
 
 <!-- 이 두개는 반드시 불러와야하고 반드시 한곳에 있어야합니다. -->
@@ -235,21 +233,52 @@
 	        			});
 						
 						$('.ctxt').html('<form method="POST" action="timetableMake" id="createForm" name="createForm" accept-charset="utf-8">'
-			        			+'<input type="text" id="projectContent_title" name="projectContent_title" placeholder="title"><br>'
-			        			+'<input type="text" id="projectContent_content" name="projectContent_content" placeholder="content"><br>'
-			        			+'<input type="date" id="projectContent_startDate" name="projectContent_startDate"><br>'
-			        			+'<input type="date" id="projectContent_endDate" name="projectContent_endDate"><br>'
-			        			+'<input type="text" id="projectContent_color" name="projectContent_color"><br>'
-			        			+'<input type="hidden" id="mainproject_projectNum" name="mainproject_projectNum"><br>'
-			        			+'<select id="member_num" name="member_num">'
+			        			+'<div class="contentItem_text">' 
+			        			+'제목'
+			        			+'</div>'
+			        			+'<div class="contentItem_input">' 
+								+'<input class="form-control" type="text" id="projectContent_title" name="projectContent_title" placeholder="title">'
+								+'</div>'
+								+'<div class="contentItem_text">' 
+			        			+'내용'
+			        			+'</div>'
+			        			+'<div class="contentItem_input">' 
+			        			+'<input class="form-control" style="height:300px" type="text" id="projectContent_content" name="projectContent_content" placeholder="content">'
+			        			+'</div>'
+			        			+'<div class="contentItem_text">' 
+			        			+'시작 날짜'
+			        			+'</div>'
+			        			+'<div class="contentItem_input">' 
+			        			+'<input class="form-control" type="date" id="projectContent_startDate" name="projectContent_startDate">'
+			        			+'</div>'
+			        			+'<div class="contentItem_text">' 
+			        			+'종료 날짜'
+			        			+'</div>'
+			        			+'<div class="contentItem_input">' 
+			        			+'<input class="form-control" type="date" id="projectContent_endDate" name="projectContent_endDate">'
+			        			+'</div>'
+			        			+'<div class="contentItem_text">' 
+			        			+'색깔'
+			        			+'</div>'
+			        			+'<div class="contentItem_input">' 
+			        			+'<input class="form-control" type="text" id="projectContent_color" name="projectContent_color">'
+			        			+'</div>'
+			        			+'<input type="hidden" id="mainproject_projectNum" name="mainproject_projectNum">'
+			        			+'<div class="contentItem_text">' 
+			        			+'멤버'
+			        			+'</div>'
+			        			+'<div class="contentItem_input">' 
+			        			+'<select class="form-control" id="member_num" name="member_num">'
 			        			+ options
 			        			+'</select>' 
+			        			+'</div>'
 			        			+'</form>'
 			        	);
 						
 						//완료 버튼 만들기
-						$('div.btn-r').html('<a href="#" class="btn-layerClose" id="close">닫기</a>'
-								+'<input type="button" class="btn-layerClose" id="createContent" onclick="doCreateSubmit()" value="완료" />'
+						$('div.btn-r').html(
+								'<input type="button" style="height:40px;margin-right:5px" class="btn btn-dark btn-layerClose" id="createContent" onclick="doCreateSubmit()" value="완료" />'
+								+'<a href="#" style="height:40px" class="btn btn-danger btn-layerClose" id="close">닫기</a>'
 						);
 			        	
 			        	//닫기 메소드

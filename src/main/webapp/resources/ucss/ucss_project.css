@@ -24,6 +24,13 @@
 	font-size:120%;
 }
 
+/* html, body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+} */
+
 .wrapper{
 	font-family:'binggrae', 'bada','Serif';
 	font-size:110%;
@@ -152,20 +159,29 @@
 	background-color:black;
 	opacity: 0.3;
 	width:100%;
-	height:1200px;
+	height:1300px;
+}
+
+/* ================멤버================== */
+
+#memberPlusSpace{
+	display:none;
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	z-index: 10;
 }
 
 /* =============화이트보드================= */
 
-.layer {
-    position: absolute;
-    width: 40%;
-    left: 50%;
-    margin-left: -20%; /* half of width */
-    height: 300px;
-    top: 50%;
-    margin-top: -150px; /* half of height */
-    overflow: auto;
+.whiteBoardModal{
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
 }
 
 .hidden{
@@ -179,83 +195,34 @@
 	margin-top: 30px;
 }
 
-/* =================타임 테이블=================== */
+/* ===============공지사항================= */
 
-.pop-layer .pop-container {
-  padding:20px;
-  height:auto;
-}
-
-.pop-layer p.ctxt {
-  color: #666;
-  height:100%;
-  width:100%;
-}
-
-.pop-layer .btn-r {
-  width: 100%;
-  height: 10%;
-  padding-top: 10px;
-  border-top: 1px solid #DDD;
-  text-align: right;
-}
-
-.pop-layer {
-  display: none;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 35%;
-  height: 55%;
-  background-color: #fff;
-  border: 5px solid #3571B5;
-  z-index: 10;
-}
-
-.dim-layer {
-  display: none;
-  position: fixed;
-  _position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 100;
-}
-
-.dim-layer .dimBg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #000;
-  opacity: .5;
-  filter: alpha(opacity=50);
-}
-
-.dim-layer .pop-layer {
-  display: block;
-}
-
-.btn-layerClose {
-  display: inline-block;
-  height: 25px;
-  padding: 0 14px 0;
-  border: 1px solid #304a8a;
-  background-color: #3f5a9d;
-  font-size: 13px;
-  color: #fff;
-  line-height: 25px;
-}
-
-.pop-conts{
+#noticeModal{
+	display:none;
+	position:absolute;
+	top:0;
+	left:0;
 	width:100%;
 	height:100%;
+	z-index: 10;
 }
 
-.btn-layerClose:hover {
-  border: 1px solid #091940;
-  background-color: #1f326a;
-  color: #fff;
+.noticeModalContent{
+	position: absolute;
+	background-color:white;
+	padding:10px;
+	top:20%;
+	left:20%;
+	width:60%;
+	text-align:right;
+}
+
+#noticeDetailModal{
+	display:none;
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	z-index: 10;
 }
