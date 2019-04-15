@@ -7,12 +7,13 @@ public class Text {
 	private int chatRoom_num;
 	private int member_num;
 	private String member_name;
+	private String  chatRoom_name;
 	public Text() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public Text(int chat_num, String chat_date, String chat_content, int chatRoom_num, int member_num,
-			String member_name) {
+			String member_name, String chatRoom_name) {
 		super();
 		this.chat_num = chat_num;
 		this.chat_date = chat_date;
@@ -20,6 +21,7 @@ public class Text {
 		this.chatRoom_num = chatRoom_num;
 		this.member_num = member_num;
 		this.member_name = member_name;
+		this.chatRoom_name = chatRoom_name;
 	}
 	public int getChat_num() {
 		return chat_num;
@@ -57,10 +59,17 @@ public class Text {
 	public void setMember_name(String member_name) {
 		this.member_name = member_name;
 	}
+	public String getChatRoom_name() {
+		return chatRoom_name;
+	}
+	public void setChatRoom_name(String chatRoom_name) {
+		this.chatRoom_name = chatRoom_name;
+	}
 	@Override
 	public String toString() {
 		return "Text [chat_num=" + chat_num + ", chat_date=" + chat_date + ", chat_content=" + chat_content
 				+ ", chatRoom_num=" + chatRoom_num + ", member_num=" + member_num + ", member_name=" + member_name
-				+ "]";
+				+ ", chatRoom_name=" + chatRoom_name + "]";
 	}
+	
 }

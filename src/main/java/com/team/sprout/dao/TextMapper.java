@@ -9,5 +9,13 @@ public interface TextMapper {
 	public int TextInsert(Text text);
 
 	public List<Text> printMessage(int chatRoom_num);
+
+	public List<Text> MList(String member_name);
+
+	public int insertChatRoomName(Text text);
+
+	public int selectchatRoomNum();
+
+	public int invitation(Text text);
 	
 }

@@ -35,6 +35,9 @@
 					<!-- 메인화면에 쓴다. -->
 					</div>
 					<div id="noticeSpace">
+					
+					
+					
 					<!-- 맨 처음에 프로젝트의 개요를 띄운다. -->
 					<!-- 이미지 띄우고 -->
 					<!-- 활동 통계띄우면 끝. -->
@@ -67,7 +70,6 @@
 										class="list-group-item list-group-item-action border-left-0 border-right-0">회원정보</a>
 									<a href="logout"
 										class="list-group-item list-group-item-action border-left-0 border-right-0">로그아웃</a>
-										
 								</div>
 							</div>
 						</div>
@@ -80,9 +82,12 @@
 				<div class="contentSpace">
 					<form class="" id="documentFileUpLoadForm" method="post" enctype="multipart/form-data">
 						<!-- 이 프로젝트가 가진 폴더를 이곳에 넣는다. -->
-						<select name="folder_name">
-							<option value="testFolder">testFolder</option>
-						</select>
+						<!-- 폴더를 새로 만들고 싶다면 폴더 생성을 누르고 이곳에 input text를 넣어준다. -->
+						<p id="folderDiv">
+							<select name="folder_name">
+								<option value="testFolder">testFolder</option>
+							</select>
+						</p>
 						<input type="file" value="파일 찾기" id="upLoadFile" name="upLoadFile">
 						
 						<input type="text" id="document_board_title" name="document_board_title" placeholder="title"> 

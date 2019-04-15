@@ -74,6 +74,7 @@ public class MemberRepository {
 	      }
 	   }
 
+
 	public int insertRoomnum(ChatRoom cr) {
 		MemberDAO dao = session.getMapper(MemberDAO.class);
 		int result = dao.insertcr(cr);
@@ -88,6 +89,27 @@ public class MemberRepository {
 	public void setLoginTime(String member_id) {
 		MemberDAO dao = session.getMapper(MemberDAO.class);
 		dao.setLoginTime(member_id);
+	}
+
+	public void userAuth(String userEmail) {
+		MemberDAO dao = session.getMapper(MemberDAO.class);
+		dao.userAuth(userEmail);
+	}
+	
+		public int selectRoomnum() {
+
+		MemberDAO dao = session.getMapper(MemberDAO.class);
+		int results = dao.selectRoomnum();
+		return results;
+	}
+
+	public String selectOneMemberNum(String member_name) {
+		// TODO Auto-generated method stub
+		
+		MemberDAO dao = session.getMapper(MemberDAO.class);
+		String member_nameOne = dao.selectOneMemberNum(member_name);
+		
+		return member_nameOne;
 	}
 
 

@@ -25,4 +25,10 @@ public interface MemberDAO {
 	public int insertcr(ChatRoom cr);
 
 	public void setLoginTime(String member_id); //
+
+	public void userAuth(String userEmail);
+	
+	public int selectRoomnum();
+
+	public String selectOneMemberNum(String member_name); 
 }

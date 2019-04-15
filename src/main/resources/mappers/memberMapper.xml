@@ -31,6 +31,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			, null
 		</if>
 			, sysdate
+		<if test = 'member_authkey != null'>
+			, #{member_authkey}
+		</if>
+		<if test = 'member_authkey == null'>
+			, null
+		</if>
 		)
 	</insert>
 	
@@ -100,6 +106,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</delete>
 	
 	<insert parameterType="ChatRoom" id="insertcr">
+
 		insert into chatRoom(
 			chatRoom_num, chatRoom_name
 		)
@@ -117,4 +124,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			member_id = #{member_id}
 	</update>
 	
+	<update id="userAuth">
+		update member
+		set
+			member_authkey = 'auth'
+		where
+			member_id=#{userEmail}
+	
+	</update>
+	
+
+	<select id="selectRoomnum" resultType="int">
+SELECT max(chatRoom_num) 
+FROM chatRoom
+</select>
+
+	<select id="selectOneMemberNum" resultType="String">
+		select * from member where member_name =#{member_name}
+	</select>
+>>>>>>> 브랜치변경규
 </mapper>

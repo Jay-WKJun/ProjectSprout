@@ -11,6 +11,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,9 +40,6 @@ public class WantedBoardController {
 	// 크롤링 할 URL
 	private String base_url;
 
-	// TODO:phantom.js 적용 필요
-	// TODO:여러페이지 긁어오는 알고리즘 필요
-
 	@RequestMapping(value = "/wantedBoard", method = RequestMethod.GET)
 	public String wantedBoard(Model model,
 			@RequestParam(value = "searchItem", defaultValue = "WANTEDBOARD_TITLE") String searchItem // 만약 변수가
@@ -54,9 +52,13 @@ public class WantedBoardController {
 
 		// System Property SetUp
 		System.setProperty(WEB_DRIVER_ID, WEB_DRIVER_PATH);
+		
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("headless");
 
 		// Driver SetUp
-		driver = new ChromeDriver();
+		driver = new ChromeDriver(options);
+		//driver = testphantomjs();
 		base_url = "http://www.nipa.kr/main.it";
 		// !!이 로딩은 처음에만 해준다. static으로 true를 false로 바꿔줘서 해준다.
 		// 크롤링 긁어오는 거는 새로운 클래스에 메소드를 하나씩 추가해서 사용한다.(검증작업까지 시켜준다.)
@@ -84,7 +86,6 @@ public class WantedBoardController {
 				wb.setWantedBoard_content(titles.get(i).getAttribute("onclick"));
 				wb.setWantedBoard_date(dates.get(i).getText());
 				wb.setWantedBoard_from(pageTitle);
-				wb.setWantedboard_source(0); // 크롤링은 0, 직접 작성은 1.
 				wbListTemp.add(wb);
 			}
 
@@ -170,14 +171,6 @@ public class WantedBoardController {
 		model.addAttribute("searchWord", searchWord);
 		model.addAttribute("searchItem", searchItem);
 
-		//----------------------------------------------------------- 내부 공고 글
-		List<WantedBoard> wbList_DB = wbRepo.selectAll_DB();
-		for (WantedBoard wantedBoard : wbList) {
-			System.out.println(wantedBoard);
-		}
-		model.addAttribute("list_from_DB", wbList_DB);
-		//----------------------------------------------------------- <by_환>
-
 		return "wantedBoard/wantedBoard";
 	}
 
@@ -222,7 +215,8 @@ public class WantedBoardController {
 
 			wbRepo.insertBoard_directly(board);
 
-			return "wantedBoard/wantedBoard_directly"; // 일단은 같은 위치로
+			return "redirect:/wantedBoard"; 
+			
 		
 	}
 
