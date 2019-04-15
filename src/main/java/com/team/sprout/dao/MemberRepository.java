@@ -90,5 +90,10 @@ public class MemberRepository {
 		dao.setLoginTime(member_id);
 	}
 
+	public void userAuth(String userEmail) {
+		MemberDAO dao = session.getMapper(MemberDAO.class);
+		dao.userAuth(userEmail);
+	}
+
 
 }
