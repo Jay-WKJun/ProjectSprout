@@ -19,6 +19,9 @@
 <script src="js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
+
+
+
 	<div class="wrapper">
 		<div class="sideSpace">
 			<div class="sideSpace_top">
@@ -29,7 +32,7 @@
 					<li class="nav-item"><a class="nav-link active" id="memberChangeBtn"
 						data-toggle="tab" href="#home">멤버</a></li>
 					<li class="nav-item"><a class="nav-link" data-toggle="tab"
-						href="#menu1">메세지</a></li>
+						href="#menu1" id="messageSpaceBtn">메세지</a></li>
 					<li class="nav-item" id="noticeCheckBtn"><a class="nav-link" data-toggle="tab"
 						href="#menu2">공지사항</a></li>
 				</ul>
@@ -63,9 +66,10 @@
 							</div>
 						</div>
 					</div>
-					
 				</form> 
 				
+				
+										
 						<c:forEach var="list" items="${projectMembersList}">
 							<div
 								class="dropdown dropright float-right list-group-item list-group-item-action">
@@ -88,6 +92,38 @@
 						</c:forEach>
 
 					</div>
+					</div>
+					
+					<!-- 메신저 영역 -->
+					<div id="messageSpace" style="display: none">
+					
+					<button type="button" class="btn btn-dark w-100" data-toggle="modal" data-target="#ChatRoomInvitation">
+						채팅방 생성
+					</button>
+					
+					<!-- The Modal -->
+					<div class="modal" id="ChatRoomInvitation">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<!-- Modal body -->
+								<div class="modal-body">
+									<div class="input-group mb-3">
+									<input type="text" class="form-control" id="addMembers" name="addMember" placeholder="생성할 채팅방 이름">
+										<div class="input-group-append">
+											<button class="btn btn-dark w-100" id="Invitatio">채팅방 생성</button> 
+											<input type="hidden" id="member_ids" value="${sessionScope.loginId }"/>
+											<input type="hidden" id="member_nums" value="${sessionScope.loginNum }"/>
+										</div>
+									</div>
+									<span id = "addmemberMessage"></span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- code here -->
+						<div id="messageChatRoomList">
+			
+						</div>
 					</div>
 					
 					<div id="noticeSpace" style="display: none">

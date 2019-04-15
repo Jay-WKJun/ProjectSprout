@@ -31,6 +31,34 @@ public class TextDAO {
 		List<Text> text  = mapper.printMessage(chatRoom_num);
 		return text;
 	}
+
+	public List<Text> MList(String member_name) {
+		TextMapper mapper = sqlsession.getMapper(TextMapper.class);
+		List<Text> memberList  = mapper.MList(member_name);
+		return memberList;
+	}
+
+	public int insertChatRoomName(Text text) {
+		// TODO Auto-generated method stub
+		TextMapper mapper = sqlsession.getMapper(TextMapper.class);
+		int memberList  = mapper.insertChatRoomName(text);
+		return memberList;
+	}
+
+	public int selectchatRoomNum() {
+		// TODO Auto-generated method stub
+		TextMapper mapper = sqlsession.getMapper(TextMapper.class);
+		int result  = mapper.selectchatRoomNum();
+		
+		return result;
+	}
+
+	public int invitation(Text text) {
+		// TODO Auto-generated method stub
+		TextMapper mapper = sqlsession.getMapper(TextMapper.class);
+		int results  = mapper.invitation(text);
+		return results;
+	}
 	
 
 	

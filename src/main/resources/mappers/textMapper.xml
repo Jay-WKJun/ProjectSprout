@@ -24,8 +24,63 @@
 		#{member_name}
 		)
 	</insert>
+	<!-- 채팅방이름등록 -->
+	<insert id="insertChatRoomName" parameterType="Text">
+		insert into chat
+		(
+		chat_num,
+		chat_date,
+		chatRoom_num,
+		member_num,
+		member_name,
+		chatRoom_name
+		)
+		values
+		(
+		chat_SEQ.nextval,
+		sysdate,
+		chatRoom_num_seq.nextval,
+		#{member_num},
+		#{member_name},
+		#{chatRoom_name}
+		)
+	</insert>
+
+		<!-- 채팅방초대 -->
+	<insert id="invitation" parameterType="Text">
+		insert into chat
+		(
+		chat_num,
+		chat_date,
+		chat_content,
+		chatRoom_num,
+		member_num,
+		member_name,
+		chatRoom_name
+		)
+		values
+		(
+		chat_SEQ.nextval,
+		sysdate,
+		#{chat_content},
+		#{chatRoom_num},
+		#{member_num},
+		#{member_name},
+		#{chatRoom_name}
+		)
+	</insert>
 
 	<select id="printMessage" resultType="Text">
-		select * from chat where chatRoom_num = #{chatRoom_num}
+		select * from chat where chatRoom_num = #{chatRoom_num} order by CHAT_NUM ASC
 	</select>
+	
+	<select id="MList" resultType="Text">
+		select * from chat where member_name = #{member_name}
+	</select>
+	
+	<select id="selectchatRoomNum" resultType="int">
+	SELECT max(chatRoom_num) 
+	FROM chat
+	</select>
+	
 </mapper>

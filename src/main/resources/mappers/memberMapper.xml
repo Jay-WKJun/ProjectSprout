@@ -101,9 +101,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<insert parameterType="ChatRoom" id="insertcr">
 	insert into chatRoom
-	(chatRoom_num, chatRoom_name)
+	(chatRoom_num, 
+	chatRoom_name
+	)
 	values
-	(#{chatRoom_num}, 
-	#{chatRoom_name}) 
+	(
+	#{chatRoom_num},
+	#{chatRoom_name}
+	) 
 	</insert>
+	
+	<select id="selectRoomnum" resultType="int">
+SELECT max(chatRoom_num) 
+FROM chatRoom
+</select>
+
+	<select id="selectOneMemberNum" resultType="String">
+		select * from member where member_name =#{member_name}
+	</select>
 </mapper>
