@@ -106,6 +106,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</delete>
 	
 	<insert parameterType="ChatRoom" id="insertcr">
+
 		insert into chatRoom(
 			chatRoom_num, chatRoom_name
 		)
@@ -132,4 +133,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	</update>
 	
+
+	<select id="selectRoomnum" resultType="int">
+SELECT max(chatRoom_num) 
+FROM chatRoom
+</select>
+
+	<select id="selectOneMemberNum" resultType="String">
+		select * from member where member_name =#{member_name}
+	</select>
+>>>>>>> 브랜치변경규
 </mapper>

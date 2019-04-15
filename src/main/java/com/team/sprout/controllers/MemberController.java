@@ -408,23 +408,39 @@ public class MemberController {
 		session.invalidate();
 		return "redirect:/";
 	}
-		
-	@RequestMapping(value = "/basicChatRoom", method = RequestMethod.GET)
-	public String basicChatRoom() {
-		return "websocket/basicChatRoom";
-	}
 	
 	@RequestMapping(value = "/multiChatRoom", method = RequestMethod.GET)
-	public String multiChatRoom(int chatRoom_num, String chatRoom_name, Model model) {
+	public String multiChatRoom(int chatRoom_num, String chatRoom_name, ChatRoom chatroom, Model model, HttpSession session) {
+		System.out.println("asdasdsad"+chatRoom_num);	
 			ChatRoom cr = new ChatRoom();
-			cr.setChatRoom_name("임시방이름");
+			cr.setChatRoom_name(chatRoom_name);
 			cr.setChatRoom_num(chatRoom_num);
-				System.out.println(chatRoom_num);
-				int result =repo.insertRoomnum(cr);
-		model.addAttribute("chatRoom_num",chatRoom_num);
-		
-
-		return "websocket/multiChatRoom";
+	
+			System.out.println("cr: "+cr.toString());
+			int result =repo.insertRoomnum(cr);//name
+		/*	int results = repo.selectRoomnum();
+			chatroom.setChatRoom_num(results);
+			model.addAttribute("chatRoom_num", chatroom.getChatRoom_num());
+		session.setAttribute("chatRoom_num", chatroom.getChatRoom_num());*/
+			session.setAttribute("chatRoom_num", chatRoom_num);
+			session.setAttribute("chatRoom_name", chatRoom_name);
+			model.addAttribute("chatRoom_namess", chatRoom_name);
+			return "websocket/multiChatRoom";
 	}
+	
+	/*
+	 * 채팅방 회원초대를 위해 아이디로 membernum가져오기
+	 */
+	
+	@RequestMapping(value = "/selectMemberNum", method = RequestMethod.POST)
+	public @ResponseBody String selectMemberNum(String member_name, HttpSession session, Model model) {
+				
+			
+		String member_nameOne = repo.selectOneMemberNum(member_name);
+		System.out.println("tq"+member_nameOne);
+		model.addAttribute("member_namess", member_name);
+		return member_nameOne;
+	}
+	
 	
 }

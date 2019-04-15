@@ -19,6 +19,9 @@
 <script src="js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
+
+
+
 	<div class="wrapper">
 		<div class="sideSpace">
 			<div class="sideSpace_top">
@@ -32,6 +35,7 @@
 						data-toggle="tab">메세지</a></li>
 					<li class="nav-item bgwhite" id="noticeCheckBtn"><a
 						class="nav-link" data-toggle="tab">공지사항</a></li>
+
 				</ul>
 				
 				<!-- 같은 프로젝트일때 참여인원  출력 -->
@@ -76,6 +80,66 @@
 							<textarea class="form-control" style="height:300px" id="noticeDetail"></textarea>
 							<button class="btn btn-danger" id="cancelNoticeDetailBtn" style="margin-top:10px">닫기</button>
 						</div>
+				
+				
+										
+						<c:forEach var="list" items="${projectMembersList}">
+							<div
+								class="dropdown dropright float-right list-group-item list-group-item-action">
+								<div data-toggle="dropdown">${list.member_name}</div>
+								<div class="dropdown-menu">
+									<h5 class="dropdown-header">${list.member_name}</h5>
+									<div style="margin-top: 20px" data-pno="${list.member_num}" id="forkick">
+										<a href="#"
+											class="list-group-item list-group-item-action border-left-0 border-right-0">플래너</a>
+										<a href="#"
+											class="list-group-item list-group-item-action border-left-0 border-right-0">메세지
+											보내기</a>
+										<c:if test="${member_rank == 5}"> 
+											 <a href="#"
+											class="kickMember list-group-item list-group-item-action border-left-0 border-right-0">내보내기</a>
+										</c:if> 
+									</div>
+								</div>
+							</div>
+						</c:forEach>
+
+					</div>
+					</div>
+					
+					<!-- 메신저 영역 -->
+					<div id="messageSpace" style="display: none">
+					
+					<button type="button" class="btn btn-dark w-100" data-toggle="modal" data-target="#ChatRoomInvitation">
+						채팅방 생성
+					</button>
+					
+					<!-- The Modal -->
+					<div class="modal" id="ChatRoomInvitation">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<!-- Modal body -->
+								<div class="modal-body">
+									<div class="input-group mb-3">
+									<input type="text" class="form-control" id="addMembers" name="addMember" placeholder="생성할 채팅방 이름">
+										<div class="input-group-append">
+											<button class="btn btn-dark w-100" id="Invitatio">채팅방 생성</button> 
+											<input type="hidden" id="member_ids" value="${sessionScope.loginId }"/>
+											<input type="hidden" id="member_nums" value="${sessionScope.loginNum }"/>
+										</div>
+									</div>
+									<span id = "addmemberMessage"></span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- code here -->
+						<div id="messageChatRoomList">
+			
+						</div>
+					</div>
+					
+					<div id="noticeSpace" style="display: none">
 					</div>
 					
 				</div>
@@ -213,7 +277,6 @@
 				</div>
 			</div>
 		</div>
-	</div>
 </body>
 
 </html>
