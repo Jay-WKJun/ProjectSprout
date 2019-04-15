@@ -31,6 +31,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			, null
 		</if>
 			, sysdate
+		<if test = 'member_authkey != null'>
+			, #{member_authkey}
+		</if>
+		<if test = 'member_authkey == null'>
+			, null
+		</if>
 		)
 	</insert>
 	
@@ -115,6 +121,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		    member_logindate = sysdate
 		where
 			member_id = #{member_id}
+	</update>
+	
+	<update id="userAuth">
+		update member
+		set
+			member_authkey = 'auth'
+		where
+			member_id=#{userEmail}
+	
 	</update>
 	
 </mapper>

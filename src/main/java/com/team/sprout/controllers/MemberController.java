@@ -25,6 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.team.sprout.dao.MainProjectRepository;
 import com.team.sprout.dao.MemberRepository;
 import com.team.sprout.dao.ProjectMemberRepository;
+import com.team.sprout.service.MailService;
 import com.team.sprout.util.profileFile;
 import com.team.sprout.vo.ChatRoom;
 import com.team.sprout.vo.Member;
@@ -38,6 +39,8 @@ public class MemberController {
 	MainProjectRepository mainrepo;
 	@Autowired
 	ProjectMemberRepository prrepo;
+	@Autowired
+	private MailService service;
 
 	@RequestMapping(value = "/checkId", method = RequestMethod.POST)
 	public @ResponseBody int checkId(String member_id) {
@@ -74,10 +77,16 @@ public class MemberController {
 			System.out.println("------------- 회원가입 with 프로필 사진 X -------------");
 			System.out.println(member.toString());
 		}
-
-		int result = repo.memberJoin(member); // 회원가입
+		
+		try {
+			service.create(member);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		/*int result = repo.memberJoin(member); // 회원가입
 		System.out.println("회원가입 결과 : " + result); // 회원가입 결과 확인
-
+*/
 		return "redirect:/";
 	}
 
