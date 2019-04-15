@@ -149,7 +149,7 @@
 							
 							<div id="memberPlusSpace">
 								<div class="modalBlack"></div>
-								<div class="noticeModalContent">
+								<div class="noticeModalContent rounded sbd2">
 										<input type="text" class="form-control" id="addMember"
 											name="addMember" placeholder="추가하실 아이디를 입력하세요.">
 									<div class="container">
@@ -179,7 +179,6 @@
 					</div>
 
 					<div class="fileManager rounded bgwhite sbd2 shadow" id="fileManager">
-						<!-- <div id="fileManagerHeaders"></div> -->
 					</div>
 
 				</div>
@@ -196,7 +195,7 @@
 							value="${mainproject_projectnum }">
 						<div id="whiteBoardModal" style="display:none">
 						<div class="modalBlack"></div>
-							<div class="postitWindow rounded sbd2">
+							<!-- <div class="postitWindow rounded sbd2">
 								<button class="btn btn-dark" id="addPostit" style="width: 80px;height:60px">
 									<span class="fa-stack fa-lg"> <i
 										class="far fa-sticky-note fa-stack-2x"></i> <i
@@ -204,7 +203,7 @@
 									</span>
 								</button>
 								<button type="button" class="btn btn-danger" id="modalCloseBtn" style="width: 80px;height:60px">닫기</button>
-							</div>
+							</div> -->
 							<div id="headers">
 								<div id="whiteBoardLoad"></div>
 							</div>

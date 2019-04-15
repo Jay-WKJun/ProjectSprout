@@ -11,7 +11,11 @@ jQuery.browser = {};
 })();
 
 $(function() {
+	//포스트잇 리스트 출력
 	getPostitList();
+	
+	//화이트보드 닫기
+	$('#modalCloseBtn').on('click', closeWhiteBoard);
 	// 포스트잇 추가 버튼
 	$('#addPostit').on('click', addPostit);
 });
@@ -29,20 +33,19 @@ function addPostit() {
 		"postit_color" : postit_color,
 		"postit_shape" : postit_shape
 	};
-	setTimeout(function() {
-		$.ajax({
-			method : 'post',
-			url : 'addPostit',
-			data : postit,
-			success : function(result) {
-				if (result == "fail") {
-					alert('포스트잇 생성 실패');
-				} else {
-					getPostitList();
-				}
+	
+	$.ajax({
+		method : 'post',
+		url : 'addPostit',
+		data : postit,
+		success : function(result) {
+			if (result == "fail") {
+				console.log('포스트잇 생성 실패');
+			} else {
+				getPostitList();
 			}
-		})
-	}, 500);
+		}
+	})
 }
 
 // 포스트잇 리스트 가져오기
@@ -124,9 +127,9 @@ function postitDrag() {
 			"postit_top" : Math.floor(postitOffset.top),
 			"postit_left" : Math.floor(postitOffset.left)
 		}
-		console.log(postit.postit_top+" "+postitOffset.left);
 
 		$.ajax({
+			async: false,
 			method : 'post',
 			url : 'postitMove',
 			data : postit,

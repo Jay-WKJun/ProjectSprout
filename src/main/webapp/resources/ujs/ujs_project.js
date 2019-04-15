@@ -24,7 +24,7 @@ $(function() {
 	
 	//화이트 보드
 	$('#whiteBoardModalBtn').on('click',openWhiteBoard);
-	$('#modalCloseBtn').on('click', closeWhiteBoard);
+	//$('#modalCloseBtn').on('click', closeWhiteBoard);
 	
 	//멤버 모달 버튼
 	$('#memberPlusModalBtn').on('click',function(){
