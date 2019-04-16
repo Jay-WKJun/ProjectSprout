@@ -31,7 +31,7 @@
 				<ul class="nav nav-tabs">
 					<li class="nav-item bgwhite"><a class="nav-link active"
 						id="memberChangeBtn" data-toggle="tab">멤버</a></li>
-					<li class="nav-item bgwhite"><a class="nav-link"
+					<li class="nav-item bgwhite"><a class="nav-link" id="messageSpaceBtn"
 						data-toggle="tab">메세지</a></li>
 					<li class="nav-item bgwhite" id="noticeCheckBtn"><a
 						class="nav-link" data-toggle="tab">공지사항</a></li>
@@ -104,7 +104,6 @@
 							</div>
 						</c:forEach>
 
-					</div>
 					</div>
 					
 					<!-- 메신저 영역 -->
@@ -275,6 +274,7 @@
 					</div>
 				</div>
 			</div>
+		</div>
 		</div>
 </body>
 
