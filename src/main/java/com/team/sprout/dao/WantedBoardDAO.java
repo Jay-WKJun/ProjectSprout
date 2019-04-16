@@ -23,5 +23,8 @@ public interface WantedBoardDAO {
 
 	public int insertBoarddirectly(WantedBoard board); // 공고글 직접 입력
 
+	public WantedBoard selectOneBoard_by_id(String wantedBoard_num); // board_num으로 찾기 <환
+
+	public int deleteOneBoard_by_id(String the_wanted); // board_num으로 삭제하기 <환
 
 }

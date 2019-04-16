@@ -126,29 +126,6 @@ public class WantedBoardController {
 				}
 			} // 여기까지 검증완료
 
-			/*
-			 * String startDate = "2019-01-05"; String endDate = "2019-04-05"; Long start =
-			 * (sdf.parse(startDate).getTime()); Long end = (sdf.parse(endDate).getTime());
-			 * 
-			 * System.out.println(start); System.out.println(end);
-			 * System.out.println("3개월 long을 계산한 차이   :    " + (end - start)); //7776000000가
-			 * 결과입니다.
-			 */
-
-			/*
-			 * int listNumber = 0; //List는 이어져있는 html을 기준으로 찾아서 하나씩 담긴다. //List는 /로 끊긴 html을
-			 * 기준으로 한개씩 담긴다. System.out.println("여기서부턴 titles의 내용입니다."); for (WebElement
-			 * webElement : titles) { titlesTexts.add(webElement.getText());
-			 * System.out.println(webElement.getText() +"    " + listNumber); listNumber++;
-			 * }
-			 * 
-			 * System.out.println("여기서부턴 dates의 내용입니다."); listNumber = 0; for (WebElement
-			 * webElement : dates) { System.out.println(webElement.getText() +"    " +
-			 * listNumber); listNumber++; }
-			 */
-
-			// System.out.println(driver.getPageSource());
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -157,9 +134,6 @@ public class WantedBoardController {
 
 		List<WantedBoard> wbList = wbRepo.selectAll_crawlling(searchItem, searchWord, navi.getStartRecord(),
 				navi.getCountPerPage());
-		// 검증이 끝났으면 새로 모든 데이터를 불러온다.
-
-		// board 전체 게시글 가져오기
 
 		System.out.println("현재 요청한 페이지 : " + navi.getCurrentPage());
 		System.out.println("현재 그룹 : " + navi.getCurrentGroup());
@@ -170,10 +144,25 @@ public class WantedBoardController {
 		model.addAttribute("navi", navi);
 		model.addAttribute("searchWord", searchWord);
 		model.addAttribute("searchItem", searchItem);
-
+		
+		//--------------------------------------------------------- 내부 공고글 불러오기 삭제 보류하기 (환.)
+//		List<WantedBoard> list_from_DB = wbRepo.selectAll_DB();
+//		model.addAttribute("list_from_DB", list_from_DB);
+		//---------------------------------------------------------
+		
 		return "wantedBoard/wantedBoard";
 	}
-
+	
+	/* 내부에서 작성한 공고글. */
+	@RequestMapping(value = "/internal", method = RequestMethod.GET)
+	public String internal(Model model) {
+		List<WantedBoard> list_from_DB = wbRepo.selectAll_DB();
+		model.addAttribute("list_from_DB", list_from_DB);
+		
+		return "wantedBoard/internal_wantedBoard";
+	}
+	
+	/* ??? */
 	@RequestMapping(value = "/wantedBoardLink", method = RequestMethod.GET)
 	public String wantedBoardLink(String link) {
 
@@ -192,19 +181,16 @@ public class WantedBoardController {
 		return null;
 	}
 
-	/*
-	 * 페이지 이동.
-	 */
-	@RequestMapping(value = "/boardRegist", method = RequestMethod.GET) //--------------------- this place
-	public String boardRegist() {
+	/* 페이지 이동. */
+	@RequestMapping(value = "/boardRegist", method = RequestMethod.GET) //--------------------- Whan's job
+	public String boardRegist(Model model, HttpSession session) {
 		System.out.println("내부 공고 글 작성하기");
-
-		return "wantedBoard/wantedBoard_directly";
+		String loginId = (String) session.getAttribute("loginId");
+		model.addAttribute("loginId", loginId);
+		return "wantedBoard/upload_wanted_board";
 	}
 
-	/*
-	 * 글 작성하기.
-	 */
+	/* 글 작성하기. */
 	@RequestMapping(value = "/write_wanted", method = RequestMethod.GET)
 	public String boardRegist(WantedBoard board, HttpSession session) {
 		String loginId = (String) session.getAttribute("loginId");
@@ -215,9 +201,54 @@ public class WantedBoardController {
 
 			wbRepo.insertBoard_directly(board);
 
-			return "redirect:/wantedBoard"; 
-			
+			return "redirect:/"; 
 		
+	} // detail_info
+	
+	@RequestMapping(value = "/detail_info", method = RequestMethod.GET) //--------------------- this place
+	public String detail_info(HttpSession session, Model model, String wantedBoard_num) {
+		WantedBoard one_wanted_from_DB = wbRepo.selectOneBoard_by_id(wantedBoard_num);
+
+		String loginId = ((String) session.getAttribute("loginId")).trim();
+		String wanted_id = one_wanted_from_DB.getWantedBoard_from().trim();
+		String same;
+		
+		// 공고글 올린 사람과  == 로그인한 사람 ?? check 하기
+		if (loginId.equals(wanted_id)) { 		// 같은 > 삭제하기(null)
+			same = null;
+			session.setAttribute("same", same);
+		} else {								// 다름 > 지원하기(not null)
+			same = "same";
+			session.setAttribute("same", same);
+		}
+		model.addAttribute("one_wanted_from_DB", one_wanted_from_DB);
+		return "wantedBoard/detail_info";
+	}
+	
+	/* 직접 올린 공고글 보기 */
+	@RequestMapping(value = "/boardList", method = RequestMethod.GET) //--------------------- this place
+	public String boardList() {
+		return "redirect:/wantedBoard";
+	}
+	
+	/* 직접 올린 공고글 삭제하기 */
+	@RequestMapping(value = "/delete_wanted", method = RequestMethod.GET) //--------------------- this place
+	public String delete_wanted(String wantedBoard_num) {
+		wbRepo.deleteBoard_by_num(wantedBoard_num);
+		return "redirect:/";
 	}
 
+	/* 공고지원 페이지로 이동 */
+	@RequestMapping(value = "/apply_wanted", method = RequestMethod.GET) //--------------------- this place
+	public String apply_wanted() {
+		return "wantedBoard/apply_wanted";
+	}
+	
+	/* 공고지원 페이지로 이동 */
+	@RequestMapping(value = "/apply_this_job", method = RequestMethod.GET) //--------------------- this place
+	public String apply_this_job(HttpSession session) {
+		String loginId = ((String) session.getAttribute("loginId")).trim();
+		
+		return "redirect:/";
+	}
 }
