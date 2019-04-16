@@ -25,7 +25,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.team.sprout.dao.MainProjectRepository;
 import com.team.sprout.dao.MemberRepository;
 import com.team.sprout.dao.ProjectMemberRepository;
-import com.team.sprout.service.MailService;
 import com.team.sprout.util.profileFile;
 import com.team.sprout.vo.ChatRoom;
 import com.team.sprout.vo.Member;
