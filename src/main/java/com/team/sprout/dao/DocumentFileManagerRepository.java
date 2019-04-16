@@ -21,9 +21,9 @@ public class DocumentFileManagerRepository {
 		
 	}
 	
-	public int selectFileNum() {
+	public DocumentFolder selectFolderNum(String folder_title) {
 		DocumentFileManagerDAO dao=session.getMapper(DocumentFileManagerDAO.class);
-		int result = dao.selectFileNum();
+		DocumentFolder result = dao.selectFolderNum(folder_title);
 		return result;
 	}
 
@@ -34,9 +34,9 @@ public class DocumentFileManagerRepository {
 		
 	}
 
-	public int selectBoardNum() {
+	public DocumentBoard selectBoardNum(String board_title) {
 		DocumentFileManagerDAO dao=session.getMapper(DocumentFileManagerDAO.class);
-		int result = dao.selectBoardNum();
+		DocumentBoard result = dao.selectBoardNum(board_title);
 		return result;
 	}
 

@@ -100,16 +100,22 @@ public class ProjectDetailCotroller {
 		documentFolder.setMainProject_projectNum(mainProjectNum);
 		dfmRepo.insertDocumentFolder(documentFolder);
 		
-		//folder의 번호찾기
+		DocumentFolder selectedDocumentFolder = dfmRepo.selectFolderNum(folder_name);
+		documentBoard.setDocument_folder_num(selectedDocumentFolder.getDocument_folder_num());
+		
+		//folder의 번호찾기 (title로 찾는다)
 		//집어넣고 insert
 		
 		int insertResult2 = dfmRepo.insertDocumentBoard(documentBoard);
 		
 		if (insertResult2 == 0) {
 			return "board Insert Fail";
-		}
+		}		
 		
-		//board의 번호찾기
+		
+		DocumentBoard selectedDocumentboard = dfmRepo.selectBoardNum(documentBoard.getDocument_board_title());
+		
+		//board의 번호찾기(title로 찾기)
 		//저장하고 마지막에 집어넣고 insert
 		
 		
@@ -132,18 +138,18 @@ public class ProjectDetailCotroller {
 				return "save Fail";
 			}
 			
+			result.setDocument_board_num(selectedDocumentboard.getDocument_board_num());
 			int insertResult = dfmRepo.insertDocumentFile(result);
 			
 			if (insertResult == 0) {
 				return "file Insert Fail";
 			}
 			
-			int selectFileNum = dfmRepo.selectFileNum();
-			documentBoard.setDocument_file_num(selectFileNum);
 			
 			
 			
-			int Boardnum = dfmRepo.selectBoardNum();
+			
+			
 			//folder가 없을때는 그냥 폴더이름만 받아서 진행하고 여기서 새로 만들면서 써준다.
 			//불러올땐 그냥 title을 불러온다.
 			
