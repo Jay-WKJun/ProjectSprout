@@ -69,6 +69,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		)
 	</insert>
 	
+	<select id="selectfolderList" resultType="DocumentFolder">
+		select *
+		from document_folder
+	</select>
+	
+	<select id="selectSameFolderBoardList" resultType="DocumentBoard">
+		select *
+		from DOCUMENT_BOARD
+		where DOCUMENT_FOLDER_NUM = #{folder_num}
+	</select>
+	
+	
 	<!-- <select id="selectAllFolder" resultType="Map">
 		select 
 			dfd.DOCUMENT_FOLDER_TITLE,

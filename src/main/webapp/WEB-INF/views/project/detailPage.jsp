@@ -35,7 +35,7 @@
 					<!-- 메인화면에 쓴다. -->
 					</div>
 					<div id="noticeSpace">
-					
+						${finalResult}
 					
 					
 					<!-- 맨 처음에 프로젝트의 개요를 띄운다. -->
