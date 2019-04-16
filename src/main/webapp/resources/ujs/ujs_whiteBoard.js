@@ -23,8 +23,8 @@ $(function() {
 // 포스트잇 생성
 function addPostit() {
 	var projectNum = $("#projectNum").val();
-	var postit_color = "#fffa75";
-	var postit_shape = "normal";
+	var postit_color = $('#postitColor').val();
+	var postit_shape = $('#postitWidth').val()+"/"+$('#postitHeight').val();
 
 	var postit = {
 		"MainProject_ProjectNum" : projectNum,
@@ -33,6 +33,13 @@ function addPostit() {
 		"postit_color" : postit_color,
 		"postit_shape" : postit_shape
 	};
+	
+	/*var size='';
+	size=postit_shape.split('/');*/
+	
+	console.log(postit);
+	/*console.log(size[0]);
+	console.log(size[1]);*/
 	
 	$.ajax({
 		method : 'post',
@@ -62,13 +69,20 @@ function getPostitList() {
 
 // 포스트잇 출력
 function postitPrint(postitList) {
+	var size= '';
 	var tag = '';
 	console.log(postitList);
 	 $.each(postitList, function(index, item) {
 	  tag += '<div class="postit" data-psq="' + item.postit_num;
 	  tag += '" style="top:' + item.postit_top + 'px;left:'+ item.postit_left;
-	  tag += 'px;background-color:' + item.postit_color + '">';
-	  tag += '<div class="postit_top">';
+	  tag += 'px;background-color:' + item.postit_color+';';
+	  
+	  size=item.postit_shape.split('/');
+	  tag +='width:'+size[0]+'px;height:'+size[1]+'px'; 
+	  
+	  tag += '">';
+	  tag += '<div class="postit_top" style="background-color:';
+	  tag += item.postit_color+'">';
 	  tag += '<a class="close postitClose">';
 	  tag += '&times;';
 	  tag += '</a>';

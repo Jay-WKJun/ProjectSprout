@@ -23,12 +23,12 @@
 			<table class="table table-borderless w-100">
 				<tr>
 					<td>가로</td>
-					<td><input type="range" class="form-control"></td>
+					<td><input type="range" class="form-control" min="100" max="800" id="postitWidth"></td>
 					<td rowspan="2">
 						색깔
 					</td>
 					<td rowspan="2">
-						<input type="color" class="form-control" id="postitColor">
+						<input type="color" class="form-control" id="postitColor" style="width:50px">
 					</td>
 					<td rowspan="2">
 						<button class="btn btn-dark" id="addPostit" style="width: 80px;height:100px">
@@ -41,7 +41,7 @@
 				</tr>
 				<tr>
 					<td>세로</td>
-					<td><input type="range" class="form-control"></td>
+					<td><input type="range" class="form-control" min="100" max="800" id="postitHeight"></td>
 				</tr>
 			</table>
 			</div>

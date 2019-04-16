@@ -13,7 +13,6 @@
 	float: left;
 	width: 200px;
 	height: 200px;
-	background-color: yellow;
 	position: absolute;
 	border:1px solid #bcbcbc;
 	display:flex;
@@ -25,6 +24,7 @@
 	text-align:right;
 	padding: 5px;
 	background-color:#fff15b;
+	filter: brightness(93%);
 }
 
 .postit_bottom{
