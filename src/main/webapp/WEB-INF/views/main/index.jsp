@@ -210,7 +210,9 @@
 							<div class="memberList rounded sbd2 shadow bgwhite">
 								<h4 class="card-title" style="text-align-last:center">참여 멤버</h4>
 								<hr class="sbd1">
-								<span id="goprojet_membername"></span>
+								<span id="goprojet_membername">
+								
+								</span>
 							</div>
 						</div>
 					</div>

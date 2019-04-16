@@ -4,6 +4,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> <!-- 이부분 주의 오류떠도 자바에서 안잡아줌. -->
 <!-- 회원정보 처리 sql -->
 <mapper namespace="com.team.sprout.dao.MemberDAO"> <!-- mapper 인터페이스에 해당하는 부분 [9번 내용]-->
+
 	<insert id="memberJoin" parameterType="Member">
 		insert into member
 		values (
@@ -106,7 +107,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</delete>
 	
 	<insert parameterType="ChatRoom" id="insertcr">
-
 		insert into chatRoom(
 			chatRoom_num, chatRoom_name
 		)
@@ -130,17 +130,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			member_authkey = 'auth'
 		where
 			member_id=#{userEmail}
-	
 	</update>
 	
 
 	<select id="selectRoomnum" resultType="int">
-SELECT max(chatRoom_num) 
-FROM chatRoom
-</select>
+		SELECT	max(chatRoom_num) 
+		FROM	chatRoom
+	</select>
 
 	<select id="selectOneMemberNum" resultType="String">
-		select * from member where member_name =#{member_name}
+		select	* 
+		from	member 
+		where	member_name =#{member_name}
 	</select>
->>>>>>> 브랜치변경규
+	
 </mapper>
