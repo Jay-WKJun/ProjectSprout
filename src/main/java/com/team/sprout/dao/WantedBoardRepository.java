@@ -40,8 +40,6 @@ public class WantedBoardRepository {
 		
 		return result;
 	}
-	
-	
 
 	public WantedBoard selectOneBoard(String string) {
 		WantedBoardDAO dao = session.getMapper(WantedBoardDAO.class);
@@ -74,6 +72,18 @@ public class WantedBoardRepository {
 	public void insertBoard_directly(WantedBoard board) {
 		WantedBoardDAO dao = session.getMapper(WantedBoardDAO.class);
 		dao.insertBoarddirectly(board);
+	}
+
+	public WantedBoard selectOneBoard_by_id(String wantedBoard_num) {
+		WantedBoardDAO dao = session.getMapper(WantedBoardDAO.class);
+		WantedBoard info = dao.selectOneBoard_by_id(wantedBoard_num);
+		return info;
+	}
+
+	public void deleteBoard_by_num(String the_wanted) {
+		WantedBoardDAO dao = session.getMapper(WantedBoardDAO.class);
+		int result = dao.deleteOneBoard_by_id(the_wanted);
+		
 	}
 
 }

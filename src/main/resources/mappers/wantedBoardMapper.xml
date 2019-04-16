@@ -38,6 +38,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where		WANTEDBOARD_TITLE = #{string}
 	</select>
 
+	<select id="selectOneBoard_by_id" resultType="WantedBoard" parameterType="String">
+		select 		*
+		from		wantedBoard
+		where		wantedBoard_num = #{wantedBoard_num}
+	</select>
 	
 	<insert id="insertBoard" parameterType="WantedBoard">
 		insert into wantedBoard(
@@ -81,10 +86,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		)
 	</insert>
 	
-	
 	<delete id="deleteBoard" parameterType="String">
 		delete from		wantedBoard
 		where			WANTEDBOARD_TITLE = #{wantedBoard_title}
+	</delete>
+	
+	<delete id="deleteOneBoard_by_id" parameterType="String">
+		delete from		wantedBoard
+		where			wantedBoard_num = #{wantedBoard_num}
 	</delete>
 	
 	<select id="totalBoardCount" resultType="int">

@@ -26,6 +26,7 @@
 </head>
 
 <body>
+	<a href="internal">internal</a>
 	<div class="wrapper">
 		<div id="loader">
 			<div class="loader">
