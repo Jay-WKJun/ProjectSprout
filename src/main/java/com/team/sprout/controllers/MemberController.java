@@ -39,8 +39,6 @@ public class MemberController {
 	MainProjectRepository mainrepo;
 	@Autowired
 	ProjectMemberRepository prrepo;
-	@Autowired
-	private MailService service;
 
 	@RequestMapping(value = "/checkId", method = RequestMethod.POST)
 	public @ResponseBody int checkId(String member_id) {
@@ -76,12 +74,6 @@ public class MemberController {
 			member.setMemberImage_saveAddress(null);
 			System.out.println("------------- 회원가입 with 프로필 사진 X -------------");
 			System.out.println(member.toString());
-		}
-		
-		try {
-			service.create(member);
-		} catch (Exception e) {
-			e.printStackTrace();
 		}
 		
 		/*int result = repo.memberJoin(member); // 회원가입
