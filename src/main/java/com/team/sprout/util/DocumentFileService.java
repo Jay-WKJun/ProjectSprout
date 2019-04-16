@@ -5,6 +5,7 @@ import java.io.File;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.team.sprout.vo.DocumentBoard;
+import com.team.sprout.vo.DocumentFile;
 
 public class DocumentFileService {
 
@@ -14,14 +15,14 @@ public class DocumentFileService {
 	 * @param path 저장할 경로
 	 * @return 저장된 파일명
 	 */
-	public static DocumentBoard saveFileInfo(MultipartFile upload, String uploadPath, String inputedFilename) {
+	public static DocumentFile saveFileInfo(MultipartFile upload, String uploadPath, String inputedFilename) {
 		//저장 폴더가 없으면 생성
 		File path = new File(uploadPath);
 		if (!path.isDirectory()) {
 			path.mkdirs();
 		}
 		
-		DocumentBoard documentfile = new DocumentBoard();
+		DocumentFile documentfile = new DocumentFile();
 		
 		//원본 파일명 : 파일이 존재하지 않으면 빈문자열 리턴
 		String originalFilename = upload.getOriginalFilename();
@@ -36,7 +37,7 @@ public class DocumentFileService {
 		//확장자가 없는 경우
 		if (lastIndex == -1) {
 			ext = "";
-			documentfile.setDoucument_file_extension(ext);
+			documentfile.setDocument_file_extension(ext);
 			return documentfile;
 		}
 		
@@ -45,10 +46,10 @@ public class DocumentFileService {
 			ext = "." + originalFilename.substring(lastIndex + 1);
 			//이미지파일의 확장자가 아니라면 ㅂㅂㅇ
 			if (!(ext.equals(".jpg")||ext.equals(".jpeg")||ext.equals(".png")||ext.equals(".bmp"))) {
-				documentfile.setDoucument_file_extension("");
+				documentfile.setDocument_file_extension("");
 				return documentfile;
 			} else {
-				documentfile.setDoucument_file_extension(ext);
+				documentfile.setDocument_file_extension(ext);
 			}
 			//filename= originalFilename.substring(0, lastIndex);
 		}
@@ -75,11 +76,11 @@ public class DocumentFileService {
 		serverFile = new File(uploadPath + "/" + savedFilename);
 		
 		if (serverFile.isFile()) {
-			documentfile.setDoucument_file_extension("sameFile");
+			documentfile.setDocument_file_extension("sameFile");
 			return documentfile;
 		}
 		
-		documentfile.setDocument_file_originalfile(inputedFilename);
+		documentfile.setDocument_file_originalfileName(inputedFilename);
 		documentfile.setDocument_file_location(uploadPath);
 		
 		return documentfile;

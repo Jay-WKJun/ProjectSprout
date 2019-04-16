@@ -108,8 +108,8 @@ public class TimeTableController {
 				object.addProperty("to", "/Date("+endtimeCh+")/");
 				object.addProperty("desc", pc.getProjectContent_content());
 				object.addProperty("label", pc.getProjectContent_title());
-				object.addProperty("customClass", pc.getProjectContent_num());
-				object.addProperty("dataObj", pc.getProjectContent_content());
+				object.addProperty("customClass", pc.getProjectContent_color());
+				object.addProperty("dataObj", pc.getProjectContent_num());
 				//여기까지 생성 완료
 				
 				System.out.println(object.toString());
@@ -169,8 +169,8 @@ public class TimeTableController {
 				object.addProperty("to", "/Date("+endtimeCh+")/");
 				object.addProperty("desc", pc.getProjectContent_content());
 				object.addProperty("label", pc.getProjectContent_title());
-				object.addProperty("customClass", pc.getProjectContent_num());
-				object.addProperty("dataObj", pc.getProjectContent_content());
+				object.addProperty("customClass",pc.getProjectContent_color());
+				object.addProperty("dataObj",  pc.getProjectContent_num());
 				
 				System.out.println(object.toString());
 				values.add(object);

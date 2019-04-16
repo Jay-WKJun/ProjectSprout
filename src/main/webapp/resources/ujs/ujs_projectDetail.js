@@ -35,10 +35,11 @@ function fileUpLoad() {
 				$('#upLoadFile').val('');
 				$('#document_board_title').val('');
 				$('#document_board_content').val('');
-				$('#file_name').val();
+				$('#file_name').val('');
 				//getFileList();
 				folderForm();
 			} else {
+				alert(result);
 				console.log("파일 업로드 실패");
 			}
 		}

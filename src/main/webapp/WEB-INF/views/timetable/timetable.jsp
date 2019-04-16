@@ -261,7 +261,7 @@
 			        			+'색깔'
 			        			+'</div>'
 			        			+'<div class="contentItem_input">' 
-			        			+'<input class="form-control" type="text" id="projectContent_color" name="projectContent_color">'
+			        			+'<input class="form-control" type="color" id="projectContent_color" name="projectContent_color">'
 			        			+'</div>'
 			        			+'<input type="hidden" id="mainproject_projectNum" name="mainproject_projectNum">'
 			        			+'<div class="contentItem_text">' 

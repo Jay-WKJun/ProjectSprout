@@ -4,26 +4,44 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.team.sprout.dao.DocumentFileManagerDAO">
 
+	<insert id="insertDocumentFile" parameterType="DocumentFile">
+		insert into DOCUMENT_FILE
+		(
+			DOCUMENT_FILE_NUM,
+			DOCUMENT_FILE_ORIGINALFILENAME,
+			DOCUMENT_FILE_LOCATION,
+			DOCUMENT_FILE_EXTENSION,
+			DOCUMENT_FILE_DATE
+		)
+		values
+		(
+			DOCUMENT_FILE_NUM_SEQ.nextval
+			, #{document_file_originalfileName}
+			, #{document_file_location}
+			, #{document_file_extension}
+			, sysdate
+		)
+	</insert>
+	
+	<select id="selectFileNum" resultType="int">
+		select max(DOCUMENT_FILE_NUM)
+		from DOCUMENT_FILE
+	</select>
+	
 	<insert id="insertDocumentBoard" parameterType="DocumentBoard">
 		insert into DOCUMENT_BOARD
 		(
 			DOCUMENT_BOARD_NUM,
 			DOCUMENT_BOARD_TITLE,
 			DOCUMENT_BOARD_CONTENT,
-			DOCUMENT_FILE_ORIGINALFILE,
-			DOCUMENT_FILE_LOCATION,
-			DOCUMENT_FILE_EXTENTION,
-			DOCUMENT_FILE_DATE
+			DOCUMENT_FILE_NUM
 		)
 		values
 		(
 			DOCUMENT_BOARD_NUM_SEQ.nextval
 			, #{document_board_title}
 			, #{document_board_content}
-			, #{document_file_originalfile}
-			, #{document_file_location}
-			, #{doucument_file_extension}
-			, sysdate
+			, #{document_file_num}
 		)
 	</insert>
 	
@@ -49,7 +67,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		)
 	</insert>
 	
-	<select id="selectAllFolder" resultType="Map">
+	<!-- <select id="selectAllFolder" resultType="Map">
 		select 
 			dfd.DOCUMENT_FOLDER_TITLE,
 			dfd.DOCUMENT_BOARD_NUM,
@@ -61,7 +79,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			document_board db
 		where
 			dfd.DOCUMENT_BOARD_NUM = db.DOCUMENT_BOARD_NUM
-	</select>
+	</select> -->
 	
 	
 </mapper>

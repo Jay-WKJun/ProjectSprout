@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.team.sprout.vo.DocumentBoard;
+import com.team.sprout.vo.DocumentFile;
 import com.team.sprout.vo.DocumentFolder;
 
 @Repository
@@ -12,6 +13,19 @@ public class DocumentFileManagerRepository {
 	
 	@Autowired
 	SqlSession session;
+	
+	public int insertDocumentFile(DocumentFile documentFile) {
+		DocumentFileManagerDAO dao=session.getMapper(DocumentFileManagerDAO.class);
+		int result = dao.insertDocumentFile(documentFile);
+		return result;
+		
+	}
+	
+	public int selectFileNum() {
+		DocumentFileManagerDAO dao=session.getMapper(DocumentFileManagerDAO.class);
+		int result = dao.selectFileNum();
+		return result;
+	}
 
 	public int insertDocumentBoard(DocumentBoard documentBoard) {
 		DocumentFileManagerDAO dao=session.getMapper(DocumentFileManagerDAO.class);

@@ -17,6 +17,7 @@
 		<typeAlias alias="Message" type="com.team.sprout.vo.Message"/>
 		
 		<!-- document -->
+		<typeAlias type="com.team.sprout.vo.DocumentFile" alias="DocumentFile" />
 		<typeAlias type="com.team.sprout.vo.DocumentBoard" alias="DocumentBoard" />
 		<typeAlias type="com.team.sprout.vo.DocumentFolder" alias="DocumentFolder" />
 

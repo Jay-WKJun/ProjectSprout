@@ -11,7 +11,7 @@ import com.team.sprout.dao.MemberRepository;
 import com.team.sprout.vo.Member;
 
 @Service
-public class MailService {
+public class MailServiceMql {
 
 	@Inject
 	private JavaMailSender mailSender;
@@ -63,7 +63,7 @@ public class MailService {
         sendMail.send();
     }*/
 	
-	@Transactional
+/*	@Transactional
 	public void create(Member member) throws Exception {
 
 	String key = new TempKey().getKey(50, false); // 인증키 생성
@@ -83,7 +83,7 @@ public class MailService {
 	
 	public void userAuth(String userEmail) throws Exception {
 		mRepo.userAuth(userEmail);
-	}
+	}*/
 
 
 }
