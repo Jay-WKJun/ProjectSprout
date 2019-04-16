@@ -306,13 +306,6 @@
 		        	+'mainproject_projectNum : '+pc.mainproject_projectNum+'<br>'
 		        	+'member_num : '+pc.member_num
 		        	);
-				
-				//버튼 채워 넣기
-		        $('div.btn-r').html(
-						'<a href="#" style="height:40px;margin-right:5px" class="btn btn-dark btn-layerClose" id="update">수정</a>'
-						+'<a href="#" style="height:40px;margin-right:5px" class="btn btn-danger btn-layerClose" id="delete">삭제</a>'
-						+'<a href="#" style="height:40px;margin-right:5px" class="btn btn-danger btn-layerClose" id="close">닫기</a>'
-				);
 		        
 		        //지우기 메소드
 		        $el.find('a#delete').click(function(){

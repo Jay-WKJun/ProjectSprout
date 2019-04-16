@@ -70,7 +70,7 @@ function getFileList() {
 	})
 }
 
-//파일 츌룍이지만 참고용이니 빨리 지우자
+//파일 출력
 function printProjectFile(fileList) {
 	var tag = "<thead>";
 	tag += "<tr>";
@@ -146,19 +146,6 @@ function printProjectFile(fileList) {
 	$('.file').on('mouseout', fileImageDown);
 }
 
-
-/*function getFileList(){
-	var tag = ''
-	var finalResult = ${finalResult};
-	$.each(finalResult, function(index, item){
-		//map을 하나식 꺼낸다.
-		item.folderName
-		$.each(item.boardList, function(index, item){
-			//여기부턴 DocumentBoard가 들어있다
-		});
-	});
-	
-}*/
 
 
 
