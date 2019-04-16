@@ -25,7 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.team.sprout.dao.MainProjectRepository;
 import com.team.sprout.dao.MemberRepository;
 import com.team.sprout.dao.ProjectMemberRepository;
-import com.team.sprout.service.MailServiceMql;
+import com.team.sprout.service.MailService;
 import com.team.sprout.util.profileFile;
 import com.team.sprout.vo.ChatRoom;
 import com.team.sprout.vo.Member;
@@ -40,7 +40,7 @@ public class MemberController {
 	@Autowired
 	ProjectMemberRepository prrepo;
 	@Autowired
-	private MailServiceMql service;
+	private MailService service;
 
 	@RequestMapping(value = "/checkId", method = RequestMethod.POST)
 	public @ResponseBody int checkId(String member_id) {
@@ -67,7 +67,7 @@ public class MemberController {
 	public String joinP(Member member, MultipartFile upload) {
 		
 		profileFile pro = new profileFile();// 프로필 사진을 달기 위한 선언자
-
+		
 		if (upload.isEmpty() != true) {
 			pro.uploadfile(upload, member); // file이랑 member를 가지고 넘어가서 저장까지.
 			System.out.println("------------- 회원가입 with 프로필 사진 O -------------");
@@ -78,9 +78,15 @@ public class MemberController {
 			System.out.println(member.toString());
 		}
 		
-		int result = repo.memberJoin(member); // 회원가입
+		try {
+			service.create(member);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		/*int result = repo.memberJoin(member); // 회원가입
 		System.out.println("회원가입 결과 : " + result); // 회원가입 결과 확인
-
+*/
 		return "redirect:/";
 	}
 
