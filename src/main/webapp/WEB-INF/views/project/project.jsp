@@ -19,9 +19,6 @@
 <script src="js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-
-
-
 	<div class="wrapper">
 		<div class="sideSpace">
 			<div class="sideSpace_top">
@@ -80,30 +77,6 @@
 							<textarea class="form-control" style="height:300px" id="noticeDetail"></textarea>
 							<button class="btn btn-danger" id="cancelNoticeDetailBtn" style="margin-top:10px">닫기</button>
 						</div>
-				
-				
-										
-						<c:forEach var="list" items="${projectMembersList}">
-							<div
-								class="dropdown dropright float-right list-group-item list-group-item-action">
-								<div data-toggle="dropdown">${list.member_name}</div>
-								<div class="dropdown-menu">
-									<h5 class="dropdown-header">${list.member_name}</h5>
-									<div style="margin-top: 20px" data-pno="${list.member_num}" id="forkick">
-										<a href="#"
-											class="list-group-item list-group-item-action border-left-0 border-right-0">플래너</a>
-										<a href="#"
-											class="list-group-item list-group-item-action border-left-0 border-right-0">메세지
-											보내기</a>
-										<c:if test="${member_rank == 5}"> 
-											 <a href="#"
-											class="kickMember list-group-item list-group-item-action border-left-0 border-right-0">내보내기</a>
-										</c:if> 
-									</div>
-								</div>
-							</div>
-						</c:forEach>
-
 					</div>
 					
 					<!-- 메신저 영역 -->
@@ -143,7 +116,7 @@
 					
 				</div>
 			</div>
-		</div>
+			</div>
 		<div class="mainSpace">
 			<div class="mainSpace_top">
 				<div class="mainSpace_top_side"></div>
@@ -248,7 +221,6 @@
 				<div class="contentSpace_side"></div>
 				<div class="contentSpace_right">
 					<div class="contentItem" style=" height: 100%;padding:20px">
-
 						<button type="button" class="btn btn-dark h-100" id="whiteBoardModalBtn">
 							<i class="fas fa-chevron-left fa-lg"></i>
 						</button>
@@ -273,7 +245,9 @@
 						</div>
 					</div>
 				</div>
+				
 			</div>
+			
 		</div>
 		</div>
 </body>

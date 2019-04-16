@@ -2,144 +2,147 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> <!-- 이부분 주의 오류떠도 자바에서 안잡아줌. -->
-<!-- 회원정보 처리 sql -->
-<mapper namespace="com.team.sprout.dao.MemberDAO"> <!-- mapper 인터페이스에 해당하는 부분 [9번 내용]-->
+<mapper namespace="com.team.sprout.dao.MemberDAO">
 	<insert id="memberJoin" parameterType="Member">
 		insert into member
 		values (
-			MEMBER_SEQ.nextval
-			, #{member_id}
-			, #{member_password}
-			, #{member_name}
-		<if test = 'member_phone != null'>
+		MEMBER_SEQ.nextval
+		, #{member_id}
+		, #{member_password}
+		, #{member_name}
+		<if test='member_phone != null'>
 			, #{member_phone}
 		</if>
-		<if test = 'member_phone == null'>
+		<if test='member_phone == null'>
 			, null
 		</if>
-		<if test = 'member_address != null'>
+		<if test='member_address != null'>
 			, #{member_address}
 		</if>
-		<if test = 'member_address == null'>
+		<if test='member_address == null'>
 			, null
-		</if>	
-			, sysdate
-		<if test = 'memberImage_saveAddress != null'>
+		</if>
+		, sysdate
+		<if test='memberImage_saveAddress != null'>
 			, #{memberImage_saveAddress}
 		</if>
-		<if test = 'memberImage_saveAddress == null'>
+		<if test='memberImage_saveAddress == null'>
 			, null
 		</if>
-			, sysdate
-		<if test = 'member_authkey != null'>
+		, sysdate
+		<if test='member_authkey != null'>
 			, #{member_authkey}
 		</if>
-		<if test = 'member_authkey == null'>
+		<if test='member_authkey == null'>
 			, null
 		</if>
 		)
 	</insert>
-	
+
 	<select id="selectOne" parameterType="Map" resultType="Member">
-		select * from member
+		select *
+		from member
 		where
-			member_id = #{id} 
-		and 
-			member_password = #{password}
+		member_id = #{id}
+		and
+		member_password = #{password}
 	</select>
-	
-	<select parameterType="String" id="selectOneWebsocket" resultType="Member">
+
+	<select parameterType="String" id="selectOneWebsocket"
+		resultType="Member">
 		select
-			member_num,
-			member_id,
-			member_password,
-			member_name
+		member_num,
+		member_id,
+		member_password,
+		member_name
 		from
-			member
+		member
 		where
-			member_id = #{userId} 
+		member_id = #{userId}
 	</select>
-	
+
 	<select id="searchMember" resultType="Member">
 		select * from member
 		where
-			member_num=#{member_num}
-		
+		member_num=#{member_num}
+
 	</select>
-	
+
 	<update id="updateMember" parameterType="Member">
 		update member
 		set
-			member_password = #{member_password}
-			, member_name = #{member_name}
-			, member_phone = #{member_phone}
-			, member_address = #{member_address}
-			, member_logindate = sysdate
-		<if test = 'memberImage_saveAddress != null'>
+		member_password = #{member_password}
+		, member_name = #{member_name}
+		, member_phone = #{member_phone}
+		, member_address = #{member_address}
+		, member_logindate = sysdate
+		<if test='memberImage_saveAddress != null'>
 			, memberImage_saveAddress = #{memberImage_saveAddress}
 		</if>
-		<if test = 'memberImage_saveAddress == null'>
+		<if test='memberImage_saveAddress == null'>
 			, MEMBERIMAGE_SAVEADDRESS = null
 		</if>
 		where
-			member_id = #{member_id}
+		member_id = #{member_id}
 	</update>
-	
+
 	<select id="checkId" parameterType="String" resultType="Member">
-		select * from member 
+		select *
+		from member
 		where
-			 member_id=#{member_id}
+		member_id=#{member_id}
 	</select>
-	
+
 	<update id='setNull_profile' parameterType="String"> <!-- 프로필 사진 삭제할 때. <환> -->
 		update member
 		set
-		    MEMBERIMAGE_SAVEADDRESS = NULL
+		MEMBERIMAGE_SAVEADDRESS = NULL
 		where
-			member_id = #{member_id}
+		member_id = #{member_id}
 	</update>
-	
+
 	<delete id="deleteMember" parameterType="String">
 		delete from member
 		where
-			member_id = #{member_id}
+		member_id = #{member_id}
 	</delete>
-	
+
 	<insert parameterType="ChatRoom" id="insertcr">
 
 		insert into chatRoom(
-			chatRoom_num, chatRoom_name
+		chatRoom_num, chatRoom_name
 		)
 		values (
-			#{chatRoom_num}, 
-			#{chatRoom_name}
-		) 
+		#{chatRoom_num},
+		#{chatRoom_name}
+		)
 	</insert>
-	
+
 	<update id="setLoginTime"> <!-- 로그인 할 때마다 계속 변경된다. <환> -->
 		update member
 		set
-		    member_logindate = sysdate
+		member_logindate = sysdate
 		where
-			member_id = #{member_id}
+		member_id = #{member_id}
 	</update>
-	
+
 	<update id="userAuth">
 		update member
 		set
-			member_authkey = 'auth'
+		member_authkey = 'auth'
 		where
-			member_id=#{userEmail}
-	
+		member_id=#{userEmail}
+
 	</update>
-	
+
 
 	<select id="selectRoomnum" resultType="int">
-SELECT max(chatRoom_num) 
-FROM chatRoom
-</select>
+		SELECT max(chatRoom_num)
+		FROM chatRoom
+	</select>
 
 	<select id="selectOneMemberNum" resultType="String">
-		select * from member where member_name =#{member_name}
+		select * from member
+		where member_name =#{member_name}
 	</select>
 </mapper>
