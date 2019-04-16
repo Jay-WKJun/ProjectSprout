@@ -983,11 +983,14 @@ jQuery.browser = {};
             createProgressBar: function (days, cls, desc, label, dataObj) {
                 var cellWidth = tools.getCellSize();
                 var barMarg = tools.getProgressBarMargin() || 0;
-                var bar = $('<div class="bar" id="'+cls+'"><div class="fn-label" id="'+cls+'">' + label + '</div></div>')
+                var bar = $('<div class="bar" id="'+dataObj+'"><div class="fn-label" id="'+dataObj+'">' + label + '</div></div>')
                         .addClass(cls)
-                        .css({
-                            width: ((cellWidth * days) - barMarg) + 5
-                        })
+                        .css(
+                            "width",((cellWidth * days) - barMarg) + 5+"px"
+                        )
+                        .css(
+                        	"background-color", cls
+                        )
                         .data("dataObj", dataObj);
                /* alert(days);
                 alert(cls); //얘가 customclass

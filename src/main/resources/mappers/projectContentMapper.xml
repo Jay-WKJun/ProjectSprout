@@ -31,7 +31,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			,#{projectContent_color}
 			,#{mainproject_projectNum}
 			,#{member_num}
-			,#{projectcontent_admitdate}
+			,sysdate
 			,#{projectcontent_finishreport}
 			,#{projectcontent_finishchecked}
 			,#{projectcontent_finishdate}

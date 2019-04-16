@@ -18,6 +18,7 @@ import com.team.sprout.dao.ProjectMemberRepository;
 import com.team.sprout.dao.WorkSpaceRepository;
 import com.team.sprout.util.DocumentFileService;
 import com.team.sprout.vo.DocumentBoard;
+import com.team.sprout.vo.DocumentFile;
 import com.team.sprout.vo.DocumentFolder;
 import com.team.sprout.vo.Member;
 
@@ -94,55 +95,64 @@ public class ProjectDetailCotroller {
 		System.out.println(mainProjectNum);
 		//여기서는 프로젝트 id로 묶는다.
 		
+		DocumentFolder documentFolder = new DocumentFolder();
+		documentFolder.setDocument_folder_title(folder_name);
+		documentFolder.setMainProject_projectNum(mainProjectNum);
+		dfmRepo.insertDocumentFolder(documentFolder);
+		
+		//folder의 번호찾기
+		//집어넣고 insert
+		
+		int insertResult2 = dfmRepo.insertDocumentBoard(documentBoard);
+		
+		if (insertResult2 == 0) {
+			return "board Insert Fail";
+		}
+		
+		//board의 번호찾기
+		//저장하고 마지막에 집어넣고 insert
+		
 		
 		String saveFullPath = upLoadPath + "/" + folder_name;
 		
 		//파일을 저장하거나 결과를 보낸다.
 		//폴더를 구분하는 기준이 없다.
-		DocumentBoard result = DocumentFileService.saveFileInfo(upLoadFile, saveFullPath, file_name);
+		DocumentFile result = DocumentFileService.saveFileInfo(upLoadFile, saveFullPath, file_name);
 		
-		if (result.getDoucument_file_extension().equals("")) {
+		if (result.getDocument_file_extension().equals("")) {
 			resp="extender fail";
 			return resp;
-		}else if (result.getDoucument_file_extension().equals("sameFile")) {
+		}else if (result.getDocument_file_extension().equals("sameFile")) {
 			resp="have same file fail";
 			return resp;
 		}else {
-			//DB저장 시작
-			boolean saveResult = DocumentFileService.saveFile(upLoadFile, saveFullPath, file_name, result.getDoucument_file_extension());
+			//실제 저장 시작
+			boolean saveResult = DocumentFileService.saveFile(upLoadFile, saveFullPath, file_name, result.getDocument_file_extension());
 			if (!saveResult) {
 				return "save Fail";
 			}
 			
-			int insertResult2 = dfmRepo.insertDocumentBoard(documentBoard);
-			if (insertResult2 == 0) {
-				return "board Insert Fail";
+			int insertResult = dfmRepo.insertDocumentFile(result);
+			
+			if (insertResult == 0) {
+				return "file Insert Fail";
 			}
+			
+			int selectFileNum = dfmRepo.selectFileNum();
+			documentBoard.setDocument_file_num(selectFileNum);
+			
+			
+			
 			int Boardnum = dfmRepo.selectBoardNum();
 			//folder가 없을때는 그냥 폴더이름만 받아서 진행하고 여기서 새로 만들면서 써준다.
 			//불러올땐 그냥 title을 불러온다.
-			DocumentFolder documentFolder = new DocumentFolder();
-			documentFolder.setDocument_folder_title(folder_name);
-			documentFolder.setDocument_board_num(Boardnum);
-			documentFolder.setMainProject_projectNum(mainProjectNum);
-			dfmRepo.insertDocumentFolder(documentFolder);
+			
 		}
-		
-		//여기부턴 DB저장
-		/*saveProjectFile.setProjectFile_member(loginId);
-		int result = fileRepo.projectFileUpLoad(saveProjectFile);
-		int projectFileNum = fileRepo.getFileNum();
-		saveProjectFile.setProjectFile_num(projectFileNum);
-		boolean bool=FileManager.saveFile(saveProjectFile, upLoadPath, upLoadFile);
-		if (result == 0) {
-			resp = "fail";
-		}else if(!bool) {
-			resp = "fail";
-		}*/
-		
 
 		return resp;
 	}
+	
+	
 	
 	
 	@RequestMapping(value ="/detailPage", method = RequestMethod.GET)
