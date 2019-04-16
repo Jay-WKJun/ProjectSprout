@@ -6,14 +6,14 @@ public class DocumentFile {
 	private String document_file_location;
 	private String document_file_extension;
 	private String document_file_date;
-	private String document_board_num;
+	private int document_board_num;
 	
 	public DocumentFile() {
 
 	}
 
 	public DocumentFile(int document_file_num, String document_file_originalfileName, String document_file_location,
-			String document_file_extension, String document_file_date, String document_board_num) {
+			String document_file_extension, String document_file_date, int document_board_num) {
 		super();
 		this.document_file_num = document_file_num;
 		this.document_file_originalfileName = document_file_originalfileName;
@@ -63,11 +63,11 @@ public class DocumentFile {
 		this.document_file_date = document_file_date;
 	}
 
-	public String getDocument_board_num() {
+	public int getDocument_board_num() {
 		return document_board_num;
 	}
 
-	public void setDocument_board_num(String document_board_num) {
+	public void setDocument_board_num(int document_board_num) {
 		this.document_board_num = document_board_num;
 	}
 

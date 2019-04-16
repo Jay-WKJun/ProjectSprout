@@ -11,7 +11,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			DOCUMENT_FILE_ORIGINALFILENAME,
 			DOCUMENT_FILE_LOCATION,
 			DOCUMENT_FILE_EXTENSION,
-			DOCUMENT_FILE_DATE
+			DOCUMENT_FILE_DATE,
+			DOCUMENT_BOARD_NUM
 		)
 		values
 		(
@@ -20,12 +21,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			, #{document_file_location}
 			, #{document_file_extension}
 			, sysdate
+			, #{document_board_num}
 		)
 	</insert>
 	
-	<select id="selectFileNum" resultType="int">
-		select max(DOCUMENT_FILE_NUM)
-		from DOCUMENT_FILE
+	<select id="selectFolderNum" resultType="DocumentFolder">
+		select *
+		from DOCUMENT_FOLDER
+		where document_folder_title = #{folder_title}
 	</select>
 	
 	<insert id="insertDocumentBoard" parameterType="DocumentBoard">
@@ -34,34 +37,33 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			DOCUMENT_BOARD_NUM,
 			DOCUMENT_BOARD_TITLE,
 			DOCUMENT_BOARD_CONTENT,
-			DOCUMENT_FILE_NUM
+			DOCUMENT_FOLDER_NUM
 		)
 		values
 		(
 			DOCUMENT_BOARD_NUM_SEQ.nextval
 			, #{document_board_title}
 			, #{document_board_content}
-			, #{document_file_num}
+			, #{document_folder_num}
 		)
 	</insert>
 	
-	<select id="selectBoardNum" resultType="int">
-		select max(DOCUMENT_BOARD_NUM)
+	<select id="selectBoardNum" resultType="DocumentBoard">
+		select *
 		from DOCUMENT_BOARD
+		where document_board_title = #{board_title}
 	</select>
 	
 	<insert id="insertDocumentFolder" parameterType="DocumentFolder">
 		insert into DOCUMENT_FOLDER
 		(
 			DOCUMENT_FOLDER_NUM,
-			DOCUMENT_BOARD_NUM,
 			MAINPROJECT_PROJECTNUM,
 			DOCUMENT_FOLDER_TITLE
 		)
 		values
 		(
 			DOCUMENT_FOLDER_NUM_SEQ.nextval
-			, #{document_board_num}
 			, #{mainProject_projectNum}
 			, #{document_folder_title}
 		)
