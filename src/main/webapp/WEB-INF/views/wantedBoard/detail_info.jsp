@@ -59,6 +59,11 @@
 		</tr>
 	</table>
 	<a href="boardList" >return to list</a> <!-- action name  -->
+	<c:if test="${empty sessionScope.same}">
+		<p> 이 자리에는 내가 올린 공지에 누가 지원했는지 확인하는 창이 있으면 참 좋을텐데.... 시간이 있으면 하고 없으면 패스...</p>
+	</c:if>
 	</div>
+	
+	
 </body>
 </html>

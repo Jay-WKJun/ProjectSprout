@@ -70,7 +70,7 @@ $(function() {
 
 		$.ajax({
 			method : 'get',
-			url : 'startproject_go',
+			url : 'startproject_go', // MainProjectController.java
 			data : "mainproject_projectnum=" + mainproject_projectnum,
 			success : function(mainproject) {
 
@@ -78,7 +78,18 @@ $(function() {
 				$('#goproject_title').html(mainproject.goproject_title)
 				$('#goproject_content').html(mainproject.goproject_content)
 				var output = '';
-				$.each(mainproject.memberList,function(index, item){
+				$.each(mainproject.memberList,function(index, item){//================================= img job
+					
+					
+					
+					
+					
+			//		output+="이미지";
+					
+					
+					
+					
+					
 					output += item.member_name+'<br>';
 				})
 				$('#goprojet_membername').html(output)

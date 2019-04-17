@@ -1,5 +1,7 @@
 package com.team.sprout.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -43,6 +45,24 @@ public class DocumentFileManagerRepository {
 	public int insertDocumentFolder(DocumentFolder documentFolder) {
 		DocumentFileManagerDAO dao=session.getMapper(DocumentFileManagerDAO.class);
 		int result = dao.insertDocumentFolder(documentFolder);
+		return result;
+	}
+
+	public List<DocumentFolder> selectfolderList() {
+		DocumentFileManagerDAO dao=session.getMapper(DocumentFileManagerDAO.class);
+		List<DocumentFolder> result = dao.selectfolderList();
+		return result;
+	}
+
+	public List<DocumentBoard> selectSameFolderBoardList(int folder_num) {
+		DocumentFileManagerDAO dao=session.getMapper(DocumentFileManagerDAO.class);
+		List<DocumentBoard> result = dao.selectSameFolderBoardList(folder_num);
+		return result;
+	}
+
+	public DocumentFolder selectFolderObject(String folder_name) {
+		DocumentFileManagerDAO dao=session.getMapper(DocumentFileManagerDAO.class);
+		DocumentFolder result = dao.selectFolderObject(folder_name);
 		return result;
 	}
 	

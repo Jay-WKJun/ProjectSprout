@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.team.sprout.dao.UpDownDAO;
-
+import com.team.sprout.util.FileService;
 import com.team.sprout.vo.UpDown;
 
 
