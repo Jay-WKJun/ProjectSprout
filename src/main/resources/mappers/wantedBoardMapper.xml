@@ -69,19 +69,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into wantedBoard(
 			WANTEDBOARD_NUM,
 			WANTEDBOARD_FROM,
-			WANTEDBOARD_TITLE, <!-- 지원글에서 사용하느  title은 지원파일의 directory로 쓰겠다. -->
+			WANTEDBOARD_TITLE, 
 			WANTEDBOARD_CONTENT,
 			WANTEDBOARD_DATE,
 			WANTEDBOARD_HITCOUNT,
+			APPLYBOARD_NUM,
 			wantedboard_source
 		)
 		values (
 			WANTEDBOARD_SEQ.nextval,
 			#{wantedBoard_from},
-			#{wantedBoard_title}, <!-- 지원글에서 사용하느  title은 지원파일의 directory로 쓰겠다. -->
+			#{wantedBoard_title}, 
 			#{wantedBoard_content},
 			sysdate,
 			#{wantedBoard_hitCount},
+			#{applyBoard_num},
 			#{wantedboard_source}
 		)
 	</insert>
@@ -102,5 +104,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		 where		${searchItem}
  		 like		'%' || #{searchWord} || '%'
  	</select>
-	
+ 	
+ 	<select id="select_last_seq" resultType="int">
+ 		select max(wantedBoard_num) from wantedBoard
+ 	</select>	
+ 	
+ 	<update id="update_ApplyBorad" parameterType="WantedBoard">
+ 		update	wantedBoard
+		set		applyBoard_num = #{applyBoard_num}
+		where	wantedBoard_num = #{wantedBoard_num}
+ 	</update>
+
 </mapper>

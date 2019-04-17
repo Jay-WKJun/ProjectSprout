@@ -27,4 +27,8 @@ public interface WantedBoardDAO {
 
 	public int deleteOneBoard_by_id(String the_wanted); // board_num으로 삭제하기 <환
 
+	public int select_last_seq(); // 지원글 입력하고 바로 해당 sequence 잡아주기(최신 즉.max).
+
+	public int update_ApplyBorad(WantedBoard wanb);
+
 }
