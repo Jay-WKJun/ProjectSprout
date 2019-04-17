@@ -15,6 +15,7 @@ $(function() {
 	
 	//개인정보 수정 페이지
 	$('#memberInfoBtn').on('click',function(){
+		$('#loader').show();
 		location.href="memberInfo";
 	})
 	
@@ -35,7 +36,7 @@ $(function() {
 	$('#cancelmemberPlusBtn').on('click',function(){
 		$('#memberPlusSpace').hide();
 		$('#addMember').val('');
-		$('#addmemberMessage').empty();
+		$('#addmemberMessageSpace').empty();
 	})
 	
 	//아이디 추가 전에 확인
@@ -43,8 +44,9 @@ $(function() {
 	
 	//아이디 추가하기
 	$('#addmem').on('click',function(){
-		$('#addProjectMember').submit();
+		$('#loader').show();
 		$('#addmem').attr('disabled','disabled');
+		$('#addProjectMember').submit();
 	})
 	
 	//공지사항 모달 열기
@@ -73,6 +75,11 @@ $(function() {
 		$('#memberSpace_display').attr('style','display:none');
 		$('#messageSpace').attr('style','display:none');
 		nolist();
+	})
+	
+	//공지사항 닫기
+	$('#cancelNoticeBtn').on('click',function(){
+		$('#noticeModal').hide();
 	})
 	
 	//메시지 이동 버튼
@@ -128,14 +135,12 @@ function messapgespace() {
 			"member_name" : member_id
 	};
 	$.ajax({
-		
 		method : 'post',
 		url : 'chatRoomM',
 		data : member_name,
 		success : function(memberList){
 			ChatRoomList2(memberList);
 		}
-		
 	})
 		
 }
@@ -172,9 +177,6 @@ $.ajax({
 	
 }
 
-
-
-
 //채팅리스트 출력 예시 2
 function ChatRoomList2(memberList){
 	var content;
@@ -185,20 +187,17 @@ function ChatRoomList2(memberList){
 	$.each(memberList, function(index, item){
 		if (item.chatRoom_name != null) {
 			
-			content += '<a href="multiChatRoom?chatRoom_num='+item.chatRoom_num+'&chatRoom_name='+item.chatRoom_name+'">'+item.chatRoom_name+'방</a></br>'
+			content += '<a href="multiChatRoom?chatRoom_num='+item.chatRoom_num+'&chatRoom_name='+item.chatRoom_name+'">'+item.chatRoom_name+'방</a></br>';
 			
 		}	
 	
 	});
 	$('#messageChatRoomList').html(content);
-	
-	
 }
-
-
 
 //화이트보드 띄우기
 function openWhiteBoard(){
+$('#loader').show();
 	$('#whiteBoardModal').attr('style','display:block');
 	var postitNumFromProjectNum=$('#postitNumFromProjectNum').val();
 	
@@ -220,8 +219,8 @@ function closeWhiteBoard(){
 
 function detail(){
 	location.href ="detailPage";
-	
 }
+
 function init(){
 	location.href ="project_go";
 }
@@ -246,8 +245,6 @@ function kickMember(){
 		}
 		
 	})
-	
-	
 }
 
 function nolist(){
@@ -305,6 +302,12 @@ function createNotice(){
 								}
 								
 							}
+				,beforeSend:function(){
+					$('#loader').show();
+			    }
+			    ,complete:function(){
+			    	$('#loader').hide();
+			    }
 				})
 			}
 		})
@@ -312,7 +315,6 @@ function createNotice(){
 
 //추가가능한지 아닌지
 function addMemberCheck(){
-	$('#addMember').keyup(function(){
 		var addMember =$('#addMember').val();
 		
 		$.ajax({
@@ -321,21 +323,26 @@ function addMemberCheck(){
 			 ,data: "addMember="+addMember
 			,success: function(result){
 				if (result.resp == 1 ) {
-					$('#addmemberMessage').html('추가가능한 아이디입니다. 추가하기를 누르세요');
-					$('#addmemberMessage').attr('style','color:#f23a3a');
+					$('#addmemberMessageSpace').html('추가가능한 아이디입니다. 추가하기를 누르세요');
+					$('#addmemberMessageSpace').attr('style','color:#f23a3a');
 					$('#addmem').removeAttr('disabled');
 					
 				}
 				else if (result.resp ==2) {
-					$('#addmemberMessage').html('이미 추가한 아이디 입니다');
-					$('#addmemberMessage').attr('style','color:#f23a3a');
+					$('#addmemberMessageSpace').html('이미 추가한 아이디 입니다');
+					$('#addmemberMessageSpace').attr('style','color:#f23a3a');
 					
 				} else {
 
-					$('#addmemberMessage').html('존재하지 않는 아이디 입니다. 다시 입력하세요');
-					$('#addmemberMessage').attr('style','color:#304dd1');
+					$('#addmemberMessageSpace').html('존재하지 않는 아이디 입니다. 다시 입력하세요');
+					$('#addmemberMessageSpace').attr('style','color:#304dd1');
 				}
 			}
 		})
-	})
+}
+
+//홈이동
+function home(){
+	$('#loader').show();
+	location.href="/sprout";
 }
