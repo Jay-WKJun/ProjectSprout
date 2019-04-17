@@ -310,7 +310,7 @@
 				//버튼 채워 넣기
 		        $('div.btn-r').html(
 						'<a href="#" style="height:40px;margin-right:5px" class="btn btn-dark btn-layerClose" id="update">수정</a>'
-						+'<a href="#" style="height:40px;margin-right:5px" class="btn btn-danger btn-layerClose" id="delete">삭제</a>'
+						+'<a href="#" style="height:40px;margin-right:5px" class="btn btn-dark btn-layerClose" id="delete">삭제</a>'
 						+'<a href="#" style="height:40px;margin-right:5px" class="btn btn-danger btn-layerClose" id="close">닫기</a>'
 				);
 		        
@@ -340,18 +340,43 @@
 		        	
 		        	$('.ctxt').html('<form method="post" action="updateContent" id="updateForm" name="updateForm" accept-charset="utf-8">'
 		        			+'<input type="hidden" id="projectContent_num" name="projectContent_num" value="'+pc.projectContent_num+'">'
-		        			+'<input type="text" id="projectContent_title" name="projectContent_title" value="'+pc.projectContent_title+'"><br>'
-		        			+'<input type="text" id="projectContent_content" name="projectContent_content" value="'+pc.projectContent_content+'"><br>'
-		    	        	+'<input type="date" id="projectContent_startDate" name="projectContent_startDate" value="'+startDateCh+'"><br>'
-		    	        	+'<input type="date" id="projectContent_endDate" name="projectContent_endDate" value="'+endDateCh+'"><br>'
-		    	        	+'<input type="text" id="projectContent_color" name="projectContent_color" value="'+pc.projectContent_color+'"><br>'
-		    	        	+'<input type="text" id="mainproject_projectNum" name="mainproject_projectNum" value="'+pc.mainproject_projectNum+'"><br>'
-		    	        	+'<input type="text" id="member_num" name="member_num" value="'+pc.member_num+'"><br>'
+		        			+'<div class="contentItem_text">' 
+		        			+'제목'
+		        			+'</div>'
+		        			+'<div class="contentItem_input">' 
+		        			+'<input type="text" class="form-control" id="projectContent_title" name="projectContent_title" value="'+pc.projectContent_title+'"><br>'
+		        			+'</div>'
+		        			+'<div class="contentItem_text">' 
+		        			+'내용'
+		        			+'</div>'
+		        			+'<div class="contentItem_input">' 
+		        			+'<input type="text" class="form-control" style="height:300px" id="projectContent_content" name="projectContent_content" value="'+pc.projectContent_content+'"><br>'
+		        			+'</div>'
+		        			+'<div class="contentItem_text">' 
+		        			+'시작 날짜'
+		        			+'</div>'
+		        			+'<div class="contentItem_input">' 
+		    	        	+'<input type="date" class="form-control" id="projectContent_startDate" name="projectContent_startDate" value="'+startDateCh+'"><br>'
+		    	        	+'</div>'
+		    	        	+'<div class="contentItem_text">' 
+		        			+'종료 날짜'
+		        			+'</div>'
+		        			+'<div class="contentItem_input">' 
+		    	        	+'<input type="date" class="form-control" id="projectContent_endDate" name="projectContent_endDate" value="'+endDateCh+'"><br>'
+		    	        	+'</div>'
+		    	        	+'<div class="contentItem_text">' 
+		        			+'색깔'
+		        			+'</div>'
+		        			+'<div class="contentItem_input">' 
+		    	        	+'<input type="color" class="form-control" id="projectContent_color" name="projectContent_color" value="'+pc.projectContent_color+'"><br>'
+		    	        	+'</div>'
+		    	        	+'<input type="hidden" id="mainproject_projectNum" name="mainproject_projectNum" value="'+pc.mainproject_projectNum+'"><br>'
+		    	        	+'<input type="hidden" id="member_num" name="member_num" value="'+pc.member_num+'"><br>'
 		    	        	+'</form>'
 		    	        	);
 		        	//완료버튼 생성
-		        	$('div.btn-r').html('<input type="button" class="btn-layerClose" id="closebutton" onclick="closing()" value="닫기" />'
-		        			+'<input type="button" class="btn-layerClose" id="updateContent" onclick="doUpdateSubmit()" value="완료" />');
+		        	$('div.btn-r').html('<input type="button" style="height:40px;margin-right:5px" class="btn-layerClose" id="closebutton" onclick="closing()" value="닫기" />'
+		        			+'<input type="button" style="height:40px;margin-right:5px" class="btn-layerClose" id="updateContent" onclick="doUpdateSubmit()" value="완료" />');
 		            return false;
 				});
 			}
