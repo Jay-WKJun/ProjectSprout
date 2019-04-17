@@ -350,7 +350,7 @@
 		    	        	+'</form>'
 		    	        	);
 		        	//완료버튼 생성
-		        	$('div.btn-r').html('<a href="#" class="btn-layerClose" id="close">닫기</a>'
+		        	$('div.btn-r').html('<input type="button" class="btn-layerClose" id="closebutton" onclick="closing()" value="닫기" />'
 		        			+'<input type="button" class="btn-layerClose" id="updateContent" onclick="doUpdateSubmit()" value="완료" />');
 		            return false;
 				});
@@ -378,6 +378,11 @@
 	    	var day = date.getDate();                                        //d
 	    	day = day >= 10 ? day : '0' + day;                            //day 두자리로 저장
 	    	return  year + '-' + month + '-' + day;
+	    }
+	    
+	    //update닫기 메소드
+	    function closing(){
+	    	 $('.dim-layer').fadeOut();
 	    }
 
 	    
