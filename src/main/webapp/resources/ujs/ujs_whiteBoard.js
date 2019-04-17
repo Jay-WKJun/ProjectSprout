@@ -22,8 +22,6 @@ $(function() {
 
 // 포스트잇 생성
 function addPostit() {
-	$('#loader').show();
-	
 	var projectNum = $("#projectNum").val();
 	var postit_color = $('#postitColor').val();
 	var postit_shape = $('#postitWidth').val()+"/"+$('#postitHeight').val();
@@ -102,7 +100,7 @@ function postitPrint(postitList) {
 	postitDrag();
 	deletePostit();
 	postitContentSave();
-	$('#loader').hide();
+	/*$('#addPostit').on('click', addPostit);*/
 }
 
 // 드래그 메서드

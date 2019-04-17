@@ -1,6 +1,6 @@
 $(function(){
 	//파일 리스트 출력
-	getFileList();
+	//getFileList();
 	folderForm();
 	
 	// 파일 업로드 버튼
@@ -147,7 +147,18 @@ function printProjectFile(fileList) {
 }
 
 
-
+/*function getFileList(){
+	var tag = ''
+	var finalResult = ${finalResult};
+	$.each(finalResult, function(index, item){
+		//map을 하나식 꺼낸다.
+		item.folderName
+		$.each(item.boardList, function(index, item){
+			//여기부턴 DocumentBoard가 들어있다
+		});
+	});
+	
+}*/
 
 
 

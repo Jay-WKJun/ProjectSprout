@@ -40,7 +40,9 @@
 #loader{
 	text-align:center;
 	color:white;
+	display:none;
 }
+
 
 .loader{
 	position:absolute;
@@ -63,7 +65,7 @@
 	opacity: 0.3;
 	background-color:black;
 	width:100%;
-	height:1300px;
+	height:100%;
 	z-index: 3;
 }
 

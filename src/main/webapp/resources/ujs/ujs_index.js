@@ -1,15 +1,14 @@
-
 $(function() {
-	
-	$('#loader').hide();
-	
 	$('#loginBtn').on('click', function() {
-		$('#loader').show();
 		location.href = "login";
 	});
+
 	$('#logoutBtn').on('click', function() {
-		$('#loader').show();
 		location.href = "logout";
+	});
+
+	$('#updateBtn').on('click', function() {
+		location.href = "update";
 	});
 	
 	//프로젝트 생성 버튼
@@ -26,13 +25,18 @@ $(function() {
 				}else{
 					location.href="login";
 				}
-			}
+			}, 
+			beforeSend: function () {
+				$('#loader').attr('style','display:block');
+	       }, 
+	       complete: function () {
+	    	   $('#loader').attr('style','display:none');
+	       }
 		})
 	})
 	
 	//공고글 보기
 	$('#wantedBoardBtn').on('click', function(){
-		$('#loader').show();
 		$('#wantedBoardSpace').attr('style', 'display:block');
 		$('#webPresentation').attr('style', 'display:none');
 		$('#newProject').attr('style', 'display:none');
@@ -41,19 +45,20 @@ $(function() {
 	})
 	
 	$('#projectCreateBtn').on('click', function() {
-		$('#loader').show();
 		$('#mainProjectRegist').submit();
 	})
 
 	$('#project').on('click', function() {
-		$('#loader').show();
 		location.href = "project";
 	})
 
+	$('#whiteBoardBtn').on('click', function() {
+		location.href = "whiteBoard";
+	})
 	//프로젝트 시작하기 버튼을 
 	$('#openproject').on('click', function() {
-		$('#loader').show();
 	    $('#project_go').submit();
+		
 	})
 	
 	//왼쪽 프로젝트타이틀 리스트 누르면, 컨트롤러 정보 보냄. 
@@ -95,17 +100,9 @@ $(function() {
 				$('#goprojet_membername').html(output)
 				
 			}
-			,beforeSend:function(){
 
-		        $('#loader').show();
-
-		    }
-		    ,complete:function(){
-
-		        $('#loader').hide();
-
-		    }
 		})
+
 	})
 	
 	//로그인 버튼 이펙트
@@ -124,7 +121,6 @@ $(function() {
 	
 	//회원정보로 이동
 	$('#memberInfoBtn').on('click',function(){
-		$('#loader').show();
 		location.href="memberInfo";
 	})
 	
@@ -140,9 +136,3 @@ $(function() {
 	
 
 });
-
-//홈이동
-function home(){
-	$('#loader').show();
-	location.href="/sprout";
-}
