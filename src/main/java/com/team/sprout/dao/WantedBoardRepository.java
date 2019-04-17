@@ -69,9 +69,12 @@ public class WantedBoardRepository {
 		return boardCount;
 	}
 
-	public void insertBoard_directly(WantedBoard board) {
+	public int insertBoard_directly(WantedBoard board) {
 		WantedBoardDAO dao = session.getMapper(WantedBoardDAO.class);
 		dao.insertBoarddirectly(board);
+		int result = dao.select_last_seq(); // 공고글이나 지원글의 sequence 잡아주기.
+		
+		return result;
 	}
 
 	public WantedBoard selectOneBoard_by_id(String wantedBoard_num) {
@@ -83,6 +86,12 @@ public class WantedBoardRepository {
 	public void deleteBoard_by_num(String the_wanted) {
 		WantedBoardDAO dao = session.getMapper(WantedBoardDAO.class);
 		int result = dao.deleteOneBoard_by_id(the_wanted);
+		
+	}
+
+	public void update_ApplyBorad(WantedBoard wanb) {
+		WantedBoardDAO dao = session.getMapper(WantedBoardDAO.class);
+		int result = dao.update_ApplyBorad(wanb);
 		
 	}
 
