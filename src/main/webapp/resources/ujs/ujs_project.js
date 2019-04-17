@@ -184,9 +184,8 @@ function ChatRoomList2(memberList){
 	
 	$.each(memberList, function(index, item){
 		if (item.chatRoom_name != null) {
-																													////onclick 부분 적용안됨 19041611:50분이후로 안건듬 수정해야함
 			
-			content += '<a href="multiChatRoom?chatRoom_num='+item.chatRoom_num+'&chatRoom_name='+item.chatRoom_name+'" onclick="window.open(this.href, \'_blank\', \'width=400,height=500,toolbars=no,scrollbars=no\'); return false;">'+item.chatRoom_name+'방</a></br>'
+			content += '<a href="multiChatRoom?chatRoom_num='+item.chatRoom_num+'&chatRoom_name='+item.chatRoom_name+'" onclick="window.open(this.href, \'_blank\', \'width=400,height=450,toolbars=no,scrollbars=no\'); return false;">'+item.chatRoom_name+'방</a></br>'
 			
 
 		}	
