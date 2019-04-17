@@ -24,7 +24,7 @@ $(function(){
 		// 추출한 파일명 삽입
 		$("#upLoadFile").val(filename);
 	});
-
+	
 })
 
 // 파일 업로드

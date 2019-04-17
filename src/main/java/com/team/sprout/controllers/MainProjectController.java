@@ -64,10 +64,10 @@ public class MainProjectController {
 	//프로젝스 시작을 위한 메서드. 프로젝트 넘을 통해 원하는 누른 프로젝트의 정보를 제공 
 	@ResponseBody
 	@RequestMapping(value="/startproject_go", method=RequestMethod.GET)
-	public Map<String,Object> startproject_go(String mainproject_projectnum, HttpSession session,Model model) {
+	public Map<String,Object> startproject_go(String mainproject_projectnum, HttpSession session, Model model) {
 		MainProject mainproject =  MainRepo.forgoproject(mainproject_projectnum);
 		List<Member> memberList = prRepo.projectmemberSelectAll(mainproject_projectnum);
-/*		model.addAttribute("memberList", memberList);*/
+		System.out.println("for check >>>>>>>> "+memberList.toString()); //================================== checking
 		
 		
 		Map<String, Object> map = new HashMap<>();

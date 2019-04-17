@@ -69,7 +69,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into wantedBoard(
 			WANTEDBOARD_NUM,
 			WANTEDBOARD_FROM,
-			WANTEDBOARD_TITLE,
+			WANTEDBOARD_TITLE, <!-- 지원글에서 사용하느  title은 지원파일의 directory로 쓰겠다. -->
 			WANTEDBOARD_CONTENT,
 			WANTEDBOARD_DATE,
 			WANTEDBOARD_HITCOUNT,
@@ -78,7 +78,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		values (
 			WANTEDBOARD_SEQ.nextval,
 			#{wantedBoard_from},
-			#{wantedBoard_title},
+			#{wantedBoard_title}, <!-- 지원글에서 사용하느  title은 지원파일의 directory로 쓰겠다. -->
 			#{wantedBoard_content},
 			sysdate,
 			#{wantedBoard_hitCount},

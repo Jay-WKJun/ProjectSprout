@@ -134,7 +134,6 @@
 		//동시에 source에 JSON데이터를 새로 쓴다.(LIST나 Map으로 보내고 반복해서 source에 쓰는식으로 해야한다.)
 		//새로 쓰고 db에 쓰면서 redirect요청으로 새로고침을 한다.
 		$(function() {
-			
 			/* $('#regist').click(function(){
 				layer_popup('#layer2');
 			}); */
@@ -160,6 +159,7 @@
 					if (window.console && typeof console.log === "function") {
 						console.log("chart rendered");
 					}
+					$('#loader').hide();
 				}
 			});
 
@@ -306,6 +306,13 @@
 		        	+'mainproject_projectNum : '+pc.mainproject_projectNum+'<br>'
 		        	+'member_num : '+pc.member_num
 		        	);
+				
+				//버튼 채워 넣기
+		        $('div.btn-r').html(
+						'<a href="#" style="height:40px;margin-right:5px" class="btn btn-dark btn-layerClose" id="update">수정</a>'
+						+'<a href="#" style="height:40px;margin-right:5px" class="btn btn-danger btn-layerClose" id="delete">삭제</a>'
+						+'<a href="#" style="height:40px;margin-right:5px" class="btn btn-danger btn-layerClose" id="close">닫기</a>'
+				);
 		        
 		        //지우기 메소드
 		        $el.find('a#delete').click(function(){

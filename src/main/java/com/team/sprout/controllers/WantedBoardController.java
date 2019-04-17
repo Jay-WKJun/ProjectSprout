@@ -3,6 +3,7 @@ package com.team.sprout.controllers;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -18,9 +19,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.team.sprout.dao.WantedBoardRepository;
+import com.team.sprout.util.FileService;
 import com.team.sprout.util.PageNavigator;
+import com.team.sprout.util.profileFile;
 import com.team.sprout.vo.WantedBoard;
 
 @Controller
@@ -240,14 +244,33 @@ public class WantedBoardController {
 
 	/* 공고지원 페이지로 이동 */
 	@RequestMapping(value = "/apply_wanted", method = RequestMethod.GET) //--------------------- this place
-	public String apply_wanted() {
+	public String apply_wanted(HttpSession session, Model model) {
+		String loginId = ((String) session.getAttribute("loginId")).trim();
+		model.addAttribute("loginId", loginId);
 		return "wantedBoard/apply_wanted";
 	}
 	
-	/* 공고지원 페이지로 이동 */
-	@RequestMapping(value = "/apply_this_job", method = RequestMethod.GET) //--------------------- this place
-	public String apply_this_job(HttpSession session) {
-		String loginId = ((String) session.getAttribute("loginId")).trim();
+	/* 공고에 지원하기 */
+	@RequestMapping(value = "/apply_this_job", method = RequestMethod.POST) //--------------------- this place
+	public String apply_this_job(WantedBoard wanb, MultipartFile upload) {
+		FileService fileserv = new FileService();
+		
+		if (upload.isEmpty() == false) {
+			fileserv.saveFile(upload, wanb); 
+			System.out.println("------------- 회원가입 with 프로필 사진 O -------------");
+			System.out.println(wanb.toString());
+		}
+		
+		// DB에서 error 안나게 default로 setting 하기
+		wanb.setWantedBoard_hitCount(0);
+		wanb.setWantedboard_source(2);
+		
+		System.out.println();
+		System.out.println("for check >>>> " + wanb.toString());
+		System.out.println("for check >>>> " + upload.getOriginalFilename());
+		System.out.println();
+		
+		wbRepo.insertBoard_directly(wanb);
 		
 		return "redirect:/";
 	}
