@@ -304,10 +304,9 @@
 					url : 'tablememberSelect',
 					data: 'memberNum='+pc.member_num,
 					success : function(results){
-						alert(result.member_name);
-						memberName = result.member_name;
-					}
-				});
+						alert(results.member_name);
+						memberName = results.member_name;
+					
 						
 						
 				//내용 쓰기 메소드
@@ -319,6 +318,9 @@
 		        	+'mainproject_projectNum : '+pc.mainproject_projectNum+'<br>'
 		        	+'member_name : '+memberName
 		        	);
+				
+					}
+				});
 				
 				
 				
@@ -358,9 +360,9 @@
 						url : 'tablememberSelect',
 						data: 'memberNum='+pc.member_num,
 						success : function(results){
-							memberName = results;
-						}
-			        });
+							alert(results.member_name);
+							memberName = results.member_name;
+						
 		        	
 		        	$('.ctxt').html('<form method="post" action="updateContent" id="updateForm" name="updateForm" accept-charset="utf-8">'
 		        			+'<input type="hidden" id="projectContent_num" name="projectContent_num" value="'+pc.projectContent_num+'">'
@@ -398,6 +400,9 @@
 		    	        	+'<input type="text" id="member_num" name="member_num" value="'+memberName+'"><br>'
 		    	        	+'</form>'
 		    	        	);
+		        	
+						}
+			        });
 		        	
 						
 		        	
