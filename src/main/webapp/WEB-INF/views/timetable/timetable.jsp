@@ -134,7 +134,6 @@
 		//동시에 source에 JSON데이터를 새로 쓴다.(LIST나 Map으로 보내고 반복해서 source에 쓰는식으로 해야한다.)
 		//새로 쓰고 db에 쓰면서 redirect요청으로 새로고침을 한다.
 		$(function() {
-			
 			/* $('#regist').click(function(){
 				layer_popup('#layer2');
 			}); */
@@ -160,6 +159,7 @@
 					if (window.console && typeof console.log === "function") {
 						console.log("chart rendered");
 					}
+					$('#loader').hide();
 				}
 			});
 
