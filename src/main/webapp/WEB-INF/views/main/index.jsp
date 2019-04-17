@@ -123,7 +123,7 @@
 				<div class="contentSpace_left"></div>
 				<div class="contentSpace_center">
 					<div class="webNameSpace">
-						<a href="/sprout"><img class="webLogo"
+						<a onclick="home();" href="#"><img class="webLogo"
 							src="img/sprout_logo.png"></a>
 					</div>
 				</div>
@@ -250,17 +250,6 @@
 	</div>
 	</div>
 	<script src="js/bootstrap.bundle.min.js"></script>
-	<!-- ----------------------------------------------------------------------- -->
-	<%-- <hr>
-	<p>프로필 이미지 test<P><br>
-	<c:if test="${not empty sessionScope.mime}"> 
-		<img class="rounded-circle border" src="download?loginId=${loginId}" style="width:100px;height:100px">
-	</c:if>
-	<c:if test="${empty sessionScope.mime}"> 
-		<img class="rounded-circle border" style="width: 50px; height: 50px" src="img/empty_profile.png" id="userProfileIcon">
-	</c:if> --%>
-	<!-- ----------------------------------------------------------------------- -->
-	
 </body>
 
 </html>

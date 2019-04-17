@@ -20,9 +20,16 @@
 </head>
 <body>
 	<div class="wrapper">
+		<div id="loader">
+			<div class="loader">
+				<img class="loaderImg" src="img/loading_leaf_circle.gif"><br>
+				Loading...
+			</div>
+			<div class="loaderBack"></div>
+		</div>
 		<div class="sideSpace">
 			<div class="sideSpace_top">
-				<a href="/sprout"><img class="webLogo" src="img/sprout_logo.png"></a>
+				<a onclick="home();" href="#"><img class="webLogo" src="img/sprout_logo.png" id="logo"></a>
 			</div>
 			<div class="sideSpace_bottom">
 				<ul class="nav nav-tabs">
@@ -116,7 +123,7 @@
 					
 				</div>
 			</div>
-			</div>
+		</div>
 		<div class="mainSpace">
 			<div class="mainSpace_top">
 				<div class="mainSpace_top_side"></div>
@@ -191,7 +198,7 @@
 									<div class="container">
 									<div class="row">
 									<div class="col-8" style="text-align:left;padding:10px">
-										<span id="addmemberMessage"></span>
+										<span id="addmemberMessageSpace"></span>
 									</div>
 									<div class="col">
 										<button class="btn btn-dark" id="addmem" style="margin-top:10px"
@@ -212,6 +219,7 @@
 				<div class="contentSpace_side"></div>
 				<div class="contentSpace">
 					<div class="timeTable rounded bgwhite sbd2 shadow" id="timeTable">
+						
 					</div>
 
 					<div class="fileManager rounded bgwhite sbd2 shadow" id="fileManager">
@@ -230,26 +238,15 @@
 							value="${mainproject_projectnum }">
 						<div id="whiteBoardModal" style="display:none">
 						<div class="modalBlack"></div>
-							<!-- <div class="postitWindow rounded sbd2">
-								<button class="btn btn-dark" id="addPostit" style="width: 80px;height:60px">
-									<span class="fa-stack fa-lg"> <i
-										class="far fa-sticky-note fa-stack-2x"></i> <i
-										class="fas fa-plus fa-stack-1x"></i>
-									</span>
-								</button>
-								<button type="button" class="btn btn-danger" id="modalCloseBtn" style="width: 80px;height:60px">닫기</button>
-							</div> -->
 							<div id="headers">
 								<div id="whiteBoardLoad"></div>
 							</div>
 						</div>
 					</div>
 				</div>
-				
 			</div>
-			
 		</div>
-		</div>
+	</div>
 </body>
 
 </html>

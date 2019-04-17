@@ -134,7 +134,6 @@
 		//동시에 source에 JSON데이터를 새로 쓴다.(LIST나 Map으로 보내고 반복해서 source에 쓰는식으로 해야한다.)
 		//새로 쓰고 db에 쓰면서 redirect요청으로 새로고침을 한다.
 		$(function() {
-			
 			/* $('#regist').click(function(){
 				layer_popup('#layer2');
 			}); */
@@ -160,6 +159,7 @@
 					if (window.console && typeof console.log === "function") {
 						console.log("chart rendered");
 					}
+					$('#loader').hide();
 				}
 			});
 
@@ -350,7 +350,7 @@
 		    	        	+'</form>'
 		    	        	);
 		        	//완료버튼 생성
-		        	$('div.btn-r').html('<a href="#" class="btn-layerClose" id="close">닫기</a>'
+		        	$('div.btn-r').html('<input type="button" class="btn-layerClose" id="closebutton" onclick="closing()" value="닫기" />'
 		        			+'<input type="button" class="btn-layerClose" id="updateContent" onclick="doUpdateSubmit()" value="완료" />');
 		            return false;
 				});
@@ -378,6 +378,11 @@
 	    	var day = date.getDate();                                        //d
 	    	day = day >= 10 ? day : '0' + day;                            //day 두자리로 저장
 	    	return  year + '-' + month + '-' + day;
+	    }
+	    
+	    //update닫기 메소드
+	    function closing(){
+	    	 $('.dim-layer').fadeOut();
 	    }
 
 	    

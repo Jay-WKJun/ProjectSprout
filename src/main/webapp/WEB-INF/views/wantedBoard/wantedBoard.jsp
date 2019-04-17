@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>WantedBoard</title>
 <!-- 평소엔 한 화살표만 보여주고 다 보기하면 페이징을 표시해준다. -->
+<script src="ujs/ujs_index.js"></script>
 </head>
 <body>
 
