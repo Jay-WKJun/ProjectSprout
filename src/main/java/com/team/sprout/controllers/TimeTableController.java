@@ -275,6 +275,14 @@ public class TimeTableController {
 		return "showDetail";
 	}
 	
+	@RequestMapping(value = "/tablememberSelect", method = RequestMethod.GET)
+	@ResponseBody
+	public Member tablememberSelect(int memberNum) {
+		System.out.println(memberNum);
+		Member result = repo.searchMember(memberNum);
+		return result;
+	}
+	
 	/*
 	 * 디테일을 빠져나왔으면 다시 타임테이블로 돌아간다.
 	 */

@@ -297,6 +297,19 @@
 	        	//pc가 없다면 만들기로 불러온 것이다.
 	        	
 			} else{
+				var memberName='';
+				
+				$.ajax({
+					type : 'GET',
+					url : 'tablememberSelect',
+					data: 'memberNum='+pc.member_num,
+					success : function(results){
+						alert(result.member_name);
+						memberName = result.member_name;
+					}
+				});
+						
+						
 				//내용 쓰기 메소드
 		        $('.ctxt').html('projectContent_title : '+pc.projectContent_title+'<br>'
 		        	+'projectContent_content : '+pc.projectContent_content+'<br>'
@@ -304,8 +317,10 @@
 		        	+'projectContent_endDate : '+pc.projectContent_endDate+'<br>'
 		        	+'projectContent_color : '+pc.projectContent_color+'<br>'
 		        	+'mainproject_projectNum : '+pc.mainproject_projectNum+'<br>'
-		        	+'member_num : '+pc.member_num
+		        	+'member_name : '+memberName
 		        	);
+				
+				
 				
 				//버튼 채워 넣기
 		        $('div.btn-r').html(
@@ -337,6 +352,15 @@
 		        	
 		        	startDateCh = getFormatDate(startDateCh);
 		        	endDateCh = getFormatDate(endDateCh);
+		        	
+		        	$.ajax({
+						type : 'GET',
+						url : 'tablememberSelect',
+						data: 'memberNum='+pc.member_num,
+						success : function(results){
+							memberName = results;
+						}
+			        });
 		        	
 		        	$('.ctxt').html('<form method="post" action="updateContent" id="updateForm" name="updateForm" accept-charset="utf-8">'
 		        			+'<input type="hidden" id="projectContent_num" name="projectContent_num" value="'+pc.projectContent_num+'">'
@@ -371,14 +395,18 @@
 		    	        	+'<input type="color" class="form-control" id="projectContent_color" name="projectContent_color" value="'+pc.projectContent_color+'"><br>'
 		    	        	+'</div>'
 		    	        	+'<input type="hidden" id="mainproject_projectNum" name="mainproject_projectNum" value="'+pc.mainproject_projectNum+'"><br>'
-		    	        	+'<input type="hidden" id="member_num" name="member_num" value="'+pc.member_num+'"><br>'
+		    	        	+'<input type="text" id="member_num" name="member_num" value="'+memberName+'"><br>'
 		    	        	+'</form>'
 		    	        	);
+		        	
+						
+		        	
 		        	//완료버튼 생성
 		        	$('div.btn-r').html('<input type="button" style="height:40px;margin-right:5px" class="btn-layerClose" id="closebutton" onclick="closing()" value="닫기" />'
 		        			+'<input type="button" style="height:40px;margin-right:5px" class="btn-layerClose" id="updateContent" onclick="doUpdateSubmit()" value="완료" />');
 		            return false;
 				});
+		        	
 			}
 	        
 		}//layer
