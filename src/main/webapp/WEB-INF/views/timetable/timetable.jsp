@@ -304,7 +304,6 @@
 					url : 'tablememberSelect',
 					data: 'memberNum='+pc.member_num,
 					success : function(results){
-						alert(results.member_name);
 						memberName = results.member_name;
 					
 						
@@ -385,7 +384,6 @@
 						url : 'tablememberSelect',
 						data: 'memberNum='+pc.member_num,
 						success : function(results){
-							alert(results.member_name);
 							memberName = results.member_name;
 						
 		        	
