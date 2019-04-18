@@ -47,7 +47,92 @@ $(function() {
 		$('#addmem').attr('disabled','disabled');
 	})
 	
-	//공지사항 모달 열기
+	
+	
+	/////////////////
+	/////////////////
+	/////////////////
+	//클릭으로 메시지 초대보내기
+	$('.messagesend').on('click', function() {
+	/*var member_name = $('#member_namesss').val();*/
+	var member_name=$(this).attr('data-name');
+	ClickChatRoomList(member_name);
+	})
+			
+	//클릭으로 채팅생성시 text에 채팅이름저장
+	function ClickChatRoomList(member_name){
+		var content;
+		var member_id = $('#member_ids').val();//세션아이디
+		var member_num =$('#member_nums').val();//로그인넘버
+		var chatRoom_name = $('#member_ids').val(); // 임시로 아이디로 만들어지도록 함. 추후에 초대장 아이디랑 초대받은 사람 아이디로 업로드 예정(이라쓰고 안하기)
+		var sad;
+	
+		alert("상대편 아이디"+member_name);
+		var name_membernum = {
+				"chatRoom_name" : chatRoom_name,
+				"member_num" :  member_num
+		};
+	$.ajax({
+			
+			method : 'post',
+			url : 'roomname',
+			data : name_membernum,
+			success : function(chatroomname){
+				
+				ClickSendInvitation(member_name);//상대편 아이디 추가하로가기.
+			}
+			
+		})
+		
+	}
+
+	function ClickSendInvitation(member_name){
+		
+		var member_name = member_name;
+		var asdfgs = {
+				"member_name" : member_name
+			};
+			
+			
+			$.ajax({
+				type : 'post',
+				url : 'selectMemberNum',
+				data : asdfgs ,
+				
+				success : function(member_nameOne) {
+					 invitationss(member_nameOne); 
+				}
+			});
+	}
+	
+	function invitationss(member_nameOne){
+		var member_num = member_nameOne;
+		var chatRoom_num = $('#chatRoom_nums').val(); /* ${sessionScope.chatRoom_num}; */
+		var member_name = $('#ClickMember_name').val();
+		var chatRoom_name = $('#member_ids').val(); // 일단 아이디로 대신하자.. ㅅㅂ..
+		var qp = {
+				"member_num" : member_num,
+				"chatRoom_num" : chatRoom_num,
+				"member_name" : member_name,
+				"chatRoom_name" : chatRoom_name
+		};
+		$.ajax({
+			type : 'post',
+			url : 'invitationss',
+			data : qp ,
+			
+			success : function(success) {
+				messapgespace();
+				}
+		});
+		
+	}
+	
+	
+	
+	
+	//////////////////
+	//공지사항 모달 열기 
 	$('#noticeModalBtn').on('click', function(){
 		$('#noticeModal').show();
 		createNotice();
@@ -109,7 +194,7 @@ $(function() {
 	//타임 테이블
 	$('#timeTable').load('timetable');
 	
-})
+})//$function()
 //채팅방 생성
 function chatRoomCreat(chatRoom_name){
 	var content;
@@ -179,17 +264,20 @@ function ChatRoomList2(memberList){
 	
 	content +='<div class="list-group">';
 	$.each(memberList, function(index, item){
+		
+		
 		if (item.chatRoom_name != null) {
 			content += '<a class="list-group-item list-group-item-action noticeDetail"';
 			content += 'style="margin-bottom: 2px; border: 1px solid #6079a0;"';
 			content += 'href="multiChatRoom?chatRoom_num='+item.chatRoom_num;
 			content += '&chatRoom_name='+item.chatRoom_name+'" onclick="window.open(this.href, \'_blank\', \'width=400,height=580,toolbars=no,scrollbars=no\'); return false;">';
 			content += item.chatRoom_name+'방</a>';
+			
 		}	
 	});
 	content +='</div>';
 	
-	$('#messageChatRoomList').html(content);
+		$('#messageChatRoomList').html(content);
 }
 
 

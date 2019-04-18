@@ -62,9 +62,11 @@
 										<h5 class="dropdown-header">${list.member_name}</h5>
 										<div style="margin-top: 20px" data-pno="${list.member_num}"
 											id="forkick">
-											<a href="#" style="border:1px solid #6079a0"
-												class="list-group-item list-group-item-action border-left-0 border-right-0">메세지
+											<a href="#" style="border:1px solid #6079a0" data-name="${list.member_name }"
+												class="list-group-item list-group-item-action border-left-0 border-right-0 messagesend">메세지
 												보내기</a>
+											<input type="hidden" value="${sessionScope.chatRoom_num }" id="chatRoom_nums">
+											<input type="hidden" value="${list.member_name }" id="ClickMember_name">
 											<c:if test="${member_rank == 5}">
 												<a href="#" style="border:1px solid #6079a0"
 													class="kickMember list-group-item list-group-item-action border-left-0 border-right-0">내보내기</a>
