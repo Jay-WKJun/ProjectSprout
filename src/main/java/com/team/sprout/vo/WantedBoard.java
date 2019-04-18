@@ -11,9 +11,7 @@ public class WantedBoard {
 	private int applyBoard_num;
 	private int wantedboard_source;
 
-	public WantedBoard() {
-
-	}
+	public WantedBoard() {}
 
 	public WantedBoard(int wantedBoard_num, String wantedBoard_from, String wantedBoard_title,
 			String wantedBoard_content, String wantedBoard_date, int wantedBoard_hitCount, int applyBoard_num,
@@ -100,5 +98,6 @@ public class WantedBoard {
 				+ ", wantedBoard_date=" + wantedBoard_date + ", wantedBoard_hitCount=" + wantedBoard_hitCount
 				+ ", applyBoard_num=" + applyBoard_num + ", wantedboard_source=" + wantedboard_source + "]";
 	}
-
+	
+	
 }

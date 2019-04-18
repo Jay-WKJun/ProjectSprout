@@ -310,13 +310,38 @@
 						
 						
 				//내용 쓰기 메소드
-		        $('.ctxt').html('projectContent_title : '+pc.projectContent_title+'<br>'
-		        	+'projectContent_content : '+pc.projectContent_content+'<br>'
-		        	+'projectContent_startDate : '+pc.projectContent_startDate+'<br>'
-		        	+'projectContent_endDate : '+pc.projectContent_endDate+'<br>'
-		        	+'projectContent_color : '+pc.projectContent_color+'<br>'
-		        	+'mainproject_projectNum : '+pc.mainproject_projectNum+'<br>'
-		        	+'member_name : '+memberName
+		        $('.ctxt').html(
+		        		+'<div class="contentItem_text">' 
+	        			+'제목'
+	        			+'</div>'
+	        			+'<div class="contentItem_input">' 
+		        		+'projectContent_title : '+pc.projectContent_title+'<br>'
+		        		+'</div>'
+		        		+'<div class="contentItem_text">' 
+	        			+'제목'
+	        			+'</div>'
+	        			+'<div class="contentItem_input">' 
+		        		+'projectContent_content : '+pc.projectContent_content+'<br>'
+		        		+'</div>'
+		        		+'<div class="contentItem_text">' 
+	        			+'제목'
+	        			+'</div>'
+	        			+'<div class="contentItem_input">' 
+		        		+'projectContent_startDate : '+pc.projectContent_startDate+'<br>'
+		        		+'</div>'
+		        		+'<div class="contentItem_text">' 
+	        			+'제목'
+	        			+'</div>'
+	        			+'<div class="contentItem_input">' 
+		        		+'projectContent_endDate : '+pc.projectContent_endDate+'<br>'
+		        		+'</div>'
+		        		+'<div class="contentItem_text">' 
+	        			+'제목'
+	        			+'</div>'
+	        			+'<div class="contentItem_input">' 
+		        		+'projectContent_color : '+pc.projectContent_color+'<br>'
+		        		+'</div>'
+		        		+'member_name : '+memberName
 		        	);
 				
 					}

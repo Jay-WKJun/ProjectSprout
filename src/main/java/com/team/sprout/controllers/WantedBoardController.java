@@ -257,20 +257,29 @@ public class WantedBoardController {
 		
 		if (upload.isEmpty() == false) {
 			fileserv.saveFile(upload, wanb); 
-			System.out.println("------------- 회원가입 with 프로필 사진 O -------------");
-			System.out.println(wanb.toString());
+		} else {
+			wanb.setWantedBoard_title("지원글");
 		}
 		
 		// DB에서 error 안나게 default로 setting 하기
+		wanb.setApplyBoard_num(0);
 		wanb.setWantedBoard_hitCount(0);
 		wanb.setWantedboard_source(2);
 		
-		System.out.println();
+		/*System.out.println();
 		System.out.println("for check >>>> " + wanb.toString());
 		System.out.println("for check >>>> " + upload.getOriginalFilename());
-		System.out.println();
+		System.out.println();*/
 		
-		wbRepo.insertBoard_directly(wanb);
+		int seq = wbRepo.insertBoard_directly(wanb);
+		wanb.setWantedBoard_num(seq);
+		wanb.setApplyBoard_num(seq);
+		
+		System.out.println("--------------------------------------------------------------");
+		System.out.println("최종적으로 잡힌 지원글 >>" + wanb.toString());
+		System.out.println("--------------------------------------------------------------");
+		
+		wbRepo.update_ApplyBorad(wanb);     // 여기하다 밥 먹으로 감.
 		
 		return "redirect:/";
 	}

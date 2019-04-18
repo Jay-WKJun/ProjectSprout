@@ -89,29 +89,6 @@
 					<!-- 메신저 영역 -->
 					<div id="messageSpace" style="display: none">
 					
-					<button type="button" class="btn btn-dark w-100" data-toggle="modal" data-target="#ChatRoomInvitation">
-						채팅방 생성
-					</button>
-					
-					<!-- The Modal -->
-					<div class="modal" id="ChatRoomInvitation">
-						<div class="modal-dialog">
-							<div class="modal-content">
-								<!-- Modal body -->
-								<div class="modal-body">
-									<div class="input-group mb-3">
-									<input type="text" class="form-control" id="addMembers" name="addMember" placeholder="생성할 채팅방 이름">
-										<div class="input-group-append">
-											<button class="btn btn-dark w-100" id="Invitatio">채팅방 생성</button> 
-											<input type="hidden" id="member_ids" value="${sessionScope.loginId }"/>
-											<input type="hidden" id="member_nums" value="${sessionScope.loginNum }"/>
-										</div>
-									</div>
-									<span id = "addmemberMessage"></span>
-								</div>
-							</div>
-						</div>
-					</div>
 					<!-- code here -->
 						<div id="messageChatRoomList">
 			
@@ -169,10 +146,38 @@
 			<div class="mainSpace_top">
 				<div class="mainSpace_top_side"></div>
 				<div class="mainSpace_top_center">
-						
+							
+							<!-- 채팅방 생성 모달 -->
+							<button type="button" class="btn btn-dark"  style="width:60px" id="addChatMemberBtn">
+								<i class="fas fa-comment-medical fa-2x"></i>
+							</button>
+					
+							<!-- The Modal -->
+							<div id="ChatRoomInvitation">
+								<div class="modalBlack"></div>
+								<div class="noticeModalContent rounded sbd2">
+									<div class="container">
+										<div class="row">
+											<div class="col">
+												<input type="text" class="form-control" id="addMembers" name="addMember" placeholder="생성할 채팅방 이름">
+												<input type="hidden" id="member_ids" value="${sessionScope.loginId }"/>
+												<input type="hidden" id="member_nums" value="${sessionScope.loginNum }"/>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col">
+												<button class="btn btn-dark" id="Invitatio" style="margin:10px 5px 0 0">확인</button>
+												<button class="btn btn-danger" id="chatRoomModalCloseBtn" style="margin-top:10px">닫기</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							
 							<!-- 공기사항 모달 -->
 							<button class="btn btn-dark" id="noticeModalBtn" style="width:60px">
-								<i class="fas fa-bullhorn fa-lg"></i>
+								<i class="fas fa-bullhorn fa-2x"></i>
 							</button>
 							
 							<div id="noticeModal">
@@ -187,7 +192,7 @@
 							
 							<!-- 멤버 추가 모달 -->
 							<button type="button" id="memberPlusModalBtn" class="btn btn-dark" style="width:60px">
-								<i class="fas fa-user-plus fa-lg"></i>
+								<i class="fas fa-user-plus fa-2x"></i>
 							</button>
 							
 							<div id="memberPlusSpace">
@@ -211,7 +216,7 @@
 							</div>
 							
 							<button class="btn btn-dark" id="projectDetail" style="margin-right:20px;width:60px">
-								<i class="fas fa-paste fa-lg"></i>
+								<i class="fas fa-paste fa-2x"></i>
 							</button>
 				</div>
 			</div>
