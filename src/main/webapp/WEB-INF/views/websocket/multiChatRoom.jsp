@@ -16,7 +16,6 @@
 			//초대하기기능
 			$("#BtnInvitation").on("click", function(){
 				// 맴버이름으로 맴버 번호가져오기
-				alert("반응하냐");
 				var memberinvitation = $('#memberinvitation').val();
 				
 				var asdfg = {
@@ -96,7 +95,7 @@
 				data : qp ,
 				
 				success : function(success) {
-alert("성공");
+					alert("초대완료");
 					}
 			});
 			
@@ -178,9 +177,9 @@ alert("성공");
 						}, 100);
 					
 					var data = JSON.parse(message.body);
-					$("#chatRoom").append(data.username+" : "+data.message+"<br /><br/>");
+					$("#chatRoom").append('<p  align="right">'+data.message+"<br /></p>");
 				});	
-				
+				//+data.username+" : "
 			});
 		}
 		
@@ -190,7 +189,6 @@ alert("성공");
 			var str = $("#chatbox").val();
 			str = str.replace(/ /gi, '&nbsp;')
 			str = str.replace(/(?:\r\n|\r|\n)/g, '<br />');
-			
 			
 			if(str.length > 0){
 				// WebsocketMessageBrokerConfigurer의 configureMessageBroker() 메소드에서 설정한 send prefix("/")를 사용해야 함
@@ -252,12 +250,12 @@ alert("성공");
 		}
 	</script>
 	<style type="text/css">
-		#chatRoom{
-			width: 300px;
-			height: 300px;
+	 	#chatRoom{
+			width: 350px;
+			height: 450px; 
 			border: 1px solid;
 			overflow: scroll;
-		}
+		} 
 	</style>
 <title>일반 채팅 방</title>
 </head>
