@@ -14,6 +14,34 @@ $(function(){
 	
 	// 폴더 생성 버튼
 	$('#createFolderInputBtn').on('click',changeFolderForm);
+	
+	$(document).on('change','select',function(){
+		var str = $( "select option:selected" ).val();
+		alert(str);
+		
+		if (str == "default") {
+			
+		} else {
+			$.ajax({
+				type : 'POST',
+				url : 'loadBoard',
+				data : 'board_num='+str,
+				success : function(result){
+					var tag = '<div>';
+					tag += result.boardTitle;
+					$.each(result.files, function(index, item){
+						tag += item.document_file_location;
+					})
+					tag += result.boardContent;
+					tag += '</div>';
+					$('.contentSpace').html(tag)
+				}
+			});
+		}
+		
+		
+	});
+	
 })
 
 // 파일 업로드
@@ -60,135 +88,37 @@ function folderForm(){
 	$('#folderDiv').html(temp);
 }
 		
-//파일 리스트 받아옴
-function getFileList() {
-
+//폴더와 파일 리스트 가져오기
+function getFileList(){
+	//ajax로 가자
+	
 	$.ajax({
-		method : 'GET',
-		url : 'getFileList',
-		success : printProjectFile
-	})
-}
-
-//파일 츌룍이지만 참고용이니 빨리 지우자
-function printProjectFile(fileList) {
-	var tag = "<thead>";
-	tag += "<tr>";
-	tag += "<th></th>";
-	tag += "<th>파일명</th>";
-	tag += "<th>로그</th>";
-	tag += "<th>업로드 날짜</th>";
-	tag += "<th></th>";
-	tag += "</tr>";
-	tag += "</thead>";
-	tag += "<tbody>";
-	if($('#folderLocation').html()!="home"){
-		tag += "<tr class='topFolder'>";
-		tag += "<td>";
-		tag += "<i class='fas fa-folder-open fa-2x'></i>";
-		tag += "</td>";
-		tag += "<td>";
-		tag += "..";
-		tag += "</td>";
-		tag += "<td colspan='3'>";
-		tag += "</td>";
-		tag += "</tr>";
-	}
-	$.each(fileList, function(index, item) {
-		tag += "<tr class='";
-		if(item.projectFile_type==1){
-			tag += "folder'";
-		}else{
-			tag += "file'"; 
-		}
-		tag +=" data-fName='"+item.projectFile_originalname+"' data-fno='" + item.projectFile_num+"'";
-		tag+= "data-fEx='"+item.projectFile_extension+"'>";
-		tag += "<td>";
-		if(item.projectFile_type==1){
-			tag += "<i class='fas fa-folder-open fa-2x'></i>";
-		}else{
-			tag += "<i class='fas fa-file-alt fa-2x'></i>"; 
-		}
-		tag += "</td>";
-		tag += "<td>";
-		tag += item.projectFile_originalname;
-		tag += "</td>";
-		tag += "<td>";
-		tag += item.projectFile_member;
-		tag += "</td>";
-		tag += "<td>";
-		tag += item.projectFile_date;
-		tag += "</td>";
-		tag += "<td>";
+		type : 'GET',
+		url : 'loadList',
+		success : function(result){
 			
-		tag += '<div class="dropdown dropright float-right">';
-		tag += '<span class="btn btn-light" data-toggle="dropdown">';
-		tag += '<label>';
-		tag += '<i class="fas fa-ellipsis-v fa-lg"></i>';
-		tag += '</label>';
-		tag += '</span>';
-		tag += '<div class="dropdown-menu">';
-		tag += '<a class="dropdown-item fileDownload">다운로드</a>';
-		tag += '<a class="dropdown-item fileDelete" >삭제</a>';
-		tag += '</div>';
-		tag += '</div>';
+			var tag = '<div>';
+			$.each(result, function(index, item){
+				//map을 하나식 꺼낸다.
+				tag += '<p>Folder <h2>'+item.folderName+'</h2></p>';
+				tag += '<select name="document_board_num" id="selectBoard">';
+				tag += '<option value="default" selected="selected">'+item.folderName+'</option>'
+				//alert(item.folderName);
+				$.each(item.boardList, function(index2, item2){
+					//여기부턴 DocumentBoard가 들어있다
+					//alert(item2.document_board_title);
+					tag += '<option value="'+item2.document_board_num+'">'+item2.document_board_title+'</option>';
+				});
+				tag += '</select>'
+			});
+			tag +='</div>';
 			
-		tag += "</td>";
-		tag += "</tr>";
+			//alert(tag);
+			
+			$("div#noticeSpace").html(tag);
+			
+			
+			
+		}
 	});
-	tag += "</tbody>";
-	$("#fileManagerTable").html(tag);
-	$(".folder").on('dblclick', folderDoubleClick);
-	$(".topFolder").on('dblclick', topFolderDoubleClick);
-	$(".fileDownload").on('click',fileDownload);
-	$(".fileDelete").on('click',fileDelete);
-	$('.file').on('mouseover',fileImageUp);
-	$('.file').on('mouseout', fileImageDown);
 }
-
-
-
-
-
-
-/*//폴더 생성
-function createFolder(){
-	var projectFile_originalname = $('#folderName').val();
-	var MainProject_ProjectNum=$('#MainProject_ProjectNum').val();
-	var projectFile_location=$('#projectFile_location').val();
-	
-	var projectFile_originalname=$('#folderName').val();
-	if(projectFile_originalname.indexOf('/')>-1||projectFile_originalname.indexOf('*')>-1||
-			projectFile_originalname.indexOf(':')>-1||projectFile_originalname.indexOf('"')>-1||
-			projectFile_originalname.indexOf('<')>-1||projectFile_originalname.indexOf('>')>-1||
-			projectFile_originalname.indexOf('|')>-1){
-		var msg='폴더 이름에는 다음 기호가 들어갈 수 없습니다.  /, *, :, ", <, >, | ';
-		$('#closeFolderMessage').html(msg);
-		var tag='<button class="btn btn-dark" id="createFolderInputBtn">폴더 생성</button>';
-		$('#createFolderSpace').html(tag);
-		$('#createFolderInputBtn').on('click',createFolderNaming);
-		return;
-	}
-	
-	var projectFile={
-			"projectFile_originalname":projectFile_originalname,
-			"MainProject_ProjectNum":MainProject_ProjectNum,
-			"projectFile_location":projectFile_location
-	}
-	
-	$.ajax({
-		method : 'post',
-		url : 'projectFolderCreate',
-		data : projectFile,
-		success : function(result) {
-			if (result == "success") {
-				getFileList();
-				var tag='<button class="btn btn-dark" id="createFolderInputBtn">폴더 생성</button>';
-				$('#createFolderSpace').html(tag);
-				$('#createFolderInputBtn').on('click',createFolderNaming);
-			} else {
-				console.log("폴더 생성 실패");
-			}
-		}
-	})
-}*/

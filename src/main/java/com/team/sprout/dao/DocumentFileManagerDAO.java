@@ -24,4 +24,8 @@ public interface DocumentFileManagerDAO {
 
 	public DocumentFolder selectFolderObject(String folder_name);
 
+	public DocumentBoard selectOneBoard(int board_num);
+
+	public List<DocumentFile> selectFiles(int board_num);
+
 }

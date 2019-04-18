@@ -80,6 +80,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where DOCUMENT_FOLDER_NUM = #{folder_num}
 	</select>
 	
+	<select id="selectOneBoard" resultType="DocumentBoard">
+		select *
+		from DOCUMENT_BOARD
+		where DOCUMENT_BOARD_NUM = #{board_num}
+	</select>
+	
+	<select id="selectFiles" resultType="DocumentFile">
+		select *
+		from DOCUMENT_FILE
+		where DOCUMENT_BOARD_NUM = #{board_num}
+	</select>
 	
 	<!-- <select id="selectAllFolder" resultType="Map">
 		select 

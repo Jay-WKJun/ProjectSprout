@@ -143,22 +143,6 @@
 	<script src="js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript">
 	
-	
-	function getFileList(){
-	var tag = "<div>";
-	$.each(${finalResult}, function(index, item){
-		//map을 하나식 꺼낸다.
-		tag = '<select value="'+item.folderName+'">';
-		$.each(item.boardList, function(index2, item2){
-			//여기부턴 DocumentBoard가 들어있다
-			tag = '<option value="'+item2.document_board_num+'">'+item2.document_board_title+'</option>';
-		});
-	});
-	tag='</div>';
-	
-	$('#noticeSpace').html(tag);
-}
-	
 	</script>
 </body>
 

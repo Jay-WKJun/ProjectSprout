@@ -65,6 +65,18 @@ public class DocumentFileManagerRepository {
 		DocumentFolder result = dao.selectFolderObject(folder_name);
 		return result;
 	}
+
+	public DocumentBoard selectOneBoard(int board_num) {
+		DocumentFileManagerDAO dao=session.getMapper(DocumentFileManagerDAO.class);
+		DocumentBoard result = dao.selectOneBoard(board_num);
+		return result;
+	}
+
+	public List<DocumentFile> selectFiles(int board_num) {
+		DocumentFileManagerDAO dao=session.getMapper(DocumentFileManagerDAO.class);
+		List<DocumentFile> result = dao.selectFiles(board_num);
+		return result;
+	}
 	
 	//DocumentFileManagerDAO dao=session.getMapper(DocumentFileManagerDAO.class);
 }
