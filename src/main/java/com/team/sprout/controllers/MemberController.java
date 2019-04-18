@@ -75,9 +75,9 @@ public class MemberController {
 			System.out.println(member.toString());
 		}
 		
-		/*int result = repo.memberJoin(member); // 회원가입
+		int result = repo.memberJoin(member); // 회원가입
 		System.out.println("회원가입 결과 : " + result); // 회원가입 결과 확인
-*/
+
 		return "redirect:/";
 	}
 
