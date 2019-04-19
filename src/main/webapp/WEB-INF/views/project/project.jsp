@@ -65,6 +65,7 @@
 											<a href="#" style="border:1px solid #6079a0" data-name="${list.member_name }"
 												class="list-group-item list-group-item-action border-left-0 border-right-0 messagesend">메세지
 												보내기</a>
+											
 											<input type="hidden" value="${sessionScope.chatRoom_num }" id="chatRoom_nums">
 											<input type="hidden" value="${list.member_name }" id="ClickMember_name">
 											<c:if test="${member_rank == 5}">
@@ -164,6 +165,7 @@
 												<input type="text" class="form-control" id="addMembers" name="addMember" placeholder="생성할 채팅방 이름">
 												<input type="hidden" id="member_ids" value="${sessionScope.loginId }"/>
 												<input type="hidden" id="member_nums" value="${sessionScope.loginNum }"/>
+												
 											</div>
 										</div>
 										<div class="row">
@@ -254,6 +256,8 @@
 			</div>
 		</div>
 	</div>
+	<input type="hidden" id="memberName_click"	value="${Click_member_name }">
+	
 </body>
 
 </html>

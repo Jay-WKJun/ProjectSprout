@@ -430,8 +430,31 @@ public class MemberController {
 		String member_nameOne = repo.selectOneMemberNum(member_name);
 		System.out.println("tq"+member_nameOne);
 		model.addAttribute("member_namess", member_name);
+		System.out.println("맴버아이디 상대편꺼 "+member_name);
+		model.addAttribute("Click_member_name", member_name);
 		return member_nameOne;
 	}
 	
+//	@RequestMapping(value = "/ClickselectMemberNum", method = RequestMethod.POST)
+//	public @ResponseBody String ClickselectMemberNum(String member_name, HttpSession session, Model model) {
+//				
+//			
+//		String member_nameOne = repo.selectOneMemberNum(member_name);
+//		System.out.println("tq"+member_nameOne);
+//		model.addAttribute("member_namess", member_name);
+//		System.out.println("맴버아이디 상대편꺼 "+member_name);
+//		model.addAttribute("Click_member_name", member_name);
+//		return member_nameOne;
+//	}
+	
+	@RequestMapping(value = "/ClickselectMemberNums", method = RequestMethod.POST)
+	public @ResponseBody HashMap<String, String> ClickselectMemberNum(String member_name, HttpSession session, Model model) {
+		HashMap<String, String> map = new HashMap<>();
+		String member_nameOne = repo.selectOneMemberNum(member_name);
+		model.addAttribute("member_namess", member_name);
+		map.put("member_num", member_nameOne);
+		map.put("member_name", member_name);
+		return map;
+	}
 	
 }
