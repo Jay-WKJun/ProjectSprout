@@ -60,6 +60,14 @@ public class TimeTableController {
 				//"6da5455f-abe5-4390-81c6-e05e3f7e1ddc";
 		
 		List<ProjectContent> pcList = pcRepo.projectContentSelectAll(mainProjectNum);
+		
+		//없다면 그림을 다른 jsp페이지를 띄운다.
+		if (pcList.isEmpty()) {
+			System.out.println("List없음!!");
+			return "timetable/alert";
+		}
+		
+		
 		for (ProjectContent projectContent : pcList) {
 			System.out.println(projectContent.toString());
 		}
