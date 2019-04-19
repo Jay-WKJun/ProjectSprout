@@ -24,6 +24,10 @@
 	font-size:120%;
 }
 
+html{
+	background-color: #efefef;
+}
+
 .wrapper{
 	font-family:'binggrae', 'bada','Serif';
 	font-size:110%;

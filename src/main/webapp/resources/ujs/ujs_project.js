@@ -47,8 +47,6 @@ $(function() {
 		$('#addmem').attr('disabled','disabled');
 	})
 	
-	
-	
 	/////////////////
 	/////////////////
 	/////////////////
@@ -140,6 +138,7 @@ $(function() {
 	//채팅 생성
 	$('#Invitatio').on('click',function(){
 		var chatRoom_name =$('#addMembers').val();
+		$('#ChatRoomInvitation').hide();
 		/*chatRoomCreat(addMembers);*/
 		ChatRoomList(chatRoom_name);
 	})

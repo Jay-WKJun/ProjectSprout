@@ -47,12 +47,7 @@
 				<a href="#" style="margin:5px"><i class="fas fa-angle-double-right fa-lg"></i></a>
 				</div>
 			</div>
-			<div class="contentSpace_right">
-				<div class="contentSpace_left"></div>
-				<div class="contentSpace_center">
-					<button class="btn btn-dark" id="writeInternalWantedBoard">글작성</button>
-				</div>
-			</div>
+			<div class="contentSpace_right"></div>
 		</div>
 	</div>
 </div>
