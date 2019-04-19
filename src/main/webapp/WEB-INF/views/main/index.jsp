@@ -236,7 +236,7 @@
 					<div class="contentSpace_left"></div>
 					<div class="contentSpace_center">
 						<!-- 공고글 로드 -->
-						<div class="rounded sbd2 bgwhite shadow" style="padding:40px;">
+						<div class="rounded sbd2 bgwhite shadow" style="padding:40px;width:1200px">
 							<ul class="nav nav-tabs">
 								<li class="nav-item bgwhite">
 									<a class="nav-link active" data-toggle="tab" id="internalWantedSpace">내부</a>

@@ -26,7 +26,6 @@
 				 //  $("#imgUpload")[0].files[0].size;
 			 });
 
-			
 			//파일 추가 모달 열기
 			$('#addFileModalBtn').on('click',function(){
 				$('#addFileModal').show();
@@ -35,11 +34,13 @@
 			//파일 전송 버튼
 			$('#uploads').on('click',function(){
 				uploadFile();
+				$('#fileValue').val('');
 				$('#addFileModal').hide();
 			})
 			
 			//파일 추가 모달 닫기
 			$('#closeFileModal').on('click',function(){
+				$('#fileValue').val('');
 				$('#addFileModal').hide();
 			})
 			
@@ -380,11 +381,18 @@
 						<div class="noticeModalContent">
 							<form id="FILE_FORM"  method="post" enctype="multipart/form-data">
 								<!-- 새로 첨부할 파일 선택 --> 
-								<div style="padding:5px">
-									<input type="file" class="form-control" name="upload" id="FILE_TAG" size="30">
-									<input type="text" id="fileValue" readonly="readonly">
-									<input type="hidden" value="${chatRoom_namess }" id="chatRoom_namess">
-									<input type="hidden" value="${sessionScope.chatRoom_num }" id="chatRoom_nums">
+								<div class="mainSpace_top" style="padding:5px">
+									<div class="mainSpace_top_center">
+										<label class="btn btn-dark">
+										<i class="fas fa-plus"></i>
+										<input type="file" class="form-control" name="upload" id="FILE_TAG" size="30" style="display:none">
+										</label>
+									</div>
+									<div class="mainSpace_top_side">
+										<input class="form-control" type="text" id="fileValue" readonly="readonly">
+										<input type="hidden" value="${chatRoom_namess }" id="chatRoom_namess">
+										<input type="hidden" value="${sessionScope.chatRoom_num }" id="chatRoom_nums">
+									</div>
 								</div>
 								<div style="padding:5px">
 									<input type="button" id ="uploads" class="btn btn-dark" value="전송">
