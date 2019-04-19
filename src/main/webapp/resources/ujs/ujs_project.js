@@ -1,3 +1,4 @@
+var test;
 $(function() {
 	
 	$('#userProfileIcon').on('mouseover', function() {
@@ -66,8 +67,8 @@ $(function() {
 		var member_num =$('#member_nums').val();//로그인넘버
 		var chatRoom_name = $('#member_ids').val(); // 임시로 아이디로 만들어지도록 함. 추후에 초대장 아이디랑 초대받은 사람 아이디로 업로드 예정(이라쓰고 안하기)
 		var sad;
+		var member_name = member_name;
 	
-		alert("상대편 아이디"+member_name);
 		var name_membernum = {
 				"chatRoom_name" : chatRoom_name,
 				"member_num" :  member_num
@@ -86,36 +87,75 @@ $(function() {
 		
 	}
 
+	//상대편 아이디 넘버가져오기 
 	function ClickSendInvitation(member_name){
-		
-		var member_name = member_name;
 		var asdfgs = {
 				"member_name" : member_name
 			};
 			
+//		alert(member_name);
+//			$.ajax({
+//				type : 'post',
+//				url : 'ClickselectMemberNum',
+//				data : asdfgs ,
+//				
+//				success : function(member_nameOne) {
+//					
+//					 invitationss(member_nameOne); 
+//				}
+//			});
+		
+		alert(member_name);
+		
+		$.ajax({
+			type : 'post',
+			url : 'ClickselectMemberNums',
+			data : asdfgs ,
 			
-			$.ajax({
-				type : 'post',
-				url : 'selectMemberNum',
-				data : asdfgs ,
-				
-				success : function(member_nameOne) {
-					 invitationss(member_nameOne); 
-				}
-			});
+			success : function(member_nameOne) {
+				invitationss(member_nameOne);
+			}
+		});
 	}
 	
+	//상대편아이디 등록
+//	function invitationss(member_nameOne){
+//		var member_num = member_nameOne;
+//		var chatRoom_num = $('#chatRoom_nums').val();
+//		var member_name=$('#memberName_click').val();
+//		var chatRoom_name = $('#member_ids').val(); // 일단 아이디로 대신하자.. ..
+//		alert("왜:"+member_name);
+//		var qp = {
+//				"member_num" : member_num,
+//				"chatRoom_num" : chatRoom_num,
+//				"member_name" : member_name,
+//				"chatRoom_name" : chatRoom_name
+//		};
+//
+//		$.ajax({
+//			type : 'post',
+//			url : 'invitationss',
+//			data : qp ,
+//			
+//			success : function(success) {
+//				messapgespace();
+//				}
+//		});
+//		
+//	}
 	function invitationss(member_nameOne){
-		var member_num = member_nameOne;
-		var chatRoom_num = $('#chatRoom_nums').val(); /* ${sessionScope.chatRoom_num}; */
-		var member_name = $('#ClickMember_name').val();
-		var chatRoom_name = $('#member_ids').val(); // 일단 아이디로 대신하자.. ㅅㅂ..
+		var member_num = member_nameOne["member_num"];
+		var chatRoom_num = $('#chatRoom_nums').val();
+		var member_name = member_nameOne["member_name"];
+		var chatRoom_name = $('#member_ids').val(); // 일단 아이디로 대신하자.. ..
+		alert("왜:"+member_name);
 		var qp = {
 				"member_num" : member_num,
 				"chatRoom_num" : chatRoom_num,
 				"member_name" : member_name,
 				"chatRoom_name" : chatRoom_name
 		};
+
 		$.ajax({
 			type : 'post',
 			url : 'invitationss',

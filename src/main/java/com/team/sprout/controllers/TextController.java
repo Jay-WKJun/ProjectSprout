@@ -45,7 +45,8 @@ public class TextController {
 			System.out.println("roomname쪽"+text.toString());
 			int chatroomname= dao.insertChatRoomName(text);
 			String iasasdad = text.getChatRoom_name();
-			System.out.println("체팅안에있는 아이디랄까?"+text.getMember_name());
+			System.out.println("채팅팅안에있는 아이디랄까?"+text.getMember_name());
+			
 			
 			//챗룸numㄱㄱ
 			 int result = dao.selectchatRoomNum();
@@ -56,6 +57,7 @@ public class TextController {
 			 
 			return iasasdad;
 	}
+	
 		
 		//채팅초대 
 				@RequestMapping(value="/invitationss", method = RequestMethod.POST)
