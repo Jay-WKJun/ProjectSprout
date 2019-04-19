@@ -29,7 +29,7 @@ public class HomeController {
 				//멤버가 참여중인 프로젝트 가져옴
 				List<MainProject> projectList= mainRepo.projectList(loginNum);
 				for (MainProject mainProject : projectList) {
-
+					
 				}
 				model.addAttribute("projectList", projectList);
 			}

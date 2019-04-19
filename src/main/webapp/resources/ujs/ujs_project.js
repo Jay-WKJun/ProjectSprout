@@ -152,12 +152,17 @@ $(function() {
 		$('#noticeDetailModal').hide();
 	})
 	
-	//공지사항 생성 버튼 
+	//공지사항 보기 버튼 
 	$('#noticeCheckBtn').on('click',function(){
 		$('#noticeSpace').attr('style','display:block');
 		$('#memberSpace_display').attr('style','display:none');
 		$('#messageSpace').attr('style','display:none');
 		nolist();
+	})
+	
+	//공지사항 생성창 닫기 버튼
+	$('#cancelNoticeBtn').on('click',function(){
+		$('#noticeModal').hide();
 	})
 	
 	//채팅방 생성 모달 버튼
@@ -270,7 +275,7 @@ function ChatRoomList2(memberList){
 			content += '<a class="list-group-item list-group-item-action noticeDetail"';
 			content += 'style="margin-bottom: 2px; border: 1px solid #6079a0;"';
 			content += 'href="multiChatRoom?chatRoom_num='+item.chatRoom_num;
-			content += '&chatRoom_name='+item.chatRoom_name+'" onclick="window.open(this.href, \'_blank\', \'width=400,height=580,toolbars=no,scrollbars=no\'); return false;">';
+			content += '&chatRoom_name='+item.chatRoom_name+'" onclick="window.open(this.href, \'_blank\', \'top=200,left=500,width=400,height=580,toolbars=no,scrollbars=no\'); return false;">';
 			content += item.chatRoom_name+'방</a>';
 			
 		}	

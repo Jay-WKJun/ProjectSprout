@@ -7,10 +7,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>project</title>
-<link rel="stylesheet"
-	href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-	integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
-	crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
 <link rel="stylesheet" href="ucss/ucss_project.css">
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="gantt/css/style.css" />
@@ -50,9 +47,6 @@
 					
 						<div class="list-group">
 
-							<form action="addProjectMember" id="addProjectMember"
-								method="GET"></form>
-
 							<c:forEach var="list" items="${projectMembersList}">
 								<div
 									class="dropdown dropright float-right list-group-item list-group-item-action"
@@ -80,6 +74,7 @@
 					</div>
 
 					<div id="noticeSpace" style="display: none"></div>
+					
 					<div id="noticeDetailModal">
 						<div class="modalBlack"></div>
 						<div class="noticeModalContent">
@@ -199,6 +194,8 @@
 							
 							<div id="memberPlusSpace">
 								<div class="modalBlack"></div>
+								<form action="addProjectMember" id="addProjectMember"
+								method="GET">
 								<div class="noticeModalContent rounded sbd2">
 										<input type="text" class="form-control" id="addMember"
 											name="addMember" placeholder="추가하실 아이디를 입력하세요.">
@@ -210,11 +207,12 @@
 									<div class="col">
 										<button class="btn btn-dark" id="addmem" style="margin-top:10px"
 											disabled="disabled">멤버 추가</button>
-										<button class="btn btn-danger" id="cancelmemberPlusBtn" style="margin-top:10px">닫기</button>
+										<input type="button" class="btn btn-danger" id="cancelmemberPlusBtn" style="margin-top:10px" value="닫기">
 									</div>
 									</div>
 									</div>
 								</div>
+								</form>
 							</div>
 							
 							<button class="btn btn-dark" id="projectDetail" style="margin-right:20px;width:60px">
@@ -243,7 +241,7 @@
 						<!-- 부트스트랩 modal-backdrop 클래스 지움 -->
 						<input type="hidden" id="postitNumFromProjectNum"
 							value="${mainproject_projectnum }">
-						<div id="whiteBoardModal" style="display:none">
+						<div id="whiteBoardModal" style="display:none;">
 						<div class="modalBlack"></div>
 							<div id="headers">
 								<div id="whiteBoardLoad"></div>

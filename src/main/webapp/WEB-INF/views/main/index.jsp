@@ -26,7 +26,6 @@
 </head>
 
 <body>
-	<a href="internal">internal</a>
 	<div class="wrapper">
 		<div id="loader">
 			<div class="loader">
@@ -117,7 +116,6 @@
 										</div>
 									</div>
 								</div>
-								
 							</c:if>
 			<div class="contentSpace">
 				<div class="contentSpace_left"></div>
@@ -238,7 +236,20 @@
 					<div class="contentSpace_left"></div>
 					<div class="contentSpace_center">
 						<!-- 공고글 로드 -->
-						<div id="wantedBoardLoad"></div>
+						<div class="rounded sbd2 bgwhite shadow" style="padding:40px;">
+							<ul class="nav nav-tabs">
+								<li class="nav-item bgwhite">
+									<a class="nav-link active" data-toggle="tab" id="internalWantedSpace">내부</a>
+								</li>
+								<li class="nav-item bgwhite">
+									<a class="nav-link" data-toggle="tab" id="externalWantedSpace">외부</a>
+								</li>
+							</ul>
+							<div class="rounded-bottom border-top-0 w-100 sbd2 shadow bgwhite">
+								<div id="internalWantedBoardLoad"></div>
+								<div id="wantedBoardLoad"></div>
+							</div>
+						</div>
 					</div>
 					<div class="contentSpace_right"></div>
 				</div>

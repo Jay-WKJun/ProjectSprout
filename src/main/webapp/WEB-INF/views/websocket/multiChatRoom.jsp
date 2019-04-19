@@ -5,15 +5,55 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+	<link rel="stylesheet" href="ucss/ucss_project.css">
+	<link rel="stylesheet" href="css/bootstrap.css">
 	<script src="<c:url value="/resources/js/jquery.min.js" />"></script>
 	<script src="<c:url value="/resources/js/sockjs.js" />"></script>
 	<script src="<c:url value="/resources/js/stomp.js" />"></script>
+	<script src="js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript">
 		$(function(){
 			startT();
 			connect();
+
+			//파일 선택시
+			$("#FILE_TAG").change(function(e){
+				var fileName=$('#FILE_TAG')[0].files[0].name;
+				$('#fileValue').val(fileName);
+				 //  $('input[type=file]')[0].files[0].name;
+				 //  $("#imgUpload")[0].files[0].type;
+				 //  $("#imgUpload")[0].files[0].size;
+			 });
+
 			
-			//초대하기기능
+			//파일 추가 모달 열기
+			$('#addFileModalBtn').on('click',function(){
+				$('#addFileModal').show();
+			})
+			
+			//파일 전송 버튼
+			$('#uploads').on('click',function(){
+				uploadFile();
+				$('#addFileModal').hide();
+			})
+			
+			//파일 추가 모달 닫기
+			$('#closeFileModal').on('click',function(){
+				$('#addFileModal').hide();
+			})
+			
+			//멤버 추가 모달 열기
+			$('#addMemberModalBtn').on('click',function(){
+				$('#addMemberModal').show();
+			})
+			
+			//멤버 추가 모달 닫기
+			$('#closeMemberModalBtn').on('click', function(){
+				$('#addMemberModal').hide();
+			})
+			
+			//멤버 초대
 			$("#BtnInvitation").on("click", function(){
 				// 맴버이름으로 맴버 번호가져오기
 				var memberinvitation = $('#memberinvitation').val();
@@ -250,38 +290,120 @@
 		}
 	</script>
 	<style type="text/css">
+		html{
+			height:100%;
+			background-color: #efefef;
+			overflow-y:hidden;
+		}
+		
+		body{
+			padding:5px;
+		}
+		
 	 	#chatRoom{
-			width: 350px;
+			width: 100%;
 			height: 450px; 
-			border: 1px solid;
 			overflow: scroll;
+			overflow-x:hidden;
 		} 
+		::-webkit-scrollbar-track{
+		 -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+		 border-radius: 10px;
+		 background-color: #F5F5F5;
+		}
+		
+		::-webkit-scrollbar{
+		 width: 12px;
+		 background-color: #F5F5F5;
+		}
+		
+		::-webkit-scrollbar-thumb{
+		 border-radius: 10px;
+		 -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+		 background-color: #555;
+		 }
+		 
+		 /* =======input file======== */
+		 
+
 	</style>
 <title>일반 채팅 방</title>
 </head>
 <body>
-	<div id="chatRoom">
+	<div class="useFont">
+		<div class="border-bottom-0 sbd2 w-100">
+			<div class="mainSpace">
+				<div class="mainSpace_bottom"></div>
+				<div class="mainSpace_top fontSize20" style="padding:10px;">
+					<div class="mainSpace_top_side"></div>
+					<div class="mainSpace_top_center">
+						${chatRoom_namess }
+					</div>
+					<div class="mainSpace_top_side">
+						<div class="mainSpace_top">
+							<div class="mainSpace_top_side"></div>
+							<div class="mainSpace_top_center">
+								<button class="btn btn-light" id="addMemberModalBtn">
+									<i class="fas fa-user-plus fa-lg"></i>
+								</button>
+								<div id="addMemberModal" style="display:none">
+									<div class="modalBlack"></div>
+									<div class="noticeModalContent">
+										<div style="padding:5px">
+											<input class="form-control" type="text" id="memberinvitation">
+										</div>
+										<div style="padding:5px">
+											<input type="button" class="btn btn-dark" id="BtnInvitation" value="초대">
+											<button class="btn btn-danger" id="closeMemberModalBtn">닫기</button>
+										</div>
+									</div>
+									</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="mainSpace_bottom"></div>
+			</div>
+		</div>
+		<div class="border-bottom-0 border-right-0 border-left-0 sbd1"></div>
+		<div id="chatRoom" class="border-top-0 border-bottom-0 sbd2">
+		</div>
+		<div class="border-bottom-0 border-right-0 border-left-0 sbd1"></div>
+		<div class="border-top-0 sbd2">
+			<div class="mainSpace_top">
+				<div class="mainSpace_top_center">
+					<button class="btn btn-dark" id="addFileModalBtn">
+						<i class="fas fa-file-medical fa-lg"></i>
+					</button>
+					<div id="addFileModal" style="display:none">
+						<div class="modalBlack"></div>
+						<div class="noticeModalContent">
+							<form id="FILE_FORM"  method="post" enctype="multipart/form-data">
+								<!-- 새로 첨부할 파일 선택 --> 
+								<div style="padding:5px">
+									<input type="file" class="form-control" name="upload" id="FILE_TAG" size="30">
+									<input type="text" id="fileValue" readonly="readonly">
+									<input type="hidden" value="${chatRoom_namess }" id="chatRoom_namess">
+									<input type="hidden" value="${sessionScope.chatRoom_num }" id="chatRoom_nums">
+								</div>
+								<div style="padding:5px">
+									<input type="button" id ="uploads" class="btn btn-dark" value="전송">
+									<input type="button" id ="closeFileModal" class="btn btn-danger" value="닫기">
+								</div>
+							</form>
+						</div>
+					</div>					
+				</div>
+				<div class="mainSpace_top_side">
+					<input class="form-control w-100" type="text" id="chatbox" onkeydown="enterkey();">
+				</div>
+				<div class="mainSpace_top_center">
+					<input class="btn btn-dark" type="button" id="send" value="보내기">
+				</div>
+			</div>
+			
+		</div>
 	</div>
-	<input type="text" id="chatbox" onkeydown="enterkey();">
-	<input type="button" id="send" value="전송"><br>
 	<br>
-	
-	<form id="FILE_FORM"  method="post" enctype="multipart/form-data">
-		<table>
-			<tr>
-				<td>파일첨부</td>
-				<td>
-					<!-- 새로 첨부할 파일 선택 --> 
-					<input type="file" name="upload" id="FILE_TAG"size="30">
-					<input type="hidden" value="${chatRoom_namess }" id="chatRoom_namess">
-					<input type="hidden" value="${sessionScope.chatRoom_num }" id="chatRoom_nums">
-					
-					<a id ="uploads" class="ui-shadow ui-btn ui-corner-all" href="javascript:uploadFile();">전송</a>
-				</td>
-			</tr>
-		</table>
-	</form>
-	<input type="text" id="memberinvitation">
-	<input type="button" id="BtnInvitation" value="초대"><br>
 </body>
 </html>

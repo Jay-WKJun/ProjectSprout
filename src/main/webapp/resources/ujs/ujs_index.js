@@ -12,6 +12,23 @@ $(function() {
 		location.href = "logout";
 	});
 	
+	//내부공고글 보기
+	$('#externalWantedSpace').on('click', function(){
+		$('#wantedBoardLoad').show();
+		$('#internalWantedBoardLoad').hide();
+	})
+	
+	//외부공고글 보기
+	$('#internalWantedSpace').on('click',function(){
+		$('#wantedBoardLoad').hide();
+		$('#internalWantedBoardLoad').show();
+	})
+	
+	//내부 공고글 작성
+	$('#writeInternalWantedBoard').on('click', function(){
+		location.href="boardRegist";
+	})
+	
 	//프로젝트 생성 버튼
 	$('#newProjectBtn').on('click', function() {
 		$.ajax({
@@ -38,6 +55,7 @@ $(function() {
 		$('#newProject').attr('style', 'display:none');
 		$('#ProjectStartSpace').attr('style', 'display:none');
 		$('#wantedBoardLoad').load('wantedBoard');
+		$('#internalWantedBoardLoad').load('internal');
 	})
 	
 	$('#projectCreateBtn').on('click', function() {

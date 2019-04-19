@@ -24,16 +24,86 @@
 	font-size:120%;
 }
 
+html{
+	background-color: #efefef;
+}
+
 .wrapper{
 	font-family:'binggrae', 'bada','Serif';
 	font-size:110%;
     font-weight: 100;
     padding:0;
+    background-color: #efefef;
+}
+
+.sbd2{
+	border:2px solid #6079a0;
+}
+
+.sbd1{
+	border:1px solid #6079a0;
+}
+
+.bgwhite{
+	background-color: white;
+}
+
+#loader{
+	text-align:center;
+	color:white;
+}
+
+.loader{
+	position:absolute;
+	top:40%;
+	left:35%;
+	z-index: 5;	
+}
+
+.loaderImg{
+	width:30%;
+	height:auto;
+	z-index: -1;
+	filter:brightness(130%);
+}
+
+.loaderBack{
+	position: absolute;
+	left:0;
+	top:0;
+	opacity: 0.3;
+	background-color:black;
+	width:100%;
+	height:1300px;
+	z-index: 3;
+}
+
+.passwordFont{
+	font-family:'Serif';
 }
 
 /*=========모든 컨텐츠에 사용하는 div==========*/
 .contentItem{
     padding: 0;
+}
+
+/* ==================스크롤================== */
+
+::-webkit-scrollbar-track{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+		
+::-webkit-scrollbar{
+	width: 12px;
+	background-color: #F5F5F5;
+}
+		
+::-webkit-scrollbar-thumb{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #555;
 }
 
 /*==================상단 영역=================*/

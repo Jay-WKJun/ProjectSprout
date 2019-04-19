@@ -310,37 +310,59 @@
 						
 				//내용 쓰기 메소드
 		        $('.ctxt').html(
-		        		+'<div class="contentItem_text">' 
+		        		'<div class="rounded sbd1" style="padding:10px;margin-bottom:15px">'
+		        		+'<div class="border-top-0 border-right-0 border-left-0 sbd1">' 
 	        			+'제목'
 	        			+'</div>'
-	        			+'<div class="contentItem_input">' 
-		        		+'projectContent_title : '+pc.projectContent_title+'<br>'
+	        			+'<div class="contentItem_input" style="margin-top:20px;">' 
+		        		+pc.projectContent_title
 		        		+'</div>'
-		        		+'<div class="contentItem_text">' 
-	        			+'제목'
+		        		+'</div>'
+		        		
+		        		+'<div class="rounded sbd1" style="padding:10px;margin-bottom:15px">'
+		        		+'<div class="border-top-0 border-right-0 border-left-0 sbd1">' 
+	        			+'내용'
 	        			+'</div>'
-	        			+'<div class="contentItem_input">' 
-		        		+'projectContent_content : '+pc.projectContent_content+'<br>'
+	        			+'<div class="contentItem_input" style="margin-top:20px;">' 
+	        			+pc.projectContent_content
 		        		+'</div>'
-		        		+'<div class="contentItem_text">' 
-	        			+'제목'
+		        		+'</div>'
+		        		
+		        		+'<div class="rounded sbd1" style="padding:10px;margin-bottom:15px">'
+		        		+'<div class="border-top-0 border-right-0 border-left-0 sbd1">' 
+	        			+'시작 날짜'
 	        			+'</div>'
-	        			+'<div class="contentItem_input">' 
-		        		+'projectContent_startDate : '+pc.projectContent_startDate+'<br>'
+	        			+'<div class="contentItem_input" style="margin-top:20px;">' 
+	        			+pc.projectContent_startDate
 		        		+'</div>'
-		        		+'<div class="contentItem_text">' 
-	        			+'제목'
+		        		+'</div>'
+		        		
+		        		+'<div class="rounded sbd1" style="padding:10px;margin-bottom:15px">'
+		        		+'<div class="border-top-0 border-right-0 border-left-0 sbd1">' 
+	        			+'종료 날짜'
 	        			+'</div>'
-	        			+'<div class="contentItem_input">' 
-		        		+'projectContent_endDate : '+pc.projectContent_endDate+'<br>'
+	        			+'<div class="contentItem_input" style="margin-top:20px;">' 
+	        			+pc.projectContent_endDate
 		        		+'</div>'
-		        		+'<div class="contentItem_text">' 
-	        			+'제목'
+		        		+'</div>'
+		        		
+		        		+'<div class="rounded sbd1" style="padding:10px;margin-bottom:15px">'
+		        		+'<div class="border-top-0 border-right-0 border-left-0 sbd1">' 
+	        			+'색깔'
 	        			+'</div>'
-	        			+'<div class="contentItem_input">' 
-		        		+'projectContent_color : '+pc.projectContent_color+'<br>'
+	        			+'<div class="contentItem_input" style="margin-top:20px;">' 
+	        			+'<div style="width:100%;height:30px;background-color:'+pc.projectContent_color+'"></div>'
 		        		+'</div>'
-		        		+'member_name : '+memberName
+		        		+'</div>'
+		        		
+		        		+'<div class="rounded sbd1" style="padding:10px;">'
+		        		+'<div class="border-top-0 border-right-0 border-left-0 sbd1">' 
+	        			+'멤버'
+	        			+'</div>'
+	        			+'<div class="contentItem_input" style="margin-top:20px;">' 
+	        			+memberName
+		        		+'</div>'
+		        		+'</div>'
 		        	);
 				
 					}
@@ -393,34 +415,39 @@
 		        			+'제목'
 		        			+'</div>'
 		        			+'<div class="contentItem_input">' 
-		        			+'<input type="text" class="form-control" id="projectContent_title" name="projectContent_title" value="'+pc.projectContent_title+'"><br>'
+		        			+'<input type="text" class="form-control" id="projectContent_title" name="projectContent_title" value="'+pc.projectContent_title+'">'
 		        			+'</div>'
 		        			+'<div class="contentItem_text">' 
 		        			+'내용'
 		        			+'</div>'
 		        			+'<div class="contentItem_input">' 
-		        			+'<input type="text" class="form-control" style="height:300px" id="projectContent_content" name="projectContent_content" value="'+pc.projectContent_content+'"><br>'
+		        			+'<input type="text" class="form-control" style="height:300px" id="projectContent_content" name="projectContent_content" value="'+pc.projectContent_content+'">'
 		        			+'</div>'
 		        			+'<div class="contentItem_text">' 
 		        			+'시작 날짜'
 		        			+'</div>'
 		        			+'<div class="contentItem_input">' 
-		    	        	+'<input type="date" class="form-control" id="projectContent_startDate" name="projectContent_startDate" value="'+startDateCh+'"><br>'
+		    	        	+'<input type="date" class="form-control" id="projectContent_startDate" name="projectContent_startDate" value="'+startDateCh+'">'
 		    	        	+'</div>'
 		    	        	+'<div class="contentItem_text">' 
 		        			+'종료 날짜'
 		        			+'</div>'
 		        			+'<div class="contentItem_input">' 
-		    	        	+'<input type="date" class="form-control" id="projectContent_endDate" name="projectContent_endDate" value="'+endDateCh+'"><br>'
+		    	        	+'<input type="date" class="form-control" id="projectContent_endDate" name="projectContent_endDate" value="'+endDateCh+'">'
 		    	        	+'</div>'
 		    	        	+'<div class="contentItem_text">' 
 		        			+'색깔'
 		        			+'</div>'
 		        			+'<div class="contentItem_input">' 
-		    	        	+'<input type="color" class="form-control" id="projectContent_color" name="projectContent_color" value="'+pc.projectContent_color+'"><br>'
+		    	        	+'<input type="color" class="form-control" id="projectContent_color" name="projectContent_color" value="'+pc.projectContent_color+'">'
 		    	        	+'</div>'
-		    	        	+'<input type="hidden" id="mainproject_projectNum" name="mainproject_projectNum" value="'+pc.mainproject_projectNum+'"><br>'
-		    	        	+'<input type="text" id="member_num" name="member_num" value="'+memberName+'"><br>'
+		    	        	+'<input type="hidden" id="mainproject_projectNum" name="mainproject_projectNum" value="'+pc.mainproject_projectNum+'">'
+		    	        	+'<div class="contentItem_text">' 
+		        			+'멤버'
+		        			+'</div>'
+		        			+'<div class="contentItem_input">' 
+		    	        	+'<input type="text" id="member_num" name="member_num" value="'+memberName+'">'
+		    	        	+'</div>'
 		    	        	+'</form>'
 		    	        	);
 		        	
@@ -430,8 +457,9 @@
 						
 		        	
 		        	//완료버튼 생성
-		        	$('div.btn-r').html('<input type="button" style="height:40px;margin-right:5px" class="btn-layerClose" id="closebutton" onclick="closing()" value="닫기" />'
-		        			+'<input type="button" style="height:40px;margin-right:5px" class="btn-layerClose" id="updateContent" onclick="doUpdateSubmit()" value="완료" />');
+		        	$('div.btn-r').html(
+		        			'<input type="button" style="height:40px;margin-right:5px" class="btn btn-dark btn-layerClose" id="updateContent" onclick="doUpdateSubmit()" value="완료" />'
+		        			+'<input type="button" style="height:40px;margin-right:5px" class="btn btn-danger btn-layerClose" id="closebutton" onclick="closing()" value="닫기" />');
 		            return false;
 				});
 		        	

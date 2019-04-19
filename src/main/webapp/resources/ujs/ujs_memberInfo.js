@@ -11,6 +11,11 @@ $(function(){
 		location.href="delete_info";
 	})
 	
+	//홈으로
+	$('#cancleBtn').on('click',function(){
+		location.href="/sprout";
+	})
+	
 	$('#profileDelete').on('click',function(){
 		alert('프로필 사진을 삭제합니다 ');
 		$.ajax({
