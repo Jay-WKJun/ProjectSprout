@@ -33,7 +33,7 @@
 					<li class="nav-item bgwhite"><a class="nav-link active"
 						id="memberChangeBtn" data-toggle="tab">멤버</a></li>
 					<li class="nav-item bgwhite"><a class="nav-link" id="messageSpaceBtn"
-						data-toggle="tab">메세지</a></li>
+						data-toggle="tab">채팅</a></li>
 					<li class="nav-item bgwhite" id="noticeCheckBtn"><a
 						class="nav-link" data-toggle="tab">공지사항</a></li>
 

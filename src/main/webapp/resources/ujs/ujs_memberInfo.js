@@ -1,6 +1,13 @@
 
 // 프로필 사진 삭제하기.
 $(function(){
+	$('#loader').hide();
+	
+	//홈으로 이동
+	$('#home').on('click',function(){
+		$('#loader').show();
+		location.href="/sprout";
+	})
 	
 	$('#update_with_old_info').on('click', function(){
 		validate();
@@ -8,22 +15,25 @@ $(function(){
 	
 	//회원 탈퇴
 	$('#delete_infoBtn').on('click',function(){
+		$('#loader').show();
 		location.href="delete_info";
 	})
 	
 	//홈으로
 	$('#cancleBtn').on('click',function(){
+		$('#loader').show();
 		location.href="/sprout";
 	})
 	
 	$('#profileDelete').on('click',function(){
-		alert('프로필 사진을 삭제합니다 ');
+		$('#loader').show();
 		$.ajax({
 			url : 'del_pro', // 프로필 사진을 삭제하기
 			type : 'get',
 			success : function(result){
 				$("#picture").attr("src", "img/empty_profile.png");
 				$("#picture").attr("class", "rounded-circle border profileImg");
+				$('#loader').hide();
 			}
 		});
 	})
@@ -69,6 +79,7 @@ function validate() {
 		member_address.focus();
 		return false;
 	}
+	$('#loader').show();
 	$('#updateForm').submit();
 }
 

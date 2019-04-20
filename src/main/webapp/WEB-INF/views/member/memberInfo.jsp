@@ -19,11 +19,18 @@
 </head>
 <body>
 	<div class="wrapper">
+		<div id="loader">
+			<div class="loader">
+				<img class="loaderImg" src="img/loading_leaf_circle.gif"><br>
+				Loading...
+			</div>
+			<div class="loaderBack"></div>
+		</div>
 		<div class="topSpace">
 			<div class="topSpace_side"></div>
 			<div class="topSpace_center">
 				<div class="contentItem" style="margin-top: 20px">
-					<a href="/sprout"><img class="webLogo" src="img/sprout_logo.png"></a>
+					<a href="#" id="home"><img class="webLogo" src="img/sprout_logo.png"></a>
 				</div>
 			</div>
 			<div class="topSpace_side"></div>

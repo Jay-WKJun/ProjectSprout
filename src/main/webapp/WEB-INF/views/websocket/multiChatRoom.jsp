@@ -299,6 +299,7 @@
 		
 		body{
 			padding:5px;
+			background-color: #efefef;
 		}
 		
 	 	#chatRoom{
@@ -331,7 +332,7 @@
 <title>일반 채팅 방</title>
 </head>
 <body>
-	<div class="useFont">
+	<div class="useFont bgwhite">
 		<div class="border-bottom-0 sbd2 w-100">
 			<div class="mainSpace">
 				<div class="mainSpace_bottom"></div>

@@ -12,21 +12,22 @@ $(function() {
 		location.href = "logout";
 	});
 	
-	//내부공고글 보기
+	//외부공고글 보기
 	$('#externalWantedSpace').on('click', function(){
 		$('#wantedBoardLoad').show();
 		$('#internalWantedBoardLoad').hide();
 	})
 	
-	//외부공고글 보기
+	//내부공고글 보기
 	$('#internalWantedSpace').on('click',function(){
 		$('#wantedBoardLoad').hide();
 		$('#internalWantedBoardLoad').show();
 	})
 	
-	//내부 공고글 작성
-	$('#writeInternalWantedBoard').on('click', function(){
-		location.href="boardRegist";
+	//내부 공고글 작성 모달
+	$('#writeInternalWantedBoard').on('click',function(){
+		$('#writeBoardLoad').load('boardRegist');
+		$('#internalWantedWriteModal').show();
 	})
 	
 	//프로젝트 생성 버튼

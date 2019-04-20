@@ -19,11 +19,18 @@
 </head>
 <body>
 	<div class="wrapper">
+		<div id="loader">
+			<div class="loader">
+				<img class="loaderImg" src="img/loading_leaf_circle.gif"><br>
+				Loading...
+			</div>
+			<div class="loaderBack"></div>
+		</div>
 		<div class="topSpace">
 			<div class="topSpace_side"></div>
 			<div class="topSpace_center">
 				<div class="contentItem" style="margin-top: 20px">
-					<a href="/sprout"><img class="webLogo"
+					<a href="#" id="home"><img class="webLogo"
 						src="img/sprout_logo.png"></a>
 				</div>
 			</div>
@@ -78,7 +85,7 @@
 						<input type="file" class="form-control-file border" id="upload" name="upload" value="파일첨부">
 						<input class="text" type="hidden" id="memberImage_saveAddress" name="memberImage_saveAddress">
 						<div class="contentItem_input" style="margin-top: 50px;">
-		<!-- 버튼 -->			<input type="button" class="btn btn-dark w-100" style="height: 45px" id="joinBtn" value="가입하기">
+		<!-- 버튼 -->	<input type="button" class="btn btn-dark w-100" style="height: 45px" id="joinBtn" value="가입하기">
 						</div>
 					</div>
 				</div>
