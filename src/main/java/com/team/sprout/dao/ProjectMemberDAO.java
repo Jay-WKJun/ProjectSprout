@@ -35,6 +35,8 @@ public interface ProjectMemberDAO {
 
 
 	public int kickMember(ProjectMember member);
+
+
 	
 
 

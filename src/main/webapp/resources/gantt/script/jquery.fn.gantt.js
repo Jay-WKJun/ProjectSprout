@@ -366,8 +366,8 @@ jQuery.browser = {};
                 var entries = [];
                 $.each(element.data, function (i, entry) {
                     if (i >= element.pageNum * settings.itemsPerPage && i < (element.pageNum * settings.itemsPerPage + settings.itemsPerPage)) {
-                        entries.push('<div class="row name row' + i + (entry.desc ? '' : ' fn-wide') + '" style="width:110px;" id="rowheader' + i + '" offset="' + i % settings.itemsPerPage * tools.getCellSize() + '">');
-                        entries.push('<span class="fn-label' + (entry.cssClass ? ' ' + entry.cssClass : '') + '">' + entry.name + '</span>');
+                        entries.push('<div class="row name row' + i + (entry.desc ? '' : ' fn-wide') + '" style="width:110px; height:24px;" id="rowheader' + i + '" offset="' + i % settings.itemsPerPage * tools.getCellSize() + '">');
+                        entries.push('<span class="fn-label' + (entry.cssClass ? ' ' + entry.cssClass : '') + '" style="height:25px;">' + entry.name + '</span>');
                         entries.push('</div>');
 
                        /* if (entry.desc) {
@@ -384,6 +384,7 @@ jQuery.browser = {};
 
             // Create and return the data panel element
             dataPanel: function (element, width) {
+            	width += 5;
                 var dataPanel = $('<div class="dataPanel" style="width: ' + width + 'px;"/>');
 
                 // Handle mousewheel events for scrolling the data panel
@@ -616,7 +617,7 @@ jQuery.browser = {};
                             if (rday.getFullYear() !== year) {
                                 yearArr.push(
                                     ('<div class="row header year" style="width: '
-                                        + tools.getCellSize() * daysInYear
+                                        + ((tools.getCellSize() * daysInYear)+1)
                                         + 'px;"><div class="fn-label">'
                                         + year
                                         + '</div></div>'));
@@ -629,7 +630,7 @@ jQuery.browser = {};
                             if (rday.getMonth() !== month) {
                                 monthArr.push(
                                     ('<div class="row header month" style="width:'
-                                       + tools.getCellSize() * daysInMonth
+                                       + ((tools.getCellSize() * daysInMonth)+1)
                                        + 'px;"><div class="fn-label">'
                                        + settings.months[month]
                                        + '</div></div>'));
@@ -640,7 +641,7 @@ jQuery.browser = {};
 
                             // Fill weeks
                             dayArr.push('<div class="row day wd" '
-                                    + ' id="' + rday.getWeekId() + '" offset="' + i * tools.getCellSize() + '" repdate="' + rday.genRepDate() + '"> '
+                                    + ' id="' + rday.getWeekId() + '" offset="' + i * tools.getCellSize() + '" repdate="' + rday.genRepDate() + '" style="width:25px;height:24px"> '
                                     + ' <div class="fn-label">' + rday.getWeekOfYear() + '</div></div>');
                         }
 
@@ -743,14 +744,48 @@ jQuery.browser = {};
 
                             // Fill months
                             if (rday.getMonth() !== month) {
-                                monthArr.push(
-                                    ('<div class="row header month" style="width:'
-                                       + tools.getCellSize() * daysInMonth
-                                       + 'px;"><div class="fn-label">'
-                                       + settings.months[month]
-                                       + '</div></div>'));
-                                month = rday.getMonth();
-                                daysInMonth = 0;
+                                if (i == 0) {
+                                	monthArr.push(
+		                                    ('<div class="row header month" style="width:'
+		                                       + ((tools.getCellSize() * daysInMonth)-23)
+		                                       + 'px;"><div class="fn-label">'
+		                                       + settings.months[month]
+		                                       + '</div></div>'));
+		                                month = rday.getMonth();
+		                                daysInMonth = 0;
+								} else {
+									if (month == 0 || month == 2 || month == 4 || month == 6 || month == 7 || month == 9 || month == 11) {
+	                                	alert(1);
+	                                	monthArr.push(
+			                                    ('<div class="row header month" style="width:'
+			                                       + ((tools.getCellSize() * daysInMonth)+1)
+			                                       + 'px;"><div class="fn-label">'
+			                                       + settings.months[month]
+			                                       + '</div></div>'));
+			                                month = rday.getMonth();
+			                                daysInMonth = 0;
+									} else if(month == 1) {
+										alert(2);
+										monthArr.push(
+			                                    ('<div class="row header month" style="width:'
+			                                       + ((tools.getCellSize() * daysInMonth)-23)
+			                                       + 'px;"><div class="fn-label">'
+			                                       + settings.months[month]
+			                                       + '</div></div>'));
+			                                month = rday.getMonth();
+			                                daysInMonth = 0;
+									} else {
+										alert(3);
+										monthArr.push(
+			                                    ('<div class="row header month" style="width:'
+			                                       + ((tools.getCellSize() * daysInMonth)+1)
+			                                       + 'px;"><div class="fn-label">'
+			                                       + settings.months[month]
+			                                       + '</div></div>'));
+			                                month = rday.getMonth();
+			                                daysInMonth = 0;
+									}
+								}
                             }
                             daysInMonth++;
 
@@ -761,10 +796,10 @@ jQuery.browser = {};
                             }
 
                             dayArr.push('<div class="row date ' + day_class + '" '
-                                    + ' id="dh-' + tools.genId(rday.getTime()) + '" offset="' + i * tools.getCellSize() + '" repdate="' + rday.genRepDate() + '> '
+                                    + ' id="dh-' + tools.genId(rday.getTime()) + '" offset="' + i * tools.getCellSize() + '" repdate="' + rday.genRepDate() + '" style="width:25px;height:24px"> '
                                     + ' <div class="fn-label">' + rday.getDate() + '</div></div>');
                             dowArr.push('<div class="row day ' + day_class + '" '
-                                    + ' id="dw-' + tools.genId(rday.getTime()) + '"  repdate="' + rday.genRepDate() + '"> '
+                                    + ' id="dw-' + tools.genId(rday.getTime()) + '"  repdate="' + rday.genRepDate() + '" style="width:25px; height:24px;"> '
                                     + ' <div class="fn-label">' + settings.dow[getDay] + '</div></div>');
                         } //for
 
@@ -813,7 +848,7 @@ jQuery.browser = {};
                                     .click(function () {
                                         core.navigatePage(element, -1);
                                     }))
-                                .append($('<div class="page-number"/>')
+                                .append($('<div class="page-number" style="height:20px;"/>')
                                         .append($('<span/>')
                                             .html(element.pageNum + 1 + ' of ' + element.pageCount)))
                                 .append($('<span role="button" class="nav-link2 nav-page-next"/>')

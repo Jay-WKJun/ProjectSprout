@@ -1,5 +1,6 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -96,9 +97,11 @@
 	<div class="gantt"></div>
 		<div style="text-align:right">
 			<hr style="background-color:#6079a0">
+			<c:if test="${member_rank eq 5}">
 			<button class="btn btn-dark" id="regist" value="" onclick="layer_popup('#layer2', null)">
 				<i class="far fa-calendar-check fa-lg"></i>
 			</button>
+			</c:if>
 		</div>
 	<!-- 여기서부터  popup설정 -->
 	<a href="#layer2" class="btn-example"></a>
