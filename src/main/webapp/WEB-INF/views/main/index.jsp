@@ -13,10 +13,7 @@
 <meta name="google-signin-client_id"
 	content="302280011098-j31rpdam1nmlron2808kv4g4gb6p21a4.apps.googleusercontent.com">
 <title>Sprout</title>
-<link rel="stylesheet"
-	href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-	integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
-	crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
 <link rel="stylesheet" href="ucss/ucss_index.css">
 <link rel="stylesheet" href="css/bootstrap.css">
 <!-- 구글 api -->
@@ -252,6 +249,15 @@
 						</div>
 					</div>
 					<div class="contentSpace_right"></div>
+				</div>
+			</div>
+			
+			<!-- 내부 공고글 작성 모달 -->
+							
+			<div id="internalWantedWriteModal">
+				<div class="modalBlack"></div>
+				<div class="noticeModalContent rounded sbd2">
+					<div id="writeBoardLoad"></div>
 				</div>
 			</div>
 				

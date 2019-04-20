@@ -11,7 +11,7 @@
 	<h1>wantedBoard_directly.jsp</h1>
 	<hr>
 	
-	<form action="write_wanted" name=" " id="">
+	<form action="write_wanted" id="">
 	
 	<table>
 	<tr>

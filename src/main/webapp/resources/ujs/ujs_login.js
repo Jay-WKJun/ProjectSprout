@@ -1,4 +1,17 @@
 $(function(){
+	$('#loader').hide();
+	
+	//홈이동
+	$('#home').on('click', function(){
+		$('#loader').show();
+		location.href="/sprout";
+	})
+	
+	$('#join').on('click',function(){
+		$('#loader').show();
+		location.href="join";
+	})
+	
 	$('#loginBtn').on('click', login);
 })
 

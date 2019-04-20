@@ -187,3 +187,27 @@ html{
 
 #internalWantedBoardLoad{
 }
+
+#internalWantedWriteModal{
+	display:none;
+}
+
+.noticeModalContent{
+	position: absolute;
+	background-color:white;
+	padding:10px;
+	top:20%;
+	left:20%;
+	width:60%;
+	text-align:right;
+}
+
+.modalBlack{
+	position:absolute;
+	top:0;
+	left:0;
+	background-color:black;
+	opacity: 0.3;
+	width:100%;
+	height:1300px;
+}

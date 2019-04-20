@@ -23,11 +23,18 @@
 
 <body>
 	<div class="wrapper">
+		<div id="loader">
+			<div class="loader">
+				<img class="loaderImg" src="img/loading_leaf_circle.gif"><br>
+				Loading...
+			</div>
+			<div class="loaderBack"></div>
+		</div>
 		<div class="topSpace">
 			<div class="topSpace_side"></div>
 			<div class="topSpace_center">
 				<div class="contentItem" style="padding: 20px;">
-					<a href="/sprout"><img class="webLogo"
+					<a href="#" id="home"><img class="webLogo"
 						src="img/sprout_logo.png"></a>
 				</div>
 			</div>
@@ -77,8 +84,8 @@
 									</button>
 								</div>
 								<div style="margin-top: 10px">
-									<a href="#" style="color: black; margin-right: 10px">비밀번호
-										찾기</a> <a href="join" style="color: black; margin-left: 10px">회원가입</a>
+									<a href="#" style="color: black; margin-right: 10px">비밀번호찾기</a> 
+									<a href="#" id="join" style="color: black; margin-left: 10px">회원가입</a>
 								</div>
 							</form>
 						</div>
@@ -151,7 +158,6 @@
 						url : 'googleSignInCallback',
 						data : send,
 						success : function(result) {
-							alert("로그인에 성공하셨습니다.")
 							//얘를 로그인을 눌럿을때 가는 컨트롤러로 이어준다.
 							signOut();
 							window.location.href = 'http://localhost:2848/sprout/googleChecked?memberId='
