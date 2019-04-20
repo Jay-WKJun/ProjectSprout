@@ -57,10 +57,10 @@ public class DocumentFileService {
 		System.out.println("확장자 : "+ext);
 		
 		// DB에 저장될 파일명
-		// savedFilename = filename+"_"+sdf.format(new Date()) + ext;
+		// savedFilename = filename+sdf.format(new Date()) + ext;
 		
-		filename = inputedFilename + "_"; // 확장명이 안붙은
-		savedFilename = inputedFilename + "_" + ext; // 확장명이 붙은
+		filename = inputedFilename; // 확장명이 안붙은
+		savedFilename = inputedFilename + ext; // 확장명이 붙은
 		
 		//HDD에 저장할 파일명. 같은 이름의 파일이 있는 경우의 처리
 		/*while (true) {
@@ -88,7 +88,7 @@ public class DocumentFileService {
 	
 	public static boolean saveFile(MultipartFile upload, String uploadPath, String savedFilename, String ext) {
 		
-		String Filename = savedFilename + "_" + ext;
+		String Filename = savedFilename + ext;
 		
 		//저장할 전체 경로를 포함한 File 객체
 				File serverFile = null;	

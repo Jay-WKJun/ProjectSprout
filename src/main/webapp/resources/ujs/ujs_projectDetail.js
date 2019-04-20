@@ -3,20 +3,15 @@ $(function(){
 	getFileList();
 	folderForm();
 	
-	// 파일 업로드 버튼
-	$('#fileUpLoadBtn').on('click', function(){
-		if($('#upLoadFile').val()==""){
-			alert('파일을 선택해주세요.');
-		}else{
-			fileUpLoad();
-		}
-	})
+	//문서 작성 폼 생성
+	$('#createDocument').on('click', function(){
+		createForm();
+	});
 	
-	// 폴더 생성 버튼
-	$('#createFolderInputBtn').on('click',changeFolderForm);
-	
+	//폴더 select에 변화가 있으면 감지해서 실행해라
 	$(document).on('change','select',function(){
-		var str = $( "select option:selected" ).val();
+		var str = $(this).val();
+		
 		alert(str);
 		
 		if (str == "default") {
@@ -27,19 +22,23 @@ $(function(){
 				url : 'loadBoard',
 				data : 'board_num='+str,
 				success : function(result){
-					var tag = '<div>';
-					tag += result.boardTitle;
+					$('#createFolderSpace').text('');
+					var tag = '<div id="forLeftButton">';
+					tag += '</div>'
+					tag += '<div>'
+					tag += '<h1 style="text-align : center">'+result.boardTitle+'</h1><br>';
 					$.each(result.files, function(index, item){
-						tag += item.document_file_location;
+						tag += '<img src="'+item.document_file_location+'/'+item.document_file_originalfileName+item.document_file_extension+'">';
 					})
-					tag += result.boardContent;
+					tag += '<div>'+result.boardContent+'</div>';
 					tag += '</div>';
-					$('.contentSpace').html(tag)
+					tag += '<div id="forRightButton">'
+					tag += '</div>'
+					$('.contentSpace').html(tag);
 				}
 			});
+			$(this).val("default").prop("selected", true);
 		}
-		
-		
 	});
 	
 })
@@ -64,7 +63,7 @@ function fileUpLoad() {
 				$('#document_board_title').val('');
 				$('#document_board_content').val('');
 				$('#file_name').val('');
-				//getFileList();
+				getFileList();
 				folderForm();
 			} else {
 				alert(result);
@@ -88,9 +87,8 @@ function folderForm(){
 	$('#folderDiv').html(temp);
 }
 		
-//폴더와 파일 리스트 가져오기
+//모든 폴더와 파일 리스트 가져오기
 function getFileList(){
-	//ajax로 가자
 	
 	$.ajax({
 		type : 'GET',
@@ -100,7 +98,7 @@ function getFileList(){
 			var tag = '<div>';
 			$.each(result, function(index, item){
 				//map을 하나식 꺼낸다.
-				tag += '<p>Folder <h2>'+item.folderName+'</h2></p>';
+				tag += '<h2>'+item.folderName+'</h2>';
 				tag += '<select name="document_board_num" id="selectBoard">';
 				tag += '<option value="default" selected="selected">'+item.folderName+'</option>'
 				//alert(item.folderName);
@@ -121,4 +119,40 @@ function getFileList(){
 			
 		}
 	});
+}
+
+
+
+//프로젝트 생성폼 html 써주는 것
+function createForm() {
+	var formTag = '<form class="" id="documentFileUpLoadForm" method="post" enctype="multipart/form-data">';
+	formTag += '<p id="folderDiv">';
+	formTag += '<select name="folder_name">';
+	formTag += '<option value="testFolder">testFolder</option>';
+	formTag += '</select>';
+	formTag += '</p>';
+	formTag += '<input type="file" value="파일 찾기" id="upLoadFile" name="upLoadFile">';
+	formTag += '<input type="text" id="document_board_title" name="document_board_title" placeholder="title">';
+	formTag += '<input type="text" id="document_board_content" name="document_board_content" placeholder="content">';
+	formTag += '<input type="text" id="file_name" name="file_name" placeholder="파일 이름">';
+	formTag += '</form>';
+	formTag += '<input type="button" class="btn btn-dark" id="fileUpLoadBtn" value="파일 올리기">';	
+	var folderTag  = '<button class="btn btn-dark" id="createFolderInputBtn">폴더 생성</button>';
+
+	$('#contentSpace').html(formTag);
+	$('#createFolderSpace').html(folderTag);
+
+	// 파일 업로드 버튼
+	$('#fileUpLoadBtn').on('click', function(){
+		if($('#upLoadFile').val()==""){
+			alert('파일을 선택해주세요.');
+		}else{
+			fileUpLoad();
+		}
+	});
+	
+	// 폴더 생성 버튼
+	$('#createFolderInputBtn').on('click',changeFolderForm);
+	
+	
 }

@@ -1,6 +1,7 @@
 package com.team.sprout.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import com.team.sprout.vo.DocumentBoard;
 import com.team.sprout.vo.DocumentFile;
@@ -16,7 +17,7 @@ public interface DocumentFileManagerDAO {
 
 	public int insertDocumentFile(DocumentFile documentFile);
 
-	public DocumentFolder selectFolderNum(String folder_title);
+	public DocumentFolder selectFolderNum(Map<String, String> map);
 
 	public List<DocumentFolder> selectfolderList();
 

@@ -1,6 +1,8 @@
 package com.team.sprout.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +25,13 @@ public class DocumentFileManagerRepository {
 		
 	}
 	
-	public DocumentFolder selectFolderNum(String folder_title) {
+	public DocumentFolder selectFolderNum(String mainproject_projectnum, String folder_title) {
 		DocumentFileManagerDAO dao=session.getMapper(DocumentFileManagerDAO.class);
-		DocumentFolder result = dao.selectFolderNum(folder_title);
+		
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("mainproject_projectnum", mainproject_projectnum);
+		map.put("folder_title", folder_title);
+		DocumentFolder result = dao.selectFolderNum(map);
 		return result;
 	}
 
