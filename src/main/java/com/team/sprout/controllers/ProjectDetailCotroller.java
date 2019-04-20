@@ -49,18 +49,21 @@ public class ProjectDetailCotroller {
 
 		return "project/detailPage";
 	}
-
+	
+	/*
+	 * 모든 폴더리스트와 board를 가져온다.
+	 */
 	@RequestMapping(value = "/loadList", method = RequestMethod.GET)
 	@ResponseBody
-	public List<Map> loadList() {
-		// TODO:여기 구현
-		// TODO:동시에 jsp수정
-		// TODO:폴더 생성 메소드 구현
+	public List<Map> loadList(HttpSession session) {
 
 		// 접속시 필요한 것
 		// mainproject_projectnum으로 모든 폴더 찾기
 		// 각 폴더가 가진 파일들을 select형태로 풀어서 표현한다.
 		// select의 첫 이름은 폴더의 이름이다.
+		
+		String mainproject_projectnum = (String)session.getAttribute("mainproject_projectnum");
+		System.out.println("mainproject_projectnum = "+mainproject_projectnum);
 
 		// 이곳에 모든 원기옥을 모은다.
 		List<Map> map = new ArrayList<>();
@@ -95,7 +98,10 @@ public class ProjectDetailCotroller {
 	@RequestMapping(value = "/documentFileUpLoad", method = RequestMethod.POST)
 	public @ResponseBody String projectFileUpLoad(HttpSession session, String folder_name, DocumentBoard documentBoard,
 			MultipartFile upLoadFile, String file_name) {
-
+		
+		
+		String mainproject_projectnum = (String)session.getAttribute("mainproject_projectnum");
+		System.out.println("mainproject_projectnum = "+mainproject_projectnum);
 		System.out.println("folder_name = " + folder_name);
 		System.out.println(documentBoard.toString());
 		System.out.println("file_name = " + file_name);
@@ -105,14 +111,16 @@ public class ProjectDetailCotroller {
 		System.out.println(mainProjectNum);
 		// 여기서는 프로젝트 id로 묶는다.
 
-		DocumentFolder selectedDocumentFolder = dfmRepo.selectFolderNum(folder_name);
-
+		DocumentFolder selectedDocumentFolder = dfmRepo.selectFolderNum(mainproject_projectnum, folder_name);
+		
+		//받아온 정보로 찾아온게 없다면 저장한다.
 		if (selectedDocumentFolder == null) {
 			DocumentFolder documentFolder = new DocumentFolder();
 			documentFolder.setDocument_folder_title(folder_name);
 			documentFolder.setMainProject_projectNum(mainProjectNum);
 			dfmRepo.insertDocumentFolder(documentFolder);
-			selectedDocumentFolder = dfmRepo.selectFolderNum(folder_name);
+			//저장하고 저장한것을 다시 찾아온다.
+			selectedDocumentFolder = dfmRepo.selectFolderNum(mainproject_projectnum, folder_name);
 		}
 
 		documentBoard.setDocument_folder_num(selectedDocumentFolder.getDocument_folder_num());
@@ -123,17 +131,17 @@ public class ProjectDetailCotroller {
 		DocumentBoard selectedDocumentboard = dfmRepo.selectBoardNum(documentBoard.getDocument_board_title());
 
 		if (selectedDocumentboard == null) {
-			// 찾아서 없으면 insert한다.
+			//board를 찾아서 없으면 insert한다.
 			int insertResult2 = dfmRepo.insertDocumentBoard(documentBoard);
 
 			if (insertResult2 == 0) {
 				return "board Insert Fail";
 			}
-
-			selectedDocumentboard = dfmRepo.selectBoardNum(documentBoard.getDocument_board_title());
+			
 			// 저장했으니까 갱신
+			selectedDocumentboard = dfmRepo.selectBoardNum(documentBoard.getDocument_board_title());
 
-			String saveFullPath = upLoadPath + "/" + folder_name;
+			String saveFullPath = upLoadPath + "/" + mainproject_projectnum + "/" + folder_name;
 
 			// 파일을 저장하거나 결과를 보낸다.
 			// 폴더를 구분하는 기준이 없다.
@@ -169,7 +177,7 @@ public class ProjectDetailCotroller {
 		} else {
 			// 같은 제목 board를 찾았는데 있으면 boardinsert없이 진행한다.
 
-			String saveFullPath = upLoadPath + "/" + folder_name;
+			String saveFullPath = upLoadPath + "/" + mainproject_projectnum + "/" + folder_name;
 
 			// 파일을 저장하거나 결과를 보낸다.
 			// 폴더를 구분하는 기준이 없다.

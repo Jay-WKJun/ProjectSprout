@@ -25,10 +25,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		)
 	</insert>
 	
-	<select id="selectFolderNum" resultType="DocumentFolder">
+	<select id="selectFolderNum" resultType="DocumentFolder" parameterType="Map">
 		select *
 		from DOCUMENT_FOLDER
-		where document_folder_title = #{folder_title}
+		where MAINPROJECT_PROJECTNUM = #{mainproject_projectnum} AND document_folder_title = #{folder_title}
 	</select>
 	
 	<insert id="insertDocumentBoard" parameterType="DocumentBoard">
