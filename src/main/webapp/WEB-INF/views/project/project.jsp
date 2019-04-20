@@ -51,7 +51,8 @@
 								<div
 									class="dropdown dropright float-right list-group-item list-group-item-action"
 									style="margin-bottom: 2px; border: 1px solid #6079a0;">
-									<div data-toggle="dropdown">${list.member_name}</div>
+									<div data-toggle="dropdown"> <img class="rounded-circle border" src="download?loginId=${list.member_id}" 
+												style="width: 20px; height: 20px" id="memberIcon"> ${list.member_name}</div>
 									<div class="dropdown-menu shadow" style="border:1px solid #6079a0">
 										<h5 class="dropdown-header">${list.member_name}</h5>
 										<div style="margin-top: 20px" data-pno="${list.member_num}"
@@ -62,7 +63,7 @@
 											
 											<input type="hidden" value="${sessionScope.chatRoom_num }" id="chatRoom_nums">
 											<input type="hidden" value="${list.member_name }" id="ClickMember_name">
-											<c:if test="${member_rank == 5}">
+											<c:if test="${member_rank eq 5}">
 												<a href="#" style="border:1px solid #6079a0"
 													class="kickMember list-group-item list-group-item-action border-left-0 border-right-0">내보내기</a>
 											</c:if>
@@ -175,10 +176,11 @@
 							
 							
 							<!-- 공기사항 모달 -->
-							<button class="btn btn-dark" id="noticeModalBtn" style="width:60px">
-								<i class="fas fa-bullhorn fa-2x"></i>
-							</button>
-							
+							<c:if test="${member_rank eq 5}">
+								<button class="btn btn-dark" id="noticeModalBtn" style="width:60px">
+									<i class="fas fa-bullhorn fa-2x"></i>
+								</button>
+							</c:if>
 							<div id="noticeModal">
 								<div class="modalBlack"></div>
 								<div class="noticeModalContent rounded sbd2">

@@ -23,17 +23,13 @@ $(function(){
 				data : 'board_num='+str,
 				success : function(result){
 					$('#createFolderSpace').text('');
-					var tag = '<div id="forLeftButton">';
-					tag += '</div>'
-					tag += '<div>'
+					var tag = '<div>'
 					tag += '<h1 style="text-align : center">'+result.boardTitle+'</h1><br>';
 					$.each(result.files, function(index, item){
 						tag += '<img src="'+item.document_file_location+'/'+item.document_file_originalfileName+item.document_file_extension+'">';
 					})
 					tag += '<div>'+result.boardContent+'</div>';
 					tag += '</div>';
-					tag += '<div id="forRightButton">'
-					tag += '</div>'
 					$('.contentSpace').html(tag);
 				}
 			});

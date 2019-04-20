@@ -45,16 +45,21 @@ public class WorkSpaceController {
 
 	// 프로젝트 시작하기를 누르면, 같은 프로젝트의 참여인원 리스트를 뿌린다.
 	@RequestMapping(value = "/project_go", method = RequestMethod.POST)
-	public String project(String mainproject_projectnum, Model model, ProjectMember prMember,HttpSession session) {
+	public String project(String mainproject_projectnum, Model model, ProjectMember prMember, HttpSession session) {
 
 		projectMembers = prrepo.projectmemberSelectAll(mainproject_projectnum);
+		
+		//loginNum
+		int member_num = (int)session.getAttribute("loginNum");
+		System.out.println("세션 멤버 넘은 : "+member_num);
 
 		  // 프로젝트의 리더를 찾기 위한 메서드
 		  List<ProjectMember> prlist = prrepo.findManager(mainproject_projectnum);
 		  for (ProjectMember projectMember : prlist) {
-
-		   model.addAttribute("member_rank", projectMember.getMember_rank());
-		   System.out.println(projectMember.getMember_rank());
+			  if (projectMember.getMember_num() == member_num) {
+				  model.addAttribute("member_rank", projectMember.getMember_rank());
+			}
+		   System.out.println(projectMember.getMember_num());
 		  }
 
 		  List<MainProject> mainProjects = prrepo.findProjectName(mainproject_projectnum);
@@ -62,7 +67,7 @@ public class WorkSpaceController {
 
 		   model.addAttribute("MainProject_title", mainProject.getMainproject_title());
 		  }
-
+		  
 		  model.addAttribute("mainproject_projectnum", mainproject_projectnum);
 		  session.setAttribute("mainproject_projectnum", mainproject_projectnum);
 		  model.addAttribute("projectMembersList", projectMembers);

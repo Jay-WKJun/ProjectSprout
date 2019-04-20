@@ -62,7 +62,7 @@
 		<div class="mainSpace">
 			<div class="topBar">
 				<div class="topBar_top"></div>
-				<a href="http://localhost:2848/sprout/emailSend">email Test</a>
+				<a href="http://localhost:2848/sprout/mailService">email Test</a>
 				<div class="userInfo">
 					<div class="userInfo_left"></div>
 					<div class="userInfo_right">
