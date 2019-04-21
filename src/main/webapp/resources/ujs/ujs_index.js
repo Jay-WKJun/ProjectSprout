@@ -26,15 +26,34 @@ $(function() {
 	
 	//내부 공고글 작성 모달
 	$('#writeInternalWantedBoard').on('click',function(){
-		$('#writeBoardLoad').load('boardRegist');
 		$('#internalWantedWriteModal').show();
+		$('#writeBoardLoad').load('boardRegist');
 	})
 	
-	//내부 공고글 작성 모달
+	//내부 공고글 작성 모달 닫기
 	$('#closeWriteInternalBtn').on('click',function(){
 		$('#internalWantedWriteModal').hide();
+		$('#writeBoardLoad').empty();
 	})
 	
+	//내부 공고글 자세히 보기
+	$('.wantedBoardDetail').on('click',function(){
+		var boardName=$(this).attr('data-bNum');
+		$('#boardDetailModal').show();
+		$('#boardDetailLoad').load('detail_info?wantedBoard_num='+boardName);
+	})
+	
+	//내부 공고 지원글
+	$('#applyBoardBtn').on('click',function(){
+		$('#boardDetailLoad').load('apply_wanted');
+	})
+	
+/*	//내부 공고글 자세히 보기 닫기
+	$('#closeDetailInternalBtn').on('click',function(){
+		$('#boardDetailModal').hide();
+		$('#boardDetailLoad').empty();
+	})
+*/	
 	//프로젝트 생성 버튼
 	$('#newProjectBtn').on('click', function() {
 		$.ajax({

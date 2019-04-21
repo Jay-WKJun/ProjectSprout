@@ -6,24 +6,63 @@
 <head>
 <meta charset="UTF-8">
 <title>detail_info.jsp</title>
-<style>/*----------------------------------------------- style*/
-	div#wrapper			{ width : 800px; margin : 0 auto; }
-	div#wrapper>h2 		{ text-align : center; }
-	div#wrapper table 	{ margin:0 auto; width : 800px; }
-	th 					{ width: 100px; }
-	pre 				{ width : 600px; height : 200px; overflow: auto; }
-	table.reply 		{ width : 800px; }
-	input[name='text']	{ width : 600px; }
-	span 				{ display: inline-block; margin : 5px; } /*wtf is this*/
-	td.replycontent 	{ width : auto; }
-	td.replytext 		{ width : 600px; text-align : left; }
-	td.replysub 		{ width : 80px; text-align : right; }
-	td.replybtn			{ width : 100px; text-align : right; }
-</style>
+<script>
+	$(function(){
+		/* $('#applyBoardBtn').on('click',function(){
+			location.href="apply_wanted";
+		}) */
+		
+		//공고글 삭제
+		$('#applyBoardDeleteBtn').on('click',deleteWantedBoard);
+		
+		//내부 공고글 자세히 보기 닫기
+		$('#closeDetailInternalBtn').on('click',function(){
+			$('#boardDetailModal').hide();
+			$('#boardDetailLoad').empty();
+		})
+	})
+	
+	function deleteWantedBoard(){
+		var wantedBoardNum=$('#wantedBoardNum').val();
+		location.href="delete_wanted?wantedBoard_num="+wantedBoardNum;
+	}
+</script>
 </head>
 <body>
-	<div id="wrapper">
-	<h2>[ 공지글 보기 ]</h2>
+	<div class="container" style="text-align:left">
+		<div class="row">
+			<div class="col fontSize20">
+				<span>${one_wanted_from_DB.wantedBoard_title}</span>
+			</div>
+		</div>
+			<hr class="sbd1">
+		<div class="row">
+			<div class="col">
+				<span>${one_wanted_from_DB.wantedBoard_from}</span>
+			</div>
+			<div class="col" style="text-align:right">
+				<span>${one_wanted_from_DB.wantedBoard_date }</span>
+			</div>
+		</div>
+		<div class="row rounded sbd1">
+			<div class="col" style="height:700px">
+				<span>${one_wanted_from_DB.wantedBoard_content}</span>
+			</div>
+		</div>
+	</div>
+	<div style="padding:10px">
+	<c:if test="${not empty sessionScope.same}">
+		<button class="btn btn-dark" id="applyBoardBtn">지원하기</button>
+	</c:if>
+				
+	<c:if test="${empty sessionScope.same}">
+		<input type="hidden" value="${one_wanted_from_DB.wantedBoard_num}" id="wantedBoardNum">
+		<button class="btn btn-dark" id="applyBoardDeleteBtn">삭제하기</button>
+	</c:if>
+		<input type="button" class="btn btn-danger" value="닫기" id="closeDetailInternalBtn">
+	</div>
+	
+	<%-- <h2>[ 공지글 보기 ]</h2>
 	<hr>
 	<table border="1">
 		<tr>
@@ -61,9 +100,7 @@
 	<a href="boardList" >return to list</a> <!-- action name  -->
 	<c:if test="${empty sessionScope.same}">
 		<p> 이 자리에는 내가 올린 공지에 누가 지원했는지 확인하는 창이 있으면 참 좋을텐데.... 시간이 있으면 하고 없으면 패스...</p>
-	</c:if>
-	</div>
-	
+	</c:if> --%>
 	
 </body>
 </html>

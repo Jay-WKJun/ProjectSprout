@@ -15,15 +15,15 @@
 				<th>글 번호</th>
 				<th class="title">글제목</th>
 				<th>프로젝트 제안자</th>
-				<th>지원 기간</th>
+				<th>등록 날짜</th>
 			</tr>
 
 			<!-- 게시글 출력 반복 -->
 			<c:forEach var="board" items="${list_from_DB}" varStatus="stat">
 				<tr>
 					<td>${stat.count + navi.startRecord}</td>
-					<td><a
-						href="detail_info?wantedBoard_num=${board.wantedBoard_num}">${board.wantedBoard_title}</a>
+					<td><a class="wantedBoardDetail" data-bNum="${board.wantedBoard_num}"
+						href="#">${board.wantedBoard_title}</a>
 					</td>
 					<!-- ========================== 여기 하는 중 -->
 					<td>${board.wantedBoard_from}</td>
