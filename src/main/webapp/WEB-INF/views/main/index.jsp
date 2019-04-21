@@ -145,7 +145,6 @@
 						<form action="mainProjectRegist" id="mainProjectRegist"
 							method="post">
 
-
 							<div class="contentItem" style="text-align: center;">
 									<div class="card-body rounded sbd2 shadow bgwhite">
 										<h4 class="card-title">프로젝트 이름</h4>
