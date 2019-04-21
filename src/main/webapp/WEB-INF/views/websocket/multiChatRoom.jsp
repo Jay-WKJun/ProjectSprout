@@ -136,12 +136,55 @@
 				data : qp ,
 				
 				success : function(success) {
-					alert("초대완료");
+					alert(member_name+"님 초대완료");
+					invitationMessage();
 					}
 			});
 			
 		}
 		 
+		//초대후 매시지 띄우기
+		/* function invitationMessage() {
+			var member_name = $('#memberinvitation').val();
+			alert("gg");
+			alert(member_name);
+			var str = $("#chatbox").val();
+			str = str.replace(/ /gi, '&nbsp;')
+			str = str.replace(/(?:\r\n|\r|\n)/g, '<br />');
+			
+			var upl = $("#FILE_TAG").val();
+			  var invitation ='<p>'+member_name+'입장하셨습니다.</p>';
+			
+				stompClient.send("/chat/${chatRoom_num}", {}, JSON.stringify({
+					message : invitation
+				);
+				$("#chatbox").val("");
+			} 
+			
+			
+		}  */
+		
+		//채팅 초대후 메시지 출력
+		function invitationMessage() {
+			var member_name = $('#memberinvitation').val();
+			var str = $("#chatbox").val();
+			str = str.replace(/ /gi, '&nbsp;')
+			str = str.replace(/(?:\r\n|\r|\n)/g, '<br />');
+			  var invitation ='<p>'+member_name+'입장하셨습니다.</p>';
+			
+				// WebsocketMessageBrokerConfigurer의 configureMessageBroker() 메소드에서 설정한 send prefix("/")를 사용해야 함
+				// 멀티 채팅방
+				
+				stompClient.send("/chat/${chatRoom_num}", {}, JSON.stringify({
+					message : invitation
+				}));
+			
+			$("#chatbox").val("");
+			
+		} 
+		
+		
+		
 		//시작하자마자 채팅방에 있는 내용 전부 가져오기
 		
 		function startT() {
@@ -157,7 +200,7 @@
 				} ,
 				success : function(text) {
 					$.each(text, function(index, item){
-						if (content == undefined) {
+						if (content == undefined || item.chat_content == null) {
 							
 						}else {
 							if (item.member_num == member_num) {
@@ -174,6 +217,7 @@
 				}
 			});
 		}
+		
 		function enterkey() {
 			if (window.event.keyCode == 13) {
 				// 엔터키가 눌렸을 때 실행할 내용
@@ -206,6 +250,7 @@
 		function connect() {
 			// WebsocketMessageBrokerConfigurer의 registerStompEndpoints() 메소드에서 설정한 endpoint("/endpoint")를 파라미터로 전달
 			var socket = new SockJS('/sprout/endpoint');
+			//
 			stompClient = Stomp.over(socket);
 			stompClient.connect({}, function(frame) {
 				// 메세지 구독
@@ -218,7 +263,15 @@
 						}, 100);
 					
 					var data = JSON.parse(message.body);
-					$("#chatRoom").append('<p  align="right">'+data.message+"<br /></p>");
+					
+						if ('${sessionScope.loginId}' == data.id) {
+							$("#chatRoom").append('<p  align="right">'+data.message+"<br /></p>");
+							
+						} else {
+							$("#chatRoom").append('<p>'+data.id+' : '+data.message+"<br /></p>");
+						}
+					
+					
 				});	
 				//+data.username+" : "
 			});

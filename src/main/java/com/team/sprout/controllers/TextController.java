@@ -78,12 +78,7 @@ public class TextController {
 					String iasasdad = text.getChatRoom_name();
 					System.out.println("체팅안에있는 아이디랄까?"+text.getMember_name());
 					
-					//챗룸numㄱㄱ
-					 int result = dao.selectchatRoomNum();
-					 text.setChatRoom_num(result);
-					 session.setAttribute("chatRoom_num", text.getChatRoom_num());
-					 
-					 
+					
 					 
 					return "success";
 			}
