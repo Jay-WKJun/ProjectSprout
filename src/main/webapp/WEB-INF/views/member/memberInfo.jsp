@@ -23,8 +23,7 @@
 			<div class="topSpace_side"></div>
 			<div class="topSpace_center">
 				<div class="contentItem" style="margin-top: 20px">
-					<a href="/sprout"><img class="webLogo"
-						src="img/sprout_logo.png"></a>
+					<a href="/sprout"><img class="webLogo" src="img/sprout_logo.png"></a>
 				</div>
 			</div>
 			<div class="topSpace_side"></div>
@@ -37,18 +36,12 @@
 						<table>
 							<tr>
 								<td>
-									
-									
-									
 									<c:if test="${not empty sessionScope.mime}">
 		<!-- 프로필 사진 -->					<img src="download?loginId=${loginId}" id="picture" style="width: 50px; height: 50px" /> <br>
 									</c:if> 
 									<c:if test="${empty sessionScope.mime}">
 										<img class="rounded-circle border profileImg" id="picture" src="img/empty_profile.png" /> <br>
 									</c:if> 
-									
-									
-									
 								</td>
 								<td class="border-right" style="text-align: center">
 									<label class="btn btn-light btn-file border" style="margin-top: 10px"> 
@@ -69,7 +62,7 @@
 								</td>
 		<!-- 비밀번호 -->			<td class="border-right">비밀번호</td>
 								<td>
-									<input type="text" id="member_password" value="${sessionScope.member.member_password}" name="member_password">
+									<input type="password" id="member_password" value="${sessionScope.member.member_password}" name="member_password">
 								</td>
 							</tr>
 							<tr>
@@ -86,12 +79,13 @@
 					</div>
 					<div class="contentItem w-100" style="text-align: right; margin-top: 10px">
 		<!-- 수정-->	<input type="submit" id="update_with_old_info" class="btn btn-dark" style="width: 100px; height: 50px" value="수정">
+					<br/><a href="/sprout">취소</a>
 					</div>
 				</div>
 			</form>
 		<!-- 탈퇴 -->	<a href="delete_info" class="btn btn-danger" style="width: 100px; height: 50px">탈퇴</a>
 		<!-- 컨트롤러오 좀 넘겨주세요... 실행ㄴㄴ -->
-		
+			
 			<div class="sideSpace"></div>
 		</div>
 	</div>

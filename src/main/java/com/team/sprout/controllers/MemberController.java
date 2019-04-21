@@ -113,13 +113,13 @@ public class MemberController {
 			response.addCookie(cookie);
 		}
 
-		/*Map<String, String> map = new HashMap<>();
+		Map<String, String> map = new HashMap<>();
 
-		map.put("id", id);
-		map.put("password", password);
+		map.put("id", member.getMember_id());
+		map.put("password", member.getMember_password());
 
 		// 입력된 정보로 DB가서 그 정보를 가져온다.
-		Member m = repo.selectOne(map);*/
+		Member m = repo.selectOne(map);
 		System.out.println("member아이디"+member.getMember_id());
 		Member getMember = repo.selectOneWebsocket(member.getMember_id());
 		
@@ -135,6 +135,22 @@ public class MemberController {
 			session.setAttribute("loginName", getMember.getMember_name());
 			session.setAttribute("loginNum", getMember.getMember_num());
 			session.setAttribute("member_num", getMember.getMember_num());
+			// ---------------------------------------------------- login할 때마다 DB에 로그인 시간 잡아주기
+			repo.setLoginTime(getMember.getMember_id());
+			// ----------------------------------------------------- login 후 이미지(파일) 불러오기
+			String mime = null; // mime은 사진 형식인지 확인하기 위한것..... (image/jpeg)
+			String fullPath = m.getMemberImage_saveAddress(); // profile_img가 저장된 위치.
+
+			if (fullPath == null) { // 회원가입 할 때 프로필 사진을 지정안함
+				System.out.println("회원가입할 때 프로필 사진 지정을 안함");
+			} else {
+				try {
+					mime = Files.probeContentType(Paths.get(fullPath));
+					mime.contains("image"); // 해당 문자열 안에 내가 원하는 문자가 포함되어 있는가
+					session.setAttribute("mime", mime); // .jsp에 가져갈 이미지 파일을 담았다.
+				} catch (IOException e) { e.printStackTrace(); }
+			} // if & else
+			// ----------------------------------------------------- 환.
 		}
 		return "redirect:/";
 	}
@@ -194,6 +210,7 @@ public class MemberController {
 			member.setMemberImage_saveAddress("none");
 			int result = repo.memberJoin(member);
 			System.out.println("Google 로그인한 사람 회원 등록 완료" + result);
+			memberVali = repo.checkId(member.getMember_id());
 		}
 
 		return memberVali.getMember_id();
@@ -272,8 +289,19 @@ public class MemberController {
 		
 		
 		
+//-------------------------------------------------------------------------------| detail 작업 예정 <환> |	
+		/*String old_picture = session_info.getMemberImage_saveAddress();
 		
-		
+		if(old_picture != null) {
+			if(newPicture.isEmpty() != true) {
+			} else {
+			}
+		} else { // old_picture == null
+			if(newPicture.isEmpty() != true) {
+			} else {
+			}
+		}*/
+//------------------------------------------------------------------------------ | do not touch |	
 		
 // 0. 기존의 프로필 사진 O  --> 삭제 X (ajax로 따로) 후에는 2번이나 3번으로 시작한다.
 		
@@ -331,7 +359,7 @@ public class MemberController {
 // 4. 아무것도 안건드리고 수정 버튼을 누름. 이런 기능 없음ㅋㅋ 같은 값을 입력해도 무조건 입력 해야함.
 		
 		return "redirect:/";
-	} 
+	} // modify
 
 	/*
 	 * del profile picture with ajax  (by.whan
@@ -361,9 +389,9 @@ public class MemberController {
 		
 		String id = (String) session.getAttribute("loginId");
 		Member session_info = repo.checkId(id); 					// 기본 session에 저장된 ID로 뽑아온 정보
-		
-		pro.deletefile(session_info.getMemberImage_saveAddress()); 	// C에서 프로필 사진 지우기
-
+		if (session_info.getMemberImage_saveAddress()!=null) {
+			pro.deletefile(session_info.getMemberImage_saveAddress()); 	// C에서 프로필 사진 지우기
+		}
 		repo.deleteMember(id);
 		
 		String mime = null;

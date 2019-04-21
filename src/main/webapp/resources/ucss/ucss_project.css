@@ -29,6 +29,21 @@
 	font-size:110%;
     font-weight: 100;
     display: flex;
+    background-color: #efefef;
+    width:100%;
+    height:100%;
+}
+
+.bgwhite{
+	background-color: white;
+}
+
+.sbd2{
+	border:2px solid #6079a0;
+}
+
+.sbd1{
+	border:1px solid #6079a0;
 }
 
 /*=========모든 컨텐츠에 사용하는 div==========*/
@@ -121,18 +136,23 @@
 
 .timeTable{
     flex: 1;
-    margin:10px;
+    margin-top: 30px;
     padding:20px;
-}
-
-.fileManager{
-    flex: 1;
-    margin:10px;
-    padding:20px;
+    width:100%;
 }
 
 .contentSpace_right{
     flex: initial;
+}
+
+.modalBlack{
+	position:absolute;
+	top:0;
+	left:0;
+	background-color:black;
+	opacity: 0.3;
+	width:100%;
+	height:1200px;
 }
 
 /* =============화이트보드================= */
@@ -156,8 +176,7 @@
 
 .fileManager {
 	flex: 1;
-	margin: 10px;
-	padding:10px;
+	margin-top: 30px;
 }
 
 /* =================타임 테이블=================== */

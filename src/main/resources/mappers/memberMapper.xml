@@ -30,7 +30,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<if test = 'memberImage_saveAddress == null'>
 			, null
 		</if>
-		
+			, sysdate
 		)
 	</insert>
 	
@@ -43,15 +43,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select parameterType="String" id="selectOneWebsocket" resultType="Member">
-	select
-	member_num,
-	member_id,
-	member_password,
-	member_name
-	from
-	member
-	where
-	member_id = #{userId} 
+		select
+			member_num,
+			member_id,
+			member_password,
+			member_name
+		from
+			member
+		where
+			member_id = #{userId} 
 	</select>
 	
 	<select id="searchMember" resultType="Member">
@@ -85,7 +85,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			 member_id=#{member_id}
 	</select>
 	
-	<update id='setNull_profile' parameterType="String">
+	<update id='setNull_profile' parameterType="String"> <!-- 프로필 사진 삭제할 때. <환> -->
 		update member
 		set
 		    MEMBERIMAGE_SAVEADDRESS = NULL
@@ -100,10 +100,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</delete>
 	
 	<insert parameterType="ChatRoom" id="insertcr">
-	insert into chatRoom
-	(chatRoom_num, chatRoom_name)
-	values
-	(#{chatRoom_num}, 
-	#{chatRoom_name}) 
+		insert into chatRoom(
+			chatRoom_num, chatRoom_name
+		)
+		values (
+			#{chatRoom_num}, 
+			#{chatRoom_name}
+		) 
 	</insert>
+	
+	<update id="setLoginTime"> <!-- 로그인 할 때마다 계속 변경된다. <환> -->
+		update member
+		set
+		    member_logindate = sysdate
+		where
+			member_id = #{member_id}
+	</update>
+	
 </mapper>

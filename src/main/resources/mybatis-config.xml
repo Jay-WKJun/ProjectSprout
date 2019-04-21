@@ -15,6 +15,10 @@
 		<typeAlias type="com.team.sprout.vo.ProjectFile" alias="ProjectFile" />
 		<typeAlias type="com.team.sprout.vo.ChatRoom" alias="ChatRoom" />
 		<typeAlias alias="Message" type="com.team.sprout.vo.Message"/>
+		
+		<!-- document -->
+		<typeAlias type="com.team.sprout.vo.DocumentBoard" alias="DocumentBoard" />
+		<typeAlias type="com.team.sprout.vo.DocumentFolder" alias="DocumentFolder" />
 
 		<!--web-->
 		<typeAlias alias="Text" type="com.team.sprout.vo.Text"/>
@@ -32,5 +36,6 @@
 		<mapper resource="mappers/fileManagerMapper.xml" />
 		<mapper resource="mappers/updownMapper.xml"/>
 		<mapper resource="mappers/textMapper.xml"/>
+		<mapper resource="mappers/documentFileManagerMapper.xml"/>
 	</mappers>
 </configuration>

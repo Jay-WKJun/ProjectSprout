@@ -15,11 +15,12 @@
 <link rel="stylesheet" href="ucss/ucss_project.css">
 <link rel="stylesheet" href="css/bootstrap.css">
 <script src="js/jquery-3.3.1.min.js"></script>
-<script src="ujs/ujs_project.js"></script>
+<script src="ujs/ujs_projectDetail.js"></script>
 
 </head>
 <body>
 	<div class="wrapper">
+		
 		<div class="sideSpace">
 			<div class="sideSpace_top">
 				<a href="/sprout"><img class="webLogo" src="img/sprout_logo.png"></a>
@@ -31,8 +32,15 @@
 					style="padding: 5px">
 					<div class="list-group">
 					<button class="btn btn-dark w-100" disabled="disabled">게시판 추가</button>
+					<!-- 메인화면에 쓴다. -->
 					</div>
 					<div id="noticeSpace">
+					
+					
+					
+					<!-- 맨 처음에 프로젝트의 개요를 띄운다. -->
+					<!-- 이미지 띄우고 -->
+					<!-- 활동 통계띄우면 끝. -->
 					</div>
 
 					
@@ -62,7 +70,6 @@
 										class="list-group-item list-group-item-action border-left-0 border-right-0">회원정보</a>
 									<a href="logout"
 										class="list-group-item list-group-item-action border-left-0 border-right-0">로그아웃</a>
-										
 								</div>
 							</div>
 						</div>
@@ -72,7 +79,29 @@
 
 			<div class="mainSpace_bottom">
 				<div class="contentSpace_side"></div>
-	
+				<div class="contentSpace">
+					<form class="" id="documentFileUpLoadForm" method="post" enctype="multipart/form-data">
+						<!-- 이 프로젝트가 가진 폴더를 이곳에 넣는다. -->
+						<!-- 폴더를 새로 만들고 싶다면 폴더 생성을 누르고 이곳에 input text를 넣어준다. -->
+						<p id="folderDiv">
+							<select name="folder_name">
+								<option value="testFolder">testFolder</option>
+							</select>
+						</p>
+						<input type="file" value="파일 찾기" id="upLoadFile" name="upLoadFile">
+						
+						<input type="text" id="document_board_title" name="document_board_title" placeholder="title"> 
+						<input type="text" id="document_board_content" name="document_board_content" placeholder="content">
+						<input type="text" id="file_name" name="file_name" placeholder="파일 이름">
+					</form>
+					<input type="button" class="btn btn-dark" id="fileUpLoadBtn" value="파일 올리기">
+				</div>
+				<div class="row">
+					<div id="createFolderSpace">
+						<button class="btn btn-dark" id="createFolderInputBtn">폴더 생성</button>
+						<span id="closeFolderMessage"></span>
+					</div>
+				</div>
 				<div class="contentSpace_side"></div>
 				<div class="contentSpace_right">
 					<div class="contentItem" style="margin: 20px; height: 100%;">

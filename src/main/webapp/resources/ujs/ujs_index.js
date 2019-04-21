@@ -11,19 +11,7 @@ $(function() {
 		location.href = "update";
 	});
 	
-	//나중에 삭제
-	$('#timeTable').on('click', function(){
-		location.href = "timetable";
-
-	});
-	
-	//나중에 삭제
-	$('#wantedBoard').on('click', function(){
-		location.href = "wantedBoard";
-	});
-	
-	
-
+	//프로젝트 생성 버튼
 	$('#newProjectBtn').on('click', function() {
 		$.ajax({
 			method : 'get',
@@ -33,13 +21,29 @@ $(function() {
 					$('#webPresentation').attr('style', 'display:none');
 					$('#newProject').attr('style', 'display:block');
 					$('#ProjectStartSpace').attr('style', 'display:none');
+					$('#wantedBoardSpace').attr('style', 'display:none');
 				}else{
 					location.href="login";
 				}
-			}
+			}, 
+			beforeSend: function () {
+				$('#loader').attr('style','display:block');
+	       }, 
+	       complete: function () {
+	    	   $('#loader').attr('style','display:none');
+	       }
 		})
 	})
-
+	
+	//공고글 보기
+	$('#wantedBoardBtn').on('click', function(){
+		$('#wantedBoardSpace').attr('style', 'display:block');
+		$('#webPresentation').attr('style', 'display:none');
+		$('#newProject').attr('style', 'display:none');
+		$('#ProjectStartSpace').attr('style', 'display:none');
+		$('#wantedBoardLoad').load('wantedBoard');
+	})
+	
 	$('#projectCreateBtn').on('click', function() {
 		$('#mainProjectRegist').submit();
 	})
@@ -59,7 +63,9 @@ $(function() {
 	
 	//왼쪽 프로젝트타이틀 리스트 누르면, 컨트롤러 정보 보냄. 
 	$('body').delegate('.projectSelectBtn', 'click', function() {
+		$('#wantedBoardSpace').attr('style', 'display:none');
 		$('#webPresentation').attr('style', 'display:none');
+		$('#wantedBoardSpace').attr('style', 'display:none');
 		$('#newProject').attr('style', 'display:none');
 		$('#ProjectStartSpace').attr('style', 'display:block');
 		var mainproject_projectnum = $(this).attr('data-pno');
@@ -112,6 +118,7 @@ $(function() {
 		$('#whiteBoardModal').modal('show');
 	})
 	
+	//모달 닫기
 	$('#modalCloseBtn').on('click', function() {
 		$('#whiteBoardModal').modal('hide');
 	})

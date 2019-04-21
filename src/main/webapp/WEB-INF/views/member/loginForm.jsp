@@ -37,7 +37,7 @@
 			<div class="content_space_left"></div>
 			<div class="content_space_center">
 				<div class="contentItem" style="text-align-last: center">
-					<div class="loginBox rounded">
+					<div class="loginBox rounded shadow sbd2 bgwhite">
 						<div class="loginBox_inner_top">
 							<h4 class="fontSize60 fontBold_1">로그인</h4>
 						</div>
@@ -137,7 +137,6 @@
 			var id_token = googleUser.getAuthResponse().id_token;
 			var id_email = googleUser.getBasicProfile().getEmail();
 			var id_name = googleUser.getBasicProfile().getName();
-			alert(typeof (id_token));
 
 			var send = {
 				"member_password" : id_token,
@@ -147,14 +146,12 @@
 
 			console.log(JSON.stringify(send));
 			// Send the code to the server
-			$
-					.ajax({
+			$.ajax({
 						type : 'POST',
 						url : 'googleSignInCallback',
 						data : send,
 						success : function(result) {
-							alert("success")
-							alert(result);
+							alert("로그인에 성공하셨습니다.")
 							//얘를 로그인을 눌럿을때 가는 컨트롤러로 이어준다.
 							signOut();
 							window.location.href = 'http://localhost:2848/sprout/googleChecked?memberId='

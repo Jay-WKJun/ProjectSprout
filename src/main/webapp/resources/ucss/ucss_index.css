@@ -30,6 +30,42 @@
     font-weight: 100;
     display: flex;
     padding:0;
+    background-color: #efefef;
+}
+
+.bgwhite{
+	background-color: white;
+}
+
+#loader{
+	text-align:center;
+	color:white;
+}
+
+
+.loader{
+	position:absolute;
+	top:40%;
+	left:35%;
+	z-index: 5;	
+}
+
+.loaderImg{
+	width:30%;
+	height:auto;
+	z-index: -1;
+	filter:brightness(130%);
+}
+
+.loaderBack{
+	position: absolute;
+	left:0;
+	top:0;
+	opacity: 0.3;
+	background-color:black;
+	width:100%;
+	height:100%;
+	z-index: 3;
 }
 
 /*=========모든 컨텐츠에 사용하는 div==========*/
@@ -61,6 +97,14 @@
 }
 
 /*================가운데 공간================*/
+.sbd2{
+	border:2px solid #6079a0;
+}
+
+.sbd1{
+	border:1px solid #6079a0;
+}
+
 .mainSpace{
     flex:1;
     display: flex;
