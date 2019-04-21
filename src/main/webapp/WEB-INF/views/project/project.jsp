@@ -48,8 +48,7 @@
 						<div class="list-group">
 
 							<c:forEach var="list" items="${projectMembersList}">
-								<div
-									class="dropdown dropright float-right list-group-item list-group-item-action"
+								<div class="dropdown dropright float-right list-group-item list-group-item-action"
 									style="margin-bottom: 2px; border: 1px solid #6079a0;">
 									<div data-toggle="dropdown">${list.member_name}</div>
 									<div class="dropdown-menu shadow" style="border:1px solid #6079a0">
