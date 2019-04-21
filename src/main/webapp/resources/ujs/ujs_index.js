@@ -30,6 +30,11 @@ $(function() {
 		$('#internalWantedWriteModal').show();
 	})
 	
+	//내부 공고글 작성 모달
+	$('#closeWriteInternalBtn').on('click',function(){
+		$('#internalWantedWriteModal').hide();
+	})
+	
 	//프로젝트 생성 버튼
 	$('#newProjectBtn').on('click', function() {
 		$.ajax({
@@ -97,22 +102,17 @@ $(function() {
 				$('#goproject_title').html(mainproject.goproject_title)
 				$('#goproject_content').html(mainproject.goproject_content)
 				var output = '';
-				$.each(mainproject.memberList,function(index, item){//================================= img job
+				$.each(mainproject.memberList,function(index, item){
 					
-					
-					
-					
-					
-			//		output+="이미지";
-					
-					
-					
-					
-					
-					output += item.member_name+'<br>';
+					output += '<div >';
+					output += '<img class="rounded-circle border memberImg" src="download?loginId='+item.member_id+'"'; 
+					output += 'style="width: 35px; height: 35px; margin-right:10px" id="memberIcon">'; 
+					output += item.member_name;
+					output += '<hr style="background-color:#6079a0">';
+					output += '<div>';
 				})
 				$('#goprojet_membername').html(output)
-				
+				$('.memberImg').attr('onerror','src="img/empty_profile.png"');
 			}
 			,beforeSend:function(){
 

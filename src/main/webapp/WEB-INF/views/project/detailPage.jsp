@@ -30,26 +30,36 @@
 				<div
 					class="communicationBar sbd2 rounded shadow bgwhite w-100"
 					style="padding: 5px">
-					<button class="btn btn-dark">
+					<button class="btn btn-dark w-100" id="createFolderModalBtn">
 						<i class="fas fa-folder-plus fa-2x"></i>
 					</button>
-					<button class="btn btn-dark w-100" id="createDocument">
+					
+					<div id="noticeDetailModal">
+						<div class="modalBlack"></div>
+						<div class="noticeModalContent">
+							<input type="text" class="form-control" id="folderNameInput" placeholder="생성할 폴더 이름을 입력하세요.">
+							<button class="btn btn-dark" id="createFolderBtn" style="margin-top:10px">폴더 생성</button>
+							<button class="btn btn-danger" id="cancelNoticeDetailBtn" style="margin-top:10px">닫기</button>
+						</div>
+					</div>
+					<!-- <button class="btn btn-dark w-100" id="createDocument">
 						<i class="fas fa-file-medical fa-2x"></i>
-					</button>
-					<div class="list-group">
+					</button> -->
+					
+					<!-- <div class="list-group">
 						<div class="dropdown dropright float-right list-group-item list-group-item-action"
 										style="margin-bottom: 2px; border: 1px solid #6079a0;">
-							<div data-toggle="dropdown">dkdkdk</div>
+							<div data-toggle="dropdown">폴더이름</div>
 							<div class="dropdown-menu shadow" style="border:1px solid #6079a0">
-								<div style="margin-top: 20px" data-pno="${list.member_num}" id="forkick">
-									<a href="#" style="border:1px solid #6079a0" data-name="${list.member_name }"
-										class="list-group-item list-group-item-action border-left-0 border-right-0 messagesend">
-										메세지 보내기
+								<div style="margin-top: 20px" id="forkick">
+									<a href="#" style="border:1px solid #6079a0"
+										class="list-group-item list-group-item-action border-left-0 border-right-0">
+										문서
 									</a>
 								</div>
 							</div>
 						</div>
-					</div>
+					</div> -->
 					<div id="noticeSpace">
 					</div>
 
