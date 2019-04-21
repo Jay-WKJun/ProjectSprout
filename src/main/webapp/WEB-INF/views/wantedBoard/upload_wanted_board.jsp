@@ -5,15 +5,45 @@
 <head>
 <meta charset="UTF-8">
 <title>wantedBoard_directly.jsp</title>
+
 </head>
 <body>
 	
-	<h1>wantedBoard_directly.jsp</h1>
-	<hr>
+	<form action="write_wanted">
+	<div class="container" style="text-align:left">
+		<div class="row">
+			<div class="col">
+			<span style="margin-right:20px">작성자</span>
+			<span>${loginId}</span>
+			<hr>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">제목</div>
+		</div>
+		<div class="row" style="margin-bottom:30px;">
+			<div class="col">
+				<input type="text" class="form-control" name="wantedBoard_title" placeholder="제목을 입력하세요."/>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">내용</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<textarea class="form-control" name="wantedBoard_content" style="height:500px">
+					내용 입력
+				</textarea>
+			</div>
+		</div>
+		<div style="text-align-last:right;">
+			<input type="submit" class="btn btn-dark" value="글등록">
+			<input type="button" class="btn btn-danger" value="닫기" id="closeWriteInternalBtn">
+		</div>
+	</div>
 	
-	<form action="write_wanted" id="">
 	
-	<table>
+	<%-- <table>
 	<tr>
 		<th>작성자</th>
 		<th>제목</th>
@@ -32,7 +62,7 @@
 	</tr>	
 	
 	</table>
-		<input type="submit" value="글등록">
+		<input type="submit" value="글등록"> --%>
 	</form>
 	
 	

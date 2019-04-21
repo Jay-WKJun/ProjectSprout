@@ -50,8 +50,11 @@
 							<c:forEach var="list" items="${projectMembersList}">
 								<div class="dropdown dropright float-right list-group-item list-group-item-action"
 									style="margin-bottom: 2px; border: 1px solid #6079a0;">
-									<div data-toggle="dropdown"> <img class="rounded-circle border" src="download?loginId=${list.member_id}" 
-												style="width: 20px; height: 20px" id="memberIcon"> ${list.member_name}</div>
+									<div data-toggle="dropdown"> 
+										<img class="rounded-circle border" src="download?loginId=${list.member_id}" onerror="src='img/empty_profile.png'"
+												style="width: 35px; height: 35px;margin-right:10px" id="memberIcon"> 
+										${list.member_name}
+									</div>
 									<div class="dropdown-menu shadow" style="border:1px solid #6079a0">
 										<h5 class="dropdown-header">${list.member_name}</h5>
 										<div style="margin-top: 20px" data-pno="${list.member_num}"
@@ -116,7 +119,7 @@
 						<div class="dropdown dropright float-right h-100">
 							<div data-toggle="dropdown">
 								<c:if test="${not empty sessionScope.mime}"> 
-									<img class="rounded-circle border" src="download?loginId=${loginId}" 
+									<img class="rounded-circle border" src="download?loginId=${loginId}" onerror="src='img/empty_profile.png'"
 										style="width: 50px; height: 50px" id="userProfileIcon">
 								</c:if>
 								<c:if test="${empty sessionScope.mime}"> 
@@ -165,7 +168,7 @@
 										</div>
 										<div class="row">
 											<div class="col">
-												<button class="btn btn-dark" id="Invitatio" style="margin:10px 5px 0 0">확인</button>
+												<button class="btn btn-dark" id="Invitatio" style="margin:10px 5px 0 0">채팅방 생성</button>
 												<button class="btn btn-danger" id="chatRoomModalCloseBtn" style="margin-top:10px">닫기</button>
 											</div>
 										</div>
@@ -184,16 +187,18 @@
 								<div class="modalBlack"></div>
 								<div class="noticeModalContent rounded sbd2">
 									<textarea class="form-control" id="noticeContent" style="height:300px"></textarea>
-									<button class="btn btn-dark" id="createNoticeBtn" style="margin:10px 5px 0 0">확인</button>
+									<button class="btn btn-dark" id="createNoticeBtn" style="margin:10px 5px 0 0">공지사항 추가</button>
 									<button class="btn btn-danger" id="cancelNoticeBtn" style="margin-top:10px">닫기</button>
 									<span id="noticeMsg"></span>
 								</div>
 							</div>
 							
 							<!-- 멤버 추가 모달 -->
-							<button type="button" id="memberPlusModalBtn" class="btn btn-dark" style="width:60px">
-								<i class="fas fa-user-plus fa-2x"></i>
-							</button>
+							<c:if test="${member_rank eq 5}">
+								<button type="button" id="memberPlusModalBtn" class="btn btn-dark" style="width:60px">
+									<i class="fas fa-user-plus fa-2x"></i>
+								</button>
+							</c:if>
 							
 							<div id="memberPlusSpace">
 								<div class="modalBlack"></div>

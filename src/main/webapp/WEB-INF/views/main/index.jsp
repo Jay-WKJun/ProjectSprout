@@ -256,7 +256,7 @@
 							
 			<div id="internalWantedWriteModal">
 				<div class="modalBlack"></div>
-				<div class="noticeModalContent rounded sbd2">
+				<div class="writeWantedModalContent rounded sbd2">
 					<div id="writeBoardLoad"></div>
 				</div>
 			</div>

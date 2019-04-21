@@ -69,12 +69,8 @@ public class MainProjectController {
 		List<Member> memberList = prRepo.projectmemberSelectAll(mainproject_projectnum);
 		System.out.println("for check >>>>>>>> "+memberList.toString()); //================================== checking
 		
-		
 		Map<String, Object> map = new HashMap<>();
 		map.put("memberList", memberList);
-		int num = (int)session.getAttribute("loginNum");
-		Member member = MainRepo.formembername(num);
-		
 		map.put("goproject_title", mainproject.getMainproject_title());
 		map.put("goproject_content",mainproject.getMainproject_memo());
 		

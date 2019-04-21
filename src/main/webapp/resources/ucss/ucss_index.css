@@ -202,6 +202,17 @@ html{
 	text-align:right;
 }
 
+.writeWantedModalContent{
+	position: absolute;
+	background-color:white;
+	padding:10px;
+	top:0;
+	left:25%;
+	width:50%;
+	height:100%;
+	text-align:right;
+}
+
 .modalBlack{
 	position:absolute;
 	top:0;
