@@ -31,8 +31,8 @@
 			</div>
 			<div class="loaderBack"></div>
 		</div>
-		<div class="leftBar shadow">
-			<div class="card h-100" style="padding:5px;border:2px solid #6079a0;">
+		<div class="leftBar">
+			<div class="card h-100 shadow" style="padding:5px;border:2px solid #6079a0;">
 				<div class="contentItem" style="padding: 80px"></div>
 				<div class="contentItem">
 					<button class="btn btn-dark w-100" style="height: 50px" id="wantedBoardBtn">
@@ -114,6 +114,7 @@
 									</div>
 								</div>
 							</c:if>
+						</div>
 			<div class="contentSpace">
 				<div class="contentSpace_left"></div>
 				<div class="contentSpace_center">
@@ -257,13 +258,26 @@
 				<div class="modalBlack"></div>
 				<div class="writeWantedModalContent rounded sbd2">
 					<div id="writeBoardLoad"></div>
+					<div style="padding:10px">
+						<input type="button" class="btn btn-dark" value="글등록" style="margin-right:5px" id="writeBoardBtn">
+						<input type="button" class="btn btn-danger" value="닫기" id="closeWriteInternalBtn">
+					</div>
+				</div>
+			</div>
+			
+			<div id="boardDetailModal">
+				<div class="modalBlack"></div>
+				<div class="writeWantedModalContent rounded sbd2">
+					<div id="boardDetailLoad"></div>
+					<!-- <div style="padding:10px">
+						<input type="button" class="btn btn-danger" value="닫기" id="closeDetailInternalBtn">
+					</div> -->
 				</div>
 			</div>
 				
 			</div>
 		</div>
 		</div>
-	</div>
 	</div>
 	<script src="js/bootstrap.bundle.min.js"></script>
 </body>

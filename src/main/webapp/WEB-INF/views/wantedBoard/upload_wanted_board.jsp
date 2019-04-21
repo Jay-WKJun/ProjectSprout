@@ -5,11 +5,16 @@
 <head>
 <meta charset="UTF-8">
 <title>wantedBoard_directly.jsp</title>
-
+<script>
+	$(function(){
+		$('#writeBoardBtn').on('click',function(){
+			$('#write_wanted').submit();
+		})
+	})
+</script>
 </head>
 <body>
-	
-	<form action="write_wanted">
+	<form action="write_wanted" id="write_wanted">
 	<div class="container" style="text-align:left">
 		<div class="row">
 			<div class="col">
@@ -31,38 +36,11 @@
 		</div>
 		<div class="row">
 			<div class="col">
-				<textarea class="form-control" name="wantedBoard_content" style="height:500px">
-					내용 입력
-				</textarea>
+				<textarea class="form-control" name="wantedBoard_content" style="height:500px"></textarea>
 			</div>
-		</div>
-		<div style="text-align-last:right;">
-			<input type="submit" class="btn btn-dark" value="글등록">
-			<input type="button" class="btn btn-danger" value="닫기" id="closeWriteInternalBtn">
 		</div>
 	</div>
 	
-	
-	<%-- <table>
-	<tr>
-		<th>작성자</th>
-		<th>제목</th>
-		<th>내용</th>
-	</tr>
-	<tr>
-		<td>
-			${loginId}
-		</td>
-		<td>
-			<input type="text" name="wantedBoard_title" id="" placeholder="제목"/> <br> <!-- title -->
-		</td>
-		<td>
-			<input type="text" name="wantedBoard_content" id="" placeholder="내용"/> <br> <!-- content -->
-		</td>
-	</tr>	
-	
-	</table>
-		<input type="submit" value="글등록"> --%>
 	</form>
 	
 	
