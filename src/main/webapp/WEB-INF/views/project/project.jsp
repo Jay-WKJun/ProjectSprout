@@ -50,8 +50,11 @@
 							<c:forEach var="list" items="${projectMembersList}">
 								<div class="dropdown dropright float-right list-group-item list-group-item-action"
 									style="margin-bottom: 2px; border: 1px solid #6079a0;">
-									<div data-toggle="dropdown"> <img class="rounded-circle border" src="download?loginId=${list.member_id}" 
-												style="width: 20px; height: 20px" id="memberIcon"> ${list.member_name}</div>
+									<div data-toggle="dropdown"> 
+									
+									<img class="rounded-circle border" src="download?loginId=${list.member_id}" 
+										style="width: 20px; height: 20px" id="memberIcon"> ${list.member_name}</div>
+									
 									<div class="dropdown-menu shadow" style="border:1px solid #6079a0">
 										<h5 class="dropdown-header">${list.member_name}</h5>
 										<div style="margin-top: 20px" data-pno="${list.member_num}"

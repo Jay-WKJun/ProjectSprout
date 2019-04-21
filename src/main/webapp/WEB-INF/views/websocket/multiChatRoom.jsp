@@ -31,6 +31,11 @@
 				$('#addFileModal').show();
 			})
 			
+			//채팅 참여 멤버리스트 확인하기
+			$('#InMemberList').on('click', function(){
+				InMemberListStart1();
+			});
+			
 			//파일 전송 버튼
 			$('#uploads').on('click',function(){
 				uploadFile();
@@ -53,6 +58,12 @@
 			$('#closeMemberModalBtn').on('click', function(){
 				$('#addMemberModal').hide();
 			})
+			
+			//채팅멤버 추가 모달 닫기
+			$('#closeMemberList').on('click', function(){
+				$('#ChatInMemberList').hide();
+			})
+			
 			
 			//멤버 초대
 			$("#BtnInvitation").on("click", function(){
@@ -170,7 +181,7 @@
 			var str = $("#chatbox").val();
 			str = str.replace(/ /gi, '&nbsp;')
 			str = str.replace(/(?:\r\n|\r|\n)/g, '<br />');
-			  var invitation ='<p>'+member_name+'입장하셨습니다.</p>';
+			  var invitation ='<p>'+member_name+'님이 입장하셨습니다.';
 			
 				// WebsocketMessageBrokerConfigurer의 configureMessageBroker() 메소드에서 설정한 send prefix("/")를 사용해야 함
 				// 멀티 채팅방
@@ -204,10 +215,12 @@
 							
 						}else {
 							if (item.member_num == member_num) {
-						  content += '<p align="right">'+item.chat_content+'</p>';
+						 
+								content += '<p align="right">'+item.chat_content+'</p>';
 								
 							} else {
-								 content += '<p>'+item.member_name+' : '+item.chat_content+'</p>';
+								 content += '<p><img class="rounded-circle border" src="download?loginId='+item.member_name+'" style="width: 20px; height: 20px" id="memberIcon">'; 
+	 							content += ''+item.member_name+' : '+item.chat_content+'</p>';
 							}
 						}
 					});
@@ -217,6 +230,7 @@
 				}
 			});
 		}
+		
 		
 		function enterkey() {
 			if (window.event.keyCode == 13) {
@@ -250,6 +264,7 @@
 		function connect() {
 			// WebsocketMessageBrokerConfigurer의 registerStompEndpoints() 메소드에서 설정한 endpoint("/endpoint")를 파라미터로 전달
 			var socket = new SockJS('/sprout/endpoint');
+			
 			//
 			stompClient = Stomp.over(socket);
 			stompClient.connect({}, function(frame) {
@@ -268,7 +283,8 @@
 							$("#chatRoom").append('<p  align="right">'+data.message+"<br /></p>");
 							
 						} else {
-							$("#chatRoom").append('<p>'+data.id+' : '+data.message+"<br /></p>");
+							
+							$("#chatRoom").append('<p><img class="rounded-circle border" src="download?loginId='+data.id+'" style="width: 20px; height: 20px" id="memberIcon">'+data.id+' : '+data.message+"<br /></p>");
 						}
 					
 					
@@ -295,6 +311,7 @@
 			$("#chatbox").val("");
 			
 		} 
+		
 		
 		//파일전송
 		function sendfile(updowns) {
@@ -342,6 +359,35 @@
 		function scroll() {
 			$("#chatRoom").scrollTop($("#chatRoom")[0].scrollHeight);
 		}
+		
+		 /* 맴버목록 */
+		 
+		//InMemberListStart1
+		function InMemberListStart1() {
+			 $('#ChatInMemberList').show();
+			 var chatRoom_num= ${sessionScope.chatRoom_num}; 
+			 var contents = '';
+				var text = {
+						  "chatRoom_num"  : chatRoom_num 
+					};
+				// 테이블에 채팅내역 저장
+				$.ajax({
+					type : 'post',
+					url : 'InMemberList',
+					data : text ,
+					success : function(text) {
+						$.each(text, function(index, item){
+							if (item.meber_name != contents) {
+								
+							contents += '<p>'+item.member_name+'</p>';
+							
+							}
+						});
+					$('#MemberListIn').html(contents);
+					}
+				});
+			 
+		 }
 	</script>
 	<style type="text/css">
 		html{
@@ -379,6 +425,7 @@
 		 }
 		 
 		 /* =======input file======== */
+	
 		 
 
 	</style>
@@ -401,6 +448,10 @@
 								<button class="btn btn-light" id="addMemberModalBtn">
 									<i class="fas fa-user-plus fa-lg"></i>
 								</button>
+								
+								<button class="btn btn-light" id="InMemberList">
+									<i class="fas fa-address-card  fa-lg"></i>
+								</button>
 								<div id="addMemberModal" style="display:none">
 									<div class="modalBlack"></div>
 									<div class="noticeModalContent">
@@ -413,6 +464,21 @@
 										</div>
 									</div>
 									</div>
+									
+									<!--채팅창안에서 멤버리스트  -->
+										<div id="ChatInMemberList" style="display:none">
+									<div class="modalBlack"></div>
+									<div class="noticeModalContent">
+										<div style="padding:5px" id="MemberListIn">
+												<!--  회원목록 리스트 출력 부분 -->
+													
+											</div>
+										<div style="padding:5px">
+											<button class="btn btn-danger" id="closeMemberList">닫기</button>
+										</div>
+									</div>
+									</div>
+									
 							</div>
 						</div>
 					</div>
@@ -463,8 +529,8 @@
 					<input class="btn btn-dark" type="button" id="send" value="보내기">
 				</div>
 			</div>
-			
 		</div>
+		
 	</div>
 	<br>
 </body>

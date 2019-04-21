@@ -65,11 +65,15 @@ $(function() {
 		var member_id = $('#member_ids').val();//세션아이디
 		var member_num =$('#member_nums').val();//로그인넘버
 		var chatRoom_name = $('#member_ids').val(); // 임시로 아이디로 만들어지도록 함. 추후에 초대장 아이디랑 초대받은 사람 아이디로 업로드 예정(이라쓰고 안하기)
+		
+		var test3 = chatRoom_name.concat(', '+member_name);
+		
 		var sad;
 		var member_name = member_name;
 	
 		var name_membernum = {
-				"chatRoom_name" : chatRoom_name,
+			/*	"chatRoom_name" : chatRoom_name,*/
+				"chatRoom_name" : test3,
 				"member_num" :  member_num
 		};
 	$.ajax({
@@ -122,12 +126,15 @@ $(function() {
 		var chatRoom_num = $('#chatRoom_nums').val();
 		var member_name = member_nameOne["member_name"];
 		var chatRoom_name = $('#member_ids').val(); // 일단 아이디로 대신하자.. ..
+		var test3 = chatRoom_name.concat(', '+member_name);
+		
 		alert("왜:"+member_name);
 		var qp = {
 				"member_num" : member_num,
 				"chatRoom_num" : chatRoom_num,
 				"member_name" : member_name,
-				"chatRoom_name" : chatRoom_name
+			/*	"chatRoom_name" : chatRoom_name*/
+				"chatRoom_name" : test3
 		};
 
 		$.ajax({
@@ -214,7 +221,11 @@ $(function() {
 	//타임 테이블
 	$('#timeTable').load('timetable');
 	
+	
+	
+
 })//$function()
+
 //채팅방 생성
 function chatRoomCreat(chatRoom_name){
 	var content;

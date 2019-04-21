@@ -59,6 +59,13 @@ public class TextDAO {
 		int results  = mapper.invitation(text);
 		return results;
 	}
+
+	public List<Text> InMemberList(int chatRoom_num) {
+
+		TextMapper mapper = sqlsession.getMapper(TextMapper.class);
+		List<Text>  InmemberList  = mapper.InMemberList(chatRoom_num);
+		return InmemberList;
+	}
 	
 
 	
