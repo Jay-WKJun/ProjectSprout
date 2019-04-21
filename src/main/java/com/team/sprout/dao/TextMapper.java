@@ -17,5 +17,7 @@ public interface TextMapper {
 	public int selectchatRoomNum();
 
 	public int invitation(Text text);
+
+	public List<Text> InMemberList(int chatRoom_num);
 	
 }

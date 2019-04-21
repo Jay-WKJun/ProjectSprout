@@ -55,6 +55,7 @@
 												style="width: 35px; height: 35px;margin-right:10px" id="memberIcon"> 
 										${list.member_name}
 									</div>
+
 									<div class="dropdown-menu shadow" style="border:1px solid #6079a0">
 										<h5 class="dropdown-header">${list.member_name}</h5>
 										<div style="margin-top: 20px" data-pno="${list.member_num}"

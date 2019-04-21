@@ -116,4 +116,13 @@ public class TextController {
 		
 			return memberList;
 		}
+		
+		//채팅에있는 맴버list 전부 출력하기 
+		@RequestMapping(value="/InMemberList", method = RequestMethod.POST)
+		public @ResponseBody List<Text> InMemberList(int chatRoom_num, HttpSession session) {
+			System.out.println("채팅방안에 chat num" + chatRoom_num);
+				
+			List<Text> text = dao.InMemberList(chatRoom_num);
+			return text;
+		} 
 }

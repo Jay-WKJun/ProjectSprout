@@ -78,6 +78,10 @@
 		select * from chat where member_name = #{member_name}
 	</select>
 	
+	<select id="InMemberList" resultType="Text">
+		select  DISTINCT member_name from chat where chatRoom_num = #{chatRoom_num} 
+	</select>
+	
 	<select id="selectchatRoomNum" resultType="int">
 	SELECT max(chatRoom_num) 
 	FROM chat
