@@ -116,31 +116,6 @@ $(function() {
 		});
 	}
 	
-	//상대편아이디 등록
-//	function invitationss(member_nameOne){
-//		var member_num = member_nameOne;
-//		var chatRoom_num = $('#chatRoom_nums').val();
-//		var member_name=$('#memberName_click').val();
-//		var chatRoom_name = $('#member_ids').val(); // 일단 아이디로 대신하자.. ..
-//		alert("왜:"+member_name);
-//		var qp = {
-//				"member_num" : member_num,
-//				"chatRoom_num" : chatRoom_num,
-//				"member_name" : member_name,
-//				"chatRoom_name" : chatRoom_name
-//		};
-//
-//		$.ajax({
-//			type : 'post',
-//			url : 'invitationss',
-//			data : qp ,
-//			
-//			success : function(success) {
-//				messapgespace();
-//				}
-//		});
-//		
-//	}
 	function invitationss(member_nameOne){
 		var member_num = member_nameOne["member_num"];
 		var chatRoom_num = $('#chatRoom_nums').val();
