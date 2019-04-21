@@ -27,6 +27,10 @@ $(function(){
 		$('#noticeDetailModal').hide();
 	})
 	
+	$('#createFolderBtn').on('click', function(){
+		$('#createFolderForm').submit();
+	});
+	
 	//문서 작성 폼 생성
 	$('#createDocument').on('click', createForm);
 })

@@ -95,32 +95,23 @@ public class ProjectDetailCotroller {
 
 	}
 
+	//파일 저장.
 	@RequestMapping(value = "/documentFileUpLoad", method = RequestMethod.POST)
 	public @ResponseBody String projectFileUpLoad(HttpSession session, String folder_name, DocumentBoard documentBoard,
 			MultipartFile upLoadFile, String file_name) {
 		
 		
 		String mainproject_projectnum = (String)session.getAttribute("mainproject_projectnum");
-		System.out.println("mainproject_projectnum = "+mainproject_projectnum);
-		System.out.println("folder_name = " + folder_name);
-		System.out.println(documentBoard.toString());
-		System.out.println("file_name = " + file_name);
 		// 맨 처음 폴더이름을 받고, 다음 파일을 받고, board을 받는다.
 		String resp = "success";
-		String mainProjectNum = (String) session.getAttribute("mainproject_projectnum");
-		System.out.println(mainProjectNum);
 		// 여기서는 프로젝트 id로 묶는다.
 
 		DocumentFolder selectedDocumentFolder = dfmRepo.selectFolderNum(mainproject_projectnum, folder_name);
 		
 		//받아온 정보로 찾아온게 없다면 저장한다.
 		if (selectedDocumentFolder == null) {
-			DocumentFolder documentFolder = new DocumentFolder();
-			documentFolder.setDocument_folder_title(folder_name);
-			documentFolder.setMainProject_projectNum(mainProjectNum);
-			dfmRepo.insertDocumentFolder(documentFolder);
-			//저장하고 저장한것을 다시 찾아온다.
-			selectedDocumentFolder = dfmRepo.selectFolderNum(mainproject_projectnum, folder_name);
+			resp = "no Folder";
+			return resp;
 		}
 
 		documentBoard.setDocument_folder_num(selectedDocumentFolder.getDocument_folder_num());
@@ -236,6 +227,24 @@ public class ProjectDetailCotroller {
 		result.put("files", selectedfiles);
 		
 		return result;
+	}
+	
+	//폴더생성
+	@RequestMapping(value = "/createFolderForm", method = RequestMethod.POST)
+	public String createFolderForm(String folderNameInput, HttpSession session) {
+		
+		String mainproject_projectnum = (String)session.getAttribute("mainproject_projectnum");
+		DocumentFolder selectedDocumentFolder = dfmRepo.selectFolderNum(mainproject_projectnum, folderNameInput);
+		
+		//찾았는데 없다면 저장한다.
+		if (selectedDocumentFolder == null) {
+			DocumentFolder documentFolder = new DocumentFolder();
+			documentFolder.setDocument_folder_title(folderNameInput);
+			documentFolder.setMainProject_projectNum(mainproject_projectnum);
+			dfmRepo.insertDocumentFolder(documentFolder);
+		}
+		
+		return "redirect:/detailPage";
 	}
 
 	/*

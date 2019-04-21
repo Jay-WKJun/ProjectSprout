@@ -37,7 +37,9 @@
 					<div id="noticeDetailModal">
 						<div class="modalBlack"></div>
 						<div class="noticeModalContent">
-							<input type="text" class="form-control" id="folderNameInput" placeholder="생성할 폴더 이름을 입력하세요.">
+							<form name="createFolderForm" id="createFolderForm" action="createFolderForm" method="post">
+							<input type="text" class="form-control" id="folderNameInput" name="folderNameInput" placeholder="생성할 폴더 이름을 입력하세요.">
+							</form>
 							<button class="btn btn-dark" id="createFolderBtn" style="margin-top:10px">폴더 생성</button>
 							<button class="btn btn-danger" id="cancelNoticeDetailBtn" style="margin-top:10px">닫기</button>
 						</div>
