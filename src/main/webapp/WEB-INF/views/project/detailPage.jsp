@@ -28,15 +28,29 @@
 			<div class="sideSpace_bottom">
 				
 				<div
-					class="communicationBar rounded-bottom border border-top-0 w-100"
+					class="communicationBar sbd2 rounded shadow bgwhite w-100"
 					style="padding: 5px">
+					<button class="btn btn-dark">
+						<i class="fas fa-folder-plus fa-2x"></i>
+					</button>
+					<button class="btn btn-dark w-100" id="createDocument">
+						<i class="fas fa-file-medical fa-2x"></i>
+					</button>
 					<div class="list-group">
-					<button class="btn btn-dark w-100" id="createDocument">게시판 추가</button>
-					<!-- 메인화면에 쓴다. -->
+						<div class="dropdown dropright float-right list-group-item list-group-item-action"
+										style="margin-bottom: 2px; border: 1px solid #6079a0;">
+							<div data-toggle="dropdown">dkdkdk</div>
+							<div class="dropdown-menu shadow" style="border:1px solid #6079a0">
+								<div style="margin-top: 20px" data-pno="${list.member_num}" id="forkick">
+									<a href="#" style="border:1px solid #6079a0" data-name="${list.member_name }"
+										class="list-group-item list-group-item-action border-left-0 border-right-0 messagesend">
+										메세지 보내기
+									</a>
+								</div>
+							</div>
+						</div>
 					</div>
 					<div id="noticeSpace">
-						
-					
 					</div>
 
 					

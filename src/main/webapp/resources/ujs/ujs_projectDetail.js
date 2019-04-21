@@ -3,6 +3,20 @@ $(function(){
 	getFileList();
 	folderForm();
 	
+	//로그인 버튼 이펙트
+	$('#userProfileIcon').on('mouseover', function() {
+		$('#userProfileIcon').attr('class', 'rounded-circle');
+	})
+	$('#userProfileIcon').on('click', function() {
+		$('#userProfileIcon').attr('class', 'rounded-circle');
+	})
+	$('#userProfileIcon').on('mouseup', function() {
+		$('#userProfileIcon').attr('class', 'rounded-circle border');
+	})
+	$('#userProfileIcon').on('mouseout', function() {
+		$('#userProfileIcon').attr('class', 'rounded-circle border');
+	})
+	
 	//문서 작성 폼 생성
 	$('#createDocument').on('click', function(){
 		createForm();
