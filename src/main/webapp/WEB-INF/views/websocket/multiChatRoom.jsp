@@ -219,7 +219,10 @@
 								content += '<p align="right">'+item.chat_content+'</p>';
 								
 							} else {
-								 content += '<p><img class="rounded-circle border" src="download?loginId='+item.member_name+'" style="width: 20px; height: 20px" id="memberIcon">'; 
+								var imgErrorSrc="src='img/empty_profile.png'";
+								 content += '<p><img class="rounded-circle border" src="download?loginId='+item.member_name+'" style="width: 20px; height: 20px" id="memberIcon"';
+								 content += 'onerror='+imgErrorSrc;
+								content +='>'; 
 	 							content += ''+item.member_name+' : '+item.chat_content+'</p>';
 							}
 						}
