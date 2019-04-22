@@ -102,20 +102,21 @@ $(function() {
 			data : asdfgs ,
 			
 			success : function(member_nameOne) {
-				invitationss(member_nameOne);
+				invitationsss(member_nameOne);
 			}
 		});
 	}
 	
-	function invitationss(member_nameOne){
+	function invitationsss(member_nameOne){
 		var member_num = member_nameOne["member_num"];
 		var chatRoom_num = $('#chatRoom_nums').val();
 		var member_name = member_nameOne["member_name"];
 		var chatRoom_name = $('#member_ids').val(); // 일단 아이디로 대신하자.. ..
-		
-		var test3 = chatRoom_name.concat(', '+member_name);
+		alert(member_num);
+		alert(chatRoom_num);
 		alert(member_name);
-	
+		alert(chatRoom_name);
+		var test3 = chatRoom_name.concat(', '+member_name);
 			
 		var qp = {
 				"member_num" : member_num,
@@ -124,8 +125,6 @@ $(function() {
 				"chatRoom_name" : test3
 		};
 				
-		setTimeout(function() {
-        }, 1000);
 		
 		$.ajax({
 			type : 'post',
