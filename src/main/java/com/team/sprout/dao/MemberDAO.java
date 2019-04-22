@@ -30,5 +30,7 @@ public interface MemberDAO {
 	
 	public int selectRoomnum();
 
-	public String selectOneMemberNum(String member_name); 
+	public String selectOneMemberNum(String member_name);
+
+	public int insertCertificate(Map<String, String> map); 
 }
