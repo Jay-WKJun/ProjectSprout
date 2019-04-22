@@ -19,7 +19,7 @@ public interface DocumentFileManagerDAO {
 
 	public DocumentFolder selectFolderNum(Map<String, String> map);
 
-	public List<DocumentFolder> selectfolderList();
+	public List<DocumentFolder> selectfolderList(String mainproject_projectnum);
 
 	public List<DocumentBoard> selectSameFolderBoardList(int folder_num);
 

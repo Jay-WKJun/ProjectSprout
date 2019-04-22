@@ -63,12 +63,11 @@ public class ProjectDetailCotroller {
 		// select의 첫 이름은 폴더의 이름이다.
 		
 		String mainproject_projectnum = (String)session.getAttribute("mainproject_projectnum");
-		System.out.println("mainproject_projectnum = "+mainproject_projectnum);
 
 		// 이곳에 모든 원기옥을 모은다.
 		List<Map> map = new ArrayList<>();
-
-		List<DocumentFolder> folderList = dfmRepo.selectfolderList();
+		
+		List<DocumentFolder> folderList = dfmRepo.selectfolderList(mainproject_projectnum);
 
 		for (DocumentFolder documentFolder : folderList) {
 			// 이곳에 처음엔 folder의 이름, 그 이후엔 해당 board리스트가 들어간다.

@@ -55,9 +55,9 @@ public class MailService {
 		//인증하면 성공페이지로 거기서 바로 홈으로
 		if (authKey.equals(code)) {
 			int result = memRepo.updateAuthKey(id, "success");
-			return "certifination/success";
+			return "certification/success";
 		} else {
-			return "certifination/fail";
+			return "certification/fail";
 		}
 	}
 	

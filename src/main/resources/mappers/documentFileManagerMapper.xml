@@ -72,6 +72,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectfolderList" resultType="DocumentFolder">
 		select *
 		from document_folder
+		where MAINPROJECT_PROJECTNUM = #{mainproject_projectnum}
 	</select>
 	
 	<select id="selectSameFolderBoardList" resultType="DocumentBoard">

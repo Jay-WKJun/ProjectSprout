@@ -26,8 +26,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			,#{projectContent_title}
 			,#{projectContent_content}
 			,#{projectContent_status}
+			<if test="projectContent_startDate == null">
+			,sysdate
+			</if>
+			<if test="projectContent_startDate != null">
 			,#{projectContent_startDate}
+			</if>
+			<if test="projectContent_endDate == null">
+			,sysdate+1
+			</if>
+			<if test="projectContent_endDate != null">
 			,#{projectContent_endDate}
+			</if>
 			,#{projectContent_color}
 			,#{mainproject_projectNum}
 			,#{member_num}

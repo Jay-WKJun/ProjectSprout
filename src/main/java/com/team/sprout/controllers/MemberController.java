@@ -131,7 +131,11 @@ public class MemberController {
 
 		// 입력된 정보로 DB가서 그 정보를 가져온다.
 		Member m = repo.selectOne(map);
-		System.out.println("member아이디"+member.getMember_id());
+		
+		if (!(m.getMember_authkey().equals("success")||m.getMember_password().equals("google"))) {
+			return "certification/fail";
+		}
+		
 		Member getMember = repo.selectOneWebsocket(member.getMember_id());
 		
 		// 로그인 성공
@@ -219,7 +223,6 @@ public class MemberController {
 			member.setMember_password("google");
 			member.setMember_address("google");
 			member.setMember_phone(0);
-			member.setMemberImage_saveAddress("none");
 			int result = repo.memberJoin(member);
 			System.out.println("Google 로그인한 사람 회원 등록 완료" + result);
 			memberVali = repo.checkId(member.getMember_id());
@@ -249,12 +252,11 @@ public class MemberController {
 	 * 회원정보 페이지로 이동.
 	 */
 	@RequestMapping(value = "/memberInfo", method = RequestMethod.GET) // ------------------------ ㅠㅠ(아직 진행중.)
-	public String memberInfo(Member meber, HttpSession session, Model model) {
+	public String memberInfo(HttpSession session, Model model) {
 		String loginId = (String) session.getAttribute("loginId"); // session에 저장된 id 불러오기.
 		
 		System.out.println("--- 회원정보 page (/memberInfo.GET)---");
 		System.out.println("session에 저장된 id : " + loginId);
-		System.out.println();
 		
 		Member member = repo.checkId(loginId);
 

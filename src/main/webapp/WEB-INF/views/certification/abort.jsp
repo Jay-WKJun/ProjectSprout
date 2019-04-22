@@ -8,7 +8,7 @@
 <script src="js/jquery-3.3.1.min.js"></script>
 <script>
 $(function(){
-	alert("인증에 실패하셨습니다. 다시 시도해주세요.");
+	alert("인증하지 않으셨습니다.인증 후 다시 시도해주세요.");
 	location.href('/');
 });
 </script>
