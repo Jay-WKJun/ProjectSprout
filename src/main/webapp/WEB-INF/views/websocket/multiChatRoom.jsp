@@ -153,27 +153,6 @@
 			});
 			
 		}
-		 
-		//초대후 매시지 띄우기
-		/* function invitationMessage() {
-			var member_name = $('#memberinvitation').val();
-			alert("gg");
-			alert(member_name);
-			var str = $("#chatbox").val();
-			str = str.replace(/ /gi, '&nbsp;')
-			str = str.replace(/(?:\r\n|\r|\n)/g, '<br />');
-			
-			var upl = $("#FILE_TAG").val();
-			  var invitation ='<p>'+member_name+'입장하셨습니다.</p>';
-			
-				stompClient.send("/chat/${chatRoom_num}", {}, JSON.stringify({
-					message : invitation
-				);
-				$("#chatbox").val("");
-			} 
-			
-			
-		}  */
 		
 		//채팅 초대후 메시지 출력
 		function invitationMessage() {
@@ -181,7 +160,7 @@
 			var str = $("#chatbox").val();
 			str = str.replace(/ /gi, '&nbsp;')
 			str = str.replace(/(?:\r\n|\r|\n)/g, '<br />');
-			  var invitation ='<p>'+member_name+'님이 입장하셨습니다.';
+			  var invitation ='<div class="bubble">'+member_name+'님이 입장하셨습니다.</div>';
 			
 				// WebsocketMessageBrokerConfigurer의 configureMessageBroker() 메소드에서 설정한 send prefix("/")를 사용해야 함
 				// 멀티 채팅방
@@ -216,14 +195,27 @@
 						}else {
 							if (item.member_num == member_num) {
 						 
-								content += '<p align="right">'+item.chat_content+'</p>';
+								content += '<div class="chatLine">';
+								content +='<div class="chatLine_side"></div>'
+								content +='<div class="chatLine_main">';
+								content +='<div class="bubbleR">'+item.chat_content+'</div></div>';
+								content +='</div>';
 								
 							} else {
 								var imgErrorSrc="src='img/empty_profile.png'";
-								 content += '<p><img class="rounded-circle border" src="download?loginId='+item.member_name+'" style="width: 20px; height: 20px" id="memberIcon"';
-								 content += 'onerror='+imgErrorSrc;
-								content +='>'; 
-	 							content += ''+item.member_name+' : '+item.chat_content+'</p>';
+								
+								content += '<div class="chatLine">';
+								content +='<div class="chatLine_main">';
+								content += '<img class="rounded-circle border" src="download?loginId=';
+								content += item.member_name+'" style="width: 35px; height: 35px" id="memberIcon"';
+								content += 'onerror='+imgErrorSrc+'>';
+								content +='</div>';
+								content +='<div class="chatLine_main">';
+	 							content += '<div class="bubbleR">'+item.member_name+' : '+item.chat_content+'</div>';
+	 							content +='</div>';
+	 							content +='<div class="chatLine_side"></div>'
+	 							content +='</div>';
+	 							
 							}
 						}
 					});
@@ -283,11 +275,11 @@
 					var data = JSON.parse(message.body);
 					
 						if ('${sessionScope.loginId}' == data.id) {
-							$("#chatRoom").append('<p  align="right">'+data.message+"<br /></p>");
+							$("#chatRoom").append('<div class="bubbleR">'+data.message+"</div>");
 							
 						} else {
 							
-							$("#chatRoom").append('<p><img class="rounded-circle border" src="download?loginId='+data.id+'" style="width: 20px; height: 20px" id="memberIcon">'+data.id+' : '+data.message+"<br /></p>");
+							$("#chatRoom").append('<p><img class="rounded-circle border" src="download?loginId='+data.id+'" style="width: 30px; height: 30px" id="memberIcon">'+data.id+' : '+data.message+"<br /></p>");
 						}
 					
 					
@@ -395,13 +387,13 @@
 	<style type="text/css">
 		html{
 			height:100%;
-			background-color: #efefef;
+			background: linear-gradient(to right,#f4f8ff, #e0ebff, #f4f8ff) fixed;
 			overflow-y:hidden;
 		}
 		
 		body{
 			padding:5px;
-			background-color: #efefef;
+			background: linear-gradient(to right,#f4f8ff, #e0ebff, #f4f8ff) fixed;
 		}
 		
 	 	#chatRoom{
@@ -409,6 +401,7 @@
 			height: 450px; 
 			overflow: scroll;
 			overflow-x:hidden;
+			background: linear-gradient(to right,#f4f8ff, #e0ebff, #f4f8ff) fixed;
 		} 
 		::-webkit-scrollbar-track{
 		 -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
@@ -428,18 +421,46 @@
 		 }
 		 
 		 /* =======input file======== */
-	
-		 
+		
+		/* =============말풍선============= */
+		
+		.chatLine{
+			display: flex;
+		}
+		
+		.chatLine_main{
+			flex: initial;
+		}
+		
+		.chatLine_side{
+			flex:1;
+		}
+		
+		.bubbleR{
+			border-radius: 5%;
+			background-color:gray;
+			height:100%;
+			margin-left:5px;
+			padding:2px;
+		}
+		
+		.bubbleL{
+			padding:2px;
+			border-radius: 20%;
+			background-color:gray;
+			height:100%;
+			margin-right:5px;
+		}
 
 	</style>
-<title>일반 채팅 방</title>
+<title>채팅 방</title>
 </head>
 <body>
 	<div class="useFont bgwhite">
 		<div class="border-bottom-0 sbd2 w-100">
 			<div class="mainSpace">
 				<div class="mainSpace_bottom"></div>
-				<div class="mainSpace_top fontSize20" style="padding:10px;">
+				<div class="mainSpace_top fontSize20" style="padding:10px;background-color:#282e38;color:white;">
 					<div class="mainSpace_top_side"></div>
 					<div class="mainSpace_top_center">
 						${chatRoom_namess }
@@ -448,12 +469,12 @@
 						<div class="mainSpace_top">
 							<div class="mainSpace_top_side"></div>
 							<div class="mainSpace_top_center">
-								<button class="btn btn-light" id="addMemberModalBtn">
+								<button class="btn btn-default" id="addMemberModalBtn" style="color:white">
 									<i class="fas fa-user-plus fa-lg"></i>
 								</button>
 								
-								<button class="btn btn-light" id="InMemberList">
-									<i class="fas fa-address-card  fa-lg"></i>
+								<button class="btn btn-default" id="InMemberList" style="color:white">
+									<i class="fas fa-bars fa-lg"></i>
 								</button>
 								<div id="addMemberModal" style="display:none">
 									<div class="modalBlack"></div>

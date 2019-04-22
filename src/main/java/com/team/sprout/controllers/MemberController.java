@@ -244,7 +244,7 @@ public class MemberController {
 		session.setAttribute("loginNum", member.getMember_num());
 		session.setAttribute("loginId", member.getMember_id());
 		session.setAttribute("loginName", member.getMember_name());
-
+		session.setAttribute("member_num", member.getMember_num());
 		return "redirect:/";
 	}
 
@@ -349,7 +349,7 @@ public class MemberController {
 			System.out.println(member.toString());
 			repo.updateMember(member);
 		}
-// 4. 아무것도 안건드리고 수정 버튼을 누름. 이런 기능 없음ㅋㅋ 같은 값을 입력해도 무조건 입력 해야함.
+// 4. 아무것도 안건드리고 수정 버튼을 누름. 이런 기능 없음ㅋㅋ 같은 값을 입력해도 무조건 입력 해야함. 특히 사진도...
 		
 		return "redirect:/";
 	} // modify
