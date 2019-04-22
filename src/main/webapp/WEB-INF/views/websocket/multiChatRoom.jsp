@@ -159,7 +159,10 @@
 			var str = $("#chatbox").val();
 			str = str.replace(/ /gi, '&nbsp;')
 			str = str.replace(/(?:\r\n|\r|\n)/g, '<br />');
-			  var invitation ='<div class="bubble">'+member_name+'님이 입장하셨습니다.</div>';
+			  var invitation ='<div class="chatLine">';
+			  invitation += '<div class="chatLine_main">';
+			  invitation += '<div class="bubbleL shadow">'+member_name+'님이 입장하셨습니다.</div>';
+			  invitation += '</div>';
 			
 				// WebsocketMessageBrokerConfigurer의 configureMessageBroker() 메소드에서 설정한 send prefix("/")를 사용해야 함
 				// 멀티 채팅방
@@ -197,23 +200,24 @@
 								content += '<div class="chatLine">';
 								content +='<div class="chatLine_side"></div>'
 								content +='<div class="chatLine_main">';
-								content +='<div class="bubbleR">'+item.chat_content+'</div></div>';
+								content +='<div class="bubbleR shadow">'+item.chat_content+'</div>';
+								content +='</div>';
 								content +='</div>';
 								
 							} else {
 								var imgErrorSrc="src='img/empty_profile.png'";
 								
 								content += '<div class="chatLine">';
-								content +='<div class="chatLine_main">';
-								content += '<img class="rounded-circle border" src="download?loginId=';
-								content += item.member_name+'" style="width: 35px; height: 35px" id="memberIcon"';
+								content += '<div class="chatLine_main">';
+								content += '<img class="rounded-circle border memberIcon" src="download?loginId=';
+								content += item.member_name+'" style="width: 35px; height: 35px"';
 								content += 'onerror='+imgErrorSrc+'>';
-								content +='</div>';
-								content +='<div class="chatLine_main">';
-	 							content += '<div class="bubbleR">'+item.member_name+' : '+item.chat_content+'</div>';
-	 							content +='</div>';
-	 							content +='<div class="chatLine_side"></div>'
-	 							content +='</div>';
+								content += '</div>';
+								content += '<div class="chatLine_main">';
+	 							content += '<div class="bubbleL shadow">'+item.member_name+' : '+item.chat_content+'</div>';
+	 							content += '</div>';
+	 							content += '<div class="chatLine_side"></div>'
+	 							content += '</div>';
 	 							
 							}
 						}
@@ -275,12 +279,27 @@
 					
 						if ('${sessionScope.loginId}' == data.id) {
 							$("#chatRoom").append(
-									'<div class="bubbleR">'+data.message+"</div>"
+									'<div class="chatLine">'
+									+'<div class="chatLine_side"></div>'
+									+'<div class="chatLine_main">'
+									+'<div class="bubbleR shadow-sm">'+data.message+"</div>"
+									+'</div>'
+									+'</div>'
 							);
 							
 						} else {
 							
-							$("#chatRoom").append('<p><img class="rounded-circle border" src="download?loginId='+data.id+'" style="width: 30px; height: 30px" id="memberIcon">'+data.id+' : '+data.message+"<br /></p>");
+							$("#chatRoom").append(
+									'<div class="chatLine">'
+									+'<div class="chatLine_main">'
+									+'<img class="rounded-circle border memberIcon" src="download?loginId='+data.id+'" style="width: 30px; height: 30px">'
+									+'<div class="bubbleL shadow-sm">'
+									+data.name+' : '+data.message
+									+'</div>'
+									+'</div>'
+									+'<div class="chatLine_side"></div>'
+									+'</div>'
+							);
 						}
 					
 					
@@ -341,15 +360,15 @@
 	         var formData = new FormData(form);
 	         formData.append("fileObj", $("#FILE_TAG")[0].files[0]);
 	         $.ajax({
-	            		 url: 'write', 
-	                     processData: false,
-	                     contentType: false,
-	                     data: formData,
-	                     type: 'POST',
-	                     success: function(updowns){
-	                    	 sendfile(updowns);
-	                     }
-	             });
+		         url: 'write', 
+		         processData: false,
+		         contentType: false,
+		         data: formData,
+		         type: 'POST',
+		         success: function(updowns){
+		         	sendfile(updowns);
+		         }
+	         });
 	     }
 		
 		function scroll() {
@@ -427,6 +446,8 @@
 		
 		.chatLine{
 			display: flex;
+			padding:2px;
+			margin:2px;
 		}
 		
 		.chatLine_main{
@@ -435,28 +456,46 @@
 		
 		.chatLine_side{
 			flex:1;
+			min-width:40px;
 		}
 		
-		.bubbleR{
-			border-radius: 5%;
+		/* .bubbleL{
+			border-radius: 10%;
 			background-color:gray;
 			height:100%;
 			margin-left:5px;
-			padding:2px;
 		}
 		
-		.bubbleL{
-			padding:2px;
-			border-radius: 20%;
+		.bubbleR{
+			border-radius: 10%;
 			background-color:gray;
 			height:100%;
 			margin-right:5px;
+		} */
+		
+		.bubbleL{
+			padding: 5px;
+			background: #f7eaff;
+			-webkit-border-radius: 5px;
+			-moz-border-radius: 5px;
+			border-radius: 10px;
+			margin-left:5px;
 		}
-
+		
+		.bubbleR{
+			padding: 5px;
+			background: #eafffa;
+			-webkit-border-radius: 5px;
+			-moz-border-radius: 5px;
+			border-radius: 10px;
+			margin-right:5px;
+		}
+		
 	</style>
 <title>채팅 방</title>
 </head>
 <body>
+<div class="useFont">
 	<div class="useFont bgwhite">
 		<div class="border-bottom-0 sbd2 w-100">
 			<div class="mainSpace">
@@ -479,7 +518,7 @@
 								</button>
 								<div id="addMemberModal" style="display:none">
 									<div class="modalBlack"></div>
-									<div class="noticeModalContent">
+									<div class="noticeModalContent sbd2 rounded">
 										<div style="padding:5px">
 											<input class="form-control" type="text" id="memberinvitation">
 										</div>
@@ -493,11 +532,10 @@
 									<!--채팅창안에서 멤버리스트  -->
 										<div id="ChatInMemberList" style="display:none">
 									<div class="modalBlack"></div>
-									<div class="noticeModalContent">
-										<div style="padding:5px" id="MemberListIn">
+									<div class="noticeModalContent sbd2 rounded" style="color:black">
+										<div style="padding:5px; text-align:center" id="MemberListIn">
 												<!--  회원목록 리스트 출력 부분 -->
-													
-											</div>
+										</div>
 										<div style="padding:5px">
 											<button class="btn btn-danger" id="closeMemberList">닫기</button>
 										</div>
@@ -557,6 +595,6 @@
 		</div>
 		
 	</div>
-	<br>
+	</div>
 </body>
 </html>
