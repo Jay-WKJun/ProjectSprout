@@ -54,7 +54,7 @@ function selectBoard(){
 				var tag = '<div>'
 				tag += '<h1 style="text-align : center">'+result.boardTitle+'</h1><br>';
 				$.each(result.files, function(index, item){
-					tag += '<img src="'+item.document_file_location+'/'+item.document_file_originalfileName+item.document_file_extension+'">';
+					tag += '<img style="width:90%;height:auto" src="'+item.document_file_location+'/'+item.document_file_originalfileName+item.document_file_extension+'">';
 				})
 				tag += '<div>'+result.boardContent+'</div>';
 				tag += '</div>';

@@ -58,7 +58,6 @@
 				<div class="mainSpace_top_side"></div>
 				<div class="mainSpace_top_center">
 					<div class="projectName border-bottom">
-						
 						<h1 id="projectHome"><b><a style="color:#5d88cc" href="http://localhost:2848/sprout/project_go">${MainProject_title}</a></b></h1>
 					</div>
 				</div>
@@ -86,7 +85,7 @@
 
 			<div class="mainSpace_bottom">
 				<div class="contentSpace_side"></div>
-				<div class="contentSpace" id="contentSpace" style="min-width:900px;">
+				<div class="contentSpace" id="contentSpace" style="min-width:900px;text-align:center">
 				<div style="text-align:center">
 					<img src = "img/folder_featured.png" style="width:80%;height:auto;opacity: 0.5">
 				</div>

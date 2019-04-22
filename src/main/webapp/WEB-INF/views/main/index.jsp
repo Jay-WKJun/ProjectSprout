@@ -277,7 +277,7 @@
 				<div class="contentSpace_left"></div>
 				<div class="contentSpace_center" style="padding:20px">
 					<div id="webPresentSpace">
-						<div class="rounded bgwhite sbd2 shadow" style="text-align:center">
+						<div class="rounded shadow" style="text-align:center;background-color:#ccdbff">
 							
 							<div id="demo" class="carousel slide" data-ride="carousel">
 							
@@ -293,13 +293,22 @@
 							  <!-- The slideshow -->
 							  <div class="carousel-inner" style="width:1000px;height:600px">
 							    <div class="carousel-item active">
-							      <img src="img/bird2.jpg" style="width:100%;height:auto">
+							    	<div style="opacity: 0.9">
+							      		<img src="img/communication_img.png" style="width:auto;height:500px">
+							      		<h2 style="color:#272f42">Communication</h2>
+							      	</div>
 							    </div>
 							    <div class="carousel-item">
-							      <img src="img/chita.jpg" style="width:100%;height:auto">
+								    <div style="opacity: 0.9">
+								      <img src="img/calendar_img.png" style="width:auto;height:500px">
+								      <h2 style="color:#272f42">Schedule</h2>
+								    </div>
 							    </div>
 							    <div class="carousel-item" >
-							      <img src="img/chita2.jpg" style="width:100%;height:auto">
+							    	<div style="opacity: 0.9">
+							      		<img src="img/folder_img.png" style="width:auto;height:500px">
+							      		<h2 style="color:#272f42">Documents</h2>
+							   		</div>
 							    </div>
 							  </div>
 							

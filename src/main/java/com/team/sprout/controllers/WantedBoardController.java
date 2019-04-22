@@ -182,7 +182,7 @@ public class WantedBoardController {
 		WebElement gogogo = driver.findElement(By.linkText(link));
 		gogogo.click();
 
-		return null;
+		return "redirect:/";
 	}
 
 	/* 페이지 이동. */
