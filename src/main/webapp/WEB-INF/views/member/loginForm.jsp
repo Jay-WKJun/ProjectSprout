@@ -162,7 +162,8 @@
 
 			console.log(JSON.stringify(send));
 			// Send the code to the server
-			$.ajax({	type : 'POST',
+			$.ajax({
+						type : 'POST',
 						url : 'googleSignInCallback',
 						data : send,
 						success : function(result) {

@@ -42,10 +42,10 @@ public class TextController {
 			text.setMember_num(member_num);
 			/*int chatRoom_num=(int) session.getAttribute("chatRoom_num");
 			text.setChatRoom_num(chatRoom_num);*/
-			System.out.println("roomname1"+text.toString());
+			System.out.println("roomname쪽"+text.toString());
 			int chatroomname= dao.insertChatRoomName(text);
 			String iasasdad = text.getChatRoom_name();
-			System.out.println("roomname2"+text.getMember_name());
+			System.out.println("채팅팅안에있는 아이디랄까?"+text.getMember_name());
 			
 			
 			//챗룸numㄱㄱ
@@ -70,13 +70,13 @@ public class TextController {
 					int chatRoom_num=(int) session.getAttribute("chatRoom_num");
 					System.out.println("오냐2"+chatRoom_name);
 					text.setChatRoom_num(chatRoom_num);
-					System.out.println("invitationss쪽"+text.toString());
+					System.out.println("roomname쪽"+text.toString());
 					
 					int results = dao.invitation(text);
 					
 					
 					String iasasdad = text.getChatRoom_name();
-					System.out.println("invitationss?"+text.getMember_name());
+					System.out.println("체팅안에있는 아이디랄까?"+text.getMember_name());
 					
 					
 					 
@@ -91,7 +91,7 @@ public class TextController {
 			text.setMember_name(member_name);
 			System.out.println(text.toString());
 			int result = dao.TextInsert(text);
-			System.out.println("tinsert?"+text.getMember_name());
+			System.out.println("체팅안에있는 아이디랄까?"+text.getMember_name());
 			return "success";
 		}
 		

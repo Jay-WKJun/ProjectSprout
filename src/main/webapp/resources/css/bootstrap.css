@@ -4070,7 +4070,7 @@ input[type="button"].btn-block {
 }
 
 .nav-link.disabled {
-  color: white;
+  color: #6c757d;
   pointer-events: none;
   cursor: default;
 }
@@ -4103,7 +4103,7 @@ input[type="button"].btn-block {
 }
 
 .nav-tabs .nav-link.disabled {
-  color: white;
+  color: #6c757d;
   background-color: transparent;
   border-color: transparent;
 }
@@ -4134,7 +4134,7 @@ input[type="button"].btn-block {
 
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
-  color: white;
+  color: #fff;
   background-color: #007bff;
 }
 
