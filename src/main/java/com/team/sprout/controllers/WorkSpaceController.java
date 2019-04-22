@@ -57,7 +57,7 @@ public class WorkSpaceController {
 		  List<ProjectMember> prlist = prrepo.findManager(mainproject_projectnum);
 		  for (ProjectMember projectMember : prlist) {
 			  if (projectMember.getMember_num() == member_num) {
-				  session.setAttribute("member_rank", projectMember.getMember_rank());
+				  model.addAttribute("member_rank", projectMember.getMember_rank());
 			}
 		   System.out.println(projectMember.getMember_num());
 		  }
@@ -87,7 +87,7 @@ public class WorkSpaceController {
 		List<ProjectMember> prlist = prrepo.findManager(mpNum);
 		for (ProjectMember projectMember : prlist) {
 			
-			session.setAttribute("member_rank", projectMember.getMember_rank());
+			model.addAttribute("member_rank", projectMember.getMember_rank());
 		}
 
 		List<MainProject> mainProjects = prrepo.findProjectName(mpNum);
