@@ -64,7 +64,7 @@
 												class="list-group-item list-group-item-action border-left-0 border-right-0 messagesend">메세지
 												보내기</a>
 											
-											<input type="hidden" value="${sessionScope.chatRoom_num }" id="chatRoom_nums">
+											<input type="hidden" value="${chatRoom_num }" id="chatRoom_nums">
 											<input type="hidden" value="${list.member_name }" id="ClickMember_name">
 											<c:if test="${sessionScope.member_rank eq 5}">
 											<c:if test="${list.member_name eq sessionScope.loginId }"></c:if>
