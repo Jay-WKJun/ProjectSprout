@@ -8,10 +8,6 @@
 <title>detail_info.jsp</title>
 <script>
 	$(function(){
-		/* $('#applyBoardBtn').on('click',function(){
-			location.href="apply_wanted";
-		}) */
-		
 		//공고글 삭제
 		$('#applyBoardDeleteBtn').on('click',deleteWantedBoard);
 		
@@ -61,46 +57,6 @@
 	</c:if>
 		<input type="button" class="btn btn-danger" value="닫기" id="closeDetailInternalBtn">
 	</div>
-	
-	<%-- <h2>[ 공지글 보기 ]</h2>
-	<hr>
-	<table border="1">
-		<tr>
-			<th>Title</th>
-			<td>${one_wanted_from_DB.wantedBoard_title}</td>
-		</tr>
-		<tr>
-			<th>공지된 날짜</th>
-			<td>${one_wanted_from_DB.wantedBoard_date }</td>
-		</tr>	
-		<tr>
-			<th>작성자</th>
-			<td>${one_wanted_from_DB.wantedBoard_from}</td>
-		</tr>
-		<tr>
-			<th>Content</th>
-			<td>
-				<pre>${one_wanted_from_DB.wantedBoard_content}</pre>
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				
-				<c:if test="${not empty sessionScope.same}">
-					<a href="apply_wanted" >지원하기</a>
-				</c:if>
-				
-				<c:if test="${empty sessionScope.same}">
-					<a href="delete_wanted?wantedBoard_num=${one_wanted_from_DB.wantedBoard_num}" >삭제하기</a>
-				</c:if>
-				
-			</td>
-		</tr>
-	</table>
-	<a href="boardList" >return to list</a> <!-- action name  -->
-	<c:if test="${empty sessionScope.same}">
-		<p> 이 자리에는 내가 올린 공지에 누가 지원했는지 확인하는 창이 있으면 참 좋을텐데.... 시간이 있으면 하고 없으면 패스...</p>
-	</c:if> --%>
 	
 </body>
 </html>

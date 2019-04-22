@@ -30,7 +30,7 @@
     font-weight: 100;
     height:1000px;
     padding:0;
-    background-color: #efefef;
+    background: linear-gradient(to right,#f4f8ff, #e0ebff, #f4f8ff) fixed;
 }
 
 .sbd2{

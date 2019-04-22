@@ -23,6 +23,16 @@
 
 <body>
 	<div class="wrapper">
+	
+		<div id="noticeDetailModal">
+			<div class="modalBlack"></div>
+			<div class="noticeModalContent">
+				여기에 내용을 쓰십시오.
+				<button class="btn btn-dark" style="margin-top:10px">변경</button>
+				<button class="btn btn-danger" id="cancelNoticeDetailBtn" style="margin-top:10px">닫기</button>
+			</div>
+		</div>
+	
 		<div id="loader">
 			<div class="loader">
 				<img class="loaderImg" src="img/loading_leaf_circle.gif"><br>
@@ -84,7 +94,7 @@
 									</button>
 								</div>
 								<div style="margin-top: 10px">
-									<a href="#" style="color: black; margin-right: 10px">비밀번호찾기</a> 
+									<a href="#" style="color: black; margin-right: 10px" id="searchPassword">비밀번호찾기</a> 
 									<a href="#" id="join" style="color: black; margin-left: 10px">회원가입</a>
 								</div>
 							</form>
