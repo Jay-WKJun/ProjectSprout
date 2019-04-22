@@ -9,7 +9,7 @@
 <script>
 $(function(){
 	alert("인증에 실패하셨습니다. 다시 시도해주세요.");
-	location.href('/');
+	location.href('redirect:/');
 });
 </script>
 </head>
