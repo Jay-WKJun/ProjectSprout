@@ -74,7 +74,6 @@
 					"member_name" : memberinvitation
 				};
 				
-				
 				$.ajax({
 					type : 'post',
 					url : 'selectMemberNum',
@@ -275,7 +274,9 @@
 					var data = JSON.parse(message.body);
 					
 						if ('${sessionScope.loginId}' == data.id) {
-							$("#chatRoom").append('<div class="bubbleR">'+data.message+"</div>");
+							$("#chatRoom").append(
+									'<div class="bubbleR">'+data.message+"</div>"
+							);
 							
 						} else {
 							
