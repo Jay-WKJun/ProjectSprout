@@ -244,7 +244,7 @@ public class MemberController {
 		session.setAttribute("loginNum", member.getMember_num());
 		session.setAttribute("loginId", member.getMember_id());
 		session.setAttribute("loginName", member.getMember_name());
-
+		session.setAttribute("member_num", member.getMember_num());
 		return "redirect:/";
 	}
 
