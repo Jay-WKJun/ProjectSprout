@@ -755,7 +755,6 @@ jQuery.browser = {};
 		                                daysInMonth = 0;
 								} else {
 									if (month == 0 || month == 2 || month == 4 || month == 6 || month == 7 || month == 9 || month == 11) {
-	                                	alert(1);
 	                                	monthArr.push(
 			                                    ('<div class="row header month" style="width:'
 			                                       + ((tools.getCellSize() * daysInMonth)+1)
@@ -765,7 +764,6 @@ jQuery.browser = {};
 			                                month = rday.getMonth();
 			                                daysInMonth = 0;
 									} else if(month == 1) {
-										alert(2);
 										monthArr.push(
 			                                    ('<div class="row header month" style="width:'
 			                                       + ((tools.getCellSize() * daysInMonth)-23)
@@ -775,7 +773,6 @@ jQuery.browser = {};
 			                                month = rday.getMonth();
 			                                daysInMonth = 0;
 									} else {
-										alert(3);
 										monthArr.push(
 			                                    ('<div class="row header month" style="width:'
 			                                       + ((tools.getCellSize() * daysInMonth)+1)

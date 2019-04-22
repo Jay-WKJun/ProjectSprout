@@ -87,7 +87,7 @@
 			<div class="mainSpace_bottom">
 				<div class="contentSpace_side"></div>
 				<div class="contentSpace" id="contentSpace" style="min-width:900px">
-					Content Space
+					<img src = "img/jarvis.jpg">
 				</div>
 				<div class="contentSpace_side"></div>
 				<div class="contentSpace_right">
