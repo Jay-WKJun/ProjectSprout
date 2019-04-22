@@ -32,7 +32,7 @@
 } */
 
 html{
-	background-color: #efefef;
+	background: linear-gradient(to right,#f4f8ff, #e0ebff, #f4f8ff) fixed;
 }
 
 .useFont{
@@ -44,7 +44,7 @@ html{
 	font-size:110%;
     font-weight: 100;
     display: flex;
-    background-color: #efefef;
+    background: linear-gradient(to right,#f4f8ff, #e0ebff, #f4f8ff) fixed;
     width:100%;
     height:100%;
 }
@@ -144,6 +144,7 @@ html{
 .communicationBar{
     min-width: 250px;
     height:100%;
+    background-color:#282e38;
 }
 
 /*===================메인=================*/

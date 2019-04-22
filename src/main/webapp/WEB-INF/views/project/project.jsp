@@ -41,7 +41,7 @@
 				
 				<!-- 같은 프로젝트일때 참여인원  출력 -->
 				<div
-					class="communicationBar rounded-bottom border-top-0 w-100 sbd2 shadow bgwhite"
+					class="communicationBar rounded-bottom border-top-0 w-100 shadow"
 					style="padding: 5px">
 					<div id="memberSpace_display" style="display: block">
 					
