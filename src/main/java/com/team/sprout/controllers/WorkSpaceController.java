@@ -79,24 +79,27 @@ public class WorkSpaceController {
 	//갱신전용
 	@RequestMapping(value = "/project_go", method = RequestMethod.GET)
 	public String project(Model model, HttpSession session) {
-		String mpNum = (String)session.getAttribute("mainproject_projectnum");
+		String mainproject_projectnum = (String)session.getAttribute("mainproject_projectnum");
 		
-		projectMembers = prrepo.projectmemberSelectAll(mpNum);
+		projectMembers = prrepo.projectmemberSelectAll(mainproject_projectnum);
+		
+		int member_num = (int)session.getAttribute("loginNum");
 
 		// 프로젝트의 리더를 찾기 위한 메서드
-		List<ProjectMember> prlist = prrepo.findManager(mpNum);
+		List<ProjectMember> prlist = prrepo.findManager(mainproject_projectnum);
 		for (ProjectMember projectMember : prlist) {
-			
-			session.setAttribute("member_rank", projectMember.getMember_rank());
+			if (projectMember.getMember_num() == member_num) {
+				  session.setAttribute("member_rank", projectMember.getMember_rank());
+			}
 		}
 
-		List<MainProject> mainProjects = prrepo.findProjectName(mpNum);
+		List<MainProject> mainProjects = prrepo.findProjectName(mainproject_projectnum);
 		for (MainProject mainProject : mainProjects) {
 
 			model.addAttribute("MainProject_title", mainProject.getMainproject_title());
 		}
 
-		model.addAttribute("mainproject_projectnum", mpNum);
+		model.addAttribute("mainproject_projectnum", mainproject_projectnum);
 		model.addAttribute("projectMembersList", projectMembers);
 		
 		
