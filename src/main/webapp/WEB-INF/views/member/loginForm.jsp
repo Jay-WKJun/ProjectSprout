@@ -27,8 +27,10 @@
 		<div id="noticeDetailModal">
 			<div class="modalBlack"></div>
 			<div class="noticeModalContent">
-				여기에 내용을 쓰십시오.
-				<button class="btn btn-dark" style="margin-top:10px">변경</button>
+				<form action="" method="post" id="passwordForm" name="passwordForm">
+				<input type="text" id="idText" name="idText">
+				</form>
+				<button class="btn btn-dark" style="margin-top:10px" id="findPassword">변경</button>
 				<button class="btn btn-danger" id="cancelNoticeDetailBtn" style="margin-top:10px">닫기</button>
 			</div>
 		</div>
@@ -156,7 +158,7 @@
 			var id_name = googleUser.getBasicProfile().getName();
 
 			var send = {
-				"member_password" : id_token,
+				"member_authkey" : id_token,
 				"member_id" : id_email,
 				"member_name" : id_name
 			};

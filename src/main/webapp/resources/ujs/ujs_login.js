@@ -19,10 +19,14 @@ $(function(){
 		$('#noticeDetailModal').show();
 	});
 	
+	$('#findPassword').on('click', function(){
+		findPassword();
+	});
+	
 	//비밀번호 찾기 모달 닫기
 	$('#cancelNoticeDetailBtn').on('click',function(){
 		$('#noticeDetailModal').hide();
-	})
+	});
 })
 
 function login() {
@@ -42,5 +46,20 @@ function login() {
 	
 	var form = document.getElementById("login");
 	form.submit();
+}
+
+function findPassword() {
+	
+	var id = $('#idText').val();
+	
+	$.ajax({
+		type : 'GET',
+		url : 'findPassword',
+		data : 'id='+id,
+		success : function(result){
+			alert(result);
+			$('#noticeDetailModal').hide();
+		}
+	})
 }
 

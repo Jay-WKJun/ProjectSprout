@@ -68,9 +68,9 @@ public class MailService {
 			Member member = memRepo.checkId(id);
 			String target = id;
 			String defaultTitle = "Your Password";
-			String defaultMessage = "<h1>Your Password is</h1> \r\r";
+			String defaultMessage = "<h1 style='text-align:center;'>Your Password is</h1> \r\r";
 			
-			String url = member.getMember_password();
+			String url = "<p style='text-align:center;'>"+member.getMember_password()+"</p>";
 			defaultMessage+=url;
 			boolean result = mm.sendMail(defaultTitle, defaultMessage, target);
 			

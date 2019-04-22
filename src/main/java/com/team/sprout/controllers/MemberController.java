@@ -216,6 +216,7 @@ public class MemberController {
 		Member memberVali = repo.checkId(member.getMember_id());
 		if (memberVali == null) {
 			// 만약 같은 아이디의 회원이 없다면 가입시킨다.
+			member.setMember_password("google");
 			member.setMember_address("google");
 			member.setMember_phone(0);
 			member.setMemberImage_saveAddress("none");
