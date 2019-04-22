@@ -33,10 +33,13 @@ $(function(){
 	
 	//문서 작성 폼 생성
 	$('#createDocument').on('click', createForm);
+	
 })
 
 //문서 선택 및 출력
 function selectBoard(){
+	$('#loader').show();
+	
 	var str = $(this).attr("data-bNum");
 	
 	if (str == "default") {
@@ -56,6 +59,8 @@ function selectBoard(){
 				tag += '<div>'+result.boardContent+'</div>';
 				tag += '</div>';
 				$('#contentSpace').html(tag);
+				
+				$('#loader').hide();
 			}
 		});
 		$(this).val("default").prop("selected", true);
@@ -64,6 +69,8 @@ function selectBoard(){
 
 // 파일 업로드
 function fileUpLoad() {
+	$('#loader').show();
+	
 	var fileUpLoadForm = $('#documentFileUpLoadForm')[0];
 	var formData = new FormData(fileUpLoadForm);
 	
@@ -83,31 +90,18 @@ function fileUpLoad() {
 				$('#document_board_content').val('');
 				$('#file_name').val('');
 				getFileList();
-				folderForm();
 			} else {
 				alert(result);
 				console.log("파일 업로드 실패");
 			}
+			$('#loader').hide();
 		}
 	})
 }
 
-/*//폴더 폼 생성
-function changeFolderForm(){
-	var temp = '<input type="text" name="folder_name" id="folder_name" placehoder="file-name">';
-	$('#folderDiv').html(temp);
-}
-
-//폴더 되돌리기 (list출력필요)
-function folderForm(){
-	var temp = '<select name="folder_name">';
-	temp += '<option value="testFolder">testFolder</option>'
-	temp += '</select>'
-	$('#folderDiv').html(temp);
-}*/
-		
 //모든 폴더와 파일 리스트 가져오기
 function getFileList(){
+	$('#loader').show();
 	
 	$.ajax({
 		type : 'GET',
@@ -123,17 +117,11 @@ function getFileList(){
 				tag += '<div data-toggle="dropdown">'+item.folderName+'</div>';
 				tag += '<div class="dropdown-menu shadow" style="border:1px solid #6079a0">';
 				tag += '<h5 class="dropdown-header">'+item.folderName+'</h5>';
-				tag += '<button class="btn btn-dark w-100 createDocument" data-foderName="'+item.folderName+'">';
+				tag += '<button class="btn btn-info w-100 createDocument" data-foderName="'+item.folderName+'">';
 				tag += '<i class="fas fa-file-medical fa-lg"></i>';
 				tag += '</button>';
 				tag += '<div style="margin-top: 5px">';
-				/*tag += '<select name="document_board_num" id="selectBoard">';
-				tag += '<option value="default" selected="selected">'+item.folderName+'</option>'*/
-				//alert(item.folderName);
 				$.each(item.boardList, function(index2, item2){
-					//여기부턴 DocumentBoard가 들어있다
-					//alert(item2.document_board_title);
-					/*tag += '<option value="'+item2.document_board_num+'">'+item2.document_board_title+'</option>';*/
 					tag += '<a href="#" style="border:1px solid #6079a0" data-bNum="'+item2.document_board_num+'"';
 					tag += 'class="list-group-item list-group-item-action border-left-0 border-right-0 boardSelect">';
 					tag += item2.document_board_title;
@@ -151,6 +139,8 @@ function getFileList(){
 			$(".boardSelect").on('click', selectBoard);
 			//문서 작성 폼 생성
 			$('.createDocument').on('click', createForm);
+			
+			$('#loader').hide();
 		}
 	});
 }
@@ -164,25 +154,49 @@ function createFolder(){
 //프로젝트 생성폼 html 써주는 것
 function createForm() {
 	var folderName=$(this).attr('data-foderName');
+	var formTag = '';
 	
-	var formTag = '<form class="" id="documentFileUpLoadForm" method="post" enctype="multipart/form-data">';
-	/*formTag += '<p id="folderDiv">';
-	formTag += '<select name="folder_name">';
-	formTag += '<option value="testFolder">testFolder</option>';
-	formTag += '</select>';
-	formTag += '</p>';*/
+	formTag += '<form id="documentFileUpLoadForm" method="post" enctype="multipart/form-data">';
+	formTag += '<input type="text" class="form-control" id="document_board_title" name="document_board_title">';
+	
+	formTag += '<div class="mainSpace_top" style="margin-top:20px">';
+	formTag += '<div class="mainSpace_top_center">';
+	formTag += '<label class="btn btn-dark">';
+	formTag += '<i class="fas fa-file-medical fa-lg"></i>';
+	formTag += '<input type="file" name="upLoadFile" id="upLoadFile" style="display:none">';
+	formTag += '</label>';
+	formTag += '</div>';
+	formTag += '<div class="mainSpace_top_side">';
+	formTag += '<input type="text" class="form-control" id="file_name" name="file_name">';
+	formTag += '</div>';
+	formTag += '</div>';
+	
 	formTag += '<input type="hidden" name="folder_name" value="'+folderName+'">';
-	formTag += '<input type="file" value="파일 찾기" id="upLoadFile" name="upLoadFile">';
-	formTag += '<input type="text" id="document_board_title" name="document_board_title" placeholder="title">';
-	formTag += '<input type="text" id="document_board_content" name="document_board_content" placeholder="content">';
-	formTag += '<input type="text" id="file_name" name="file_name" placeholder="파일 이름">';
+	formTag += '<textarea class="form-control" style="height:600px;margin-top:10px;" id="document_board_content" name="document_board_content"></textarea>';
+	/*formTag += '<input type="file" value="파일 찾기" id="upLoadFile" name="upLoadFile">';*/
 	formTag += '</form>';
-	formTag += '<input type="button" class="btn btn-dark" id="fileUpLoadBtn" value="파일 올리기">';	
-	var folderTag  = '<button class="btn btn-dark" id="createFolderInputBtn">폴더 생성</button>';
+	formTag += '<div class="mainSpace_top" style="margin-top:20px">';
+	formTag += '<div class="mainSpace_top_side">';
+	formTag += '</div>';
+	formTag += '<div class="mainSpace_top_center">';
+	formTag += '<input type="button" class="btn btn-dark" id="fileUpLoadBtn" value="문서 올리기">';
+	formTag += '</div>';
+	formTag += '</div>';
 
 	$('#contentSpace').html(formTag);
-	$('#createFolderSpace').html(folderTag);
 
+	//파일 선택시
+	$("#upLoadFile").change(function(e){
+		var fileName=$('#upLoadFile')[0].files[0].name;
+		
+		var fName=fileName.split('.');
+		
+		$('#file_name').val(fName[0]);
+		 //  $('input[type=file]')[0].files[0].name;
+		 //  $("#imgUpload")[0].files[0].type;
+		 //  $("#imgUpload")[0].files[0].size;
+	 });
+	
 	// 파일 업로드 버튼
 	$('#fileUpLoadBtn').on('click', function(){
 		if($('#upLoadFile').val()==""){
@@ -191,9 +205,5 @@ function createForm() {
 			fileUpLoad();
 		}
 	});
-	
-	// 폴더 생성 버튼
-	$('#createFolderInputBtn').on('click',changeFolderForm);
-	
 	
 }

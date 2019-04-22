@@ -41,7 +41,7 @@
 				
 				<!-- 같은 프로젝트일때 참여인원  출력 -->
 				<div
-					class="communicationBar rounded-bottom border-top-0 w-100 sbd2 shadow bgwhite"
+					class="communicationBar rounded-bottom border-top-0 w-100 shadow"
 					style="padding: 5px">
 					<div id="memberSpace_display" style="display: block">
 					
@@ -60,14 +60,14 @@
 										<h5 class="dropdown-header">${list.member_name}</h5>
 										<div style="margin-top: 20px" data-pno="${list.member_num}"
 											id="forkick">
-											<a href="#" style="border:1px solid #6079a0" data-name="${list.member_name }"
+											<a style="border:1px solid #6079a0" data-name="${list.member_name }"
 												class="list-group-item list-group-item-action border-left-0 border-right-0 messagesend">메세지
 												보내기</a>
 											
 											<input type="hidden" value="${sessionScope.chatRoom_num }" id="chatRoom_nums">
 											<input type="hidden" value="${list.member_name }" id="ClickMember_name">
 											<c:if test="${member_rank eq 5}">
-												<a href="#" style="border:1px solid #6079a0"
+												<a style="border:1px solid #6079a0"
 													class="kickMember list-group-item list-group-item-action border-left-0 border-right-0">내보내기</a>
 											</c:if>
 										</div>

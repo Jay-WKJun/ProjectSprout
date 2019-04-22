@@ -24,8 +24,12 @@
 	font-size:120%;
 }
 
+.fontColorWhite{
+	color:white;
+}
+
 html{
-	background-color: #efefef;
+	background-color: #e8f0ff;
 }
 
 .wrapper{
@@ -34,11 +38,16 @@ html{
     font-weight: 100;
     display: flex;
     padding:0;
-    background-color: #efefef;
+    background-color: #e8f0ff;
+    min-height:900px;
 }
 
 .bgwhite{
 	background-color: white;
+}
+
+.bgnavi{
+	background-color:#8b99ba;
 }
 
 #loader{
@@ -113,8 +122,8 @@ html{
 
 .webLogo{
 	flex:initial;
-    width:400px;
-    height:100%;
+    width:100%;
+    height:auto;
 }
 
 /*================가운데 공간================*/
@@ -130,6 +139,7 @@ html{
     flex:1;
     display: flex;
     flex-direction: column;
+    background: linear-gradient(to right,#f4f8ff, #e0ebff, #f4f8ff) fixed;
 }
 
 .contentSpace_topMargin{

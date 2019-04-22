@@ -32,31 +32,37 @@
 			<div class="loaderBack"></div>
 		</div>
 		<div class="leftBar">
-			<div class="card h-100 shadow" style="padding:5px;border:2px solid #6079a0;">
-				<div class="contentItem" style="padding: 80px"></div>
+			<div class="card h-100 border-0" style="padding:5px;background-color:#282e38;">
 				<div class="contentItem">
-					<button class="btn btn-dark w-100" style="height: 50px" id="wantedBoardBtn">
+					<div class="webNameSpace" style="margin-bottom:20px">
+						<a onclick="home();" href="#"><img class="webLogo" src="img/sprout_logo_2.png"></a>
+					</div>
+				</div>
+				<div class="contentItem">
+					<button class="btn btn-light w-100" style="height: 50px;margin-bottom:10px" id="wantedBoardBtn">
 						<i class="far fa-clipboard fa-lg fontSize20"></i><span
 							class="fontSize20" style="margin-left: 8px">프로젝트 공고</span>
 					</button>
 				</div>
-				<hr class="sbd1" style="margin: 10px;">
 				<div class="contentItem" style="margin-bottom: 15px">
-					<button class="btn btn-dark w-100" style="height: 50px"
+					<button class="btn btn-light w-100" style="height: 50px"
 						id="newProjectBtn">
 						<i class="fas fa-folder-plus fa-lg fontSize20"></i><span
 							class="fontSize20" style="margin-left: 8px">새로 시작하기</span>
 					</button>
 				</div>
+				
+				<hr class="sbd1" style="margin: 10px;">
 
-				<div class="list-group" style="margin: 5px;">
+				<div class="list-group">
 
 					<c:forEach var="MainProject" items="${projectList}">
-						<a class="projectSelectBtn list-group-item list-group-item-action" style="margin-bottom:2px;border:1px solid #6079a0;"
+						<a class="projectSelectBtn list-group-item list-group-item-action" style="margin-bottom:8px;border:1px solid #6079a0;"
 							data-pno="${MainProject.mainproject_projectnum}">${MainProject.mainproject_title}</a>
 					</c:forEach>
 
 				</div>
+				
 			</div>
 		</div>
 		<div class="mainSpace">
@@ -91,11 +97,11 @@
 									<div class="dropdown dropleft float-right h-100">
 										<div data-toggle="dropdown">
 										<c:if test="${not empty sessionScope.mime}"> 
-											<img class="rounded-circle border" src="download?loginId=${loginId}" 
+											<img class="rounded-circle border" src="download?loginId=${loginId}" onerror="src='img/empty_profile.png'"
 												style="width: 50px; height: 50px" id="userProfileIcon">
 										</c:if>
 										<c:if test="${empty sessionScope.mime}"> 
-											<img class="rounded-circle border" style="width: 50px; height: 50px" 
+											<img class="rounded-circle border" style="width: 50px; height: 50px" onerror="src='img/empty_profile.png'"
 												src="img/empty_profile.png" id="userProfileIcon">
 										</c:if>
 											<!-- <img class="rounded-circle border"
@@ -117,11 +123,10 @@
 						</div>
 			<div class="contentSpace">
 				<div class="contentSpace_left"></div>
-				<div class="contentSpace_center">
-					<div class="webNameSpace">
-						<a onclick="home();" href="#"><img class="webLogo"
-							src="img/sprout_logo.png"></a>
-					</div>
+				<div class="contentSpace_center" style="padding:60px">
+					<!-- <div class="webNameSpace">
+						<a onclick="home();" href="#"><img class="webLogo" src="img/sprout_logo.png"></a>
+					</div> -->
 				</div>
 				<div class="contentSpace_right"></div>
 			</div>
@@ -147,7 +152,7 @@
 							method="post">
 
 							<div class="contentItem" style="text-align: center;">
-									<div class="card-body rounded sbd2 shadow bgwhite">
+									<div class="card-body sbd2 rounded shadow bgwhite">
 										<h4 class="card-title">프로젝트 이름</h4>
 										<hr class="sbd1">
 										<div style="text-align-last: left">
@@ -156,7 +161,7 @@
 												name="mainproject_title"></textarea>
 										</div>
 									</div>
-									<div class="card-body rounded sbd2 shadow bgwhite" style="margin-top: 40px">
+									<div class="card-body sbd2 rounded shadow bgwhite" style="margin-top: 40px">
 										<h4 class="card-title">프로젝트 내용</h4>
 										<hr class="sbd1">
 										<div style="text-align-last: left">
@@ -167,7 +172,7 @@
 									</div>
 								<div class="contentItem"
 									style="margin-top: 30px; text-align: right">
-									<button class="btn btn-dark w-50" style="height: 50px"
+									<button class="btn btn-info w-50" style="height: 50px"
 										id="projectCreateBtn">생성하기</button>
 								</div>
 							</div>
@@ -217,7 +222,7 @@
 					<div class="contentSpace_center">
 						<div class="contentItem contentSpace_topMargin"
 							style="width: 100%; text-align: center;">
-							<button class="btn btn-dark w-25"
+							<button class="btn btn-info w-25"
 								style="height: 50px; margin-right: 20px" id="openproject">시작</button>
 
 							<input type="hidden" name="mainproject_projectnum"
@@ -242,7 +247,7 @@
 									<a class="nav-link" data-toggle="tab" id="externalWantedSpace">외부</a>
 								</li>
 							</ul>
-							<div class="rounded-bottom border-top-0 w-100 sbd2 shadow bgwhite">
+							<div class="rounded-bottom w-100 sbd2 shadow bgwhite">
 								<div id="internalWantedBoardLoad"></div>
 								<div id="wantedBoardLoad"></div>
 							</div>

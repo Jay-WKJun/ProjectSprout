@@ -336,6 +336,7 @@ function closeWhiteBoard(){
 }
 
 function detail(){
+	$('#loader').show();
 	location.href ="detailPage";
 	
 }
