@@ -85,14 +85,12 @@
 						</table>
 					</div>
 					<div class="contentItem w-100" style="text-align: right; margin-top: 10px">
-		<!-- 수정-->	<input type="submit" id="update_with_old_info" class="btn btn-dark" style="width: 60px; height: 40px" value="수정">
-		<!-- 탈퇴 -->	<input type="button" id="delete_infoBtn" class="btn btn-danger" style="width: 60px; height: 40px" value="탈퇴">
-							<button id="cancleBtn" class="btn btn-danger" style="width: 60px; height: 40px">취소</button>
+		<!-- 수정-->		<input type="submit" id="update_with_old_info" class="btn btn-dark" style="width: 60px; height: 40px" value="수정">
+		<!-- 탈퇴 -->		<input type="button" id="delete_infoBtn" class="btn btn-danger" style="width: 60px; height: 40px" value="탈퇴">
+						<input type="button" id="cancleBtn" class="btn btn-danger" style="width: 60px; height: 40px" value="취소">
 					</div>
 				</div>
 			</form>
-		<!-- 컨트롤러오 좀 넘겨주세요... 실행ㄴㄴ -->
-			
 			<div class="sideSpace"></div>
 		</div>
 	</div>
