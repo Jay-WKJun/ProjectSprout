@@ -54,7 +54,6 @@ $(function() {
 	/////////////////
 	//클릭으로 메시지 초대보내기
 	$('.messagesend').on('click', function() {
-	/*var member_name = $('#member_namesss').val();*/
 	var member_name=$(this).attr('data-name');
 	ClickChatRoomList(member_name);
 	})
@@ -72,7 +71,6 @@ $(function() {
 		var member_name = member_name;
 	
 		var name_membernum = {
-			/*	"chatRoom_name" : chatRoom_name,*/
 				"chatRoom_name" : test3,
 				"member_num" :  member_num
 		};
@@ -82,7 +80,7 @@ $(function() {
 			url : 'roomname',
 			data : name_membernum,
 			success : function(chatroomname){
-				
+				alert("여기까지 와지나?");
 				ClickSendInvitation(member_name);//상대편 아이디 추가하로가기.
 			}
 			
@@ -96,19 +94,7 @@ $(function() {
 				"member_name" : member_name
 			};
 			
-//		alert(member_name);
-//			$.ajax({
-//				type : 'post',
-//				url : 'ClickselectMemberNum',
-//				data : asdfgs ,
-//				
-//				success : function(member_nameOne) {
-//					
-//					 invitationss(member_nameOne); 
-//				}
-//			});
 		
-		alert(member_name);
 		
 		$.ajax({
 			type : 'post',
@@ -126,23 +112,28 @@ $(function() {
 		var chatRoom_num = $('#chatRoom_nums').val();
 		var member_name = member_nameOne["member_name"];
 		var chatRoom_name = $('#member_ids').val(); // 일단 아이디로 대신하자.. ..
-		var test3 = chatRoom_name.concat(', '+member_name);
 		
-		alert("왜:"+member_name);
+		var test3 = chatRoom_name.concat(', '+member_name);
+		alert(member_name);
+	
+			
 		var qp = {
 				"member_num" : member_num,
 				"chatRoom_num" : chatRoom_num,
 				"member_name" : member_name,
-			/*	"chatRoom_name" : chatRoom_name*/
 				"chatRoom_name" : test3
 		};
-
+				
+		setTimeout(function() {
+        }, 1000);
+		
 		$.ajax({
 			type : 'post',
 			url : 'invitationss',
 			data : qp ,
 			
 			success : function(success) {
+				alert("초대완료");
 				messapgespace();
 				}
 		});
@@ -240,11 +231,11 @@ function chatRoomCreat(chatRoom_name){
 }
 //메시지 이동
 function messapgespace() {
-	var member_id = $('#member_ids').val();//세션아이디
+	var member_name = $('#member_namesss').val();//세션아이디
 	var content = "";
 	
 	var member_name = {
-			"member_name" : member_id
+			"member_name" : member_name
 	};
 	$.ajax({
 		
@@ -263,7 +254,7 @@ function ChatRoomList(chatRoom_name){
 	var content;
 	var member_id = $('#member_ids').val();//세션아이디
 	var member_num =$('#member_nums').val();//로그인넘버
-	var sad;
+	var chatRoom_name = chatRoom_name;
 	
 	var name_membernum = {
 			"chatRoom_name" : chatRoom_name,
@@ -301,8 +292,8 @@ function ChatRoomList2(memberList){
 			content += '<a class="list-group-item list-group-item-action noticeDetail"';
 			content += 'style="margin-bottom: 2px; border: 1px solid #6079a0;"';
 			content += 'href="multiChatRoom?chatRoom_num='+item.chatRoom_num;
-			content += '&chatRoom_name='+item.chatRoom_name+'" onclick="window.open(this.href, \'_blank\', \'top=200,left=500,width=400,height=580,toolbars=no,scrollbars=no\'); return false;">';
-			content += item.chatRoom_name+'방</a>';
+			content += '&chatRoom_name='+item.chatRoom_name+'" onclick="window.open(this.href, \'_blank\', \'top=200,left=500,width=400,height=600,toolbars=no,scrollbars=no\'); return false;">';
+			content += item.chatRoom_name+'</a>';
 			
 		}	
 	});
@@ -346,7 +337,6 @@ function init(){
 function kickMember(){
 	
 	var member_num =$(this).parent().attr('data-pno');
-	alert("member_num"+member_num)
 	$.ajax({
 		
 		method : 'get',
@@ -438,19 +428,21 @@ function addMemberCheck(){
 			 ,data: "addMember="+addMember
 			,success: function(result){
 				if (result.resp == 1 ) {
+					
 					$('#addmemberMessageSpace').html('추가가능한 아이디입니다. 추가하기를 누르세요');
-					$('#addmemberMessageSpace').attr('style','color:#f23a3a');
+					$('#addmemberMessageSpace').attr('style','color:#0458e0');
 					$('#addmem').removeAttr('disabled');
 					
 				}
 				else if (result.resp ==2) {
+					
 					$('#addmemberMessageSpace').html('이미 추가한 아이디 입니다');
-					$('#addmemberMessageSpace').attr('style','color:#f23a3a');
+					$('#addmemberMessageSpace').attr('style','color:#ff0019');
 					
 				} else {
-
+					
 					$('#addmemberMessageSpace').html('존재하지 않는 아이디 입니다. 다시 입력하세요');
-					$('#addmemberMessageSpace').attr('style','color:#304dd1');
+					$('#addmemberMessageSpace').attr('style','color:#ff0019');
 				}
 			}
 		})

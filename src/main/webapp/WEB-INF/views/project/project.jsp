@@ -163,6 +163,7 @@
 											<div class="col">
 												<input type="text" class="form-control" id="addMembers" name="addMember" placeholder="생성할 채팅방 이름">
 												<input type="hidden" id="member_ids" value="${sessionScope.loginId }"/>
+												<input type="hidden" id="member_namesss" value="${sessionScope.loginName }"/>
 												<input type="hidden" id="member_nums" value="${sessionScope.loginNum }"/>
 												
 											</div>

@@ -153,27 +153,6 @@
 			});
 			
 		}
-		 
-		//초대후 매시지 띄우기
-		/* function invitationMessage() {
-			var member_name = $('#memberinvitation').val();
-			alert("gg");
-			alert(member_name);
-			var str = $("#chatbox").val();
-			str = str.replace(/ /gi, '&nbsp;')
-			str = str.replace(/(?:\r\n|\r|\n)/g, '<br />');
-			
-			var upl = $("#FILE_TAG").val();
-			  var invitation ='<p>'+member_name+'입장하셨습니다.</p>';
-			
-				stompClient.send("/chat/${chatRoom_num}", {}, JSON.stringify({
-					message : invitation
-				);
-				$("#chatbox").val("");
-			} 
-			
-			
-		}  */
 		
 		//채팅 초대후 메시지 출력
 		function invitationMessage() {
@@ -220,7 +199,7 @@
 								
 							} else {
 								var imgErrorSrc="src='img/empty_profile.png'";
-								 content += '<p><img class="rounded-circle border" src="download?loginId='+item.member_name+'" style="width: 20px; height: 20px" id="memberIcon"';
+								 content += '<p><img class="rounded-circle border" src="download?loginId='+item.member_name+'" style="width: 30px; height: 30px" id="memberIcon"';
 								 content += 'onerror='+imgErrorSrc;
 								content +='>'; 
 	 							content += ''+item.member_name+' : '+item.chat_content+'</p>';
@@ -287,7 +266,7 @@
 							
 						} else {
 							
-							$("#chatRoom").append('<p><img class="rounded-circle border" src="download?loginId='+data.id+'" style="width: 20px; height: 20px" id="memberIcon">'+data.id+' : '+data.message+"<br /></p>");
+							$("#chatRoom").append('<p><img class="rounded-circle border" src="download?loginId='+data.id+'" style="width: 30px; height: 30px" id="memberIcon">'+data.id+' : '+data.message+"<br /></p>");
 						}
 					
 					
@@ -432,7 +411,7 @@
 		 
 
 	</style>
-<title>일반 채팅 방</title>
+<title>채팅 방</title>
 </head>
 <body>
 	<div class="useFont bgwhite">
