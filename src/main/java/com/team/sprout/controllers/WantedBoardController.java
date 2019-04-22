@@ -67,7 +67,7 @@ public class WantedBoardController {
 		// !!이 로딩은 처음에만 해준다. static으로 true를 false로 바꿔줘서 해준다.
 		// 크롤링 긁어오는 거는 새로운 클래스에 메소드를 하나씩 추가해서 사용한다.(검증작업까지 시켜준다.)
 
-		/*try {
+		try {
 			// get page (= 브라우저에서 url을 주소창에 넣은 후 request 한 것과 같다)
 			driver.get(base_url);
 
@@ -134,7 +134,7 @@ public class WantedBoardController {
 			e.printStackTrace();
 		} finally {
 			driver.close();
-		}*/
+		}
 
 		List<WantedBoard> wbList = wbRepo.selectAll_crawlling(searchItem, searchWord, navi.getStartRecord(),
 				navi.getCountPerPage());
