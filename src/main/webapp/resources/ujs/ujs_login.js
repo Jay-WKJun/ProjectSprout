@@ -33,3 +33,4 @@ function login() {
 	var form = document.getElementById("login");
 	form.submit();
 }
+

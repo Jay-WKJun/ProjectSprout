@@ -1,5 +1,6 @@
 package com.team.sprout.dao;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -104,12 +105,19 @@ public class MemberRepository {
 	}
 
 	public String selectOneMemberNum(String member_name) {
-		// TODO Auto-generated method stub
-		
 		MemberDAO dao = session.getMapper(MemberDAO.class);
 		String member_nameOne = dao.selectOneMemberNum(member_name);
 		
 		return member_nameOne;
+	}
+
+	public int insertCertificate(String id, String code) {
+		MemberDAO dao = session.getMapper(MemberDAO.class);
+		Map <String, String> map = new HashMap<>();
+		map.put("id", id);
+		map.put("code", code);
+		int result = dao.insertCertificate(map);
+		return 0;
 	}
 
 
