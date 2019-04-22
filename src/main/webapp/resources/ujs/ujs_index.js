@@ -61,6 +61,7 @@ $(function() {
 			url : 'signinCheck',
 			success : function(result){
 				if(result=="success"){
+					$('#webPresentSpace').hide();
 					$('#webPresentation').attr('style', 'display:none');
 					$('#newProject').attr('style', 'display:block');
 					$('#ProjectStartSpace').attr('style', 'display:none');
@@ -81,6 +82,7 @@ $(function() {
 		$('#ProjectStartSpace').attr('style', 'display:none');
 		$('#wantedBoardLoad').load('wantedBoard');
 		$('#internalWantedBoardLoad').load('internal');
+		$('#webPresentSpace').hide();
 	})
 	
 	$('#projectCreateBtn').on('click', function() {
@@ -101,6 +103,7 @@ $(function() {
 	
 	//왼쪽 프로젝트타이틀 리스트 누르면, 컨트롤러 정보 보냄. 
 	$('body').delegate('.projectSelectBtn', 'click', function() {
+		$('#webPresentSpace').hide();
 		$('#wantedBoardSpace').attr('style', 'display:none');
 		$('#webPresentation').attr('style', 'display:none');
 		$('#wantedBoardSpace').attr('style', 'display:none');
