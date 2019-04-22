@@ -5,11 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="ucss/ucss_index.css">
 <script src="js/jquery-3.3.1.min.js"></script>
 <script>
 $(function(){
 	alert("인증에 성공하셨습니다!");
-	location.href('redirect:/');
+	$(location).attr('href','http://localhost:2848/sprout/');
 })
 </script>
 </head>

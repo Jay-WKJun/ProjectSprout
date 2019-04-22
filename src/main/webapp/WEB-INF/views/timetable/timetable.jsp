@@ -404,10 +404,15 @@
 		        	
 		        	$.ajax({
 						type : 'GET',
-						url : 'tablememberSelect',
-						data: 'memberNum='+pc.member_num,
+						url : 'timetableMake',
 						success : function(results){
 							memberName = results.member_name;
+							
+							var options = '';
+							$.each(results, function(key, value){
+		        				options += '<option value="'+value.member_num+'">'+value.member_name+'</option>';
+		        				
+		        			});
 						
 		        	
 		        	$('.ctxt').html('<form method="post" action="updateContent" id="updateForm" name="updateForm" accept-charset="utf-8">'
@@ -447,7 +452,9 @@
 		        			+'멤버'
 		        			+'</div>'
 		        			+'<div class="contentItem_input">' 
-		    	        	+'<input type="text" id="member_num" name="member_num" value="'+memberName+'">'
+		        			+'<select class="form-control" id="member_num" name="member_num">'
+		        			+ options
+		        			+'</select>' 
 		    	        	+'</div>'
 		    	        	+'</form>'
 		    	        	);
