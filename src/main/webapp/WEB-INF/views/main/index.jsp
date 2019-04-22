@@ -68,7 +68,6 @@
 		<div class="mainSpace">
 			<div class="topBar">
 				<div class="topBar_top"></div>
-				<a href="http://localhost:2848/sprout/mailService">email Test</a>
 				<div class="userInfo">
 					<div class="userInfo_left"></div>
 					<div class="userInfo_right">
@@ -121,27 +120,20 @@
 								</div>
 							</c:if>
 						</div>
+					</div>
 			<div class="contentSpace">
 				<div class="contentSpace_left"></div>
-				<div class="contentSpace_center" style="padding:60px">
-					<!-- <div class="webNameSpace">
-						<a onclick="home();" href="#"><img class="webLogo" src="img/sprout_logo.png"></a>
-					</div> -->
+				<div class="contentSpace_center" style="padding:50px;text-align:center">
+					<div>
+							<h4 style="color:#569cc4">New Experience</h4>
+							<p style="color:#569cc4;margin:0px">With</p>
+							<h1 style="color:#5680c4;margin:0px"><b>Sprout</b></h1>
+					</div>
 				</div>
 				<div class="contentSpace_right"></div>
 			</div>
 			<div id="webPresentation" style="display: block">
 				
-				
-				<div class="contentSpace contentSpace_topMargin">
-					<div class="contentSpace_left"></div>
-					<div class="contentSpace_center">
-						<div class="contentItem">
-							<h1>[ 웹 소개 내용 ]</h1>
-						</div>
-					</div>
-					<div class="contentSpace_right"></div>
-				</div>
 			</div>
 			<div id="newProject" style="display: none">
 				<div class="contentSpace contentSpace_topMargin">
@@ -279,9 +271,53 @@
 					</div> -->
 				</div>
 			</div>
-				
 			</div>
-		</div>
+			
+			<div class="contentSpace">
+				<div class="contentSpace_left"></div>
+				<div class="contentSpace_center" style="padding:20px">
+					<div id="webPresentSpace" style="display:none">
+						<div class="rounded bgwhite sbd2 shadow" style="text-align:center">
+							
+							<div id="demo" class="carousel slide" data-ride="carousel">
+							
+							<!-- 웹 소개 이미지 -->
+							
+							<!-- Indicators -->
+							  <ul class="carousel-indicators">
+							    <li data-target="#demo" data-slide-to="0" class="active"></li>
+							    <li data-target="#demo" data-slide-to="1"></li>
+							    <li data-target="#demo" data-slide-to="2"></li>
+							  </ul>
+							
+							  <!-- The slideshow -->
+							  <div class="carousel-inner" style="width:1000px;height:600px">
+							    <div class="carousel-item active">
+							      <img src="img/bird2.jpg" style="width:100%;height:auto">
+							    </div>
+							    <div class="carousel-item">
+							      <img src="img/chita.jpg" style="width:100%;height:auto">
+							    </div>
+							    <div class="carousel-item" >
+							      <img src="img/chita2.jpg" style="width:100%;height:auto">
+							    </div>
+							  </div>
+							
+							  <!-- Left and right controls -->
+							  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+							    <span class="carousel-control-prev-icon"></span>
+							  </a>
+							  <a class="carousel-control-next" href="#demo" data-slide="next">
+							    <span class="carousel-control-next-icon"></span>
+							  </a>
+							
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="contentSpace_left"></div>
+			</div>
+			
 		</div>
 	</div>
 	<script src="js/bootstrap.bundle.min.js"></script>

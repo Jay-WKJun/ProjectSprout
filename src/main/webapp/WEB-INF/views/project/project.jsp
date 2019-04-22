@@ -192,7 +192,6 @@
 									<textarea class="form-control" id="noticeContent" style="height:300px"></textarea>
 									<button class="btn btn-dark" id="createNoticeBtn" style="margin:10px 5px 0 0">공지사항 추가</button>
 									<button class="btn btn-danger" id="cancelNoticeBtn" style="margin-top:10px">닫기</button>
-									<span id="noticeMsg"></span>
 								</div>
 							</div>
 							

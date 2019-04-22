@@ -211,8 +211,8 @@ $(function() {
 	//타임 테이블
 	$('#timeTable').load('timetable');
 	
-	
-	
+	//공지사항 생성 버튼
+	$('#createNoticeBtn').on('click',createNotice);
 
 })//$function()
 
@@ -392,11 +392,9 @@ function noticeDetail(){
 
 //공지사항 생성
 function createNotice(){
-		$('#createNoticeBtn').on('click',function(){
 			/*$('#noticeContent').submit();*/
 			var notice_content = $('#noticeContent').val();
 			if(notice_content==''){
-				$('#noticeMsg').html('공지사항을 입력해주세요.');
 			}else{
 				$.ajax({
 					method : 'get'
@@ -415,7 +413,6 @@ function createNotice(){
 							}
 				})
 			}
-		})
 }
 
 //추가가능한지 아닌지

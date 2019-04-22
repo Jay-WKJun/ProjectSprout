@@ -25,7 +25,7 @@
 }
 
 html{
-	background-color: #efefef;
+	background: linear-gradient(to right,#f4f8ff, #e0ebff, #f4f8ff) fixed;
 }
 
 .wrapper{
