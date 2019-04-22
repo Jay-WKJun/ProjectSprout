@@ -1,4 +1,3 @@
-
 package com.team.sprout.controllers;
 
 
@@ -101,6 +100,12 @@ public class TextController {
 			System.out.println("chat num" + chatRoom_num);
 				
 			List<Text> text = dao.printMessage(chatRoom_num);
+			
+			for (Text text2 : text) {
+				Member member = repo.searchMember(text2.getMember_num());
+				text2.setMember_id(member.getMember_id());
+			}
+			
 			return text;
 		}
 		

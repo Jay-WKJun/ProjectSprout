@@ -206,7 +206,7 @@
 								content += '<div class="chatLine">';
 								content +='<div class="chatLine_main">';
 								content += '<img class="rounded-circle border" src="download?loginId=';
-								content += item.member_name+'" style="width: 35px; height: 35px" id="memberIcon"';
+								content += item.member_id+'" style="width: 35px; height: 35px" id="memberIcon"';
 								content += 'onerror='+imgErrorSrc+'>';
 								content +='</div>';
 								content +='<div class="chatLine_main">';
