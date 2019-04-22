@@ -432,6 +432,7 @@ public class MemberController {
 		model.addAttribute("member_namess", member_name);
 		map.put("member_num", member_nameOne);
 		map.put("member_name", member_name);
+		
 		return map;
 	}
 	

@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.openqa.selenium.html5.SessionStorage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +35,7 @@ public class TextController {
 		
 	//채팅방이름 등록/맴버넘 등록
 		@RequestMapping(value="/roomname", method = RequestMethod.POST)
-		public @ResponseBody String roomname(String chatRoom_name, int member_num,Text text, HttpSession session) {
+		public @ResponseBody int roomname(String chatRoom_name, int member_num,Text text, HttpSession session, Model model) {
 			String member_name=(String)session.getAttribute("loginName");
 			text.setMember_name(member_name);
 			text.setChatRoom_name(chatRoom_name);
@@ -50,26 +51,29 @@ public class TextController {
 			//챗룸numㄱㄱ
 			 int result = dao.selectchatRoomNum();
 			 text.setChatRoom_num(result);
-			 session.setAttribute("chatRoom_num", text.getChatRoom_num());
 			 
+			 /*session.setAttribute("chatRoom_num", text.getChatRoom_num());*/
+			/* 
+			 String str = "{\"roomname\":"+iasasdad+",\"roomnum\":"+result+"}";
+			 */
 			 
-			 
-			return iasasdad;
+			return result;
 	}
 	
 		
 		//채팅초대 
 				@RequestMapping(value="/invitationss", method = RequestMethod.POST)
-				public @ResponseBody String invitationss(String member_name, String chatRoom_name, int member_num,Text text, HttpSession session) {
+				public @ResponseBody String invitationss(int chatRoom_num, String member_name, String chatRoom_name, int member_num,Text text, HttpSession session) {
 					System.out.println("오냐1");
 					text.setMember_name(member_name);
 					text.setChatRoom_name(chatRoom_name);
 					text.setMember_num(member_num);
 					text.setChat_content("");
-					int chatRoom_num=(int) session.getAttribute("chatRoom_num");
+					text.setChatRoom_num(chatRoom_num);
+/*					int chatRoom_num=(int) session.getAttribute("chatRoom_num");
 					System.out.println("오냐2"+chatRoom_name);
 					text.setChatRoom_num(chatRoom_num);
-					System.out.println("invitationss쪽"+text.toString());
+*/					System.out.println("invitationss쪽"+text.toString());
 					
 					int results = dao.invitation(text);
 					

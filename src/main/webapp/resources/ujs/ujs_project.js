@@ -1,4 +1,5 @@
 var test;
+var chtR;
 $(function() {
 	
 	$('#userProfileIcon').on('mouseover', function() {
@@ -63,23 +64,28 @@ $(function() {
 		var content;
 		var member_id = $('#member_ids').val();//세션아이디
 		var member_num =$('#member_nums').val();//로그인넘버
-		var chatRoom_name = $('#member_ids').val(); // 임시로 아이디로 만들어지도록 함. 추후에 초대장 아이디랑 초대받은 사람 아이디로 업로드 예정(이라쓰고 안하기)
-		
+		var chatRoom_name = $('#member_namesss').val(); // 임시로 아이디로 만들어지도록 함. 추후에 초대장 아이디랑 초대받은 사람 아이디로 업로드 예정(이라쓰고 안하기)
+		alert(chatRoom_name);
 		var test3 = chatRoom_name.concat(', '+member_name);
 		
 		var sad;
 		var member_name = member_name;
-	
+		
 		var name_membernum = {
 				"chatRoom_name" : test3,
 				"member_num" :  member_num
 		};
+		
 	$.ajax({
 			
 			method : 'post',
 			url : 'roomname',
 			data : name_membernum,
-			success : function(chatroomname){
+			success : function(chatRoom_num){
+				/*json = $.parseJSON(res);
+				roomname = json[roomname];
+				roomnum = json[roomnum];*/
+				chtR = chatRoom_num;
 				alert("여기까지 와지나?");
 				ClickSendInvitation(member_name);//상대편 아이디 추가하로가기.
 			}
@@ -94,8 +100,6 @@ $(function() {
 				"member_name" : member_name
 			};
 			
-		
-		
 		$.ajax({
 			type : 'post',
 			url : 'ClickselectMemberNums',
@@ -109,9 +113,9 @@ $(function() {
 	
 	function invitationsss(member_nameOne){
 		var member_num = member_nameOne["member_num"];
-		var chatRoom_num = $('#chatRoom_nums').val();
+		var chatRoom_num = chtR;/*$('#chatRoom_nums').val();*/
 		var member_name = member_nameOne["member_name"];
-		var chatRoom_name = $('#member_ids').val(); // 일단 아이디로 대신하자.. ..
+		var chatRoom_name = $('#member_namesss').val(); // 일단 아이디로 대신하자.. ..
 		alert(member_num);
 		alert(chatRoom_num);
 		alert(member_name);
@@ -135,6 +139,7 @@ $(function() {
 				alert("초대완료");
 				messapgespace();
 				}
+			
 		});
 		
 	}
@@ -265,7 +270,10 @@ function ChatRoomList(chatRoom_name){
 		method : 'post',
 		url : 'roomname',
 		data : name_membernum,
-		success : function(chatroomname){
+		success : function(){
+			/*var json = $.parseJSON(res);
+			var roomname = json[roomname];
+			var roomnum = json[roomnum];*/
 			messapgespace();//출력문구로 이동
 			$('').hide()
 		}
