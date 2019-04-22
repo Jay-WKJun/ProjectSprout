@@ -132,9 +132,9 @@
 				</div>
 				<div class="contentSpace_right"></div>
 			</div>
-			<div id="webPresentation" style="display: block">
-				
-			</div>
+			
+			<div id="webPresentation" style="display: block"></div>
+			
 			<div id="newProject" style="display: none">
 				<div class="contentSpace contentSpace_topMargin">
 					<div class="contentSpace_left"></div>
@@ -276,7 +276,7 @@
 			<div class="contentSpace">
 				<div class="contentSpace_left"></div>
 				<div class="contentSpace_center" style="padding:20px">
-					<div id="webPresentSpace" style="display:none">
+					<div id="webPresentSpace">
 						<div class="rounded bgwhite sbd2 shadow" style="text-align:center">
 							
 							<div id="demo" class="carousel slide" data-ride="carousel">
