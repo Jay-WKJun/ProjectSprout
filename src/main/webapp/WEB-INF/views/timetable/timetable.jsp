@@ -146,7 +146,7 @@
 			$(".gantt").gantt({
 				source: ${jsonTest},
 				navigate: "scroll",
-				scale: "weeks",
+				scale: "days",
 				maxScale: "months",
 				minScale: "days",
 				itemsPerPage: 10,
