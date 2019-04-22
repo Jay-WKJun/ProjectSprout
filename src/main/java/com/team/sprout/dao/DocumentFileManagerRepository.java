@@ -54,9 +54,9 @@ public class DocumentFileManagerRepository {
 		return result;
 	}
 
-	public List<DocumentFolder> selectfolderList() {
+	public List<DocumentFolder> selectfolderList(String mainproject_projectnum) {
 		DocumentFileManagerDAO dao=session.getMapper(DocumentFileManagerDAO.class);
-		List<DocumentFolder> result = dao.selectfolderList();
+		List<DocumentFolder> result = dao.selectfolderList(mainproject_projectnum);
 		return result;
 	}
 

@@ -12,6 +12,10 @@ $(function() {
 	$('#loader').hide();
 })
 
+function addDefault(){
+	location.href = '/sprout/timetableMakeFirst';
+}
+
 </script>
 </head>
 <body>

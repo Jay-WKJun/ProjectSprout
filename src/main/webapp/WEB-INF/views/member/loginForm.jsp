@@ -11,7 +11,10 @@
 <meta name="google-signin-client_id"
 	content="302280011098-j31rpdam1nmlron2808kv4g4gb6p21a4.apps.googleusercontent.com">
 <title>login</title>
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+	integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+	crossorigin="anonymous">
 <link rel="stylesheet" href="ucss/ucss_login.css">
 <link rel="stylesheet" href="css/bootstrap.css">
 <script src="js/jquery-3.3.1.min.js"></script>

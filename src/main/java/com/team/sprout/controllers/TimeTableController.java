@@ -258,7 +258,6 @@ public class TimeTableController {
 	public String tableMake(ProjectContent pc, Model model, HttpSession session) {
 		
 		String mainProjectNum =	(String)session.getAttribute("mainproject_projectnum");
-		//"6da5455f-abe5-4390-81c6-e05e3f7e1ddc";
 		System.out.println("타임테이블 만들기 컨트롤러 시작");
 		pc.setMainproject_projectNum(mainProjectNum);
 		pc.setProejctcontent_categori("아아아아아아");
@@ -273,6 +272,42 @@ public class TimeTableController {
 		
 		return "redirect:/project_go";
 	}
+	
+	/*
+	 * 최초 등록 메소드
+	 */
+	@RequestMapping(value = "/timetableMakeFirst", method = RequestMethod.GET)
+	public String tableMakeFirst(Model model, HttpSession session) {
+		
+		ProjectContent pc = new ProjectContent();
+		
+		pc.setProjectContent_num(0);
+		pc.setProjectContent_title("start");
+		pc.setProjectContent_content("delete this!");
+		pc.setProjectContent_status(0);
+		pc.setProjectContent_color("#DF0101");
+		
+		int memberNum = (int)session.getAttribute("loginNum");
+		pc.setMember_num(memberNum);
+		
+		String mainProjectNum =	(String)session.getAttribute("mainproject_projectnum");
+		System.out.println("타임테이블 만들기 컨트롤러 시작");
+		pc.setMainproject_projectNum(mainProjectNum);
+		pc.setProejctcontent_categori("아아아아아아");
+		pc.setProjectcontent_finishchecked(0);
+		pc.setProjectcontent_finishreport(0);
+		pc.setProjectcontent_finishdate("090301");
+		System.out.println(pc.toString());
+		
+		int result = pcRepo.ProjectContentRegist(pc);
+		System.out.println("pc등록 = "+result);
+		
+		return "redirect:/project_go";
+	}
+	
+	
+	
+	
 	
 	/*
 	 * 자세히보여주는 페이지로 간다.

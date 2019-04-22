@@ -66,7 +66,8 @@
 											
 											<input type="hidden" value="${sessionScope.chatRoom_num }" id="chatRoom_nums">
 											<input type="hidden" value="${list.member_name }" id="ClickMember_name">
-											<c:if test="${member_rank eq 5}">
+											<c:if test="${sessionScope.member_rank eq 5}">
+											<c:if test="${list.member_name eq sessionScope.loginId }"></c:if>
 												<a style="border:1px solid #6079a0"
 													class="kickMember list-group-item list-group-item-action border-left-0 border-right-0">내보내기</a>
 											</c:if>
@@ -179,7 +180,7 @@
 							
 							
 							<!-- 공기사항 모달 -->
-							<c:if test="${member_rank eq 5}">
+							<c:if test="${sessionScope.member_rank eq 5}">
 								<button class="btn btn-dark" id="noticeModalBtn" style="width:60px">
 									<i class="fas fa-bullhorn fa-2x"></i>
 								</button>
@@ -195,7 +196,7 @@
 							</div>
 							
 							<!-- 멤버 추가 모달 -->
-							<c:if test="${member_rank eq 5}">
+							<c:if test="${sessionScope.member_rank eq 5}">
 								<button type="button" id="memberPlusModalBtn" class="btn btn-dark" style="width:60px">
 									<i class="fas fa-user-plus fa-2x"></i>
 								</button>

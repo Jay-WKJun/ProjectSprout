@@ -131,7 +131,11 @@ public class MemberController {
 
 		// 입력된 정보로 DB가서 그 정보를 가져온다.
 		Member m = repo.selectOne(map);
-		System.out.println("member아이디"+member.getMember_id());
+		
+		if (!(m.getMember_authkey().equals("success")||m.getMember_password().equals("google"))) {
+			return "certification/fail";
+		}
+		
 		Member getMember = repo.selectOneWebsocket(member.getMember_id());
 		
 		// 로그인 성공
@@ -219,7 +223,6 @@ public class MemberController {
 			member.setMember_password("google");
 			member.setMember_address("google");
 			member.setMember_phone(0);
-			member.setMemberImage_saveAddress("none");
 			int result = repo.memberJoin(member);
 			System.out.println("Google 로그인한 사람 회원 등록 완료" + result);
 			memberVali = repo.checkId(member.getMember_id());
@@ -249,8 +252,11 @@ public class MemberController {
 	 * 회원정보 페이지로 이동.
 	 */
 	@RequestMapping(value = "/memberInfo", method = RequestMethod.GET) // ------------------------ ㅠㅠ(아직 진행중.)
-	public String memberInfo(Member meber, HttpSession session, Model model) {
+	public String memberInfo(HttpSession session, Model model) {
 		String loginId = (String) session.getAttribute("loginId"); // session에 저장된 id 불러오기.
+		
+		System.out.println("--- 회원정보 page (/memberInfo.GET)---");
+		System.out.println("session에 저장된 id : " + loginId);
 		
 		Member member = repo.checkId(loginId);
 
@@ -285,8 +291,31 @@ public class MemberController {
 		// ------------------------------------------------------------ 세션에 ID로 회원정보 불러오기
 		profileFile pro = new profileFile();// 프로필 사진을 달기 위한 선언자
 
-		String id = (String) session.getAttribute("loginId");
+	String id = (String) session.getAttribute("loginId");
 		Member session_info = repo.checkId(id); // 기본 session에 저장된 ID로 뽑아온 정보
+		
+		System.out.println("---------- information of modify ----------");
+		System.out.println("session_info >> "+ session_info);	// old info in session     (id)
+		System.out.println("new member   >> "+ member);			// new info as MEMBER type (name, pw, phone, add, old file info)
+		System.out.println("oldPicture   >> "+ session_info.getMemberImage_saveAddress());
+		System.out.println("newPicture   >> "+ newPicture);
+		System.out.println("===========================================");
+		
+		
+		
+//-------------------------------------------------------------------------------| detail 작업 예정 <환> |	
+		/*String old_picture = session_info.getMemberImage_saveAddress();
+		
+		if(old_picture != null) {
+			if(newPicture.isEmpty() != true) {
+			} else {
+			}
+		} else { // old_picture == null
+			if(newPicture.isEmpty() != true) {
+			} else {
+			}
+		}*/
+//------------------------------------------------------------------------------ | do not touch |	
 		
 // 0. 기존의 프로필 사진 O  --> 삭제 X (ajax로 따로) 후에는 2번이나 3번으로 시작한다.
 		
@@ -328,11 +357,9 @@ public class MemberController {
 				
 				String mime = null; // mime은 사진 형식인지 확인하기 위한것..... (image/jpeg)
 				String fullPath = member.getMemberImage_saveAddress(); // profile_img가 저장된 위치.
-				
 				try {
 					mime = Files.probeContentType(Paths.get(fullPath));
 				} catch (IOException e) { e.printStackTrace(); }
-				
 				mime.contains("image"); // 해당 문자열 안에 내가 원하는 문자가 포함되어 있는가
 				session.setAttribute("mime", mime);
 			}
@@ -364,7 +391,8 @@ public class MemberController {
 			String mime = null;
 			session.setAttribute("mime", mime); //?
 			return "success";					//?
-		} else { System.out.println("사진이 원래 없음 (/del_pro)");
+		} else {
+			System.out.println("사진이 원래 없음 (/del_pro)");
 			return null;
 		}
 	}
@@ -375,11 +403,9 @@ public class MemberController {
 		
 		String id = (String) session.getAttribute("loginId");
 		Member session_info = repo.checkId(id); 					// 기본 session에 저장된 ID로 뽑아온 정보
-		
 		if (session_info.getMemberImage_saveAddress()!=null) {
 			pro.deletefile(session_info.getMemberImage_saveAddress()); 	// C에서 프로필 사진 지우기
 		}
-		
 		repo.deleteMember(id);
 		
 		String mime = null;
@@ -397,7 +423,10 @@ public class MemberController {
 	
 			System.out.println("cr: "+cr.toString());
 			int result =repo.insertRoomnum(cr);//name
-		
+		/*	int results = repo.selectRoomnum();
+			chatroom.setChatRoom_num(results);
+			model.addAttribute("chatRoom_num", chatroom.getChatRoom_num());
+		session.setAttribute("chatRoom_num", chatroom.getChatRoom_num());*/
 			session.setAttribute("chatRoom_num", chatRoom_num);
 			session.setAttribute("chatRoom_name", chatRoom_name);
 			model.addAttribute("chatRoom_namess", chatRoom_name);
@@ -410,6 +439,7 @@ public class MemberController {
 	
 	@RequestMapping(value = "/selectMemberNum", method = RequestMethod.POST)
 	public @ResponseBody String selectMemberNum(String member_name, HttpSession session, Model model) {
+				
 			
 		String member_nameOne = repo.selectOneMemberNum(member_name);
 		System.out.println("tq"+member_nameOne);
@@ -418,6 +448,18 @@ public class MemberController {
 		model.addAttribute("Click_member_name", member_name);
 		return member_nameOne;
 	}
+	
+//	@RequestMapping(value = "/ClickselectMemberNum", method = RequestMethod.POST)
+//	public @ResponseBody String ClickselectMemberNum(String member_name, HttpSession session, Model model) {
+//				
+//			
+//		String member_nameOne = repo.selectOneMemberNum(member_name);
+//		System.out.println("tq"+member_nameOne);
+//		model.addAttribute("member_namess", member_name);
+//		System.out.println("맴버아이디 상대편꺼 "+member_name);
+//		model.addAttribute("Click_member_name", member_name);
+//		return member_nameOne;
+//	}
 	
 	@RequestMapping(value = "/ClickselectMemberNums", method = RequestMethod.POST)
 	public @ResponseBody HashMap<String, String> ClickselectMemberNum(String member_name, HttpSession session, Model model) {

@@ -277,6 +277,7 @@ function ChatRoomList(chatRoom_name){
 		data : name_membernum,
 		success : function(chatroomname){
 			messapgespace();//출력문구로 이동
+			$('').hide()
 		}
 		
 	})
