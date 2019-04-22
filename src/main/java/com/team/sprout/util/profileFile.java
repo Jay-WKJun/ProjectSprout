@@ -27,10 +27,10 @@ public class profileFile {
 
 		if (lastIndex == -1) { // ---------------------------- 확장자가 없는 경우는 memberImg를 바로 setting 해주면 된다.
 			ext = "";
-			filename = member.getMember_name();
+			filename = member.getMember_id();
 		} else { // -------------------------------------------- 확장자가 있는 경우
 			ext = "." + Original_name.substring(lastIndex + 1); // 확장자를 뺀다.
-			filename = member.getMember_name(); // 계정 정보를 파일 이름으로 setting 해준다.
+			filename = member.getMember_id(); // 계정 정보를 파일 이름으로 setting 해준다.
 		}
 
 		savedFilename = filename + ext; // savedFilename은 세탁된 file name + 확장자.

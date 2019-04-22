@@ -146,18 +146,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where	member_name =#{member_name}
 	</select>
 	
-	<insert id="insertCertificate" parameterType="Map">
-		insert into member
-		(
-			MEMBER_AUTHKEY
-		)
-		values
-		(
-			#{code}
-		)
+	<insert id="updateCertificate" parameterType="Member">
+		update member 
+		set
+			MEMBER_AUTHKEY = #{member_authkey}
 		where
-			MEMBER_ID=#{id}
+			MEMBER_ID=#{member_id}
 	</insert>
+	
+	<update id="updateAuthKey" parameterType="Map">
+		update member
+		set
+			MEMBER_AUTHKEY = #{message}
+		where
+			MEMBER_ID = #{id}
+	</update>
 	
 	
 </mapper>

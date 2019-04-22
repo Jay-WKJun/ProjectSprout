@@ -22,46 +22,62 @@ public class MailService {
 	MemberRepository memRepo;
 	
 	//인증메일쏘기
-	@RequestMapping(value = "/mailService", method = RequestMethod.POST)
-	@ResponseBody
-	public String certificateMail(
-			//String id,
-			//String target,
-			HttpSession session
+	public boolean certificateMail(
+			String id
 			) {
-		String id = (String)session.getAttribute("loginId");
+		System.out.println("email ID = "+id);
 		String target = id;
 		boolean result = false;
 		String defaultTitle = "Welcome to SPROUT!";
 		String defaultMessage = "click this link for certification \r\r";
 		UUID uid = UUID.randomUUID();
 		String code= uid.toString().substring(0, 7);
-		int res = memRepo.insertCertificate(id, code);
+		System.out.println(code);
+		int res = memRepo.updateCertificate(id, code);
 		if(res == 0) {
-			return "redirect:/";
+			return false;
 		}
-		String url = "<a href='/certification?code="+code+"'>인증하기</a>";
+		String url = "<a href='http://localhost:2848/sprout/certification?code="+code+"&id="+id+"'>인증하기</a>";
 		defaultMessage+=url;
 		result = mm.sendMail(defaultTitle, defaultMessage, target);
 		
-		return "redirect:/";
+		return true;
 	}
 	
 	//인증하고 홈으로
 	@RequestMapping(value = "/certification", method = RequestMethod.GET)
-	public String certification(String code, HttpSession session) {
-		
-		String id = (String)session.getAttribute("loginId");
+	public String certification(String code, String id) {
 		
 		Member member = memRepo.checkId(id);
 		
 		String authKey = member.getMember_authkey();
 		
+		//인증하면 성공페이지로 거기서 바로 홈으로
 		if (authKey.equals(code)) {
-			return "redirect:/";
+			int result = memRepo.updateAuthKey(id, "success");
+			return "certifination/success";
 		} else {
-			return "redirect:/";
+			return "certifination/fail";
 		}
 	}
 	
+	//비번찾기
+		@RequestMapping(value = "/findPassword", method = RequestMethod.GET)
+		@ResponseBody
+		public String findPassword(String id) {
+			Member member = memRepo.checkId(id);
+			String target = id;
+			String defaultTitle = "Your Password";
+			String defaultMessage = "<h1>Your Password is</h1> \r\r";
+			
+			String url = member.getMember_password();
+			defaultMessage+=url;
+			boolean result = mm.sendMail(defaultTitle, defaultMessage, target);
+			
+			if (result) {
+				return "success";
+			} else {
+				return "fail";
+			}
+		}
 }

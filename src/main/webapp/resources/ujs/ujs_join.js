@@ -32,7 +32,8 @@ $(function(){
 })
 
 
-function validate() {	
+function validate() {
+	var member_id =$('#member_id').val();
 	var member_password = $('#member_password').val();
 	var member_password_re=$('#member_password_re').val();
 	
@@ -61,8 +62,10 @@ function validate() {
 		alert("휴대전화 번호는 숫자만 입력해주세요.");
 		return false;
 	}
+	
 	$('#joinForm').submit();
 	$('#loader').show();
+	
 }
 
 
