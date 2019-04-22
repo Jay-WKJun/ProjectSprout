@@ -10,11 +10,8 @@ import com.team.sprout.vo.WantedBoard;
 public class profileFile {
 
 	final String upload_path_for_img = "/memberProfile"; // ------- EC2 서버에서 프로필이 저장 될 directory 위치.
-//	final String upload_path_for_file = "/wanted_file"; // -------- EC2 서버에서 첨부파일이 저장 될 directory 위치.
 	
-	/*
-	 * 프로필 사진 upload하기 방식 : 파일의 이름으로 member.getMember_name()을 설정하고 C에 저장한다.
-	 */
+	/*  프로필 사진 upload하기 방식 : 파일의 이름으로 member.getMember_name()을 설정하고 C에 저장한다. */
 	public String uploadfile(MultipartFile file, Member member) {
 		// -------------------------------------------------- 원본 파일의 확장자와 파일명을 분리하기 위한
 		// 변수 setting
@@ -34,11 +31,6 @@ public class profileFile {
 		}
 
 		savedFilename = filename + ext; // savedFilename은 세탁된 file name + 확장자.
-		System.out.println("----------------------------------------");
-		System.out.println("| original File name -> " + Original_name);
-		System.out.println("| setting File name --> " + savedFilename);
-		System.out.println("----------------------------------------");
-
 		serverFile = new File(upload_path_for_img + "/" + savedFilename);
 
 		try {
@@ -67,25 +59,4 @@ public class profileFile {
 		}
 
 	}
-	/*
-	 * 지원글에 첨부파일을 처리할 메소드 
-	 */
-	/*public void uploadfile(MultipartFile upload, WantedBoard wanb) {
-		String Original_name = upload.getOriginalFilename(); // 파일의 원래 이름.
-		String filename; // 확장자를 뺀 파일명
-		String ext; // 확장명
-		String savedFilename; // 최종 파일명.
-		File serverFile = null; // 파일 올리기.
-		int lastIndex = Original_name.lastIndexOf('.');
-		
-		if (lastIndex == -1) { // ---------------------------- 확장자가 없는 경우는 memberImg를 바로 setting 해주면 된다.
-			ext = "";
-			filename = wanb.getMember_name();
-		} else { // -------------------------------------------- 확장자가 있는 경우
-			ext = "." + Original_name.substring(lastIndex + 1); // 확장자를 뺀다.
-			filename = wanb.getMember_name(); // 계정 정보를 파일 이름으로 setting 해준다.
-		}
-		
-	}*/
-
 }
