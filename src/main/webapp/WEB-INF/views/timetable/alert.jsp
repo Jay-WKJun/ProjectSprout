@@ -16,7 +16,10 @@ $(function() {
 </head>
 <body>
 
-<img src="img/alertImage.png" width="300" height="300" align="middle"/>
+<img src="img/alertImage.png" width="100%" height="auto" align="middle"/>
+<button class="btn btn-dark" id="regist" value="" onclick="addDefault()">
+	<i class="far fa-calendar-check fa-lg"></i>
+</button>
 
 </body>
 </html>
