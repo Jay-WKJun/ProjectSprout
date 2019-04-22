@@ -58,7 +58,8 @@
 				<div class="mainSpace_top_side"></div>
 				<div class="mainSpace_top_center">
 					<div class="projectName border-bottom">
-						<h1 id="projectHome">${MainProject_title}</h1>
+						
+						<a href="http://localhost:2848/sprout/project_go"><h1 id="projectHome">${MainProject_title}</h1></a>
 					</div>
 				</div>
 				<div class="mainSpace_top_side" style="text-align: right">

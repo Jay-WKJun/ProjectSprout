@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -22,6 +23,7 @@ import com.team.sprout.util.DocumentFileService;
 import com.team.sprout.vo.DocumentBoard;
 import com.team.sprout.vo.DocumentFile;
 import com.team.sprout.vo.DocumentFolder;
+import com.team.sprout.vo.MainProject;
 import com.team.sprout.vo.Member;
 
 @Controller
@@ -45,9 +47,16 @@ public class ProjectDetailCotroller {
 
 	// 파일 매니저 접속
 	@RequestMapping(value = "/detailPage", method = RequestMethod.GET)
-	public String detailPage() {
-
+	public String detailPage(Model model, HttpSession session) {
+		String mainproject_projectnum = (String)session.getAttribute("mainproject_projectnum");
+		
+		List<MainProject> mainProjects = prrepo.findProjectName(mainproject_projectnum);
+		for (MainProject mainProject : mainProjects) {
+				model.addAttribute("MainProject_title", mainProject.getMainproject_title());
+		}
+		
 		return "project/detailPage";
+
 	}
 	
 	/*
