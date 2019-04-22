@@ -32,5 +32,7 @@ public interface MemberDAO {
 
 	public String selectOneMemberNum(String member_name);
 
-	public int insertCertificate(Map<String, String> map); 
+	public int updateCertificate(Member member);
+
+	public int updateAuthKey(Map<String, String> map); 
 }

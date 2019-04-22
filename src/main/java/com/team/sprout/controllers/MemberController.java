@@ -38,6 +38,8 @@ public class MemberController {
 	MainProjectRepository mainrepo;
 	@Autowired
 	ProjectMemberRepository prrepo;
+	@Autowired
+	MailService mail;
 
 	@RequestMapping(value = "/checkId", method = RequestMethod.POST)
 	public @ResponseBody int checkId(String member_id) {
@@ -77,6 +79,12 @@ public class MemberController {
 		
 		int result = repo.memberJoin(member); // 회원가입
 		System.out.println("회원가입 결과 : " + result); // 회원가입 결과 확인
+		
+		if (mail.certificateMail(member.getMember_id())) {
+			System.out.println("메일 발송 성공");
+		} else {
+			System.out.println("메일 발송 실패");
+		}
 
 		return "redirect:/";
 	}
@@ -98,6 +106,9 @@ public class MemberController {
 	public String loginP(Member member, boolean idChecked,
 			@CookieValue(value = "idChecked", defaultValue = "") String uid, Model model, HttpSession session,
 			HttpServletResponse response) {
+		
+		//여기서 인증이 됐는지 안됐는지 구별하고 안됐으면 오류페이지로 보낸다.
+		
 
 		if (idChecked) {
 			// idCheck를 눌럿다면

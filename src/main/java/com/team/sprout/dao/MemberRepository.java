@@ -111,13 +111,24 @@ public class MemberRepository {
 		return member_nameOne;
 	}
 
-	public int insertCertificate(String id, String code) {
+	public int updateCertificate(String id, String code) {
+		MemberDAO dao = session.getMapper(MemberDAO.class);
+		System.out.println(id +"  "+ code);
+		Member member = new Member();
+		member.setMember_id(id);
+		member.setMember_authkey(code);
+		int result = dao.updateCertificate(member);
+		return result;
+	}
+
+	public int updateAuthKey(String id, String message) {
 		MemberDAO dao = session.getMapper(MemberDAO.class);
 		Map <String, String> map = new HashMap<>();
 		map.put("id", id);
-		map.put("code", code);
-		int result = dao.insertCertificate(map);
-		return 0;
+		map.put("message", message);
+		int result = dao.updateAuthKey(map);
+		
+		return result;
 	}
 
 
