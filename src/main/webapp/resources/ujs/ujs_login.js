@@ -13,16 +13,6 @@ $(function(){
 	})
 	
 	$('#loginBtn').on('click', login);
-	
-	//비밀번호 찾기 모달
-	$('#searchPassword').on('click',function(){
-		$('#noticeDetailModal').show();
-	});
-	
-	//비밀번호 찾기 모달 닫기
-	$('#cancelNoticeDetailBtn').on('click',function(){
-		$('#noticeDetailModal').hide();
-	})
 })
 
 function login() {

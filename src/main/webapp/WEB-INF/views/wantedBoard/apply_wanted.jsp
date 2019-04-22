@@ -7,7 +7,6 @@
 <title>apply_wanted.jsp</title>
 <script>
 	$(function(){
-		
 		//내부 공고글 작성 모달 닫기
 		$('#closeWriteInternalBtn2').on('click',function(){
 			$('#boardDetailModal').hide();

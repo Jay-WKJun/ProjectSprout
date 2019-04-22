@@ -8,7 +8,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>project</title>
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+	integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+	crossorigin="anonymous">
 <link rel="stylesheet" href="ucss/ucss_project.css">
 <link rel="stylesheet" href="css/bootstrap.css">
 <script src="js/jquery-3.3.1.min.js"></script>
@@ -17,13 +20,6 @@
 </head>
 <body>
 	<div class="wrapper">
-		<div id="loader">
-			<div class="loader">
-				<img class="loaderImg" src="img/loading_leaf_circle.gif"><br>
-				Loading...
-			</div>
-			<div class="loaderBack"></div>
-		</div>
 		
 		<div class="sideSpace">
 			<div class="sideSpace_top">
@@ -32,9 +28,9 @@
 			<div class="sideSpace_bottom">
 				
 				<div
-					class="communicationBar rounded shadow bgwhite w-100"
+					class="communicationBar sbd2 rounded shadow bgwhite w-100"
 					style="padding: 5px">
-					<button class="btn btn-light w-100" id="createFolderModalBtn" style="margin-top:10px">
+					<button class="btn btn-dark w-100" id="createFolderModalBtn">
 						<i class="fas fa-folder-plus fa-2x"></i>
 					</button>
 					
@@ -48,7 +44,27 @@
 							<button class="btn btn-danger" id="cancelNoticeDetailBtn" style="margin-top:10px">닫기</button>
 						</div>
 					</div>
-					<div id="noticeSpace"></div>
+					<!-- <button class="btn btn-dark w-100" id="createDocument">
+						<i class="fas fa-file-medical fa-2x"></i>
+					</button> -->
+					
+					<!-- <div class="list-group">
+						<div class="dropdown dropright float-right list-group-item list-group-item-action"
+										style="margin-bottom: 2px; border: 1px solid #6079a0;">
+							<div data-toggle="dropdown">폴더이름</div>
+							<div class="dropdown-menu shadow" style="border:1px solid #6079a0">
+								<div style="margin-top: 20px" id="forkick">
+									<a href="#" style="border:1px solid #6079a0"
+										class="list-group-item list-group-item-action border-left-0 border-right-0">
+										문서
+									</a>
+								</div>
+							</div>
+						</div>
+					</div> -->
+					<div id="noticeSpace">
+					</div>
+
 					
 				</div>
 			</div>
@@ -85,8 +101,14 @@
 
 			<div class="mainSpace_bottom">
 				<div class="contentSpace_side"></div>
-				<div class="contentSpace" id="contentSpace" style="min-width:900px">
+				<div class="contentSpace" id="contentSpace">
 					Content Space
+				</div>
+				<div class="row">
+					<div id="createFolderSpace">
+						
+						<span id="closeFolderMessage"></span>
+					</div>
 				</div>
 				<div class="contentSpace_side"></div>
 				<div class="contentSpace_right">
