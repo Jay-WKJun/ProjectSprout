@@ -110,8 +110,8 @@
 				<div class="mainSpace_top_center">
 					<div class="projectName sbd2 border-top-0 border-left-0 border-right-0">
 						<div class="mainSpace_top_side"></div>
-						<div class="mainSpace_top_center" style="color:#5680c4">
-							<h1 id="projectHome">${MainProject_title}</h1>
+						<div class="mainSpace_top_center" style="color:#5d88cc">
+							<h1 id="projectHome"><b>${MainProject_title}</b></h1>
 						</div>
 						<div class="mainSpace_top_side"></div>
 					</div>
