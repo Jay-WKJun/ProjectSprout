@@ -159,8 +159,7 @@
 			var str = $("#chatbox").val();
 			str = str.replace(/ /gi, '&nbsp;')
 			str = str.replace(/(?:\r\n|\r|\n)/g, '<br />');
-			  var invitation ='<div class="chatLine">';
-			  invitation += '<div class="chatLine_main">';
+			  var invitation ='<div class="chatLine" style="text-align:center">';
 			  invitation += '<div class="bubbleL shadow">'+member_name+'님이 입장하셨습니다.</div>';
 			  invitation += '</div>';
 			
@@ -214,7 +213,7 @@
 								content += 'onerror='+imgErrorSrc+'>';
 								content += '</div>';
 								content += '<div class="chatLine_main">';
-	 							content += '<div class="bubbleL shadow">'+item.member_name+' : '+item.chat_content+'</div>';
+	 							content += '<div class="bubbleL shadow">'+'<p style="color:#5680c4;margin:0">'+item.member_id+'</p>'+item.chat_content+'</div>';
 	 							content += '</div>';
 	 							content += '<div class="chatLine_side"></div>'
 	 							content += '</div>';
@@ -292,10 +291,11 @@
 							$("#chatRoom").append(
 									'<div class="chatLine">'
 									+'<div class="chatLine_main">'
-									+'<img class="rounded-circle border memberIcon" src="download?loginId='+data.id+'" style="width: 30px; height: 30px">'
-									+'<div class="bubbleL shadow-sm">'
-									+data.name+' : '+data.message
+									+'<img class="rounded-circle border memberIcon" src="download?loginId='+data.id+'" style="width: 35px; height: 35px">'
 									+'</div>'
+									+'<div class="chatLine_main">'
+									+'<div class="bubbleL shadow-sm">'
+									+data.id+' : '+data.message
 									+'</div>'
 									+'<div class="chatLine_side"></div>'
 									+'</div>'

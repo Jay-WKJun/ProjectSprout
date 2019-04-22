@@ -65,7 +65,6 @@ $(function() {
 		var member_id = $('#member_ids').val();//세션아이디
 		var member_num =$('#member_nums').val();//로그인넘버
 		var chatRoom_name = $('#member_namesss').val(); // 임시로 아이디로 만들어지도록 함. 추후에 초대장 아이디랑 초대받은 사람 아이디로 업로드 예정(이라쓰고 안하기)
-		alert(chatRoom_name);
 		var test3 = chatRoom_name.concat(', '+member_name);
 		
 		var sad;
@@ -86,7 +85,6 @@ $(function() {
 				roomname = json[roomname];
 				roomnum = json[roomnum];*/
 				chtR = chatRoom_num;
-				alert("여기까지 와지나?");
 				ClickSendInvitation(member_name);//상대편 아이디 추가하로가기.
 			}
 			
@@ -116,10 +114,6 @@ $(function() {
 		var chatRoom_num = chtR;/*$('#chatRoom_nums').val();*/
 		var member_name = member_nameOne["member_name"];
 		var chatRoom_name = $('#member_namesss').val(); // 일단 아이디로 대신하자.. ..
-		alert(member_num);
-		alert(chatRoom_num);
-		alert(member_name);
-		alert(chatRoom_name);
 		var test3 = chatRoom_name.concat(', '+member_name);
 			
 		var qp = {
