@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
 <meta charset="UTF-8">
 <title>jQuery.Gantt</title>
 <meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1">
@@ -86,6 +87,10 @@
   border: 1px solid #091940;
   background-color: #1f326a;
   color: #fff;
+}
+
+.btn-r{
+	display:flex;
 }
 
 </style>
@@ -262,7 +267,12 @@
 			        			+'색깔'
 			        			+'</div>'
 			        			+'<div class="contentItem_input">' 
-			        			+'<input class="form-control" type="color" id="projectContent_color" name="projectContent_color">'
+			        			+'<select class="form-control" id="projectContent_color" name="projectContent_color">'
+			    	        	+'<option value="#BDBDBD">待機</option>'
+			    	        	+'<option value="#2EFEF7">進行</option>'
+			    	        	+'<option value="#FE642E">中止</option>'
+			    	        	+'<option value="#2EFE2E">完了</option>'
+			    	        	+'</select>'
 			        			+'</div>'
 			        			+'<input type="hidden" id="mainproject_projectNum" name="mainproject_projectNum">'
 			        			+'<div class="contentItem_text">' 
@@ -309,6 +319,18 @@
 					success : function(results){
 						memberName = results.member_name;
 					
+						var message;
+						if (pc.projectContent_color == '#BDBDBD') {
+							message = '待機';
+						} else if (pc.projectContent_color == '#2EFEF7'){
+							message = '進行';
+						} else if (pc.projectContent_color == '#FE642E'){
+							message = '中止';
+						}else {
+							message = '完了';
+						}
+						
+						
 						
 						
 				//내용 쓰기 메소드
@@ -354,7 +376,7 @@
 	        			+'색깔'
 	        			+'</div>'
 	        			+'<div class="contentItem_input" style="margin-top:20px;">' 
-	        			+'<div style="width:100%;height:30px;background-color:'+pc.projectContent_color+'"></div>'
+	        			+'<div style="width:100%;height:30px;text-align:center;background-color:'+pc.projectContent_color+'">'+message+'</div>'
 		        		+'</div>'
 		        		+'</div>'
 		        		
@@ -371,15 +393,9 @@
 					}
 				});
 				
-				var startButton = '<input type="button" style="height:40px;margin-right:5px;text-align:left" class="btn btn-blue btn-layerClose" value="始める">';
-				var endButton = '<input type="button" style="height:40px;margin-right:5px;text-align:left" class="btn btn-blue btn-layerClose" value="完了">';
-				var alertButton = '<input type="button" style="height:40px;margin-right:5px;text-align:left" class="btn btn-blue btn-layerClose" value="問題あり">';
-				
-				
 				//버튼 채워 넣기
 		        $('div.btn-r').html(
-		        		startButton
-						+'<a href="#" style="height:40px;margin-right:5px" class="btn btn-dark btn-layerClose" id="update">修正</a>'
+						'<a href="#" style="height:40px;margin-right:5px" class="btn btn-dark btn-layerClose" id="update">修正</a>'
 						+'<a href="#" style="height:40px;margin-right:5px" class="btn btn-dark btn-layerClose" id="delete">削除</a>'
 						+'<a href="#" style="height:40px;margin-right:5px" class="btn btn-danger btn-layerClose" id="close">閉じる</a>'
 				);
@@ -451,7 +467,12 @@
 		        			+'색깔'
 		        			+'</div>'
 		        			+'<div class="contentItem_input">' 
-		    	        	+'<input type="color" class="form-control" id="projectContent_color" name="projectContent_color" value="'+pc.projectContent_color+'">'
+		    	        	+'<select class="form-control" id="projectContent_color" name="projectContent_color" value="'+pc.projectContent_color+'">'
+		    	        	+'<option value="#BDBDBD">待機</option>'
+		    	        	+'<option value="#2EFEF7">進行</option>'
+		    	        	+'<option value="#FE642E">中止</option>'
+		    	        	+'<option value="#2EFE2E">完了</option>'
+		    	        	+'</select>'
 		    	        	+'</div>'
 		    	        	+'<input type="hidden" id="mainproject_projectNum" name="mainproject_projectNum" value="'+pc.mainproject_projectNum+'">'
 		    	        	+'<div class="contentItem_text">' 

@@ -76,6 +76,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			, PROJECTCONTENT_STARTDATE = #{projectContent_startDate}
 			, PROJECTCONTENT_ENDDATE = #{projectContent_endDate}
 			, PROJECTCONTENT_COLOR = #{projectContent_color}
+			, MEMBER_NUM = #{member_num}
 		where
 			projectContent_num = #{projectContent_num}
 	</update>

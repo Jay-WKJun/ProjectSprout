@@ -215,23 +215,11 @@ public class TimeTableController {
 	@ResponseBody
 	public List<Member> tableMakeGo(Model model, HttpSession session) {
 	
-		//Map<String, Object> results = new HashMap<>();
-		//여기서 메인프로젝트랑 프로젝트에 소속되있는 member 넘겨주기
-		
 		String mainProjectNum = (String)session.getAttribute("mainproject_projectnum");
 		
-		//"6da5455f-abe5-4390-81c6-e05e3f7e1ddc";
-		//프로젝트 상세정보에 들어올때 session으로 해당 프로젝트 num을 등록하고 꺼내서 쓴다.
-		
 		//해당프로젝트의 이름을 찾는다.
-		/*MainProject mp = mainrepo.forgoproject(mainProjectNum);
-		results.put("mainproject_title", mp.getMainproject_title());*/
 		
 		List<Member> proMemberList = prrepo.projectmemberSelectAll(mainProjectNum);
-		//results.put("proMemberList", proMemberList);
-		
-		//이걸로 해당프로젝트에 해당하는 인원만 select할 수 있게 제한한다.
-		//List<ProjectMember> projectMembers = prrepo.projectmemberSelectAll(mainProjectNum);
 		
 		model.addAttribute("projectNumTest", mainProjectNum);
 		
@@ -356,6 +344,7 @@ public class TimeTableController {
 	 */
 	@RequestMapping(value = "/updateContent", method = RequestMethod.POST)
 	public String updateContent(ProjectContent pc) {
+		System.out.println(pc.toString());
 		int result = pcRepo.projectContentUpdate(pc);
 		System.out.println("update 성공 " + result);
 		
