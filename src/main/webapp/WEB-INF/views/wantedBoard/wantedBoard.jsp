@@ -13,10 +13,10 @@
 <div>
 <table class="table table-hover table-light">
 	<tr>
-		<th>글 번호</th>
-		<th class="title">글제목</th>
-		<th>프로젝트 제안자</th>
-		<th>지원 기간</th>
+		<th>ナンバー</th>
+		<th class="title">タイトル</th>
+		<th>登録者</th>
+		<th>登録日</th>
 	</tr>
 	
 	<!-- 게시글 출력 반복 -->

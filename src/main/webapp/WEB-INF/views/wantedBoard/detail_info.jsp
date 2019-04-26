@@ -48,14 +48,14 @@
 	</div>
 	<div style="padding:10px">
 	<c:if test="${not empty sessionScope.same}">
-		<button class="btn btn-dark" id="applyBoardBtn">지원하기</button>
+		<button class="btn btn-dark" id="applyBoardBtn">志望する</button>
 	</c:if>
 				
 	<c:if test="${empty sessionScope.same}">
 		<input type="hidden" value="${one_wanted_from_DB.wantedBoard_num}" id="wantedBoardNum">
-		<button class="btn btn-dark" id="applyBoardDeleteBtn">삭제하기</button>
+		<button class="btn btn-dark" id="applyBoardDeleteBtn">削除する</button>
 	</c:if>
-		<input type="button" class="btn btn-danger" value="닫기" id="closeDetailInternalBtn">
+		<input type="button" class="btn btn-danger" value="キャンセル" id="closeDetailInternalBtn">
 	</div>
 	
 </body>

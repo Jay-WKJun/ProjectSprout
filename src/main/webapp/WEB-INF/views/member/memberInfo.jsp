@@ -52,32 +52,32 @@
 								</td>
 								<td class="border-top-0 border-bottom-0 border-left-0 sbd2" style="text-align: center">
 									<label class="btn btn-light btn-file border" style="margin-top: 10px"> 
-										이미지 변경 <input type="file" name="newPicture">
+										イメージ変更 <input type="file" name="newPicture">
 									</label>
-		<!-- 프로필 사진 삭제 -->	<input type="button" class="btn btn-dark" id="profileDelete" value="삭제"/>
+		<!-- 프로필 사진 삭제 -->	<input type="button" class="btn btn-dark" id="profileDelete" value="削除"/>
 									</td>
-		<!-- 아이디 -->			<td class="border-top-0 border-bottom-0 border-left-0 sbd2">아이디</td>
+		<!-- 아이디 -->			<td class="border-top-0 border-bottom-0 border-left-0 sbd2">アイディ</td>
 								<td>
 									<p>${sessionScope.member.member_id}</p>
 									<input type="hidden" value="${sessionScope.member.member_id}" name="member_id">
 								</td>
 							</tr>
 							<tr>
-		<!-- 이름 -->		<td class="border-top-0 border-bottom-0 border-left-0 sbd2">이름</td>
+		<!-- 이름 -->		<td class="border-top-0 border-bottom-0 border-left-0 sbd2">名前</td>
 								<td class="border-top-0 border-bottom-0 border-left-0 sbd2">
 									<input class="form-control w-50" type="text" id="member_name" value="${sessionScope.member.member_name}" name="member_name">
 								</td>
-		<!-- 비밀번호 -->		<td class="border-top-0 border-bottom-0 border-left-0 sbd2">비밀번호</td>
+		<!-- 비밀번호 -->		<td class="border-top-0 border-bottom-0 border-left-0 sbd2">パスワード</td>
 								<td>
 									<input class="form-control passwordFont" type="password" id="member_password" value="${sessionScope.member.member_password}" name="member_password">
 								</td>
 							</tr>
 							<tr>
-		<!-- 휴대전화 -->	<td class="border-top-0 border-bottom-0 border-left-0 sbd2">휴대전화</td>
+		<!-- 휴대전화 -->	<td class="border-top-0 border-bottom-0 border-left-0 sbd2">携帯電話</td>
 								<td class="border-top-0 border-bottom-0 border-left-0 sbd2">
 									<input class="form-control w-50" type="text" id="member_phone" value="${sessionScope.member.member_phone}" name="member_phone">
 								</td>
-		<!-- 주소 -->				<td class="border-top-0 border-bottom-0 border-left-0 sbd2">주소</td>
+		<!-- 주소 -->				<td class="border-top-0 border-bottom-0 border-left-0 sbd2">住所</td>
 								<td>
 									<input class="form-control" type="text" id="member_address" value="${sessionScope.member.member_address}" name="member_address">
 								</td>
@@ -85,9 +85,9 @@
 						</table>
 					</div>
 					<div class="contentItem w-100" style="text-align: right; margin-top: 10px">
-		<!-- 수정-->		<input type="submit" id="update_with_old_info" class="btn btn-dark" style="width: 60px; height: 40px" value="수정">
-		<!-- 탈퇴 -->		<input type="button" id="delete_infoBtn" class="btn btn-danger" style="width: 60px; height: 40px" value="탈퇴">
-						<input type="button" id="cancleBtn" class="btn btn-danger" style="width: 60px; height: 40px" value="취소">
+		<!-- 수정-->		<input type="submit" id="update_with_old_info" class="btn btn-dark" style="width: 60px; height: 40px" value="修正">
+		<!-- 탈퇴 -->		<input type="button" id="delete_infoBtn" class="btn btn-danger" style="width: 60px; height: 40px" value="脱退">
+						<input type="button" id="cancleBtn" class="btn btn-danger" style="width: 90px; height: 40px" value="キャンセル">
 					</div>
 				</div>
 			</form>

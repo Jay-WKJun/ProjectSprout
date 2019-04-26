@@ -27,8 +27,8 @@
 				<form action="" method="post" id="passwordForm" name="passwordForm">
 				<input type="text" id="idText" name="idText">
 				</form>
-				<button class="btn btn-dark" style="margin-top:10px" id="findPassword">변경</button>
-				<button class="btn btn-danger" id="cancelNoticeDetailBtn" style="margin-top:10px">닫기</button>
+				<button class="btn btn-dark" style="margin-top:10px" id="findPassword">変更</button>
+				<button class="btn btn-danger" id="cancelNoticeDetailBtn" style="margin-top:10px">キャンセル</button>
 			</div>
 		</div>
 	
@@ -55,7 +55,7 @@
 				<div class="contentItem" style="text-align-last: center">
 					<div class="loginBox rounded shadow sbd2 bgwhite">
 						<div class="loginBox_inner_top">
-							<h4 class="fontSize60 fontBold_1">로그인</h4>
+							<h4 class="fontSize60 fontBold_1">ログイン</h4>
 						</div>
 						<div class="loginBox_inner_center">
 							<div class="contentItem">
@@ -66,7 +66,7 @@
 									<div class="input-group-prepend">
 										<span class="input-group-text" style="min-width: 120px;"><i
 											class="far fa-id-badge fa-lg"></i><span
-											style="margin-left: 8px">아이디</span></span>
+											style="margin-left: 8px">アイディ</span></span>
 									</div>
 									<input type="text" class="form-control" id="id" name="member_id"
 										value="${cookie['idChecked'].value}">
@@ -74,7 +74,7 @@
 								<div class="input-group">
 									<div class="input-group-prepend">
 										<span class="input-group-text" style="min-width: 120px"><i
-											class="fas fa-lock fa-lg"></i><span style="margin-left: 8px">비밀번호</span></span>
+											class="fas fa-lock fa-lg"></i><span style="margin-left: 8px">パスワード</span></span>
 									</div>
 									<input type="password" class="form-control  fontDefault" id="password"
 										name="member_password">
@@ -82,19 +82,19 @@
 								<div class="checkBox_space">
 									<div class="checkBox_space_side"></div>
 									<div class="checkBox_space_main">
-										<label><span style="margin-right: 10px">아이디 저장</span><input
+										<label><span style="margin-right: 10px">アイディを保存</span><input
 											type="checkbox" name="idChecked" ${checked} /></label>
 									</div>
 								</div>
 								<div class="contentItem">
 									<button class="btn btn-dark w-100" id="loginBtn">
 										<i class="fas fa-sign-in-alt fa-lg"></i><span
-											style="margin-left: 8px">로그인</span>
+											style="margin-left: 8px">ログイン</span>
 									</button>
 								</div>
 								<div style="margin-top: 10px">
-									<a href="#" style="color: black; margin-right: 10px" id="searchPassword">비밀번호찾기</a> 
-									<a href="#" id="join" style="color: black; margin-left: 10px">회원가입</a>
+									<a href="#" style="color: black; margin-right: 10px" id="searchPassword">パスワードを探す</a> 
+									<a href="#" id="join" style="color: black; margin-left: 10px">会員登録</a>
 								</div>
 							</form>
 						</div>

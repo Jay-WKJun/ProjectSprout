@@ -295,7 +295,7 @@
 									+'</div>'
 									+'<div class="chatLine_main">'
 									+'<div class="bubbleL shadow-sm">'
-									+data.id+' : '+data.message
+									+'<p style="color:#5680c4;margin:0">'+data.id+'</p>'+data.message
 									+'</div>'
 									+'<div class="chatLine_side"></div>'
 									+'</div>'

@@ -4,8 +4,8 @@
 }
 
 @font-face{
-    font-family:'bada';
-    src:url('../font/BusanBada.ttf') format('truetype');
+    font-family:'corp_round';
+    src:url('../font/corp_round_v1.ttf') format('truetype');
 }
 
 .fontBold_1{
@@ -29,7 +29,7 @@
 }
 
 .wrapper {
-	font-family:'binggrae', 'bada','Serif';
+	font-family:'corp_round','binggrae','Serif';
 	font-size:110%;
     font-weight: 100;
     height:1000px;

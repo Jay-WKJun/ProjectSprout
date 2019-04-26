@@ -18,21 +18,21 @@
 	<div class="container" style="text-align:left">
 		<div class="row">
 			<div class="col">
-			<span style="margin-right:20px">작성자</span>
+			<span style="margin-right:20px">作成者</span>
 			<span>${loginId}</span>
 			<hr>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col">제목</div>
+			<div class="col">タイトル</div>
 		</div>
 		<div class="row" style="margin-bottom:30px;">
 			<div class="col">
-				<input type="text" class="form-control" name="wantedBoard_title" placeholder="제목을 입력하세요."/>
+				<input type="text" class="form-control" name="wantedBoard_title" placeholder="タイトルを入力してください。"/>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col">내용</div>
+			<div class="col">内容</div>
 		</div>
 		<div class="row">
 			<div class="col">

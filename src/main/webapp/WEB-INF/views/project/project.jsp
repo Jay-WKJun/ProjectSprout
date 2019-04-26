@@ -31,11 +31,11 @@
 			<div class="sideSpace_bottom">
 				<ul class="nav nav-tabs">
 					<li class="nav-item bgwhite"><a class="nav-link active"
-						id="memberChangeBtn" data-toggle="tab">멤버</a></li>
+						id="memberChangeBtn" data-toggle="tab">メンバー</a></li>
 					<li class="nav-item bgwhite"><a class="nav-link" id="messageSpaceBtn"
-						data-toggle="tab">채팅</a></li>
+						data-toggle="tab">チャット</a></li>
 					<li class="nav-item bgwhite" id="noticeCheckBtn"><a
-						class="nav-link" data-toggle="tab">공지사항</a></li>
+						class="nav-link" data-toggle="tab">お知らせ</a></li>
 
 				</ul>
 				
@@ -61,15 +61,16 @@
 										<div style="margin-top: 20px" data-pno="${list.member_num}"
 											id="forkick">
 											<a style="border:1px solid #6079a0" data-name="${list.member_name }"
-												class="list-group-item list-group-item-action border-left-0 border-right-0 messagesend">메세지
-												보내기</a>
+												class="list-group-item list-group-item-action border-left-0 border-right-0 messagesend">
+												メッセージを送る
+											</a>
 											
 											<input type="hidden" value="${chatRoom_num }" id="chatRoom_nums">
 											<input type="hidden" value="${list.member_name }" id="ClickMember_name">
 											<c:if test="${sessionScope.member_rank eq 5}">
 											<c:if test="${list.member_name eq sessionScope.loginId }"></c:if>
 												<a style="border:1px solid #6079a0"
-													class="kickMember list-group-item list-group-item-action border-left-0 border-right-0">내보내기</a>
+													class="kickMember list-group-item list-group-item-action border-left-0 border-right-0">追い出す</a>
 											</c:if>
 										</div>
 									</div>
@@ -85,7 +86,7 @@
 						<div class="modalBlack"></div>
 						<div class="noticeModalContent">
 							<textarea class="form-control" style="height:300px" id="noticeDetail"></textarea>
-							<button class="btn btn-danger" id="cancelNoticeDetailBtn" style="margin-top:10px">닫기</button>
+							<button class="btn btn-danger" id="cancelNoticeDetailBtn" style="margin-top:10px">キャンセル</button>
 						</div>
 					</div>
 					
@@ -136,9 +137,9 @@
 								<h5 class="dropdown-header">${loginName}</h5>
 								<div style="margin-top: 20px">
 									<a href="#" style="border:1px solid #6079a0" id="memberInfoBtn"
-										class="list-group-item list-group-item-action border-left-0 border-right-0">회원정보</a>
+										class="list-group-item list-group-item-action border-left-0 border-right-0">会員情報</a>
 									<a href="logout" style="border:1px solid #6079a0"
-										class="list-group-item list-group-item-action border-left-0 border-right-0">로그아웃</a>
+										class="list-group-item list-group-item-action border-left-0 border-right-0">ログアウト</a>
 
 								</div>
 							</div>
@@ -171,8 +172,8 @@
 										</div>
 										<div class="row">
 											<div class="col">
-												<button class="btn btn-dark" id="Invitatio" style="margin:10px 5px 0 0">채팅방 생성</button>
-												<button class="btn btn-danger" id="chatRoomModalCloseBtn" style="margin-top:10px">닫기</button>
+												<button class="btn btn-dark" id="Invitatio" style="margin:10px 5px 0 0">チャットルームを開設する</button>
+												<button class="btn btn-danger" id="chatRoomModalCloseBtn" style="margin-top:10px">キャンセル</button>
 											</div>
 										</div>
 									</div>
@@ -190,7 +191,7 @@
 								<div class="modalBlack"></div>
 								<div class="noticeModalContent rounded sbd2">
 									<textarea class="form-control" id="noticeContent" style="height:300px"></textarea>
-									<button class="btn btn-dark" id="createNoticeBtn" style="margin:10px 5px 0 0">공지사항 추가</button>
+									<button class="btn btn-dark" id="createNoticeBtn" style="margin:10px 5px 0 0">お知らせ</button>
 									<button class="btn btn-danger" id="cancelNoticeBtn" style="margin-top:10px">닫기</button>
 								</div>
 							</div>

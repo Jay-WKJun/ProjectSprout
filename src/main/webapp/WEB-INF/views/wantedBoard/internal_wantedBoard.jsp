@@ -12,10 +12,10 @@
 	<div style="padding: 10px;">
 		<table class="table table-hover table-light">
 			<tr>
-				<th>글 번호</th>
-				<th class="title">글제목</th>
-				<th>프로젝트 제안자</th>
-				<th>등록 날짜</th>
+				<th>ナンバー</th>
+				<th class="title">タイトル</th>
+				<th>登録者</th>
+				<th>登録日</th>
 			</tr>
 
 			<!-- 게시글 출력 반복 -->
@@ -51,7 +51,7 @@
 			<div class="contentSpace_right">
 				<div class="contentSpace_left"></div>
 				<div class="contentSpace_center">
-					<button class="btn btn-dark" id="writeInternalWantedBoard">글작성</button>
+					<button class="btn btn-dark" id="writeInternalWantedBoard">作成</button>
 				</div>
 			</div>
 		</div>

@@ -41,14 +41,14 @@
 				<div class="contentItem">
 					<button class="btn btn-light w-100" style="height: 50px;margin-bottom:10px" id="wantedBoardBtn">
 						<i class="far fa-clipboard fa-lg fontSize20"></i><span
-							class="fontSize20" style="margin-left: 8px">프로젝트 공고</span>
+							class="fontSize20" style="margin-left: 8px">求人掲示板</span>
 					</button>
 				</div>
 				<div class="contentItem" style="margin-bottom: 15px">
 					<button class="btn btn-light w-100" style="height: 50px"
 						id="newProjectBtn">
 						<i class="fas fa-folder-plus fa-lg fontSize20"></i><span
-							class="fontSize20" style="margin-left: 8px">새로 시작하기</span>
+							class="fontSize20" style="margin-left: 8px">始める</span>
 					</button>
 				</div>
 				
@@ -81,10 +81,10 @@
 												src="img/empty_profile.png" id="userProfileIcon">
 										</div>
 										<div class="dropdown-menu shadow" style="border:1px solid #6079a0;">
-											<h5 class="dropdown-header">로그인해주세요.</h5>
+											<h5 class="dropdown-header">ログインしてください。</h5>
 											<div style="margin-top: 20px">
 												<a id="loginBtn" style="border:1px solid #6079a0"
-													class="list-group-item list-group-item-action border-left-0 border-right-0">로그인</a>
+													class="list-group-item list-group-item-action border-left-0 border-right-0">ログイン</a>
 											</div>
 										</div>
 									</div>
@@ -111,9 +111,9 @@
 											<h5 class="dropdown-header">${loginName}</h5>
 											<div style="margin-top: 20px">
 												<a id="memberInfoBtn" class="list-group-item list-group-item-action border-left-0 border-right-0"
-													 style="border:1px solid #6079a0">회원정보</a>
+													 style="border:1px solid #6079a0">会員情報</a>
 												<a id="logoutBtn" class="list-group-item list-group-item-action border-left-0 border-right-0" 
-													 style="border:1px solid #6079a0;">로그아웃</a>
+													 style="border:1px solid #6079a0;">ログアウト</a>
 											</div>
 										</div>
 									</div>
@@ -145,7 +145,7 @@
 
 							<div class="contentItem" style="text-align: center;">
 									<div class="card-body sbd2 rounded shadow bgwhite">
-										<h4 class="card-title">프로젝트 이름</h4>
+										<h4 class="card-title">プロジェクト名</h4>
 										<hr class="sbd1">
 										<div style="text-align-last: left">
 											<textarea class="form-control"
@@ -154,7 +154,7 @@
 										</div>
 									</div>
 									<div class="card-body sbd2 rounded shadow bgwhite" style="margin-top: 40px">
-										<h4 class="card-title">프로젝트 내용</h4>
+										<h4 class="card-title">プロジェクト内容</h4>
 										<hr class="sbd1">
 										<div style="text-align-last: left">
 											<textarea class="form-control"
@@ -165,7 +165,7 @@
 								<div class="contentItem"
 									style="margin-top: 30px; text-align: right">
 									<button class="btn btn-info w-50" style="height: 50px"
-										id="projectCreateBtn">생성하기</button>
+										id="projectCreateBtn">クリエイト</button>
 								</div>
 							</div>
 						</form>
@@ -182,14 +182,14 @@
 						<div class="contentSpace_right">
 							<div class="contentItem" style="text-align: center; width: 300px">
 									<div class="card-body sbd2 shadow bgwhite">
-										<h4 class="card-title">프로젝트 이름</h4>
+										<h4 class="card-title">プロジェクト名</h4>
 										<hr class="sbd1">
 										<div style="text-align-last:left">
 											<span id="goproject_title"> </span>
 										</div>
 									</div>
 									<div class="card-body sbd2 shadow bgwhite" style="margin-top: 40px;height:300px;">
-										<h4 class="card-title">프로젝트 내용</h4>
+										<h4 class="card-title">プロジェクト内容</h4>
 										<hr class="sbd1">
 										<div style="text-align-last:left">
 											<span id="goproject_content"></span>
@@ -201,7 +201,7 @@
 						<div class="contentSpace_center"></div>
 						<div class="contentSpace_right">
 							<div class="memberList rounded sbd2 shadow bgwhite">
-								<h4 class="card-title" style="text-align-last:center">참여 멤버</h4>
+								<h4 class="card-title" style="text-align-last:center">メンバー</h4>
 								<hr class="sbd1">
 								<span id="goprojet_membername">
 								
@@ -215,7 +215,7 @@
 						<div class="contentItem contentSpace_topMargin"
 							style="width: 100%; text-align: center;">
 							<button class="btn btn-info w-25"
-								style="height: 50px; margin-right: 20px" id="openproject">시작</button>
+								style="height: 50px; margin-right: 20px" id="openproject">始める</button>
 
 							<input type="hidden" name="mainproject_projectnum"
 								id="mainProjectNum">
@@ -233,10 +233,10 @@
 						<div class="rounded sbd2 bgwhite shadow" style="padding:40px;width:1200px">
 							<ul class="nav nav-tabs">
 								<li class="nav-item bgwhite">
-									<a class="nav-link active" data-toggle="tab" id="internalWantedSpace">내부</a>
+									<a class="nav-link active" data-toggle="tab" id="internalWantedSpace">内部</a>
 								</li>
 								<li class="nav-item bgwhite">
-									<a class="nav-link" data-toggle="tab" id="externalWantedSpace">외부</a>
+									<a class="nav-link" data-toggle="tab" id="externalWantedSpace">外部</a>
 								</li>
 							</ul>
 							<div class="rounded-bottom w-100 sbd2 shadow bgwhite">
@@ -256,8 +256,8 @@
 				<div class="writeWantedModalContent rounded sbd2">
 					<div id="writeBoardLoad"></div>
 					<div style="padding:10px">
-						<input type="button" class="btn btn-dark" value="글등록" style="margin-right:5px" id="writeBoardBtn">
-						<input type="button" class="btn btn-danger" value="닫기" id="closeWriteInternalBtn">
+						<input type="button" class="btn btn-dark" value="登録" style="margin-right:5px" id="writeBoardBtn">
+						<input type="button" class="btn btn-danger" value="キャンセル" id="closeWriteInternalBtn">
 					</div>
 				</div>
 			</div>

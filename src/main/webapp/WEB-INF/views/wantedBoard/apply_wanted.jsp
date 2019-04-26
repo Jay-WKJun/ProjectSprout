@@ -34,13 +34,13 @@
 		</div>
 		<div class="row">
 			<div class="col">
-				<input class="form-control" type="file" id="upload" name="upload" value="파일첨부" />
+				<input class="form-control" type="file" id="upload" name="upload" value="ファイル添付" />
 			</div>
 		</div>
 		<div class="row">
 			<div class="col" style="padding:10px; text-align-last:right">
-				<input class="btn btn-dark" type="submit" value="완료" style="margin-right:5px">
-				<input class="btn btn-danger" type="button" id="closeWriteInternalBtn2" value="닫기">
+				<input class="btn btn-dark" type="submit" value="完了" style="margin-right:5px">
+				<input class="btn btn-danger" type="button" id="closeWriteInternalBtn2" value="キャンセル">
 			</div>
 		</div>
 	</div>

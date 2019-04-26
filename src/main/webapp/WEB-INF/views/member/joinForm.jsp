@@ -42,50 +42,50 @@
 			<form id="joinForm" action="join" method="POST" enctype="multipart/form-data">
 				<div class="mainSpace sbd2 rounded shadow bgwhite">
 					<div class="contentItem_text">
-		<b>아이디</b>
+		<b>アイディ</b>
 					</div>
 					<div class="contentItem_input">
 						<input class="form-control" type="text" id="member_id" name="member_id">
 					</div>
 					<span id="idCheckMessage"></span>
 					<div class="contentItem_text">
-		<b>비밀번호</b>
+		<b>パスワード</b>
 					</div>
 					<div class="contentItem_input">
 						<input class="form-control" type="password" id="member_password" name="member_password">
 					</div>
 					<div class="contentItem_text">
-		<b>비밀번호 확인</b>
+		<b>パスワード確認</b>
 					</div>
 					<div class="contentItem_input">
 						<input class="form-control" type="password" id="member_password_re">
 					</div>
 					<div class="contentItem_text">
-		<b>이름</b>
+		<b>名前</b>
 					</div>
 					<div class="contentItem_input">
 						<input class="form-control" type="text" id="member_name" name="member_name">
 					</div>
 					<div class="contentItem_text">
-		<b>휴대전화</b>
+		<b>携帯電話</b>
 					</div>
 					<div class="contentItem_input">
-						<input class="form-control" type="text" id="member_phone" name="member_phone" placeholder="숫자만 입력해주세요.">
+						<input class="form-control" type="text" id="member_phone" name="member_phone" placeholder="数字だけを入力してください。">
 					</div>
 					<div class="contentItem_text">
-		<b>주소</b>
+		<b>住所</b>
 					</div>
 					<div class="contentItem_input">
 						<input class="form-control" type="text" id="member_address" name="member_address">
 					</div>
 					<div class="contentItem_text">
-		<b>프로필 사진</b>
+		<b>プロフィールイメージ</b>
 					</div>
 					<div class="contentItem_input">
-						<input type="file" class="form-control-file border" id="upload" name="upload" value="파일첨부">
+						<input type="file" class="form-control-file border" id="upload" name="upload" value="ファイル添付">
 						<input class="text" type="hidden" id="memberImage_saveAddress" name="memberImage_saveAddress">
 						<div class="contentItem_input" style="margin-top: 50px;">
-		<!-- 버튼 -->	<input type="button" class="btn btn-dark w-100" style="height: 45px" id="joinBtn" value="가입하기">
+		<!-- 버튼 -->	<input type="button" class="btn btn-dark w-100" style="height: 45px" id="joinBtn" value="登録する">
 						</div>
 					</div>
 				</div>
