@@ -29,7 +29,7 @@ public class MailService {
 		String target = id;
 		boolean result = false;
 		String defaultTitle = "Welcome to SPROUT!";
-		String defaultMessage = "click this link for certification \r\r";
+		
 		UUID uid = UUID.randomUUID();
 		String code= uid.toString().substring(0, 7);
 		System.out.println(code);
@@ -37,8 +37,34 @@ public class MailService {
 		if(res == 0) {
 			return false;
 		}
-		String url = "<a href='http://localhost:2848/sprout/certification?code="+code+"&id="+id+"'>인증하기</a>";
-		defaultMessage+=url;
+		String url = "<a style=\"color:black;font-size:35px\" href='http://localhost:2848/sprout/certification?code="+code+"&id="+id+"'>認証する</a>";
+		
+		String defaultMessage ="<div style=\"background-color:#e0ebff;padding:10px;flex:1\">\r\n" + 
+				"					<div style=\"margin:10px;display:flex\">\r\n" + 
+				"						<div style=\"flex:1\"></div>\r\n" + 
+				"						<div style=\"flex:initial\">\r\n" + 
+				"							<h1 style=\"color:#5680c4;font-size:45px\">ようこそSPOUTへ</h1>\r\n" + 
+				"						</div>\r\n" + 
+				"						<div style=\"flex:1\"></div>\r\n" + 
+				"					</div>\r\n" + 
+				"					<div style=\"display:flex\">\r\n" + 
+				"						<div style=\"flex:1\"></div>\r\n" + 
+				"						<div style=\"color:#59658c;text-align:center;flex:initial;font-size:30px\">\r\n" + 
+				"							このメールはSprout会員登録に対する認証のため送りました。<br>\r\n" + 
+				"							本人であれば“認証する”をクリックしてください。\r\n" + 
+				"						</div>\r\n" + 
+				"						<div style=\"flex:1\"></div>\r\n" + 
+				"					</div>\r\n" + 
+				"					<div style=\"margin:40px;display:flex\">\r\n" + 
+				"						<div style=\"flex:1\"></div>\r\n" + 
+				"						<div style=\"color:#59658c;text-align:center;flex:initial\">\r\n" + 
+				"							\r\n" + url+
+				"						</div>\r\n" + 
+				"						<div style=\"flex:1\"></div>\r\n" + 
+				"					</div>\r\n" + 
+				"					\r\n" + 
+				"				</div>";
+		
 		result = mm.sendMail(defaultTitle, defaultMessage, target);
 		
 		return true;

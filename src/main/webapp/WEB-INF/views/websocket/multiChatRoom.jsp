@@ -160,7 +160,7 @@
 			str = str.replace(/ /gi, '&nbsp;')
 			str = str.replace(/(?:\r\n|\r|\n)/g, '<br />');
 			  var invitation ='<div class="chatLine" style="text-align:center">';
-			  invitation += '<div class="bubbleL shadow">'+member_name+'님이 입장하셨습니다.</div>';
+			  invitation += '<div class="bubbleL shadow">'+member_name+'さんが入りました。.</div>';
 			  invitation += '</div>';
 			
 				// WebsocketMessageBrokerConfigurer의 configureMessageBroker() 메소드에서 설정한 send prefix("/")를 사용해야 함
@@ -509,13 +509,18 @@
 						<div class="mainSpace_top">
 							<div class="mainSpace_top_side"></div>
 							<div class="mainSpace_top_center">
-								<button class="btn btn-default" id="addMemberModalBtn" style="color:white">
-									<i class="fas fa-user-plus fa-lg"></i>
-								</button>
-								
-								<button class="btn btn-default" id="InMemberList" style="color:white">
-									<i class="fas fa-bars fa-lg"></i>
-								</button>
+								<div class="mainSpace_top">
+									<div class="mainSpace_top_center">
+										<button class="btn btn-default" id="addMemberModalBtn" style="color:white">
+											<i class="fas fa-user-plus fa-lg"></i>
+										</button>
+									</div>
+									<div class="mainSpace_top_center">
+										<button class="btn btn-default" id="InMemberList" style="color:white">
+											<i class="fas fa-bars fa-lg"></i>
+										</button>
+									</div>
+								</div>
 								<div id="addMemberModal" style="display:none">
 									<div class="modalBlack"></div>
 									<div class="noticeModalContent sbd2 rounded">
@@ -523,8 +528,8 @@
 											<input class="form-control" type="text" id="memberinvitation">
 										</div>
 										<div style="padding:5px">
-											<input type="button" class="btn btn-dark" id="BtnInvitation" value="초대">
-											<button class="btn btn-danger" id="closeMemberModalBtn">닫기</button>
+											<input type="button" class="btn btn-dark" id="BtnInvitation" value="招待">
+											<button class="btn btn-danger" id="closeMemberModalBtn">キャンセル</button>
 										</div>
 									</div>
 									</div>
@@ -537,7 +542,7 @@
 												<!--  회원목록 리스트 출력 부분 -->
 										</div>
 										<div style="padding:5px">
-											<button class="btn btn-danger" id="closeMemberList">닫기</button>
+											<button class="btn btn-danger" id="closeMemberList">キャンセル</button>
 										</div>
 									</div>
 									</div>
@@ -578,8 +583,8 @@
 									</div>
 								</div>
 								<div style="padding:5px">
-									<input type="button" id ="uploads" class="btn btn-dark" value="전송">
-									<input type="button" id ="closeFileModal" class="btn btn-danger" value="닫기">
+									<input type="button" id ="uploads" class="btn btn-dark" value="送る">
+									<input type="button" id ="closeFileModal" class="btn btn-danger" value="キャンセル">
 								</div>
 							</form>
 						</div>
@@ -589,11 +594,10 @@
 					<input class="form-control w-100" type="text" id="chatbox" onkeydown="enterkey();">
 				</div>
 				<div class="mainSpace_top_center">
-					<input class="btn btn-dark" type="button" id="send" value="보내기">
+					<input class="btn btn-dark" type="button" id="send" value="送る">
 				</div>
 			</div>
 		</div>
-		
 	</div>
 	</div>
 </body>

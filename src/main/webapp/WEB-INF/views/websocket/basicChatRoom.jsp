@@ -85,7 +85,7 @@
 					}, 100);
 						var data = JSON.parse(message.body);
 						$("#chatroom").append(
-								data.username + " 님 -> " + data.message
+								data.username + " さま ->  " + data.message
 										+ "<br />");
 					});
 			
@@ -131,7 +131,7 @@
                      data: formData,
                      type: 'POST',
                      success: function(result){
-                    	alert("성공!");
+                    	console.log("せいこう!");
                      }
              });
      }
@@ -161,11 +161,11 @@
 	<form id="FILE_FORM"  method="post" enctype="multipart/form-data">
 		<table>
 			<tr>
-				<td>파일첨부</td>
+				<td>ファイル添付</td>
 				<td>
 					<!-- 새로 첨부할 파일 선택 --> 
 					<input type="file" name="upload" id="FILE_TAG"size="30">
-					<a class="ui-shadow ui-btn ui-corner-all" href="javascript:uploadFile();">전송</a>
+					<a class="ui-shadow ui-btn ui-corner-all" href="javascript:uploadFile();">送る</a>
 			
 				</td>
 			</tr>

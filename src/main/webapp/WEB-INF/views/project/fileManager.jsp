@@ -23,7 +23,7 @@
 
 		<div class="row sbd2 border-top-0 border-right-0 border-left-0">
 			<div class="col-2" style="background-color: #6079a0; padding: 10px">
-				드라이브 : /</div>
+				Drive : /</div>
 			<div class="col-8" style="padding: 10px">
 				<span id="folderLocation">home</span>
 			</div>

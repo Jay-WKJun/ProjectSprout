@@ -179,7 +179,7 @@ function createForm() {
 	formTag += '<div class="mainSpace_top_side">';
 	formTag += '</div>';
 	formTag += '<div class="mainSpace_top_center">';
-	formTag += '<input type="button" class="btn btn-dark" id="fileUpLoadBtn" value="문서 올리기">';
+	formTag += '<input type="button" class="btn btn-dark" id="fileUpLoadBtn" value="文書アップロード">';
 	formTag += '</div>';
 	formTag += '</div>';
 

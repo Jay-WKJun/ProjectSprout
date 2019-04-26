@@ -16,11 +16,11 @@ $(function(){
 		 ,data: "member_id="+member_id
 		,success: function(result){
 			if (result == 1 ) {
-				$('#idCheckMessage').html('이미 존재하는 아이디입니다.');
+				$('#idCheckMessage').html('使えないアイディです。');
 				$('#idCheckMessage').attr('style','color:#f23a3a');
 			}
 			else{
-				$('#idCheckMessage').html('사용가능한 아이디 입니다');
+				$('#idCheckMessage').html('使えるアイディです。');
 				$('#idCheckMessage').attr('style','color:#304dd1');
 			}
 		}
@@ -28,6 +28,15 @@ $(function(){
 		})
 				
 	});
+	
+	//파일 선택시
+	$("#upload").change(function(e){
+		var fileName=$('#upload')[0].files[0].name;
+		$('#fileName').val(fileName);
+		 //  $('input[type=file]')[0].files[0].name;
+		 //  $("#imgUpload")[0].files[0].type;
+		 //  $("#imgUpload")[0].files[0].size;
+	 });
 	
 })
 

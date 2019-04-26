@@ -42,10 +42,10 @@
 						<div class="modalBlack"></div>
 						<div class="noticeModalContent">
 							<form name="createFolderForm" id="createFolderForm" action="createFolderForm" method="post">
-							<input type="text" class="form-control" id="folderNameInput" name="folderNameInput" placeholder="생성할 폴더 이름을 입력하세요.">
+							<input type="text" class="form-control" id="folderNameInput" name="folderNameInput" placeholder="フォルダー名を入力してください。">
 							</form>
-							<button class="btn btn-dark" id="createFolderBtn" style="margin-top:10px">폴더 생성</button>
-							<button class="btn btn-danger" id="cancelNoticeDetailBtn" style="margin-top:10px">닫기</button>
+							<button class="btn btn-dark" id="createFolderBtn" style="margin-top:10px">フォルダーを作る</button>
+							<button class="btn btn-danger" id="cancelNoticeDetailBtn" style="margin-top:10px">キャンセル</button>
 						</div>
 					</div>
 					<div id="noticeSpace"></div>
@@ -65,17 +65,22 @@
 					<div class="myInfo">
 						<div class="dropdown dropright float-right h-100">
 							<div data-toggle="dropdown">
-								<img class="rounded-circle border"
-									style="width: 50px; height: 50px" src="img/empty_profile.png"
-									id="userProfileIcon">
+								<c:if test="${not empty sessionScope.mime}"> 
+									<img class="rounded-circle border" src="download?loginId=${loginId}" onerror="src='img/empty_profile.png'"
+										style="width: 50px; height: 50px" id="userProfileIcon">
+								</c:if>
+								<c:if test="${empty sessionScope.mime}"> 
+									<img class="rounded-circle border" style="width: 50px; height: 50px" 
+										src="img/empty_profile.png" id="userProfileIcon">
+								</c:if>
 							</div>
 							<div class="dropdown-menu">
 								<h5 class="dropdown-header">${loginName}</h5>
 								<div style="margin-top: 20px">
 									<a href="#"
-										class="list-group-item list-group-item-action border-left-0 border-right-0">회원정보</a>
+										class="list-group-item list-group-item-action border-left-0 border-right-0">会員情報</a>
 									<a href="logout"
-										class="list-group-item list-group-item-action border-left-0 border-right-0">로그아웃</a>
+										class="list-group-item list-group-item-action border-left-0 border-right-0">ログアウト</a>
 								</div>
 							</div>
 						</div>

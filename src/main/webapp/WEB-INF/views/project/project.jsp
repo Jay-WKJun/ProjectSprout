@@ -163,7 +163,7 @@
 									<div class="container">
 										<div class="row">
 											<div class="col">
-												<input type="text" class="form-control" id="addMembers" name="addMember" placeholder="생성할 채팅방 이름">
+												<input type="text" class="form-control" id="addMembers" name="addMember" placeholder="チャットルーム名">
 												<input type="hidden" id="member_ids" value="${sessionScope.loginId }"/>
 												<input type="hidden" id="member_namesss" value="${sessionScope.loginName }"/>
 												<input type="hidden" id="member_nums" value="${sessionScope.loginNum }"/>
@@ -192,7 +192,7 @@
 								<div class="noticeModalContent rounded sbd2">
 									<textarea class="form-control" id="noticeContent" style="height:300px"></textarea>
 									<button class="btn btn-dark" id="createNoticeBtn" style="margin:10px 5px 0 0">お知らせ</button>
-									<button class="btn btn-danger" id="cancelNoticeBtn" style="margin-top:10px">닫기</button>
+									<button class="btn btn-danger" id="cancelNoticeBtn" style="margin-top:10px">キャンセル</button>
 								</div>
 							</div>
 							
@@ -209,7 +209,7 @@
 								method="GET">
 								<div class="noticeModalContent rounded sbd2">
 										<input type="text" class="form-control" id="addMember"
-											name="addMember" placeholder="추가하실 아이디를 입력하세요.">
+											name="addMember" placeholder="アイディを入力してください。">
 									<div class="container">
 									<div class="row">
 									<div class="col-8" style="text-align:left;padding:10px">
@@ -217,8 +217,8 @@
 									</div>
 									<div class="col">
 										<button class="btn btn-dark" id="addmem" style="margin-top:10px"
-											disabled="disabled">멤버 추가</button>
-										<input type="button" class="btn btn-danger" id="cancelmemberPlusBtn" style="margin-top:10px" value="닫기">
+											disabled="disabled">メンバー追加</button>
+										<input type="button" class="btn btn-danger" id="cancelmemberPlusBtn" style="margin-top:10px" value="キャンセル">
 									</div>
 									</div>
 									</div>
