@@ -5,7 +5,7 @@ $(function(){
 	// 파일 업로드 버튼
 	$('#fileUpLoadBtn').on('click', function(){
 		if($('#upLoadFile').val()==""){
-			alert('파일을 선택해주세요.');
+			alert('ファイルを選んでください。');
 		}else{
 			fileUpLoad();
 		}
@@ -45,7 +45,7 @@ function fileUpLoad() {
 				$('#upLoadFile').val('');
 				getFileList();
 			} else {
-				console.log("파일 업로드 실패");
+				console.log("アップロード失敗。");
 			}
 		}
 	})
@@ -68,9 +68,9 @@ function printProjectFile(fileList) {
 	var tag = "<thead>";
 	tag += "<tr>";
 	tag += "<th></th>";
-	tag += "<th>파일명</th>";
-	tag += "<th>로그</th>";
-	tag += "<th>업로드 날짜</th>";
+	tag += "<th>ファイル名</th>";
+	tag += "<th>アップローダー</th>";
+	tag += "<th>アップロード日付</th>";
 	tag += "<th></th>";
 	tag += "</tr>";
 	tag += "</thead>";
@@ -128,8 +128,8 @@ function printProjectFile(fileList) {
 		tag += '</label>';
 		tag += '</span>';
 		tag += '<div class="dropdown-menu">';
-		tag += '<a class="dropdown-item fileDownload">다운로드</a>';
-		tag += '<a class="dropdown-item fileDelete" >삭제</a>';
+		tag += '<a class="dropdown-item fileDownload">ダウンロード</a>';
+		tag += '<a class="dropdown-item fileDelete" >削除</a>';
 		tag += '</div>';
 		tag += '</div>';
 			
@@ -226,7 +226,7 @@ function fileDelete(){
 				if(result=="success"){
 					getFileList();
 				}else{
-					console.log("파일 삭제 실패");
+					console.log("ファイル削除失敗。");
 				}
 			}
 		})
@@ -239,7 +239,7 @@ function fileDelete(){
 				if(result=="success"){
 					getFileList();
 				}else{
-					console.log("파일 삭제 실패");
+					console.log("ファイル削除失敗。");
 				}
 			}
 		})
@@ -249,7 +249,7 @@ function fileDelete(){
 //폴더 생성 네이밍
 function createFolderNaming(){
 	tag="<input type='text' id='folderName'>";
-	tag+="<button class='btn btn-dark' id='createFolderBtn'>생성</button>";
+	tag+="<button class='btn btn-dark' id='createFolderBtn'>フォルダーを作る。</button>";
 	$('#createFolderSpace').html(tag);
 	$('#createFolderBtn').on('click',createFolder);
 }
@@ -265,7 +265,7 @@ function createFolder(){
 			projectFile_originalname.indexOf(':')>-1||projectFile_originalname.indexOf('"')>-1||
 			projectFile_originalname.indexOf('<')>-1||projectFile_originalname.indexOf('>')>-1||
 			projectFile_originalname.indexOf('|')>-1){
-		var msg='폴더 이름에는 다음 기호가 들어갈 수 없습니다.  /, *, :, ", <, >, | ';
+		var msg="ファイル名には次の記号を入れられません。　’／、＊、：、”、＜、＞、｜’";
 		$('#closeFolderMessage').html(msg);
 		var tag='<button class="btn btn-dark" id="createFolderInputBtn"><i class="fas fa-folder-open fa-lg"></i></button>';
 		$('#createFolderSpace').html(tag);
@@ -291,7 +291,7 @@ function createFolder(){
 				$('#createFolderInputBtn').on('click',createFolderNaming);
 				$('#closeFolderMessage').empty();
 			} else {
-				console.log("폴더 생성 실패");
+				console.log("フォルダー作り失敗。");
 			}
 		}
 	})

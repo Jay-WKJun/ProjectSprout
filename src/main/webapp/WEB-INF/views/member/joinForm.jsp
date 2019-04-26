@@ -82,7 +82,17 @@
 		<b>プロフィールイメージ</b>
 					</div>
 					<div class="contentItem_input">
-						<input type="file" class="form-control-file border" id="upload" name="upload" value="ファイル添付">
+						<div class="topSpace">
+							<div class="topSpace_center">
+								<label class="btn btn-dark">
+									ファイル添付
+									<input type="file" class="form-control-file border" id="upload" name="upload" style="display:none">
+								</label>
+							</div>
+							<div class="topSpace_side">
+								<input class="form-control" type="text" id="fileName" readonly="readonly">
+							</div>
+						</div>
 						<input class="text" type="hidden" id="memberImage_saveAddress" name="memberImage_saveAddress">
 						<div class="contentItem_input" style="margin-top: 50px;">
 		<!-- 버튼 -->	<input type="button" class="btn btn-dark w-100" style="height: 45px" id="joinBtn" value="登録する">

@@ -127,7 +127,7 @@
 					<div>
 							<h4 style="color:#569cc4">New Experience</h4>
 							<p style="color:#569cc4;margin:0px">With</p>
-							<h1 style="color:#5680c4;margin:0px"><b>Sprout</b></h1>
+							<h1 style="color:#5680c4;margin:0px"><b>SPROUT</b></h1>
 					</div>
 				</div>
 				<div class="contentSpace_right"></div>
@@ -275,22 +275,19 @@
 			
 			<div class="contentSpace">
 				<div class="contentSpace_left"></div>
-				<div class="contentSpace_center" style="padding:20px">
+				<div class="contentSpace_center" style="padding:20px;">
+				
 					<div id="webPresentSpace">
 						<div class="rounded shadow" style="text-align:center;background-color:#ccdbff">
 							
 							<div id="demo" class="carousel slide" data-ride="carousel">
 							
-							<!-- 웹 소개 이미지 -->
-							
-							<!-- Indicators -->
 							  <ul class="carousel-indicators">
 							    <li data-target="#demo" data-slide-to="0" class="active"></li>
 							    <li data-target="#demo" data-slide-to="1"></li>
 							    <li data-target="#demo" data-slide-to="2"></li>
 							  </ul>
 							
-							  <!-- The slideshow -->
 							  <div class="carousel-inner" style="width:1000px;height:600px">
 							    <div class="carousel-item active">
 							    	<div style="opacity: 0.9">
@@ -312,7 +309,6 @@
 							    </div>
 							  </div>
 							
-							  <!-- Left and right controls -->
 							  <a class="carousel-control-prev" href="#demo" data-slide="prev">
 							    <span class="carousel-control-prev-icon"></span>
 							  </a>
