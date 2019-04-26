@@ -276,10 +276,12 @@
 			        			+'</form>'
 			        	);
 						
+						
+						
 						//완료 버튼 만들기
 						$('div.btn-r').html(
-								'<input type="button" style="height:40px;margin-right:5px" class="btn btn-dark btn-layerClose" id="createContent" onclick="doCreateSubmit()" value="완료" />'
-								+'<a href="#" style="height:40px" class="btn btn-danger btn-layerClose" id="close">닫기</a>'
+								'<input type="button" style="height:40px;margin-right:5px" class="btn btn-dark btn-layerClose" id="createContent" onclick="doCreateSubmit()" value="完了" />'
+								+'<a href="#" style="height:40px" class="btn btn-danger btn-layerClose" id="close">閉じる</a>'
 						);
 			        	
 			        	//닫기 메소드
@@ -369,13 +371,17 @@
 					}
 				});
 				
+				var startButton = '<input type="button" style="height:40px;margin-right:5px;text-align:left" class="btn btn-blue btn-layerClose" value="始める">';
+				var endButton = '<input type="button" style="height:40px;margin-right:5px;text-align:left" class="btn btn-blue btn-layerClose" value="完了">';
+				var alertButton = '<input type="button" style="height:40px;margin-right:5px;text-align:left" class="btn btn-blue btn-layerClose" value="問題あり">';
 				
 				
 				//버튼 채워 넣기
 		        $('div.btn-r').html(
-						'<a href="#" style="height:40px;margin-right:5px" class="btn btn-dark btn-layerClose" id="update">수정</a>'
-						+'<a href="#" style="height:40px;margin-right:5px" class="btn btn-dark btn-layerClose" id="delete">삭제</a>'
-						+'<a href="#" style="height:40px;margin-right:5px" class="btn btn-danger btn-layerClose" id="close">닫기</a>'
+		        		startButton
+						+'<a href="#" style="height:40px;margin-right:5px" class="btn btn-dark btn-layerClose" id="update">修正</a>'
+						+'<a href="#" style="height:40px;margin-right:5px" class="btn btn-dark btn-layerClose" id="delete">削除</a>'
+						+'<a href="#" style="height:40px;margin-right:5px" class="btn btn-danger btn-layerClose" id="close">閉じる</a>'
 				);
 		        
 		        //지우기 메소드

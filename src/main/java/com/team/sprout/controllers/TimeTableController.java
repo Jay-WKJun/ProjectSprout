@@ -46,19 +46,21 @@ public class TimeTableController {
 	
 	/*
 	 * 접속한 프로젝트의 일을 모두 불러오고 타임테이블까지 만드는 메소드
+	 * 일 진행되기 전 = 회색
+	 * 일 진행중 = 하늘색
+	 * 일 완료 = 초록
+	 * 일에 문제있음 = 빨간색
 	 */
 	@RequestMapping(value = "/timetable", method = RequestMethod.GET)
 	public String table(Locale locale, Model model, HttpSession session) {
 		System.out.println("타임테이블 컨트롤러 시작");
 		
-		//TODO:열자마자 schdule이 하나도 없는지 확인합니다. 없으면 table대신에 다른 것을 띄워줍니다. 추가해야함!!!!
+		//TODO:왼쪽 끝에 진행하기 버튼 추가, 진행하게 되면 일에 문제가 있거나 완료했다는 표시를 띄운다.
 		
 		String mainProjectNum = (String)session.getAttribute("mainproject_projectnum");
 		//프로젝트 상세정보에 들어올때 session으로 해당 프로젝트 num을 등록하고 꺼내서 쓴다.
 		//project.jsp에 hidden으로 숨겨둔 곳에서 가져다가 사용할 수도 있다.
 				
-				//"6da5455f-abe5-4390-81c6-e05e3f7e1ddc";
-		
 		List<ProjectContent> pcList = pcRepo.projectContentSelectAll(mainProjectNum);
 		
 		//없다면 그림을 다른 jsp페이지를 띄운다.
