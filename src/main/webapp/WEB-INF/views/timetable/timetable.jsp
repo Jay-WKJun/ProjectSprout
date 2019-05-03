@@ -4,7 +4,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
 <meta charset="UTF-8">
 <title>jQuery.Gantt</title>
 <meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1">
@@ -90,13 +89,12 @@
 }
 
 .btn-r{
-	display:flex;
+	text-align:right;
 }
 
 </style>
 </head>
 <body>
-
 	<!-- 아래 script를 통해 이 class이름안에 모든 타임테이블이 그려집니다. -->
 	<div class="timeTabelWrapper">
 	<div class="gantt"></div>
@@ -127,8 +125,6 @@
 	<!-- 여기까지 popup설정 -->
 
 	</div>
-
-
 <!-- 이 두개는 반드시 불러와야하고 반드시 한곳에 있어야합니다. -->
 
 <script src="gantt/script/jquery.fn.gantt.js"></script>
@@ -240,43 +236,43 @@
 						
 						$('.ctxt').html('<form method="POST" action="timetableMake" id="createForm" name="createForm" accept-charset="utf-8">'
 			        			+'<div class="contentItem_text">' 
-			        			+'제목'
+			        			+'タイトル'
 			        			+'</div>'
 			        			+'<div class="contentItem_input">' 
 								+'<input class="form-control" type="text" id="projectContent_title" name="projectContent_title" placeholder="title">'
 								+'</div>'
 								+'<div class="contentItem_text">' 
-			        			+'내용'
+			        			+'内容'
 			        			+'</div>'
 			        			+'<div class="contentItem_input">' 
 			        			+'<input class="form-control" style="height:300px" type="text" id="projectContent_content" name="projectContent_content" placeholder="content">'
 			        			+'</div>'
 			        			+'<div class="contentItem_text">' 
-			        			+'시작 날짜'
+			        			+'開始日付'
 			        			+'</div>'
 			        			+'<div class="contentItem_input">' 
 			        			+'<input class="form-control" type="date" id="projectContent_startDate" name="projectContent_startDate">'
 			        			+'</div>'
 			        			+'<div class="contentItem_text">' 
-			        			+'종료 날짜'
+			        			+'終了日付'
 			        			+'</div>'
 			        			+'<div class="contentItem_input">' 
 			        			+'<input class="form-control" type="date" id="projectContent_endDate" name="projectContent_endDate">'
 			        			+'</div>'
 			        			+'<div class="contentItem_text">' 
-			        			+'색깔'
+			        			+'進行度'
 			        			+'</div>'
 			        			+'<div class="contentItem_input">' 
 			        			+'<select class="form-control" id="projectContent_color" name="projectContent_color">'
 			    	        	+'<option value="#BDBDBD">待機</option>'
-			    	        	+'<option value="#2EFEF7">進行</option>'
-			    	        	+'<option value="#FE642E">中止</option>'
-			    	        	+'<option value="#2EFE2E">完了</option>'
+			    	        	+'<option value="#b2fcff">進行中</option>'
+			    	        	+'<option value="#ffb2b2">中止</option>'
+			    	        	+'<option value="#8eff9a">完了</option>'
 			    	        	+'</select>'
 			        			+'</div>'
 			        			+'<input type="hidden" id="mainproject_projectNum" name="mainproject_projectNum">'
 			        			+'<div class="contentItem_text">' 
-			        			+'멤버'
+			        			+'メンバー'
 			        			+'</div>'
 			        			+'<div class="contentItem_input">' 
 			        			+'<select class="form-control" id="member_num" name="member_num">'
@@ -290,8 +286,8 @@
 						
 						//완료 버튼 만들기
 						$('div.btn-r').html(
-								'<input type="button" style="height:40px;margin-right:5px" class="btn btn-dark btn-layerClose" id="createContent" onclick="doCreateSubmit()" value="完了" />'
-								+'<a href="#" style="height:40px" class="btn btn-danger btn-layerClose" id="close">閉じる</a>'
+								'<input type="button" style="height:40px;margin-right:5px" class="btn btn-dark btn-layerClose" id="createContent" onclick="doCreateSubmit()" value="クリエイト" />'
+								+'<a href="#" style="height:40px" class="btn btn-danger btn-layerClose" id="close">キャンセル</a>'
 						);
 			        	
 			        	//닫기 메소드
@@ -322,9 +318,9 @@
 						var message;
 						if (pc.projectContent_color == '#BDBDBD') {
 							message = '待機';
-						} else if (pc.projectContent_color == '#2EFEF7'){
-							message = '進行';
-						} else if (pc.projectContent_color == '#FE642E'){
+						} else if (pc.projectContent_color == '#b2fcff'){
+							message = '進行中';
+						} else if (pc.projectContent_color == '#ffb2b2'){
 							message = '中止';
 						}else {
 							message = '完了';
@@ -337,7 +333,7 @@
 		        $('.ctxt').html(
 		        		'<div class="rounded sbd1" style="padding:10px;margin-bottom:15px">'
 		        		+'<div class="border-top-0 border-right-0 border-left-0 sbd1">' 
-	        			+'제목'
+	        			+'タイトル'
 	        			+'</div>'
 	        			+'<div class="contentItem_input" style="margin-top:20px;">' 
 		        		+pc.projectContent_title
@@ -346,7 +342,7 @@
 		        		
 		        		+'<div class="rounded sbd1" style="padding:10px;margin-bottom:15px">'
 		        		+'<div class="border-top-0 border-right-0 border-left-0 sbd1">' 
-	        			+'내용'
+	        			+'内容'
 	        			+'</div>'
 	        			+'<div class="contentItem_input" style="margin-top:20px;">' 
 	        			+pc.projectContent_content
@@ -355,7 +351,7 @@
 		        		
 		        		+'<div class="rounded sbd1" style="padding:10px;margin-bottom:15px">'
 		        		+'<div class="border-top-0 border-right-0 border-left-0 sbd1">' 
-	        			+'시작 날짜'
+	        			+'開始日付'
 	        			+'</div>'
 	        			+'<div class="contentItem_input" style="margin-top:20px;">' 
 	        			+pc.projectContent_startDate
@@ -364,7 +360,7 @@
 		        		
 		        		+'<div class="rounded sbd1" style="padding:10px;margin-bottom:15px">'
 		        		+'<div class="border-top-0 border-right-0 border-left-0 sbd1">' 
-	        			+'종료 날짜'
+	        			+'終了日付'
 	        			+'</div>'
 	        			+'<div class="contentItem_input" style="margin-top:20px;">' 
 	        			+pc.projectContent_endDate
@@ -373,7 +369,7 @@
 		        		
 		        		+'<div class="rounded sbd1" style="padding:10px;margin-bottom:15px">'
 		        		+'<div class="border-top-0 border-right-0 border-left-0 sbd1">' 
-	        			+'색깔'
+	        			+'進行度'
 	        			+'</div>'
 	        			+'<div class="contentItem_input" style="margin-top:20px;">' 
 	        			+'<div style="width:100%;height:30px;text-align:center;background-color:'+pc.projectContent_color+'">'+message+'</div>'
@@ -382,7 +378,7 @@
 		        		
 		        		+'<div class="rounded sbd1" style="padding:10px;">'
 		        		+'<div class="border-top-0 border-right-0 border-left-0 sbd1">' 
-	        			+'멤버'
+	        			+'メンバー'
 	        			+'</div>'
 	        			+'<div class="contentItem_input" style="margin-top:20px;">' 
 	        			+memberName
@@ -397,7 +393,7 @@
 		        $('div.btn-r').html(
 						'<a href="#" style="height:40px;margin-right:5px" class="btn btn-dark btn-layerClose" id="update">修正</a>'
 						+'<a href="#" style="height:40px;margin-right:5px" class="btn btn-dark btn-layerClose" id="delete">削除</a>'
-						+'<a href="#" style="height:40px;margin-right:5px" class="btn btn-danger btn-layerClose" id="close">閉じる</a>'
+						+'<a href="#" style="height:40px;margin-right:5px" class="btn btn-danger btn-layerClose" id="close">キャンセル</a>'
 				);
 		        
 		        //지우기 메소드
@@ -440,43 +436,43 @@
 		        	$('.ctxt').html('<form method="post" action="updateContent" id="updateForm" name="updateForm" accept-charset="utf-8">'
 		        			+'<input type="hidden" id="projectContent_num" name="projectContent_num" value="'+pc.projectContent_num+'">'
 		        			+'<div class="contentItem_text">' 
-		        			+'제목'
+		        			+'タイトル'
 		        			+'</div>'
 		        			+'<div class="contentItem_input">' 
 		        			+'<input type="text" class="form-control" id="projectContent_title" name="projectContent_title" value="'+pc.projectContent_title+'">'
 		        			+'</div>'
 		        			+'<div class="contentItem_text">' 
-		        			+'내용'
+		        			+'内容'
 		        			+'</div>'
 		        			+'<div class="contentItem_input">' 
 		        			+'<input type="text" class="form-control" style="height:300px" id="projectContent_content" name="projectContent_content" value="'+pc.projectContent_content+'">'
 		        			+'</div>'
 		        			+'<div class="contentItem_text">' 
-		        			+'시작 날짜'
+		        			+'開始日付'
 		        			+'</div>'
 		        			+'<div class="contentItem_input">' 
 		    	        	+'<input type="date" class="form-control" id="projectContent_startDate" name="projectContent_startDate" value="'+startDateCh+'">'
 		    	        	+'</div>'
 		    	        	+'<div class="contentItem_text">' 
-		        			+'종료 날짜'
+		        			+'終了日付'
 		        			+'</div>'
 		        			+'<div class="contentItem_input">' 
 		    	        	+'<input type="date" class="form-control" id="projectContent_endDate" name="projectContent_endDate" value="'+endDateCh+'">'
 		    	        	+'</div>'
 		    	        	+'<div class="contentItem_text">' 
-		        			+'색깔'
+		        			+'進行度'
 		        			+'</div>'
 		        			+'<div class="contentItem_input">' 
 		    	        	+'<select class="form-control" id="projectContent_color" name="projectContent_color" value="'+pc.projectContent_color+'">'
 		    	        	+'<option value="#BDBDBD">待機</option>'
-		    	        	+'<option value="#2EFEF7">進行</option>'
-		    	        	+'<option value="#FE642E">中止</option>'
-		    	        	+'<option value="#2EFE2E">完了</option>'
+		    	        	+'<option value="#b2fcff">進行中</option>'
+		    	        	+'<option value="#ffb2b2">中止</option>'
+		    	        	+'<option value="#8eff9a">完了</option>'
 		    	        	+'</select>'
 		    	        	+'</div>'
 		    	        	+'<input type="hidden" id="mainproject_projectNum" name="mainproject_projectNum" value="'+pc.mainproject_projectNum+'">'
 		    	        	+'<div class="contentItem_text">' 
-		        			+'멤버'
+		        			+'メンバー'
 		        			+'</div>'
 		        			+'<div class="contentItem_input">' 
 		        			+'<select class="form-control" id="member_num" name="member_num">'
@@ -493,8 +489,8 @@
 		        	
 		        	//완료버튼 생성
 		        	$('div.btn-r').html(
-		        			'<input type="button" style="height:40px;margin-right:5px" class="btn btn-dark btn-layerClose" id="updateContent" onclick="doUpdateSubmit()" value="완료" />'
-		        			+'<input type="button" style="height:40px;margin-right:5px" class="btn btn-danger btn-layerClose" id="closebutton" onclick="closing()" value="닫기" />');
+		        			'<input type="button" style="height:40px;margin-right:5px" class="btn btn-dark btn-layerClose" id="updateContent" onclick="doUpdateSubmit()" value="完了" />'
+		        			+'<input type="button" style="height:40px;margin-right:5px" class="btn btn-danger btn-layerClose" id="closebutton" onclick="closing()" value="キャンセル" />');
 		            return false;
 				});
 		        	
